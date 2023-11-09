@@ -1,16 +1,16 @@
 source("figure/figure_main generator/library_path.R")
 
 ############## Pannel 3 A
-data4 = read.delim("data/data4.tab")
-data4$set = str_replace_all(data4$set,"all,","genes,")
-dt_graph = data4[ data4$species == "Homo_sapiens" & grepl("Wb_WC_notambiguous",data4$type_aa) ,]
-dt_graph = data4[ data4$species == "Musca_domestica" & grepl("Wb_WC_notambiguous",data4$type_aa) ,]
+data5 = read.delim("data/data5_bis.tab")
+data5$set = str_replace_all(data5$set,"all,","genes,")
+dt_graph = data5[ data5$species == "Homo_sapiens" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
+# dt_graph = data5[ data5$species == "Musca_domestica" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
 
 
-p4A = ggplot(data4 ,
-             aes(x=fpkm ,y=freq*100,linetype=set,fill=categorie,col=categorie))  + geom_point(alpha=0)+
+p4A = ggplot(data5 ,
+             aes(x=fpkm ,y=freq*100,fill=categorie,col=categorie))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2) +
-  geom_point(data=dt_graph,aes(pch=set),col="black",size=4)+
+  geom_point(data=dt_graph,pch=21,col="black",size=4)+
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
@@ -46,13 +46,13 @@ dev.off()
 
 ############## Pannel 3 B
 
-dt_graph = data4[ data4$species == "Caenorhabditis_elegans" & grepl("Wb_WC_notambiguous",data4$type_aa) ,]
-# dt_graph = data4[ data4$species == "Drosophila_melanogaster" & grepl("Wb_WC_notambiguous",data4$type_aa) ,]
+dt_graph = data5[ data5$species == "Caenorhabditis_elegans" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
+# dt_graph = data5[ data5$species == "Drosophila_melanogaster" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
 
-p4B = ggplot(data4 ,
-             aes(x=fpkm ,y=freq*100,linetype=set,fill=categorie,col=categorie))  + geom_point(alpha=0)+
+p4B = ggplot(data5 ,
+             aes(x=fpkm ,y=freq*100,fill=categorie,col=categorie))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2) +
-  geom_point(data=dt_graph,aes(pch=set),col="black",size=4)+
+  geom_point(data=dt_graph,pch=21,col="black",size=4)+
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
@@ -86,35 +86,35 @@ dev.off()
 
 ############## Pannel 3 C
 
-data12 = read.delim("data/data12.tab")
-data12$clade_group = clade_dt[data12$species,]$clade_group
-
-data12 = data12[data12$type_aa == "Wb_WC_notambiguous",]
-
-data12 = data12[ data12$nb_codon_not_decoded == 0 & data12$pval_aa_fpkm < 0.05 ,]
-
-data12$ecart = (data12$optifreq_top5-data12$opti_freq_low50) - (data12$optifreq_top5_intron-data12$opti_freq_low50_intron)
-
-p4C = ggplot(data12,aes(y=ecart*100,x=clade_group,fill=clade_group,label=species))  +
-  geom_hline(size=1,linetype="dashed",col="red",
-             yintercept = 0 ) + 
-  geom_boxplot(alpha=.1) +
-  geom_point(aes(fill=clade_group),size=3,pch=21,alpha=.8) + theme_bw() + theme(
-    axis.title.x = element_text(color="black",angle = 50, size=25,family="economica"),
-    axis.title.y = element_text(color="black", size=25, family="economica"),
-    axis.text.y =  element_text(color="black", size=20, family="economica"),
-    axis.text.x =  element_text(color="black",vjust=.5, size=0,angle = 50, family="economica"),
-    title =  element_text(color="black", size=15, family="economica"),
-    legend.text =  element_text(color="black", size=20, family="economica")
-  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + 
-  ylab("Difference in proportion of optimal codons between\nthe top 5% and bottom 50% expressed (%)")  + xlab("")  + ylim(-5,20)
-
-p4C = ggMarginal(p4C, type="histogram",fill=set_color[1]) 
-p4C
-
-jpeg(paste(path_pannel,"p4C.jpg",sep=""), width = 5500/1, height = 3000/1,res=500/1)
-print(p4C)
-dev.off()
+# data12 = read.delim("data/data12.tab")
+# data12$clade_group = clade_dt[data12$species,]$clade_group
+# 
+# data12 = data12[data12$type_aa == "Wb_WC_notambiguous",]
+# 
+# data12 = data12[ data12$nb_codon_not_decoded == 0 & data12$pval_aa_fpkm < 0.05 ,]
+# 
+# data12$ecart = (data12$optifreq_top5-data12$opti_freq_low50) - (data12$optifreq_top5_intron-data12$opti_freq_low50_intron)
+# 
+# p4C = ggplot(data12,aes(y=ecart*100,x=clade_group,fill=clade_group,label=species))  +
+#   geom_hline(size=1,linetype="dashed",col="red",
+#              yintercept = 0 ) + 
+#   geom_boxplot(alpha=.1) +
+#   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=.8) + theme_bw() + theme(
+#     axis.title.x = element_text(color="black",angle = 50, size=25,family="economica"),
+#     axis.title.y = element_text(color="black", size=25, family="economica"),
+#     axis.text.y =  element_text(color="black", size=20, family="economica"),
+#     axis.text.x =  element_text(color="black",vjust=.5, size=0,angle = 50, family="economica"),
+#     title =  element_text(color="black", size=15, family="economica"),
+#     legend.text =  element_text(color="black", size=20, family="economica")
+#   ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + 
+#   ylab("Difference in proportion of optimal codons between\nthe top 5% and bottom 50% expressed (%)")  + xlab("")  + ylim(-5,20)
+# 
+# p4C = ggMarginal(p4C, type="histogram",fill=set_color[1]) 
+# p4C
+# 
+# jpeg(paste(path_pannel,"p4C.jpg",sep=""), width = 5500/1, height = 3000/1,res=500/1)
+# print(p4C)
+# dev.off()
 
 
 

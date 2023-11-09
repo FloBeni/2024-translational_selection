@@ -7,12 +7,21 @@ code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 stop_codon = rownames(code[code$aa_name == "Ter",])
 
+
+wobble_pairing = c("C"="IC","T"="GU","G"="UG","A"="IA")
+wobble_associat_wc = list("T"="C",
+                          "A"="A",
+                          "G"="A",
+                          "C"="T")
+
+
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 
 data1 = data.frame()
 for (species in GTDrift_list_species$species){
+  dt_species = data.frame()
   print(species)
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
   taxID = GTDrift_list_species[species,]$NCBI.taxid
@@ -71,7 +80,7 @@ for (species in GTDrift_list_species$species){
   spearman_method_aa = cor.test( aa_data$tRNASE_copies, aa_data$obs_codon,method="spearman",exact=F)
   
   
-  data1 = rbind(data1,data.frame(
+  dt_species = rbind(dt_species,data.frame(
     species,
     nb_genes,
     nb_genes_filtered = nrow(codon_usage),
@@ -92,9 +101,70 @@ for (species in GTDrift_list_species$species){
     std_gci = stderror(GCi_obs / ATGCi_obs),
     var_gci = var(GCi_obs / ATGCi_obs,na.rm=T)
     
-    
-  ))
+  ) )
   
+  ### Translational selection intensity
+  
+  tRNA_optimal$decoded_codon = sapply(tRNA_optimal$codon,function(x) paste(substr(x,1,2),wobble_associat_wc[[substr(x,3,3)]],collapse="",sep=""))
+  tRNA_optimal$wb_type = wobble_pairing[substr(tRNA_optimal$codon,3,3)]
+  
+  xaxis = codon_usage$median_fpkm 
+  proportion = 5/100
+  quantile = unique( quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T ))
+  intervalle_FPKM = cut(xaxis, quantile,include.lowest = T,include.higher=T)
+  
+  FPKM_bins = tapply(xaxis, intervalle_FPKM, median)
+  
+  for ( type_aa in c( "WB_WC_notambiguous","WC_duet_ambiguous")){
+    if (type_aa == "WB_WC_notambiguous" ){
+      dt_selected = tRNA_optimal[ tRNA_optimal$nb_syn >= 2,]
+      optimal_count = table( dt_selected[ dt_selected$Wobble_abond | dt_selected$WC_abond,]$aa_name )
+      
+      list_aa = names(optimal_count)[ optimal_count != table(code$aa_name)[names(optimal_count)]]
+      nb_aa = length(list_aa)
+      
+      list_COA = dt_selected[(dt_selected$Wobble_abond | dt_selected$WC_abond) & dt_selected$aa_name %in% list_aa,]$codon
+      list_COA_neg = code[code$aa_name %in% list_aa,]$codon
+      nb_codon = length(list_COA)
+      
+    }  else if  (type_aa == "WC_duet_ambiguous" ){
+      dt_selected = tRNA_optimal[  tRNA_optimal$nb_syn  == 2 ,]
+      optimal_count = table( dt_selected[dt_selected$Wobble_abond,]$aa_name )
+      
+      list_aa = names(optimal_count)[optimal_count != table(code$aa_name)[names(optimal_count)]]
+      nb_aa = length(list_aa)
+      
+      list_COA = dt_selected[dt_selected$WC_abond & dt_selected$aa_name %in% list_aa,]$codon
+      list_COA_neg = code[code$aa_name %in% list_aa ,]$codon
+      
+    }
+    
+    COA_obs = rowSums(codon_usage[ list_COA ],na.rm = T)
+    COA_neg_obs = rowSums(codon_usage[ list_COA_neg ],na.rm = T)
+    
+    
+    if (length(list_COA) != 0){
+      COA_obs_intronic = rowSums(codon_usage[paste(list_COA,'_intronic',sep = "")],na.rm = T)
+      COA_neg_obs_intronic = rowSums(codon_usage[paste(list_COA_neg,'_intronic',sep = "")],na.rm = T)
+    } else {
+      COA_obs_intronic = rowSums(codon_usage[list_COA],na.rm = T)
+      COA_neg_obs_intronic = rowSums(codon_usage[list_COA_neg],na.rm = T)
+    } 
+    
+    dt_translational_selection = data.frame(
+      average_RTF_abundant_tRNA = mean( tRNA_optimal[list_COA,]$RTF[tRNA_optimal[list_COA,]$RTF != 0] ) ,
+      expressed_overused = round(tapply( COA_obs / COA_neg_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) - 
+        round( mean( (COA_obs / COA_neg_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5) ,
+      expressed_overused_background = (round(tapply( COA_obs / COA_neg_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) - 
+                                         round( mean( (COA_obs / COA_neg_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) - (
+                                                          round(tapply( COA_obs_intronic / COA_neg_obs_intronic   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
+                                                            round( mean( (COA_obs_intronic / COA_neg_obs_intronic)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T),5)
+                                                        ))
+    colnames(dt_translational_selection) = paste(colnames(dt_translational_selection),type_aa,sep="_")
+    
+    dt_species = cbind(dt_species,dt_translational_selection)
+  }
+  
+  data1 = rbind(data1,dt_species)
 }
-
 write.table(data1,"data/data1_bis.tab",quote=F,row.names = F,sep="\t")

@@ -7,10 +7,10 @@ wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
 
 ############## Pannel 3 A
-data2 = read.delim("data/data2.tab")
-data2$Var1 = factor(data2$Var1,levels =  names(set_color))
+data4 = read.delim("data/data4_bis.tab")
+data4$Var1 = factor(data4$Var1,levels =  names(set_color))
 
-dt_graph = data2[data2$species == "metazoa",]
+dt_graph = data4[data4$species == "metazoa",]
 
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
 dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) )
@@ -46,7 +46,7 @@ dev.off()
 
 ############## Pannel 3 B
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA","XX")
-dt_graph = data2
+dt_graph = data4
 dt_graph$amino_acid = str_replace_all(dt_graph$amino_acid," [(][:digit:][)]","")
 dt_graph = dt_graph[dt_graph$species == "Homo_sapiens",]
 dc = dt_graph[dt_graph$amino_acid == "Thr",]
@@ -98,7 +98,7 @@ print(p3B)
 dev.off()
 
 ############## Pannel 3 C
-dt_graph = data2
+dt_graph = data4
 dt_graph$amino_acid = str_replace_all(dt_graph$amino_acid," [(][:digit:][)]","")
 dt_graph = dt_graph[dt_graph$species == "Caenorhabditis_elegans",]
 # dt_graph = dt_graph[dt_graph$species == "Drosophila_melanogaster",]

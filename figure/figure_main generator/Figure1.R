@@ -2,40 +2,39 @@ source("figure/figure_main generator/library_path.R")
 
 ############## Pannel 1 A
 arbrePhylotips = arbrePhylo
-arbrePhylo$tip.label <- str_replace_all(arbrePhylo$tip.label,"_"," ")
-edge_group <- str_replace_all(arbrePhylo$tip.label,"_"," ")
-edge_clade <- rep("branch",length(arbrePhylo$edge[,2]))
+arbrePhylotips$tip.label <- str_replace_all(arbrePhylotips$tip.label,"_"," ")
+edge_group <- str_replace_all(arbrePhylotips$tip.label,"_"," ")
+edge_clade <- rep("branch",length(arbrePhylotips$edge[,2]))
 for (group in unique(edge_group)){
   if (group %in% unlist(listNomSpecies)){
-    edge_clade[arbrePhylo$edge[,2] %in% grep(group,edge_group)] =
+    edge_clade[arbrePhylotips$edge[,2] %in% grep(group,edge_group)] =
       names(listNomSpecies[unlist(lapply(listNomSpecies,function(x) group %in% x))])
   }
 }
 
 for (clade in  names(listNomSpecies)){print(clade)
-  edge_clade[ which.edge(arbrePhylo, arbrePhylo$edge[,2][edge_clade == clade] ) ] = clade
+  edge_clade[ which.edge(arbrePhylotips, arbrePhylotips$edge[,2][edge_clade == clade] ) ] = clade
 }
-node_metadata = data.frame(node=arbrePhylo$edge[,2],color=edge_clade)
+node_metadata = data.frame(node=arbrePhylotips$edge[,2],color=edge_clade)
 node_metadata$color = factor(node_metadata$color, levels = c("Lepido Diptera","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
-p1A = ggtree(arbrePhylo,layout="roundrect",size=1) %>% flip(264, 375)
+p1A = ggtree(arbrePhylotips,layout="roundrect",size=1)
+# %>% flip(264, 375)
 p1A <- p1A %<+% node_metadata  + aes(color=color) + 
   scale_color_manual("Clade",values=Clade_color[unique(edge_clade)]) + theme(
     panel.background = element_rect(fill = "white", linetype = "dashed")
   ) + theme(legend.position = "none")
 p1A
 
-jpeg(paste(path_pannel,"p1A.jpg",sep=""), width = 1500/1, height = 3000/1,res=250/1)
-print(p1A)
-dev.off()
+# jpeg(paste(path_pannel,"p1A.jpg",sep=""), width = 1500/1, height = 3000/1,res=250/1)
+# print(p1A)
+# dev.off()
 
 
 ############## Pannel 1 B
-data12 = read.delim("data/data1.tab")
-data12$clade_group = clade_dt[data12$species,]$clade_group
+data1 = read.delim("data/data1_bis.tab")
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
-data12 = data12[data12$type_aa == "Wb_WC_notambiguous",]
-# dt_graph = data12[ data12$nb_genes > 5000 ,]
-dt_graph = data12
+dt_graph = data1
 
 ylabel = "gc3"
 xlabel = "gci"
@@ -75,14 +74,13 @@ print(p1B)
 dev.off()
 
 ############## Pannel 1 C
-data3 = read.delim("data/data3.tab")
-p1C = ggplot(data3[data3$species == "Homo_sapiens" ,] ,
+data2 = read.delim("data/data2_bis.tab")
+p1C = ggplot(data2[data2$species == "Homo_sapiens" ,] ,
              aes(x=GCi ,y=GC3))  +
   geom_point(col=set_color[8],alpha=0.4,size=.51)+
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
-  scale_shape_manual(values=c(24,22,21,23,25,20)) +
-  ggtitle( unique(data3$type_aa[grepl( "Duet",data3$type_aa )]) ) + xlab("log10( FPKM+1 )") + ylab("Frequency optimal codons") + theme_bw() + theme(
+  scale_shape_manual(values=c(24,22,21,23,25,20))+ xlab("log10( FPKM+1 )") + ylab("Frequency optimal codons") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=30,family="economica"),
     axis.title.y = element_text(color="black", size=30, family="economica"),
     axis.text.y =  element_text(color="black", size=25, family="economica"),
@@ -105,13 +103,12 @@ dev.off()
 
 
 ############## Pannel 3 D
-p1D = ggplot(data3[data3$species == "Caenorhabditis_elegans" ,] ,
+p1D = ggplot(data2[data2$species == "Caenorhabditis_elegans" ,] ,
              aes(x=GCi ,y=GC3))  +
   geom_point(col=set_color[8],alpha=0.4,size=.51)+
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
-  scale_shape_manual(values=c(24,22,21,23,25,20)) +
-  ggtitle( unique(data3$type_aa[grepl( "Duet",data3$type_aa )]) ) + xlab("log10( FPKM+1 )") + ylab("Frequency optimal codons") + theme_bw() + theme(
+  scale_shape_manual(values=c(24,22,21,23,25,20)) + xlab("log10( FPKM+1 )") + ylab("Frequency optimal codons") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=30,family="economica"),
     axis.title.y = element_text(color="black", size=0, family="economica"),
     axis.text.y =  element_text(color="black", size=0, family="economica"),

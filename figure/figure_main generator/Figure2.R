@@ -2,8 +2,8 @@ source("figure/figure_main generator/library_path.R")
 
 
 ############## Pannel 2 A
-data1 = read.delim("data/data1.tab")
-dt_graph = data1[data1$species == "Caenorhabditis_elegans", ]
+data3 = read.delim("data/data3_bis.tab")
+dt_graph = data3[data3$species == "Caenorhabditis_elegans", ]
 
 spearman_method_aa = cor.test( dt_graph$tRNASE_copies, dt_graph$obs_codon,method="spearman",exact=F)
 
@@ -29,10 +29,10 @@ dev.off()
 
 
 ############## Pannel 2 B
-dt_graph = data1[!duplicated(data1$species) & data1$species %in% clade_dt$species,]
-dt_graph$clade_group = clade_dt[dt_graph$species,]$clade_group
+data1 = read.delim("data/data1_bis.tab")
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
-# dt_graph = dt_graph[ dt_graph$nb_gene >= 5000 , ]
+dt_graph = data1[ data1$nb_genes_filtered >= 5000 , ]
 
 p2B = ggplot(dt_graph,aes(y=rho_aa_fpkm,fill=clade_group,x=clade_group))  +
   geom_hline(size=1,linetype="dashed",col="red", yintercept = min(dt_graph[dt_graph$rho_aa_fpkm & dt_graph$pval_aa_fpkm < 0.05,]$rho_aa_fpkm) ) +
