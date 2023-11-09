@@ -1,4 +1,4 @@
-# Generate Data 2
+# Generate Data 2, 3 and 5
 
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
