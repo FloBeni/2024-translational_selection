@@ -1,7 +1,7 @@
 source("figure/figure_main generator/library_path.R")
 
 ############## Pannel 1 A
-arbrePhylotips=arbrePhylo
+arbrePhylotips = arbrePhylo
 arbrePhylo$tip.label <- str_replace_all(arbrePhylo$tip.label,"_"," ")
 edge_group <- str_replace_all(arbrePhylo$tip.label,"_"," ")
 edge_clade <- rep("branch",length(arbrePhylo$edge[,2]))
@@ -16,7 +16,7 @@ for (clade in  names(listNomSpecies)){print(clade)
   edge_clade[ which.edge(arbrePhylo, arbrePhylo$edge[,2][edge_clade == clade] ) ] = clade
 }
 node_metadata = data.frame(node=arbrePhylo$edge[,2],color=edge_clade)
-node_metadata$color = factor(node_metadata$color, levels = c("Lepido Diptera","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapodes"))
+node_metadata$color = factor(node_metadata$color, levels = c("Lepido Diptera","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
 p1A = ggtree(arbrePhylo,layout="roundrect",size=1) %>% flip(264, 375)
 p1A <- p1A %<+% node_metadata  + aes(color=color) + 
   scale_color_manual("Clade",values=Clade_color[unique(edge_clade)]) + theme(
@@ -30,7 +30,7 @@ dev.off()
 
 
 ############## Pannel 1 B
-data12 = read.delim("data/data12.tab")
+data12 = read.delim("data/data1.tab")
 data12$clade_group = clade_dt[data12$species,]$clade_group
 
 data12 = data12[data12$type_aa == "Wb_WC_notambiguous",]

@@ -23,28 +23,32 @@ path_require = "figure/images_library/"
 
 wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
-Clade_color = c("Other Invertebrates"="#f5b48a","Lepido Diptera"="red","Other Tetrapodes"="#A6CEE3","Other Insecta"="#FF7F00",
+Clade_color = c("Other Invertebrates"="#f5b48a","Lepido Diptera"="red","Other Tetrapods"="#A6CEE3","Other Insecta"="#FF7F00",
                 Nematoda="#B2DF8A",Teleostei="#1F78B4",Hymenoptera="#ba8e18",Aves="#5b5b5b",Mammalia="#66281A",Embryophyta="#33A02C"
 )
 
 Clade_color = Clade_color[c("Embryophyta","Lepido Diptera","Hymenoptera",
                             "Other Insecta","Nematoda","Other Invertebrates",
-                            "Mammalia","Aves","Other Tetrapodes","Teleostei")]
+                            "Mammalia","Aves","Other Tetrapods","Teleostei")]
 
-arbrePhylo = read.tree(paste("data/phylogenetic_tree_root.nwk",sep=""))
-
-
-
-clade_dt = read.delim(paste( "data/clade_dt.tab",sep=""),header=T)
-rownames(clade_dt) = clade_dt$species
-clade_dt$clade_group = factor(clade_dt$clade_group, levels = c("Lepido Diptera","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapodes"))
+arbrePhylo = read.tree(paste("data/GTDrift_metazoa_phylogenetic_tree.nwk",sep=""))
 
 
 
-listNomSpecies = tapply(clade_dt$species,clade_dt$clade_group,function(x)  str_replace_all(x,"_"," "))
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+rownames(GTDrift_list_species) = GTDrift_list_species$species
+GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates" ,]$clade_group = "Other Tetrapods"
 
-# clade_dt = clade_dt[clade_dt$species%in%list_species,]
-table(clade_dt$clade_group)
+GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = c("Lepido Diptera","Hymenoptera","Other Insecta",
+                                                                                       "Nematoda","Other Invertebrates","Teleostei",
+                                                                                       "Mammalia","Aves","Other Tetrapods"))
+
+
+
+listNomSpecies = tapply(GTDrift_list_species$species,GTDrift_list_species$clade_group,function(x)  str_replace_all(x,"_"," "))
+
+# GTDrift_list_species = GTDrift_list_species[GTDrift_list_species$species%in%list_species,]
+table(GTDrift_list_species$clade_group)
 
 lm_eqn <- function(m=lm(Y ~ X,data)){
   paste("R2 = ", round(summary(m)$r.squared, 2) , ", p-value = ",formatC(summary(m)$coefficients[2,4], format = "e", digits = 0),sep="")
