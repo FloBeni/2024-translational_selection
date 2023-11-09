@@ -420,7 +420,6 @@ for( species in list_species ){ print(species)
         gci = (GCi_obs / ATGCi_obs)
         model_lm = lm( gc3 ~  gci)
         
-        
         spearman_method_gc3gci = cor.test( gc3, gci,method="spearman",exact=F)
         # print(spearman_method_gc3gci)
         
@@ -478,7 +477,7 @@ for( species in list_species ){ print(species)
   }
 }
 
-write.table(data12,paste("data/data12.tab",sep=""),sep="\t",quote=F,row.names=F)
+write.table(data12 , paste("data/data12.tab",sep=""),sep="\t",quote=F,row.names=F)
 
 
 
