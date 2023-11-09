@@ -1,0 +1,191 @@
+source("figure/figure_main generator/library_path.R")
+
+############## Pannel 1 A
+arbrePhylotips=arbrePhylo
+arbrePhylo$tip.label <- str_replace_all(arbrePhylo$tip.label,"_"," ")
+edge_group <- str_replace_all(arbrePhylo$tip.label,"_"," ")
+edge_clade <- rep("branch",length(arbrePhylo$edge[,2]))
+for (group in unique(edge_group)){
+  if (group %in% unlist(listNomSpecies)){
+    edge_clade[arbrePhylo$edge[,2] %in% grep(group,edge_group)] =
+      names(listNomSpecies[unlist(lapply(listNomSpecies,function(x) group %in% x))])
+  }
+}
+
+for (clade in  names(listNomSpecies)){print(clade)
+  edge_clade[ which.edge(arbrePhylo, arbrePhylo$edge[,2][edge_clade == clade] ) ] = clade
+}
+node_metadata = data.frame(node=arbrePhylo$edge[,2],color=edge_clade)
+node_metadata$color = factor(node_metadata$color, levels = c("Lepido Diptera","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapodes"))
+p1A = ggtree(arbrePhylo,layout="roundrect",size=1) %>% flip(264, 375)
+p1A <- p1A %<+% node_metadata  + aes(color=color) + 
+  scale_color_manual("Clade",values=Clade_color[unique(edge_clade)]) + theme(
+    panel.background = element_rect(fill = "white", linetype = "dashed")
+  ) + theme(legend.position = "none")
+p1A
+
+jpeg(paste(path_pannel,"p1A.jpg",sep=""), width = 1500/1, height = 3000/1,res=250/1)
+print(p1A)
+dev.off()
+
+
+############## Pannel 1 B
+data12 = read.delim("data/data12.tab")
+data12$clade_group = clade_dt[data12$species,]$clade_group
+
+data12 = data12[data12$type_aa == "Wb_WC_notambiguous",]
+# dt_graph = data12[ data12$nb_genes > 5000 ,]
+dt_graph = data12
+
+ylabel = "gc3"
+xlabel = "gci"
+dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+lm_y = dt_graph[,ylabel]
+lm_x = (dt_graph[,xlabel])
+shorebird <- comparative.data(arbrePhylo, 
+                              data.frame(species=dt_graph$species,
+                                         pgls_x=lm_x,
+                                         pgls_y=lm_y), species, vcv=TRUE)
+
+
+
+p1B = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
+  # geom_errorbar(aes(ymin = gc3-sqrt(var_gc3), ymax = gc3+sqrt(var_gc3)),alpha=0.2) +
+  # geom_errorbarh(aes(xmin = gci-sqrt(var_gci), xmax =gci+sqrt(var_gci)),alpha=0.2) +
+  geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
+    axis.title.x = element_text(color="black", size=25,family="economica"),
+    axis.title.y = element_text(color="black", size=25, family="economica"),
+    axis.text.y =  element_text(color="black", size=20, family="economica"),
+    axis.text.x =  element_text(color="black",vjust=.5, size=20, family="economica"),
+    title =  element_text(color="black", size=15, family="economica"),
+    legend.text =  element_text(color="black", size=15, family="economica")
+  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
+  ylab("Average per gene GC3") +
+  xlab("Average per gene GCi") +
+  ggtitle(paste(
+    "LM: ",lm_eqn(lm(lm_y ~ lm_x)),
+    " / PGLS: ",lm_eqn(pgls(pgls_y~pgls_x,shorebird))
+    ,sep="")) 
+print(p1B)
+
+
+
+jpeg(paste(path_pannel,"p1B.jpg",sep=""), width = 4000/1, height = 2500/1,res=500/1)
+print(p1B)
+dev.off()
+
+############## Pannel 1 C
+data3 = read.delim("data/data3.tab")
+p1C = ggplot(data3[data3$species == "Homo_sapiens" ,] ,
+             aes(x=GCi ,y=GC3))  +
+  geom_point(col=set_color[8],alpha=0.4,size=.51)+
+  scale_fill_manual(values=set_color) +
+  scale_color_manual(values=set_color) +
+  scale_shape_manual(values=c(24,22,21,23,25,20)) +
+  ggtitle( unique(data3$type_aa[grepl( "Duet",data3$type_aa )]) ) + xlab("log10( FPKM+1 )") + ylab("Frequency optimal codons") + theme_bw() + theme(
+    axis.title.x = element_text(color="black", size=30,family="economica"),
+    axis.title.y = element_text(color="black", size=30, family="economica"),
+    axis.text.y =  element_text(color="black", size=25, family="economica"),
+    axis.text.x =  element_text(color="black", size=25, family="economica"),
+    title =  element_text(color="black", size=18, family="economica"),
+    legend.text =  element_text(color="black", size=16, family="economica"),
+    strip.text = element_text(size=15)
+  )+labs(fill='Categories',color='Categories',shape='',linetype='')+
+  guides(fill = guide_legend(override.aes = list(pch=NA),order = 1),
+         color = guide_legend(order = 1),
+         linetype = guide_legend(order = 2),
+         shape = guide_legend(order = 2,size=NA),
+  )  +  ylab("GC3 rate per gene") + xlab("GCi rate per gene") +xlim(0.1,.8) +ylim(0.15,1)
+p1C
+
+jpeg(paste(path_pannel,"p1C.jpg",sep=""), 
+     width = 6000/4.5,  5000/4,res=1000/4)
+print(p1C)
+dev.off()
+
+
+############## Pannel 3 D
+p1D = ggplot(data3[data3$species == "Caenorhabditis_elegans" ,] ,
+             aes(x=GCi ,y=GC3))  +
+  geom_point(col=set_color[8],alpha=0.4,size=.51)+
+  scale_fill_manual(values=set_color) +
+  scale_color_manual(values=set_color) +
+  scale_shape_manual(values=c(24,22,21,23,25,20)) +
+  ggtitle( unique(data3$type_aa[grepl( "Duet",data3$type_aa )]) ) + xlab("log10( FPKM+1 )") + ylab("Frequency optimal codons") + theme_bw() + theme(
+    axis.title.x = element_text(color="black", size=30,family="economica"),
+    axis.title.y = element_text(color="black", size=0, family="economica"),
+    axis.text.y =  element_text(color="black", size=0, family="economica"),
+    axis.text.x =  element_text(color="black", size=25, family="economica"),
+    title =  element_text(color="black", size=18, family="economica"),
+    legend.text =  element_text(color="black", size=16, family="economica"),
+    strip.text = element_text(size=15)
+  )+labs(fill='Categories',color='Categories',shape='',linetype='')+
+  guides(fill = guide_legend(override.aes = list(pch=NA),order = 1),
+         color = guide_legend(order = 1),
+         linetype = guide_legend(order = 2),
+         shape = guide_legend(order = 2,size=NA),
+  )  +  ylab("") + xlab("GCi rate per gene") +xlim(0.1,.8) +ylim(0.15,1)
+p1D
+
+jpeg(paste(path_pannel,"p1D.jpg",sep=""), 
+     width = 5000/4.5,  5000/4,res=1000/4)
+print(p1D)
+dev.off()
+
+
+
+############## Figure 1 
+
+imgA = load.image(paste(path_pannel,"p1A.jpg",sep="") )
+imgB = load.image(paste(path_pannel,"p1B.jpg",sep="") )
+imgC = load.image(paste(path_pannel,"p1C.jpg",sep="") )
+imgD = load.image(paste(path_pannel,"p1D.jpg",sep="") )
+clade_png<-readPNG(paste(path_require,"clade.png",sep=""))
+human<-readPNG(paste(path_require,"human.png",sep=""))
+Caenorhabditis_elegans = readPNG(paste(path_require,"Caenorhabditis_elegans.png",sep=""))
+Drosophila_melanogaster = readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
+
+{
+  pdf(file= paste(path_figure,"Figure1.pdf",sep=""), width=6.5, height=5)
+  
+  m=matrix(rep(NA,10*10), nrow=10)
+  
+  for(i in 1:10){
+    m[,i]=rep(1)
+  }
+  
+  for(i in 5:10){
+    m[,i]=c(rep(2,5),rep(3,5))
+  }
+  
+  for(i in 6:10){
+    m[i,]=c(rep(1,4),rep(3,3),rep(4,3))
+  }
+  layout(m)
+  
+  par(mar=c(0, 2, 0, 0))
+  plot(imgA, axes=FALSE)
+  mtext("A",at=49.4,adj=0.1, side=2, line=1, font=2, cex=1.4,las=2)
+  xmonkey=900
+  ymonkey=2000
+  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/0.9+ymonkey, xright=400/0.9+xmonkey, ytop=ymonkey)
+  
+  par(mar=c(0, 1, 0, 2))
+  plot(imgB, axes=FALSE)
+  mtext("B",at=49.4,adj=0.1, side=2, line=1, font=2, cex=1.4,las=2)
+  
+  par(mar=c(0, 0, 0, 0))
+  plot(imgC, axes=FALSE)
+  xhuman=300
+  yhuman=-60
+  rasterImage(human,xleft=0+xhuman, ybottom=350/1.7-yhuman, xright=190/1.7+xhuman, ytop=0-yhuman)
+  mtext("C", adj=0.1,side=2,at=0, line=1, font=2, cex=1.4,las=2)
+  par(mar=c(0, 0, 0, 2.5))
+  plot(imgD, axes=FALSE)
+  xcel=125
+  ycel=-50
+  rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/3-ycel, xright=1000/3+xcel, ytop=0-ycel)
+  # mtext("D", side=2,at=1, line=1, font=2, cex=1.4,las=2)
+  dev.off()
+}
+

@@ -1,0 +1,452 @@
+
+subst_or_snp = "substitutions"
+count_file = "subst"
+ylabel = "Substitution rate"
+proportion = 0.025
+
+options(stringsAsFactors = F, scipen = 999)
+library(stringr)
+# library(seqinr)
+library(stringi)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(RColorBrewer)
+set_color = brewer.pal(8, 'Paired')
+set_color = append(set_color,c("#fdfd99","#e2cc1a"))
+set_color_class = set_color
+names(set_color_class) = c("wobble -> watson-crick","watson-crick -> wobble","non-optimal -> watson-crick","non-optimal -> wobble","watson-crick -> non-optimal","wobble -> non-optimal",
+                           "optimal -> non-optimal","non-optimal -> optimal")
+set_color_class[c(1,7,8)] = c("#e2cc1a","#E31A1C","#33A02C")
+set_shape_class = c(CDS=21,intron=24)
+set_alpha_class = c(CDS=1,intron=0.5)
+
+path_data = "/home/fbenitiere/data/"
+
+code = read.delim(paste(path_data,"Projet-SplicedVariants/Fichiers-data/standard_genetic_code.tab",sep=""))
+rownames(code) = code$codon
+code$nb_syn = table(code$aa_name)[code$aa_name]
+code$anticodon = sapply(code$codon,function(x) chartr("TUACG","AATGC",stri_reverse(x))  )
+
+
+std <- function(x) sd(x)/sqrt(length(x))
+
+simulator_rate_rbinom <- function(vect_cds,true_rate,rep=100){
+  dg = data.frame()
+  for (i in c(1:rep)){
+    vect_length = sample(vect_cds , replace = T)
+    dg = rbind(dg,data.frame(
+      i,
+      mean = mean(rbinom(n=vect_length , size=vect_length , prob=true_rate) / vect_length)
+    ))
+  }
+  
+  da = data.frame(
+    mean = mean(dg$mean),
+    confint_low = quantile(dg$mean, c(0.025,0.975))[1],
+    confint_high = quantile(dg$mean, c(0.025,0.975))[2],
+    std = std(dg$mean)
+  )
+  return(da)
+}
+
+
+collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa){
+  dt = data.frame(fpkm = tapply(xaxis, intervalle_list, median))
+  for (region in c("codon","intron")){
+    if(region == "codon"){
+      df_synonymous = substitution_codon[substitution_codon$protein_id %in% count_codon_trinucl$protein_id,]
+    } else if (region == "intron"){
+      df_synonymous = substitution_trinucl[substitution_trinucl$protein_id %in% count_codon_trinucl$protein_id,]
+    }
+    df_synonymous = df_synonymous[ df_synonymous$aa_ancestral == df_synonymous$aa_subst &
+                                     df_synonymous$aa_ancestral %in% list_aa &
+                                     df_synonymous$ancestral %in% unlist(list_codon) & 
+                                     df_synonymous$substituted %in% unlist(list_codon),]
+    
+    df_synonymous$codon = paste(
+      names(list_codon)[sapply(df_synonymous$ancestral,function(x) grep(x,list_codon))],'->',
+      names(list_codon)[sapply(df_synonymous$substituted,function(x) grep(x,list_codon))]
+      ,sep="")
+    
+    for ( categorie in unique(df_synonymous$codon)){
+      count_codon_trinucl[,paste(categorie,region,sep="_")] = table( df_synonymous[ df_synonymous$codon == categorie ,]$protein_id )[count_codon_trinucl$protein_id]
+      if(region == "codon"){
+        if (length(list_codon[str_split(categorie,"->")[[1]][1]][[1]]) != 1){
+          count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] = rowSums( count_codon_trinucl[,list_codon[str_split(categorie,"->")[[1]][1]][[1]]] )
+        } else {
+          count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] = count_codon_trinucl[,list_codon[str_split(categorie,"->")[[1]][1]][[1]]]
+        }
+      } else if (region == "intron"){
+        if (length(list_codon[str_split(categorie,"->")[[1]][1]][[1]]) != 1){
+          count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] =  rowSums( count_codon_trinucl[,paste(list_codon[str_split(categorie,"->")[[1]][1]][[1]],"_intronic",sep="")] )
+        } else {
+          count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] =  ( count_codon_trinucl[,paste(list_codon[str_split(categorie,"->")[[1]][1]][[1]],"_intronic",sep="")] )
+        }
+      }
+      name_col = str_replace(paste("density",categorie,region,sep="_"),"->","_to_")
+      
+      dt[,paste("cible",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  sum(x,na.rm=T))
+      dt[,paste("median_cible",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  median(x,na.rm=T))
+      dt[,paste("median_subst_per_gene",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  median(x,na.rm=T))
+      dt[,paste("average_subst_per_gene",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  mean(x,na.rm=T))
+      
+      
+      
+      if (method_to_calculate == "concatenate"){
+        succes_count = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  sum(x,na.rm=T))
+        trial_count = tapply(count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")], intervalle_list,function(x)  sum(x,na.rm=T))
+        dt[,name_col] = succes_count / trial_count
+        
+        dt[,paste("confint",c(1,2),"_",name_col,sep="")] = data.frame(t(sapply(c(1:length(succes_count)),function(x) prop.test(succes_count[x], n = trial_count[x])$conf.int )))
+        
+      } else if (method_to_calculate == "per_gene"){
+        dt[,name_col] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] / count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  mean(x,na.rm=T))
+        dt[,paste("confint",c(1,2),"_",name_col,sep="")] = NA
+      }
+      
+      
+      vect_site_per_intervalle = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list, 
+                                         function(x) x[!is.na(x) & x != 0])
+      
+      simulation_tab = mapply( function(x,y) simulator_rate_rbinom( vect_cds = unlist(x) , true_rate = y , rep=1000), vect_site_per_intervalle, dt[,name_col])
+      
+      dt[,paste("simulation_",name_col,sep="")] = unlist(simulation_tab["mean",])
+      dt[,paste("std_",name_col,sep="")] = unlist(simulation_tab["std",])
+      dt[,paste("confint_low_",name_col,sep="")] = unlist(simulation_tab["confint_low",])
+      dt[,paste("confint_high_",name_col,sep="")] = unlist(simulation_tab["confint_high",])
+    }
+  }
+  return(dt)
+}
+
+
+
+list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",sep=""),
+                       pattern=paste("count",count_file,"_codon",sep=""))
+analyzable_codon_count = data.frame()
+for (file in list_file){
+  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/" , file , sep=""))
+  analyzable_codon_count = rbind(analyzable_codon_count,data_per_chr)
+}
+
+list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",sep=""),
+                       pattern=paste("count",count_file,"_trinucl",sep=""))
+analyzable_trinucl_count = data.frame()
+for (file in list_file){
+  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""))
+  analyzable_trinucl_count = rbind(analyzable_trinucl_count,data_per_chr)
+}
+
+analyzable_trinucl_count = analyzable_trinucl_count %>%
+  mutate(protein_id = strsplit(as.character(protein_id), ";")) %>%
+  unnest(protein_id) 
+
+
+analyzable_trinucl_count = aggregate(analyzable_trinucl_count[,8:71], by=list(protein_id=analyzable_trinucl_count$protein_id), FUN=sum)
+count_codon_trinucl = merge(x=analyzable_codon_count,y=analyzable_trinucl_count,by.x="protein_id",by.y = "protein_id",all.x=T,all.y=T,suffixes=c("","_intronic"))
+
+
+
+list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",sep="") , 
+                       pattern=paste(count_file,"_cds",sep=""))
+substitution_codon = data.frame()
+for (file in list_file){
+  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""))
+  substitution_codon = rbind(substitution_codon,data_per_chr)
+}
+substitution_codon$aa_ancestral = code[ substitution_codon$ancestral_codon,]$aa_name
+
+if (subst_or_snp == "snps" ){
+  substitution_codon$aa_subst = code[ substitution_codon$derived_codon,]$aa_name
+  substitution_codon$substituted = substitution_codon$derived_codon
+  substitution_codon$substituted_site = substitution_codon$derived_site
+} else {
+  substitution_codon$aa_subst = code[ substitution_codon$substituted_codon,]$aa_name
+  substitution_codon$substituted = substitution_codon$substituted_codon
+}
+substitution_codon$ancestral = substitution_codon$ancestral_codon
+
+
+
+list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",sep=""),
+                       pattern=paste(count_file,"_intron",sep=""))
+substitution_trinucl = data.frame()
+for (file in list_file){
+  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""))
+  substitution_trinucl = rbind(substitution_trinucl,data_per_chr)
+}
+substitution_trinucl$aa_ancestral = code[ substitution_trinucl$ancestral_triplet,]$aa_name
+if (subst_or_snp == "snps" ){
+  substitution_trinucl$aa_subst = code[ substitution_trinucl$derived_triplet,]$aa_name
+  substitution_trinucl$substituted = substitution_trinucl$derived_triplet
+} else {
+  substitution_trinucl$aa_subst = code[ substitution_trinucl$substituted_triplet,]$aa_name
+  substitution_trinucl$substituted = substitution_trinucl$substituted_triplet
+}
+
+substitution_trinucl$ancestral = substitution_trinucl$ancestral_triplet
+
+substitution_trinucl = substitution_trinucl %>%
+  mutate(protein_id = strsplit(as.character(protein_id), ";")) %>%
+  unnest(protein_id) 
+
+print(paste("Number of analyzable codons = ",sum(count_codon_trinucl[,c(4:67)])))
+print(paste("Number of codons containing substitutions = ",nrow(substitution_codon)))
+print(paste("Number of analyzable triplets = ",sum(count_codon_trinucl[,c(68:131)],na.rm = T)))
+print(paste("Number of triplets containing substitutions = ",nrow(substitution_trinucl)))
+
+
+chrList = c(chrX="NC_004354.4",
+            chr2L="NT_033779.5",chr2R="NT_033778.4",
+            chr3L="NT_037436.4",chr3R="NT_033777.3",
+            chr4="NC_004353.4", chrY="NC_024512.1")
+
+treshold_list =  c("chr2L"="down_20000000", "chr2R"="up_7000000","chr4"="up_0",
+                   "chr3L"="down_22000000","chr3R"="up_5000000","chrX"="down_20000000")
+treshold_data = data.frame(treshold = sapply(treshold_list,function(x) as.numeric(str_split(x,'_')[[1]][2])))
+treshold_data$chromosome = rownames(treshold_data)
+treshold_data$orientation =  sapply(treshold_list,function(x) str_split(x,'_')[[1]][1])
+rownames(treshold_data) = chrList[treshold_data$chromosome ] 
+
+
+gene_data = read.delim("/home/fbenitiere/data/Projet-SplicedVariants/Annotations/Drosophila_melanogaster/formatted_data/gene.tab")
+chrList = c("NC_004354.4"="chrX",
+            "NT_033779.5" = "chr2L","NT_033778.4" = "chr2R",
+            "NT_037436.4" = "chr3L","NT_033777.3" = "chr3R",
+            "NC_004353.4" = "chr4", "NC_024512.1" = "chrY")
+gene_data$chromosome = chrList[ gene_data$seq_id ]
+gene_data$gene_id = sapply(gene_data$attributes ,function(x) str_replace(str_split(x,";")[[1]][1],'ID=',''))
+gene_data = gene_data[ gene_data$chromosome %in% treshold_data$chromosome ,]
+
+gene_data$filter_treshold = apply(gene_data,1,function(x){
+  treshold = treshold_data[x["seq_id"],] 
+  if (treshold$orientation == "down"){
+    return(as.numeric(x["start"]) <= treshold$treshold & as.numeric(x["end"]) <= treshold$treshold   )
+  }else if (treshold$orientation == "up"){
+    return(as.numeric(x["start"]) >= treshold$treshold &as.numeric(x["end"]) >= treshold$treshold    )}
+})
+
+gene_data = gene_data[gene_data$filter_treshold,]
+
+
+
+
+count_codon_trinucl$length_cds = rowSums(count_codon_trinucl[,c(4:67)])
+count_codon_trinucl$length_intron = rowSums(count_codon_trinucl[,c(68:131)])
+
+fpkm_data = read.delim("/home/fbenitiere/data/Projet-SplicedVariants/Analyses/Drosophila_melanogaster/by_gene_analysis.tab",comment="#")
+rownames(fpkm_data) = fpkm_data$gene_id
+
+count_codon_trinucl$median_fpkm =  fpkm_data[count_codon_trinucl$gene_id,]$median_fpkm
+
+print(paste("Number of CDS gene studied :",length(unique(count_codon_trinucl$gene_id))))
+
+count_codon_trinucl = count_codon_trinucl[ count_codon_trinucl$gene_id %in% gene_data$gene_id ,]
+print(paste("Number of gene after filtering by problematic regions :",length(unique(count_codon_trinucl$gene_id))))
+
+count_codon_trinucl = count_codon_trinucl[order(count_codon_trinucl$length_cds,decreasing = T),]
+count_codon_trinucl = count_codon_trinucl[ !duplicated(count_codon_trinucl$gene_id) ,]
+
+count_codon_trinucl = count_codon_trinucl[!is.na(count_codon_trinucl$median_fpkm) & count_codon_trinucl$median_fpkm != 0,]
+print(paste("Number of gene after filtering for gene not expressed :",length((count_codon_trinucl$gene_id))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+method_to_calculate = "per_gene"
+
+data8 = data.frame()
+for (method_to_calculate in c("per_gene")){
+  ### WC duet not ambiguous
+  
+  tRNA_optimal = read.delim(paste(path_data , "Projet-NeGA/translational_selection/ExpOpti/Drosophila_melanogaster_code_table.tab",sep=""))
+  rownames(tRNA_optimal) = tRNA_optimal$codon
+  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
+  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
+  
+  tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn == 2 , ]
+  list_aa = tRNA_optimal[ !tRNA_optimal$Wobble_abond & !tRNA_optimal$WC_abond , ]
+  list_aa = names(table(list_aa$aa_name)[table(list_aa$aa_name) != 0])
+  
+  list_codon_optimal = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$WC_abond , ]$codon
+  list_codon_nonoptimal = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & !tRNA_optimal$WC_abond & !tRNA_optimal$Wobble_abond , ]$codon
+  list_codon = list(
+    optimal=list_codon_optimal,
+    nonoptimal=list_codon_nonoptimal
+  )
+  print(list_aa)
+  print(list_codon)
+  
+  xaxis = count_codon_trinucl$median_fpkm
+  quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
+  intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
+  print(table(intervalle_list))
+  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa)
+  
+  cible = colnames(dt)[grepl("cible",colnames(dt))]
+  mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
+  min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
+  cible = str_replace_all(cible,"cible_|density_","")
+  cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
+  
+  print("Number of sites")
+  for(i in 1:length(cible)){
+    if(!duplicated(cible)[i]){
+      print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
+    }
+  }
+  dt$group = "duet_notambiguous"
+  dt$method_to_calculate = method_to_calculate
+  data8 = rbind(data8,dt)
+  
+  ###### gu
+  tRNA_optimal = read.delim(paste(path_data , "Projet-NeGA/translational_selection/ExpOpti/Drosophila_melanogaster_code_table.tab",sep=""))
+  rownames(tRNA_optimal) = tRNA_optimal$codon
+  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
+  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
+  
+  tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn == 2 , ]
+  list_aa = tRNA_optimal[ tRNA_optimal$Wobble_abond  , ]
+  list_aa = names(table(list_aa$aa_name)[table(list_aa$aa_name) != 0])
+  
+  list_codon_wobble = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$Wobble_abond , ]$codon
+  list_codon_wc = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$WC_abond  , ]$codon
+  list_codon = list(
+    nonoptimal=list_codon_wobble,
+    optimal=list_codon_wc
+  )
+  print(list_aa)
+  print(list_codon)
+  
+  xaxis = count_codon_trinucl$median_fpkm
+  quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
+  intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
+  print(table(intervalle_list))
+  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa)
+  
+  cible = colnames(dt)[grepl("cible",colnames(dt))]
+  mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
+  min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
+  cible = str_replace_all(cible,"cible_|density_","")
+  cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
+  
+  print("Number of sites")
+  for(i in 1:length(cible)){
+    if(!duplicated(cible)[i]){
+      print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
+    }
+  }
+  
+  dt$group = "duet_ambiguous"
+  dt$method_to_calculate = method_to_calculate
+  data8 = rbind(data8,dt)
+  
+  
+  ###### IC
+  wobble_pairing = c("C"="IC","T"="GU","G"="UG","A"="IA")
+  
+  wobble_associat_wc = list("T"="C",
+                            "A"="A",
+                            "G"="A",
+                            "C"="T")
+  type_aa = "IC"
+  
+  tRNA_optimal = read.delim(paste(path_data , "Projet-NeGA/translational_selection/ExpOpti/Drosophila_melanogaster_code_table.tab",sep=""))
+  tRNA_optimal$wb = wobble_pairing[substr(tRNA_optimal$codon,3,3)]
+  tRNA_optimal$decoded_codon = sapply(tRNA_optimal$codon,function(x) paste(substr(x,1,2),wobble_associat_wc[[substr(x,3,3)]],collapse="",sep=""))
+  rownames(tRNA_optimal) = tRNA_optimal$codon
+  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
+  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
+  
+  tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn > 2 , ]
+  list_aa = tRNA_optimal[ tRNA_optimal$Wobble_abond & tRNA_optimal$wb == type_aa , ]
+  list_aa = names(table(list_aa$aa_name)[table(list_aa$aa_name) != 0])
+  
+  list_codon_wobble = tRNA_optimal[ tRNA_optimal$Wobble_abond & tRNA_optimal$wb == type_aa & tRNA_optimal$aa_name %in% list_aa,]$codon
+  list_codon_wc =  tRNA_optimal[ tRNA_optimal$Wobble_abond & tRNA_optimal$wb == type_aa & tRNA_optimal$aa_name %in% list_aa,]$decoded_codon
+  
+  list_codon = list(
+    nonoptimal=list_codon_wobble,
+    optimal=list_codon_wc
+  )
+  print(list_aa)
+  print(list_codon)
+  
+  xaxis = count_codon_trinucl$median_fpkm
+  quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
+  intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
+  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa)
+  print(table(intervalle_list))
+  
+  cible = colnames(dt)[grepl("cible",colnames(dt))]
+  mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
+  min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
+  cible = str_replace_all(cible,"cible_|density_","")
+  cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
+  
+  print("Number of sites")
+  for(i in 1:length(cible)){
+    if(!duplicated(cible)[i]){
+      print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
+    }
+  }
+  dt$group = "ic_abondant"
+  dt$method_to_calculate = method_to_calculate
+  data8 = rbind(data8,dt)
+  
+  ###### Wb_WC_notambiguous
+  tRNA_optimal = read.delim(paste(path_data , "Projet-NeGA/translational_selection/ExpOpti/Drosophila_melanogaster_code_table.tab",sep=""))
+  rownames(tRNA_optimal) = tRNA_optimal$codon
+  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
+  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
+  
+  tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn >= 2 , ]
+  optimal_count = table( tRNA_optimal[ tRNA_optimal$Wobble_abond | tRNA_optimal$WC_abond,]$aa_name )
+  list_aa = names(optimal_count)[ optimal_count != table(tRNA_optimal$aa_name)[names(optimal_count)]]
+  
+  list_codon_nonoptimal = tRNA_optimal[ !tRNA_optimal$WC_abond & !tRNA_optimal$Wobble_abond & tRNA_optimal$aa_name %in% list_aa , ]$codon
+  list_codon_optimal =  tRNA_optimal[ (tRNA_optimal$WC_abond | tRNA_optimal$Wobble_abond) & tRNA_optimal$aa_name %in% list_aa,]$codon
+  
+  list_codon = list(
+    nonoptimal=list_codon_nonoptimal,
+    optimal=list_codon_optimal
+  )
+  print(list_aa)
+  print(list_codon)
+  
+  xaxis = count_codon_trinucl$median_fpkm
+  quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
+  intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
+  print(table(intervalle_list))
+  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa)
+  
+  cible = colnames(dt)[grepl("cible",colnames(dt))]
+  mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
+  min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
+  cible = str_replace_all(cible,"cible_|density_","")
+  cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
+  
+  print("Number of sites")
+  for(i in 1:length(cible)){
+    if(!duplicated(cible)[i]){
+      print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
+    }
+  }
+  dt$group = "Wb_WC_notambiguous"
+  dt$method_to_calculate = method_to_calculate
+  data8 = rbind(data8,dt[,colnames(data8)])
+}
+
+write.table(data8,"data/data8.tab",quote=F,row.names = F,sep="\t")
+
+
