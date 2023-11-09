@@ -13,13 +13,14 @@ wobble_associat_wc = list("T"="C",
                           "G"="A",
                           "C"="T")
 
-code = read.delim(paste(path_data,"Projet-SplicedVariants/Fichiers-data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 code$nb_syn = table(code$aa_name)[code$aa_name]
 code$nb_syn_scu = table(paste(code$aa_name, substr(code$codon,1,2),sep="_"))[paste(code$aa_name, substr(code$codon,1,2),sep="_")]
 code$anticodon = sapply(code$codon,function(x) chartr("TUACG","AATGC",stri_reverse(x))  )
 code$aa_name_scu = code$aa_name
 code[code$nb_syn == 6,]$aa_name_scu =  paste(code[code$nb_syn == 6,]$aa_name ,code[code$nb_syn == 6,]$nb_syn_scu  ,sep="_")
+stop_codon = rownames(code[code$aa_name == "Ter",])
 
 amino_acid_list = unique(code[code$nb_syn > 1 & code$aa_name != "Ter",]$aa_name_scu)
 amino_acid_list = unique(code[ code$aa_name != "Ter",]$aa_name)
@@ -32,10 +33,13 @@ all_data6v2 = read.delim(paste(path_data,"Projet-NeGA/translational_selection/sc
 
 species = "Homo_sapiens"
 
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+rownames(GTDrift_list_species) = GTDrift_list_species$species
+GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates" ,]$clade_group = "Other Tetrapods"
 
-clade_dt = read.delim(paste( "data/clade_dt.tab",sep=""),header=T)
-rownames(clade_dt) = clade_dt$species
-clade_dt$clade_group = factor(clade_dt$clade_group, levels = c("Lepido Diptera","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
+GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = c("Lepido Diptera","Hymenoptera","Other Insecta",
+                                                                                       "Nematoda","Other Invertebrates","Teleostei",
+                                                                                       "Mammalia","Aves","Other Tetrapods"))
 
 
 data12 = read.delim("data/data12.tab")
@@ -43,28 +47,34 @@ data12$clade_group = clade_dt[data12$species,]$clade_group
 data12 = data12[ data12$nb_codon_not_decoded == 0 & data12$pval_aa_fpkm < 0.05 ,]
 list_species = unique(data12$species)
 
+
 data6 = data.frame()
 data5 = data.frame()
-for ( species in list_species){print(species)
+for ( species in list_species){
   if (clade_dt[species,]$clade_group %in% c("Mammalia","Aves","Other Tetrapods")){
     all_data6_sub = all_data6v2[all_data6v2$species == species,] 
   } else {
     all_data6_sub = all_data6v1[all_data6v1$species == species,] 
   }
+  print(species)
+  genome_assembly = GTDrift_list_species[species,]$assembly_accession
+  taxID = GTDrift_list_species[species,]$NCBI.taxid
   
-  codon_usage = read.delim( paste(path_data,"/Projet-SplicedVariants/Analyses/",species,"/codon_usage_gene_fpkm.tab",sep="") )
-  codon_usage = codon_usage[codon_usage$protein_id %in% all_data6_sub$protein,]
-  codon_usage$length = rowSums(codon_usage[ , 3:66]) * 3
-  stop_codon = rownames(code[code$aa_name == "Ter",])
+  path = paste("data/per_species/",species,"_NCBI.taxID",taxID,"/",genome_assembly,sep="")
+  
+  codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.tab.gz",sep="") )
+  
   codon_usage$intern_stop_codon = rowSums(codon_usage[,stop_codon]) - grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon)
   
-  codon_usage = codon_usage[codon_usage$intern_stop_codon==0 & codon_usage$start_codon == "ATG" & codon_usage$length_cds %%3 == 0,]
+  codon_usage = codon_usage[codon_usage$intern_stop_codon == 0 & codon_usage$start_codon == "ATG" & codon_usage$length_cds %% 3 == 0,]
   
-  if (quantile(grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon),0.75) != 0){ 
-    codon_usage = codon_usage[grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon),] } else {    print(species)}
+  if (quantile(grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon),0.75) != 0){  # if annotated seq have a stop codon for the majority then remove those that dont
+    codon_usage = codon_usage[grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon),] } else { print(species)}
   
   codon_usage = codon_usage[order(codon_usage$length_cds,decreasing = T),]
   codon_usage = codon_usage[!duplicated(codon_usage$gene_id),]
+  codon_usage = codon_usage[!is.na(codon_usage$median_fpkm) ,]
+  codon_usage = codon_usage[codon_usage$median_fpkm != 0 ,]
   
   
   all_data6_sub = all_data6_sub[all_data6_sub$protein %in% codon_usage$protein_id,]
@@ -72,16 +82,7 @@ for ( species in list_species){print(species)
   
   all_data6_sub = all_data6_sub[all_data6_sub$len_high_const_seq != 0 & all_data6_sub$len_unconst_seq != 0 , ]
   
-  # print(ggplot(all_data6_sub) + geom_boxplot(aes(x="len_high_const_seq",y=len_high_const_seq/length))+
-  #         geom_boxplot(aes(x="len_mod_const_seq",y=len_mod_const_seq/length))+
-  #         geom_boxplot(aes(x="len_slight_const_seq",y=len_slight_const_seq/length))+
-  #         geom_boxplot(aes(x="len_unconst_seq",y=len_unconst_seq/length))) +
-  #   stat_summary(fun.y=mean, geom="point", shape=20, size=14, color="red", fill="red",aes(x="len_high_const_seq",y=len_high_const_seq/length))+
-  #   stat_summary(fun.y=mean, geom="point", shape=20, size=14, color="red", fill="red",aes(x="len_mod_const_seq",y=len_mod_const_seq/length))+
-  #   stat_summary(fun.y=mean, geom="point", shape=20, size=14, color="red", fill="red",aes(x="len_slight_const_seq",y=len_slight_const_seq/length))+
-  #   stat_summary(fun.y=mean, geom="point", shape=20, size=14, color="red", fill="red",aes(x="len_unconst_seq",y=len_unconst_seq/length))
-  
-  code_table = read.delim(paste(path_data,"/Projet-NeGA/translational_selection/ExpOpti/",species,"_code_table.tab",sep=""))
+  code_table = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
   code_table$wb = wobble_pairing[substr(code_table$codon,3,3)]
   code_table$decoded_codon = sapply(code_table$codon,function(x) paste(substr(x,1,2),wobble_associat_wc[[substr(x,3,3)]],collapse="",sep=""))
   rownames(code_table) = code_table$codon

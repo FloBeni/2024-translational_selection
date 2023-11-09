@@ -2,40 +2,43 @@
 library(stringi)
 library(ape)
 
-path = "/home/fbenitiere/data/"
 
-
-
-code = read.delim(paste(path,"Projet-SplicedVariants/Fichiers-data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 code$nb_syn = table(code$aa_name)[code$aa_name]
 code$anticodon = sapply(code$codon,function(x) chartr("TUACG","AATGC",stri_reverse(x))  )
 
 wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+rownames(GTDrift_list_species) = GTDrift_list_species$species
+
 
 data1 = read.delim("data/data1.tab")
 data1 = data1[ data1$pval_aa_fpkm < 0.05,]
-list_species = unique(data1$species)
 
 
 all_dt_about_codon = data.frame()
-for (species in list_species){print(species)
-  if (file.exists(paste(path,"Projet-NeGA/translational_selection/ExpOpti/",species,"_code_table.tab",sep=""))){
-    tRNA_optimal = read.delim(paste(path,"Projet-NeGA/translational_selection/ExpOpti/",species,"_code_table.tab",sep=""))
-    rownames(tRNA_optimal) = tRNA_optimal$codon
-    
-    tRNA_optimal[tRNA_optimal$nb_tRNA_copies != 0,"categorie"] = "WCp"
-    tRNA_optimal[tRNA_optimal$nb_tRNA_copies == 0,"categorie"] = "WBp"
-    tRNA_optimal[tRNA_optimal$WC_abond,"categorie"] = "WCp + abond"
-    tRNA_optimal[tRNA_optimal$Wobble_abond,"categorie"] = "WBp + abond"
-    tRNA_optimal[!tRNA_optimal$decoded,"categorie"] = "not decoded"
-    
-    tRNA_optimal = tRNA_optimal[,c("codon","aa_name","anticodon","categorie")]
-    tRNA_optimal$species = species
-    
-    all_dt_about_codon = rbind(all_dt_about_codon,tRNA_optimal)
-  }
+for (species in unique(data1$species)){
+  print(species)
+  genome_assembly = GTDrift_list_species[species,]$assembly_accession
+  taxID = GTDrift_list_species[species,]$NCBI.taxid
+  
+  path = paste("data/per_species/",species,"_NCBI.taxID",taxID,"/",genome_assembly,sep="")
+  
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  rownames(tRNA_optimal) = tRNA_optimal$codon
+  
+  tRNA_optimal[tRNA_optimal$nb_tRNA_copies != 0,"categorie"] = "WCp"
+  tRNA_optimal[tRNA_optimal$nb_tRNA_copies == 0,"categorie"] = "WBp"
+  tRNA_optimal[tRNA_optimal$WC_abond,"categorie"] = "WCp + abond"
+  tRNA_optimal[tRNA_optimal$Wobble_abond,"categorie"] = "WBp + abond"
+  tRNA_optimal[!tRNA_optimal$decoded,"categorie"] = "not decoded"
+  
+  tRNA_optimal = tRNA_optimal[,c("codon","aa_name","anticodon","categorie")]
+  tRNA_optimal$species = species
+  
+  all_dt_about_codon = rbind(all_dt_about_codon,tRNA_optimal)
 }
 
 
@@ -86,35 +89,4 @@ write.table(data2,"data/data2.tab",quote=F,row.names = F,sep="\t")
 
 
 
-dc = all_dt_about_codon[grepl("abond",all_dt_about_codon$categorie),]
-dc$nb_opti = table(paste(dc$aa_name,dc$species,sep="_"))[paste(dc$aa_name,dc$species,sep="_")]
-dc$nb_syn = code[dc$codon,]$nb_syn
-
-dc = dc[dc$nb_syn != dc$nb_opti,]
-
-df = data.frame(
-  species = names(tapply(dc$codon, dc$species,function(x) sum(substr(x,3,3) %in% c("G","C")) / length(x)  )),
-  GC_opti = tapply(dc$codon, dc$species,function(x) sum(substr(x,3,3) %in% c("G","C")) / length(x)  )
-)
-rownames(df) = df$species
-
-
-
-
-clade_dt = read.delim(paste( "data/clade_dt.tab",sep=""),header=T)
-rownames(clade_dt) = clade_dt$species
-clade_dt$clade_group = factor(clade_dt$clade_group, levels = c("Lepido Diptera","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapodes"))
-
-clade_dt = clade_dt[ clade_dt$clade_group %in% c("Lepido Diptera") & clade_dt$species %in% list_species,]
-
-for (species in clade_dt$species){
-  differential_expressed = read.delim(paste(path , "Projet-NeGA/translational_selection/rscu_expressed_genes/intronic_all/" , species , "_DUC" , ".tab" , sep = "" ))
-  data_extract = differential_expressed[differential_expressed$COA,]$codon
-  GC_DUC =  sum(substr(data_extract , 3 , 3) %in% c("G" , "C")) / length(data_extract)
-  df[species , "GC_DUC"] = GC_DUC
-}
-
-
-
-write.table(df , "data/data13.tab",quote=F,row.names = F,sep="\t")
 

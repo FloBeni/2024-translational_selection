@@ -12,9 +12,8 @@ check_string <- function(string) {
 
 path = "/home/fbenitiere/data/"
 
-clade_dt = read.delim(paste( "data/clade_dt.tab",sep=""),header=T)
-rownames(clade_dt) = clade_dt$species
-
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 data7 = data.frame()
 for (species in clade_dt$species){print(species)

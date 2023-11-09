@@ -1,0 +1,481 @@
+species	freq	fpkm	categorie	group	type_aa	set	nb_codon	nb_aa	prop_GU_or_IC	list
+Homo_sapiens	0.498203458309231	0.0160783	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.502736834761438	0.0494572	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.503940053974733	0.103758	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.50596147798324	0.208617	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.504451692006799	0.390606	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.502065802865109	0.693708	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.50346296757261	1.11757	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.499916640750369	1.68278	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.498017019980452	2.35827	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.494053779424923	3.16341	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.493209152722015	4.05059	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.491853103169891	5.08665	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.495920521244673	6.28236	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.498329531059592	7.70303	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.501377963987076	9.5274	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.506080397715288	11.8374	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.50599278366368	15.136	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.514134321432069	20.1438	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.513969222400888	31.2663	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.516943678390989	72.8566	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.470167959633783	0.0160783	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.473781197933161	0.0494572	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.476651893379704	0.103758	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.475442801879677	0.208617	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.475454662276753	0.390606	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.473115351005949	0.693708	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.473753270242245	1.11757	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.470270234743214	1.68278	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.469589730240207	2.35827	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.466435486705288	3.16341	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.466835426282089	4.05059	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.466792838864751	5.08665	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.470189268375552	6.28236	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.471511094204124	7.70303	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.472769885654706	9.5274	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.477251622022994	11.8374	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.479983929693577	15.136	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.481998487397309	20.1438	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.485040473368613	31.2663	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.48168911529966	72.8566	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 13	all, N = 17339	20	13	NA	TCT;TCC;TAC;CTT;CCT;CTC;CCC;CAG;CGG;ATT;ACT;ACC;AAA;GCT;GGT;GCC;GGC;GCA;GTG;GAG
+Homo_sapiens	0.577975307875061	0.0160783	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.594039986287832	0.0494572	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.602323198029192	0.103758	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.603601227724459	0.208617	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.608936828370953	0.390606	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.587264719909497	0.693708	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.587252307813586	1.11757	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.549242337622924	1.68278	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.544187251898309	2.35827	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.524014535492304	3.16341	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.517970765778413	4.05059	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.511581744472829	5.08665	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.523424358106014	6.28236	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.531098911634053	7.70303	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.532773823253085	9.5274	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.554951746202177	11.8374	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.567422689801316	15.136	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.576866516598086	20.1438	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.588900618811137	31.2663	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.585709216996903	72.8566	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.424726908346738	0.0160783	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.432059175010395	0.0494572	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.436422355101032	0.103758	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.437649580694089	0.208617	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.436099699807279	0.390606	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.427588503178568	0.693708	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.422453364971756	1.11757	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.411186843181977	1.68278	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.404893894337712	2.35827	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.397372104978746	3.16341	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.393166966113217	4.05059	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.391307901225314	5.08665	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.399367022906844	6.28236	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.401497802754804	7.70303	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.402235551732745	9.5274	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.416465411574409	11.8374	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.419261767083136	15.136	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.428279858263247	20.1438	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.434068598202277	31.2663	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.432213634479068	72.8566	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 5	all, N = 17339	5	5	5	TTC;TGC;CAC;AAC;GAC
+Homo_sapiens	0.466373480146143	0.0160783	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.455363382572252	0.0494572	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.445759700889119	0.103758	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.443384245955432	0.208617	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.441962720633643	0.390606	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.459114326977233	0.693708	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.454372601330314	1.11757	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.476120787916963	1.68278	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.487064019002457	2.35827	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.496007160939729	3.16341	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.504237515681656	4.05059	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.508351667314877	5.08665	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.493598339093668	6.28236	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.49400910612959	7.70303	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.492507662894123	9.5274	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.474206794112755	11.8374	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.464903059766011	15.136	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.457942208990869	20.1438	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.458443404495629	31.2663	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.455974028471396	72.8566	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.539113284869751	0.0160783	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.534253201941411	0.0494572	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.528756114519374	0.103758	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.5317802769008	0.208617	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.531423764535613	0.390606	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.535281296064831	0.693708	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.538061483445447	1.11757	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.543453504478149	1.68278	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.547101684814829	2.35827	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.552771034327118	3.16341	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.552317646594156	4.05059	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.554105854810184	5.08665	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.550357276839324	6.28236	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.54740431585485	7.70303	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.545766556876168	9.5274	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.539195239863387	11.8374	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.53490724644159	15.136	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.531948088322282	20.1438	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.527069130804391	31.2663	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Homo_sapiens	0.530982270095268	72.8566	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 6	all, N = 17339	6	6	5	TCT;CTT;CCT;ACT;GGC;GCT
+Caenorhabditis_elegans	0.47365291286117	0.03102805	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.473153416763157	0.1040895	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.475458621629208	0.209488	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.478205181820918	0.3432775	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.482281299695332	0.5420875	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.482901699535949	0.8438975	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.485574014396938	1.2643875	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.487000928984241	1.8883275	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.496914928391138	2.749185	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.493369153786064	3.91924	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.500267190255241	5.7559325	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.50941428563207	8.4614525	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.515591704694106	12.895375	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.512891007635607	18.687975	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.508387217937102	26.6887	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.50499771006711	35.62225	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.511695854697955	48.26435	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.524632671665294	67.17555	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.56415018237357	107.21925	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.689094613145476	294.2845	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.402306528156277	0.03102805	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.401863798071701	0.1040895	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.402383226372845	0.209488	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.406123212138792	0.3432775	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.405373400850239	0.5420875	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.402736756508356	0.8438975	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.405148419924839	1.2643875	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.402869299521807	1.8883275	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.403188385788274	2.749185	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.403748128990162	3.91924	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.399780995774447	5.7559325	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.401031907266685	8.4614525	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.395145935843158	12.895375	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.394972821455169	18.687975	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.390934599187311	26.6887	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.390796071335583	35.62225	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.392046553335666	48.26435	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.392984911242535	67.17555	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.401567322447598	107.21925	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.417821844392228	294.2845	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 16605	19	12	NA	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
+Caenorhabditis_elegans	0.390731062674427	0.03102805	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.394156041650815	0.1040895	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.401053540941634	0.209488	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.400725615697923	0.3432775	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.407643252331385	0.5420875	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.414787115229291	0.8438975	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.409216722232567	1.2643875	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.41531531852141	1.8883275	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.421875715599671	2.749185	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.414457137354306	3.91924	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.425319004802063	5.7559325	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.430750678658963	8.4614525	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.436955305291629	12.895375	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.420913674796871	18.687975	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.406040857809593	26.6887	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.401841756146027	35.62225	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.412443839010443	48.26435	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.433346962557472	67.17555	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.486570325539824	107.21925	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.622519543737492	294.2845	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.297144363863013	0.03102805	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.299622812271639	0.1040895	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.301141950184873	0.209488	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.300077243203221	0.3432775	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.300058993680358	0.5420875	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.303060716815422	0.8438975	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.29701830921756	1.2643875	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.301863242587681	1.8883275	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.301634498340181	2.749185	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.300630146821206	3.91924	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.301178252103502	5.7559325	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.300045119938249	8.4614525	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.294326727958979	12.895375	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.283883450303247	18.687975	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.278680078387984	26.6887	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.277598995700282	35.62225	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.268325026351544	48.26435	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.267060274886069	67.17555	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.265278981470411	107.21925	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.267774960687974	294.2845	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 16605	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Caenorhabditis_elegans	0.665432275297436	0.03102805	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.658707316163085	0.1040895	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.646679594572332	0.209488	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.649321544939639	0.3432775	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.638271974417197	0.5420875	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.634213867675159	0.8438975	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.64109973750853	1.2643875	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.629636455104397	1.8883275	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.629722785239826	2.749185	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.628390294013684	3.91924	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.62054963965628	5.7559325	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.618687906358652	8.4614525	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.61185512594685	12.895375	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.608976407259315	18.687975	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.621213901974213	26.6887	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.627334956849868	35.62225	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.61811382915761	48.26435	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.612593623504797	67.17555	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.57277326511033	107.21925	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.492338899529214	294.2845	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.721407621809622	0.03102805	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.715685053014741	0.1040895	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.719096891494662	0.209488	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.718574347892755	0.3432775	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.717219596987014	0.5420875	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.714510242792798	0.8438975	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.713289150082028	1.2643875	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.715316674755212	1.8883275	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.70934375537505	2.749185	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.707267205710054	3.91924	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.709047494069223	5.7559325	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.706542642622273	8.4614525	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.708306903672814	12.895375	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.710895489712746	18.687975	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.712440542536372	26.6887	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.713043201911043	35.62225	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.727063518404667	48.26435	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.731146169697497	67.17555	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.743024807400365	107.21925	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Caenorhabditis_elegans	0.750241729149435	294.2845	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 16605	7	7	7	TCT;CTT;CGT;ATT;ACT;GTT;GCT
+Drosophila_melanogaster	0.553374462979193	0.05818585	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.563466082172037	0.174027	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.561137369657232	0.360247	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.559345433607499	0.680261	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.566949920099887	1.20656	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.568471537160429	1.96934	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.577721028246731	2.80207	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.577511448101062	3.85279	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.579604585899052	4.9846	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.578007945743668	6.27544	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.583959078656253	7.62123	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.58757939348361	9.19332	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.590566146997855	10.9357	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.586048630475405	13.1523	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.591287066397746	15.9224	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.593086584746725	19.68815	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.595735171710765	25.3562	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.602100213849603	34.5844	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.615544667712646	55.5026	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.680510654245779	167.5335	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.390231045048831	0.05818585	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.390138062183577	0.174027	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.383108053716811	0.360247	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.390983488145945	0.680261	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.39244570930585	1.20656	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.39271645524118	1.96934	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.398863989120192	2.80207	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.398156006040205	3.85279	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.402828412980562	4.9846	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.396861640661586	6.27544	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.399212655469826	7.62123	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.399905495062197	9.19332	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.39718911134758	10.9357	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.396896470710211	13.1523	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.400002221057295	15.9224	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.399588925256261	19.68815	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.397022886621808	25.3562	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.402099617521954	34.5844	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.396834914264197	55.5026	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.4049024307997	167.5335	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 11386	21	12	NA	TCT;TCC;CCT;CGT;CCC;CGC;CGA;CTG;CAG;CGG;ATT;ACT;ATC;ACC;AAG;GCT;GGT;GCC;GGC;GTG;GAG
+Drosophila_melanogaster	0.531982699136459	0.05818585	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.540942351789993	0.174027	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.54469872396704	0.360247	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.554424063624473	0.680261	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.563994170711775	1.20656	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.571787331288201	1.96934	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.583294197254847	2.80207	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.584777230979444	3.85279	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.585916712982261	4.9846	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.574760943674471	6.27544	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.590001774186366	7.62123	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.594593340391449	9.19332	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.592685740280335	10.9357	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.594583387795529	13.1523	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.601826880739666	15.9224	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.597056668546595	19.68815	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.603324538525663	25.3562	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.605896917905584	34.5844	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.614085302805379	55.5026	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.680100574714288	167.5335	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.34254203061936	0.05818585	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.336056416840198	0.174027	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.331769966574302	0.360247	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.344943152522809	0.680261	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.348567838133943	1.20656	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.350912001115551	1.96934	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.358968468790435	2.80207	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.359408555218649	3.85279	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.358672446766393	4.9846	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.357297589287807	6.27544	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.365502636289798	7.62123	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.365464178633132	9.19332	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.357504347817224	10.9357	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.356679175992272	13.1523	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.359059794259254	15.9224	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.370258265491596	19.68815	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.365662109218174	25.3562	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.370217188728783	34.5844	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.360917063871971	55.5026	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.377069409049543	167.5335	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 11386	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Drosophila_melanogaster	0.414701087240522	0.05818585	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.399102276685204	0.174027	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.396639168303688	0.360247	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.397359285787214	0.680261	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.383976848407524	1.20656	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.386864358508726	1.96934	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.378631314764091	2.80207	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.37479217613333	3.85279	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.37862154037605	4.9846	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.380018131101164	6.27544	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.37835356863863	7.62123	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.381792968301492	9.19332	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.378854135760626	10.9357	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.369589608549383	13.1523	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.382307688333374	15.9224	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.374046753435155	19.68815	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.38103572720333	25.3562	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.378007309362294	34.5844	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.380501543214765	55.5026	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.357328399007624	167.5335	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.621115135665787	0.05818585	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.617386193345547	0.174027	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.6280499310026	0.360247	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.611434533032795	0.680261	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.606511672519302	1.20656	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.610987296757066	1.96934	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.604290752438488	2.80207	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.605647478960285	3.85279	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.598909006540668	4.9846	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.610710578901142	6.27544	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.596150984821897	7.62123	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.597281629275272	9.19332	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.599527449370295	10.9357	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.601535066077699	13.1523	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.600050784480892	15.9224	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.591930399549322	19.68815	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.598500491726347	25.3562	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.589004928591917	34.5844	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.593355487500093	55.5026	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Drosophila_melanogaster	0.589009055227698	167.5335	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 7	all, N = 11386	8	7	6	TCT;CCT;CGT;CGA;ATT;ACT;GGC;GCT
+Musca_domestica	0.53848132410993	0.02815645	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.531757249404825	0.0943401	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.534510626929257	0.2039035	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.533898473378923	0.4375045	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.534752017682031	0.83345	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.538675787754029	1.41161	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.534501791861066	2.224165	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.533091282247662	3.203985	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.537129637079417	4.374005	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.529159390056162	5.76396	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.53835642188876	7.346635	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.536316228109817	9.160505	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.53615451568879	11.33465	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.544319819340431	14.086	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.546537756180467	17.563925	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.557547995108767	22.2416	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.563491539583206	29.868675	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.573102387366156	41.5276	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.610037435501053	73.873875	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.689167480255624	247.9895	optimal codons	not_control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.496749339484594	0.02815645	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.501105209906225	0.0943401	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.500916022999861	0.2039035	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.498270085035338	0.4375045	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.496597612123429	0.83345	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.494169851638326	1.41161	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.495432518063597	2.224165	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.500039032572881	3.203985	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.497836941556583	4.374005	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.496408778050551	5.76396	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.496599022296422	7.346635	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.49575197448817	9.160505	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.496308217022361	11.33465	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.498152150356665	14.086	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.495276548129449	17.563925	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.499895660858337	22.2416	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.497477081945469	29.868675	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.494437083043487	41.5276	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.496686631672038	73.873875	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.499058628705136	247.9895	intronic triplets control	control	Wb_WC_notambiguous codons, Nb aa = 12	all, N = 10971	20	12	NA	TCT;TCC;TTG;CCT;CGT;CCC;CGC;CAA;ATT;ACT;ATC;ACC;AAA;GTT;GCT;GGT;GTC;GCC;GGC;GAA
+Musca_domestica	0.332846078726015	0.02815645	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.334456914761712	0.0943401	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.323719962555077	0.2039035	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.332348042437093	0.4375045	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.32695866816103	0.83345	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.324805052456625	1.41161	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.309749142549141	2.224165	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.308069324752016	3.203985	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.313515456369603	4.374005	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.312239496704158	5.76396	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.31557714328917	7.346635	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.314029999097585	9.160505	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.321111698269715	11.33465	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.315489956038759	14.086	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.32749856967334	17.563925	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.330617791724955	22.2416	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.335178460664476	29.868675	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.344833815417169	41.5276	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.372492113223979	73.873875	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.480254887662942	247.9895	optimal codons	not_control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.302865404574645	0.02815645	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.300491320798954	0.0943401	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.294704855059687	0.2039035	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.299206468225326	0.4375045	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.292985362827831	0.83345	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.296147497105072	1.41161	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.290380593419149	2.224165	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.290915517684155	3.203985	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.287478017456065	4.374005	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.294408137286414	5.76396	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.286283602268956	7.346635	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.291676019219756	9.160505	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.288607442200088	11.33465	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.292515187360515	14.086	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.295739508777478	17.563925	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.28330749777828	22.2416	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.293647070219808	29.868675	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.294253811646358	41.5276	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.29091244433339	73.873875	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.285574683436274	247.9895	intronic triplets control	control	WC_duet_ambiguous codons, Nb aa = 6	all, N = 10971	6	6	6	TTC;TAC;TGC;CAC;AAC;GAC
+Musca_domestica	0.467049379533978	0.02815645	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.47115545503905	0.0943401	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.482773774364909	0.2039035	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.490366193363135	0.4375045	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.485208534054664	0.83345	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.489882415896653	1.41161	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.494576088243088	2.224165	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.501211113130937	3.203985	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.502401170104499	4.374005	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.502083907047709	5.76396	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.508842382394341	7.346635	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.512742778520419	9.160505	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.516174214540257	11.33465	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.5196203056298	14.086	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.516975141360237	17.563925	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.525040821630055	22.2416	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.524483351023072	29.868675	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.518963762770449	41.5276	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.5152358927366	73.873875	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.483137066653	247.9895	optimal codons	not_control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.629721097827218	0.02815645	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.643086329204385	0.0943401	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.645351168395156	0.2039035	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.644726827531054	0.4375045	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.649595504513366	0.83345	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.642295353971433	1.41161	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.650938588095673	2.224165	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.654136769569467	3.203985	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.657212812756514	4.374005	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.659300414588028	5.76396	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.66094771292066	7.346635	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.662312823822579	9.160505	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.664339673084619	11.33465	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.669100262819578	14.086	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.663178438253759	17.563925	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.679687284030647	22.2416	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.662994105015999	29.868675	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.658420179790605	41.5276	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.663908977041925	73.873875	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT
+Musca_domestica	0.680419439122686	247.9895	intronic triplets control	control	WB_vs_WC_notduet codons, Nb aa = 8	all, N = 10971	8	8	7	TCT;CCT;CGT;ATT;ACT;GGC;GTT;GCT

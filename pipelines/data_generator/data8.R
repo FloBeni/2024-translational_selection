@@ -23,7 +23,7 @@ set_alpha_class = c(CDS=1,intron=0.5)
 
 path_data = "/home/fbenitiere/data/"
 
-code = read.delim(paste(path_data,"Projet-SplicedVariants/Fichiers-data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 code$nb_syn = table(code$aa_name)[code$aa_name]
 code$anticodon = sapply(code$codon,function(x) chartr("TUACG","AATGC",stri_reverse(x))  )
@@ -267,9 +267,16 @@ method_to_calculate = "per_gene"
 
 data8 = data.frame()
 for (method_to_calculate in c("per_gene")){
+  species = "Drosophila_melanogaster"
+  print(species)
+  genome_assembly = GTDrift_list_species[species,]$assembly_accession
+  taxID = GTDrift_list_species[species,]$NCBI.taxid
+  
+  path = paste("data/per_species/",species,"_NCBI.taxID",taxID,"/",genome_assembly,sep="")
   ### WC duet not ambiguous
   
-  tRNA_optimal = read.delim(paste(path_data , "Projet-NeGA/translational_selection/ExpOpti/Drosophila_melanogaster_code_table.tab",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  
   rownames(tRNA_optimal) = tRNA_optimal$codon
   tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
   tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
@@ -310,7 +317,7 @@ for (method_to_calculate in c("per_gene")){
   data8 = rbind(data8,dt)
   
   ###### gu
-  tRNA_optimal = read.delim(paste(path_data , "Projet-NeGA/translational_selection/ExpOpti/Drosophila_melanogaster_code_table.tab",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
   rownames(tRNA_optimal) = tRNA_optimal$codon
   tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
   tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
@@ -361,7 +368,7 @@ for (method_to_calculate in c("per_gene")){
                             "C"="T")
   type_aa = "IC"
   
-  tRNA_optimal = read.delim(paste(path_data , "Projet-NeGA/translational_selection/ExpOpti/Drosophila_melanogaster_code_table.tab",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
   tRNA_optimal$wb = wobble_pairing[substr(tRNA_optimal$codon,3,3)]
   tRNA_optimal$decoded_codon = sapply(tRNA_optimal$codon,function(x) paste(substr(x,1,2),wobble_associat_wc[[substr(x,3,3)]],collapse="",sep=""))
   rownames(tRNA_optimal) = tRNA_optimal$codon
@@ -405,7 +412,7 @@ for (method_to_calculate in c("per_gene")){
   data8 = rbind(data8,dt)
   
   ###### Wb_WC_notambiguous
-  tRNA_optimal = read.delim(paste(path_data , "Projet-NeGA/translational_selection/ExpOpti/Drosophila_melanogaster_code_table.tab",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
   rownames(tRNA_optimal) = tRNA_optimal$codon
   tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
   tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
