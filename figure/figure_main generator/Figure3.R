@@ -15,8 +15,10 @@ dt_graph = data4[data4$species == "metazoa",]
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
 dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) )
 
-dt_graph$title = factor(paste(dt_graph$codon," (",dt_graph$WB_type,")",sep=""),  
-                     sapply(levels(dt_graph$codon),function(x) paste(x," (",wobble_type[substr(x,3,3)],")",sep="")) )
+# dt_graph$title = factor(paste(dt_graph$codon," (",dt_graph$WB_type,")",sep=""),  
+dt_graph$title = factor(paste(dt_graph$codon,sep=""),  
+                        # sapply(levels(dt_graph$codon),function(x) paste(x," (",wobble_type[substr(x,3,3)],")",sep="")) )
+                        sapply(levels(dt_graph$codon),function(x) paste(x,sep="")) )
 
 dt_graph[dt_graph$amino_acid == "Ter (3)",]$Prop = NA
 dt_graph[dt_graph$amino_acid == "Met (1)",]$Prop = NA
@@ -27,8 +29,8 @@ p3A = ggplot(dt_graph, aes(x = "" , y = Prop, fill = fct_inorder(Var1))) +
   coord_polar(theta = "y") + facet_wrap(~title+paste(amino_acid),nrow=4,dir="v")+
   theme_void() + theme(
     title =  element_text(size=36, family="economica"),
-    legend.text =  element_text(size=35, family="economica"),
-    strip.text = element_text(size=20, family="economica",face="bold"),
+    legend.text =  element_text(size=40, family="economica"),
+    strip.text = element_text(size=30, family="economica",face="bold"),
     legend.spacing.x = unit(1, 'cm'),
     legend.position="top",
     legend.box.spacing = unit(2, "cm"),
@@ -38,7 +40,7 @@ p3A = ggplot(dt_graph, aes(x = "" , y = Prop, fill = fct_inorder(Var1))) +
   ggtitle(paste("Metazoa"," (",dt_graph$total[1],")",sep=""))
 
 
-jpeg(paste(path_pannel,"p3A.jpg",sep=""), width = 9000/1,  3500/1,res=300/1)
+jpeg(paste(path_pannel,"p3A.jpg",sep=""), width = 8000/1,  3600/1,res=300/1)
 print(p3A)
 dev.off()
 
@@ -59,7 +61,7 @@ dt_graph$title = dt_graph$codon
 
 amino_acid_list = unique(c(dt_graph[order(dt_graph$codon)[seq(1,68,4)],]$amino_acid,dt_graph[order(dt_graph$codon)[seq(3,68,4)],]$amino_acid))
 
-p3B = ggplot(dt_graph[dt_graph$amino_acid == "Met",], aes(x = "" , y = Prop , group=amino_acid, fill = fct_inorder(Var1))) + theme_void()
+p3B = ggplot(dt_graph[dt_graph$amino_acid == "Met",], aes(x = "" , y = Prop , group=amino_acid, fill = fct_inorder(Var1))) + theme_void()  
 for (aa in amino_acid_list[!amino_acid_list %in% c("qua","Met","Trp","Ter")]){
   title_label = c("XXA","XXT","XXC","XXG",as.character(dt_graph[dt_graph$amino_acid == aa,]$codon))
   names(title_label) = title_label
@@ -80,7 +82,7 @@ for (aa in amino_acid_list[!amino_acid_list %in% c("qua","Met","Trp","Ter")]){
       plot.title = element_blank(),
       legend.title =  element_text(size=20, family="economica"),
       legend.text =  element_text(size=0, family="economica"),
-      strip.text = element_text(size=11, family="economica"),
+      strip.text = element_text(size=13, family="economica"),
       legend.position="left",
       legend.key.size = unit(0, 'cm'),
       legend.spacing.y = unit(1.5, 'cm'),
@@ -93,8 +95,8 @@ for (aa in amino_acid_list[!amino_acid_list %in% c("qua","Met","Trp","Ter")]){
     guides(fill = guide_legend(override.aes = list(col="white",fill="white",size=0)))
 }
 
-jpeg(paste(path_pannel,"p3B.jpg",sep=""), width =1500/1,  900/1,res=200/1)
-print(p3B)
+jpeg(paste(path_pannel,"p3B.jpg",sep=""), width =2000/1,  1200/1,res=270/1)
+print(p3B + plot_layout(ncol = 4))
 dev.off()
 
 ############## Pannel 3 C
@@ -133,7 +135,7 @@ for (aa in amino_acid_list[!amino_acid_list %in% c("qua","Met","Trp","Ter")]){
       plot.title = element_blank(),
       legend.title =  element_text(size=20, family="economica"),
       legend.text =  element_text(size=0, family="economica"),
-      strip.text = element_text(size=11, family="economica"),
+      strip.text = element_text(size=13, family="economica"),
       legend.position="left",
       legend.key.size = unit(0, 'cm'),
       legend.spacing.y = unit(1.5, 'cm'),
@@ -146,8 +148,8 @@ for (aa in amino_acid_list[!amino_acid_list %in% c("qua","Met","Trp","Ter")]){
     guides(fill = guide_legend(override.aes = list(col="white",fill="white",size=0)))
 }
 
-jpeg(paste(path_pannel,"p3C.jpg",sep=""), width =1500/1,  900/1,res=200/1)
-print(p3C)
+jpeg(paste(path_pannel,"p3C.jpg",sep=""), width =2000/1,  1200/1,res=270/1)
+print(p3C + plot_layout(ncol = 4))
 dev.off()
 
 ############## Figure 3
@@ -175,22 +177,22 @@ Drosophila_melanogaster = readPNG(paste(path_require,"Drosophila_melanogaster.pn
   layout(m)
   m
   
-  par(mar=c(1, 0, 1.7, 0))
+  par(mar=c(1, 0, 2, 0))
   plot(imgA, axes=FALSE)
-  mtext("A",at=-50,adj=-1, side=2, line=1, font=2, cex=1.2,las=2)
-  par(mar=c(0, 0, 0, 0))
+  mtext("A",at=-45,adj=-2, side=2, line=1, font=2, cex=1.2,las=2)
+  par(mar=c(0, 0, 0.2, 0))
   plot(imgB, axes=FALSE)
-
-    par(mar=c(0, 1, 0, 0))
+  
+  par(mar=c(0, 1, 1, 0))
   plot(imgC, axes=FALSE)
   mtext("B",at=-50,adj=-1, side=2, line=1, font=2, cex=1.2,las=2)
-  xhuman=100
+  xhuman=250
   yhuman=0
   rasterImage(human,xleft=0+xhuman, ybottom=350/2-yhuman, xright=190/2+xhuman, ytop=0-yhuman)
   
   plot(imgD, axes=FALSE)
   mtext("C",at=-50,adj=-1, side=2, line=1, font=2, cex=1.2,las=2)
-  xcel=0
+  xcel=150
   ycel=-40
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/3.5-ycel, xright=1000/3.5+xcel, ytop=0-ycel)
   # xcel=100

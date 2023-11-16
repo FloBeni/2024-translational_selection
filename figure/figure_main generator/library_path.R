@@ -3,6 +3,7 @@ options( stringsAsFactors = F, scipen = 999 )
 library(seqinr)
 library(stringr)
 library(ape)
+library(patchwork)
 library(png)
 library(ggtree)
 library(caper)
@@ -48,8 +49,16 @@ GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, leve
 listNomSpecies = tapply(GTDrift_list_species$species,GTDrift_list_species$clade_group,function(x)  str_replace_all(x,"_"," "))
 
 
+
 lm_eqn <- function(m=lm(Y ~ X,data)){
-  paste("R2 = ", round(summary(m)$r.squared, 2) , ", p-value = ",formatC(summary(m)$coefficients[2,4], format = "e", digits = 0),sep="")
+  pvalue = summary(m)$coefficients[2,4]
+  if (pvalue<10^-100){
+    paste(" = ", round(summary(m)$r.squared, 2) , ", p-value = 0",sep="")
+  } else {
+    paste(" = ", round(summary(m)$r.squared, 2) , ", p-value = ",formatC(pvalue, format = "e", digits = 0),sep="")
+  }
 }
+
+
 
 

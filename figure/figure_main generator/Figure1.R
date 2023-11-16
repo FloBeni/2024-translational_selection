@@ -182,7 +182,6 @@ Drosophila_melanogaster = readPNG(paste(path_require,"Drosophila_melanogaster.pn
   xcel=125
   ycel=-50
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/3-ycel, xright=1000/3+xcel, ytop=0-ycel)
-  # mtext("D", side=2,at=1, line=1, font=2, cex=1.4,las=2)
   dev.off()
 }
 

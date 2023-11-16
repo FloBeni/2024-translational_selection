@@ -28,7 +28,7 @@ for( species in list_species$species ){
   genome_assembly = list_species[species,]$assembly_accession
   taxID = list_species[species,]$NCBI.taxid
   
-  path = paste("data/per_species/",species,"_NCBI.taxID",taxID,"/",genome_assembly,sep="")
+  path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
   
   if (
     file.exists(paste(path,"/tRNAscan.tab.gz",sep="")) &
