@@ -34,8 +34,9 @@ Clade_color = Clade_color[c("Embryophyta","Lepido Diptera","Hymenoptera",
 
 arbrePhylo = read.tree(paste("data/GTDrift_metazoa_phylogenetic_tree.nwk",sep=""))
 
-
-
+life_history_traits = read.delim("data/GTDrift_life_history_traits.tab")
+rownames(life_history_traits) = paste(life_history_traits$species,life_history_traits$life_history_traits,sep="_")
+  
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates" ,]$clade_group = "Other Tetrapods"
@@ -43,7 +44,9 @@ GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates" ,]$
 GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = c("Lepido Diptera","Hymenoptera","Other Insecta",
                                                                                        "Nematoda","Other Invertebrates","Teleostei",
                                                                                        "Mammalia","Aves","Other Tetrapods"))
-
+GTDrift_list_species$length_cm = life_history_traits[paste(GTDrift_list_species$species,"length_cm",sep="_"),]$value
+GTDrift_list_species$lifespan_days = life_history_traits[paste(GTDrift_list_species$species,"lifespan_days",sep="_"),]$value
+GTDrift_list_species$weight_kg = life_history_traits[paste(GTDrift_list_species$species,"weight_kg",sep="_"),]$value
 
 
 listNomSpecies = tapply(GTDrift_list_species$species,GTDrift_list_species$clade_group,function(x)  str_replace_all(x,"_"," "))

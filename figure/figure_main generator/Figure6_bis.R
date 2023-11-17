@@ -30,8 +30,6 @@ dev.off()
 
 ############## Pannel 6 B
 dt_graph = data1
-dt_graph$expressed_overused_background_WC_duet_ambiguous = dt_graph$expressed_overused_background_WC_duet_ambiguous * 100
-dt_graph$expressed_overused_background_WB_WC_notambiguous = dt_graph$expressed_overused_background_WB_WC_notambiguous * 100
 ylabel = "expressed_overused_background_WC_duet_ambiguous"
 xlabel = "expressed_overused_background_WB_WC_notambiguous"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
@@ -97,7 +95,7 @@ clade_png<-readPNG(paste(path_require,"clade.png",sep=""))
   par(mar=c(1,0, 0, 0))
   xmonkey=5500
   ymonkey=500
-  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/.4+ymonkey, xright=400/.4+xmonkey, ytop=ymonkey)
+  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/.35+ymonkey, xright=400/.35+xmonkey, ytop=ymonkey)
   
   par(mar=c(3,0, 2, 0))
   plot(imgB, axes=FALSE)

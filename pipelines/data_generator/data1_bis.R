@@ -199,29 +199,37 @@ for (species in GTDrift_list_species$species){
   
   ### Translational selection intensity
   
-  for ( type_aa in c( "WB_WC_notambiguous","WC_duet_ambiguous")){
+  list_COA_global = c()
+  list_COAneg_global = c()
+  for ( type_aa in c( "WB_WC_notambiguous","WC_duet_ambiguous","global")){
     if (type_aa == "WB_WC_notambiguous" ){
       dt_selected = tRNA_optimal[ tRNA_optimal$nb_syn >= 2,]
       optimal_count = table( dt_selected[ dt_selected$Wobble_abond | dt_selected$WC_abond,]$aa_name )
       
       list_aa = names(optimal_count)[ optimal_count != table(code$aa_name)[names(optimal_count)]]
-      nb_aa = length(list_aa)
-      
+      print(list_aa)
       list_COA = dt_selected[(dt_selected$Wobble_abond | dt_selected$WC_abond) & dt_selected$aa_name %in% list_aa,]$codon
       list_COA_neg = code[code$aa_name %in% list_aa,]$codon
-      nb_codon = length(list_COA)
       
+      list_COA_global = append(list_COA_global,list_COA)
+      list_COAneg_global = append(list_COAneg_global,list_COA_neg)
     } else if  (type_aa == "WC_duet_ambiguous" ){
-      dt_selected = tRNA_optimal[  tRNA_optimal$nb_syn  == 2 ,]
+      dt_selected = tRNA_optimal[  tRNA_optimal$aa_name  %in% c("Phe","Asn","Asp","His","Cys","Tyr") ,]
       optimal_count = table( dt_selected[dt_selected$Wobble_abond,]$aa_name )
       
       list_aa = names(optimal_count)[optimal_count != table(code$aa_name)[names(optimal_count)]]
-      nb_aa = length(list_aa)
-      
+      print(list_aa)
       list_COA = dt_selected[dt_selected$WC_abond & dt_selected$aa_name %in% list_aa,]$codon
       list_COA_neg = code[code$aa_name %in% list_aa ,]$codon
+      list_COA_global = append(list_COA_global,list_COA)
+      list_COAneg_global = append(list_COAneg_global,list_COA_neg)
+    } else if  (type_aa == "global" ){
       
+      list_COA = list_COA_global
+      list_COA_neg = list_COAneg_global
     }
+    print(list_COAneg_global)
+    print(list_COA_global)
     
     
     if ( length(list_COA) != 0 ){
@@ -250,14 +258,15 @@ for (species in GTDrift_list_species$species){
       
       dt_translational_selection = data.frame(
         average_RTF_abundant_tRNA = mean( tRNA_optimal[list_COA,]$RTF[tRNA_optimal[list_COA,]$RTF != 0] ) ,
-        expressed_overused = round(tapply( COA_obs / COA_neg_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) - 
-          round( mean( (COA_obs / COA_neg_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5) ,
-        expressed_overused_background = (round(tapply( COA_obs / COA_neg_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) - 
-                                           round( mean( (COA_obs / COA_neg_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) - (
-                                             round(tapply( COA_obs_intronic / COA_neg_obs_intronic   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
-                                               round( mean( (COA_obs_intronic / COA_neg_obs_intronic)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T),5)
-                                           ),
-        constraint_overused = mean(table_constrain$COA_highconst/table_constrain$COA_neg_highconst,na.rm = T) - mean(table_constrain$COA_unconst/table_constrain$COA_neg_unconst,na.rm = T)
+        expressed_overused = 100*(round(tapply( COA_obs / COA_neg_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) - 
+                                    round( mean( (COA_obs / COA_neg_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) ,
+        expressed_overused_background = 100*((round(tapply( COA_obs / COA_neg_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) - 
+                                                round( mean( (COA_obs / COA_neg_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) - (
+                                                  round(tapply( COA_obs_intronic / COA_neg_obs_intronic   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
+                                                    round( mean( (COA_obs_intronic / COA_neg_obs_intronic)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T),5)
+                                                )),
+        constraint_overused = 100*(mean(table_constrain$COA_highconst/table_constrain$COA_neg_highconst,na.rm = T) - 
+                                     mean(table_constrain$COA_unconst/table_constrain$COA_neg_unconst,na.rm = T))
       )
     } else {
       dt_translational_selection = data.frame(
