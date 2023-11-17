@@ -7,7 +7,7 @@ data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 ,]
 
-pA = ggplot(data1,aes(y=expressed_overused_background_WC_duet_ambiguous*100,x=clade_group,fill=clade_group,label=species))  +
+pA = ggplot(data1,aes(y=expressed_overused_background_WC_duet_ambiguous,x=clade_group,fill=clade_group,label=species))  +
   geom_hline(size=1,linetype="dashed",col="red",
              yintercept = 0 ) +
   geom_boxplot(alpha=.1) +
@@ -95,7 +95,7 @@ clade_png<-readPNG(paste(path_require,"clade.png",sep=""))
   par(mar=c(1,0, 0, 0))
   xmonkey=5500
   ymonkey=500
-  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/.35+ymonkey, xright=400/.35+xmonkey, ytop=ymonkey)
+  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/.4+ymonkey, xright=500/.4+xmonkey, ytop=ymonkey)
   
   par(mar=c(3,0, 2, 0))
   plot(imgB, axes=FALSE)

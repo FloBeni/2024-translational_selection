@@ -7,7 +7,7 @@ data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 ,]
 
-data1 = data1[data1$clade_group == "Lepido Diptera",]
+data1 = data1[data1$clade_group == "Mecopterida",]
 dt_graph = data1
 
 ylabel = "gc_duc_ag"
