@@ -16,7 +16,7 @@ for (clade in  names(listNomSpecies)){print(clade)
   edge_clade[ which.edge(arbrePhylotips, arbrePhylotips$edge[,2][edge_clade == clade] ) ] = clade
 }
 node_metadata = data.frame(node=arbrePhylotips$edge[,2],color=edge_clade)
-node_metadata$color = factor(node_metadata$color, levels = c("Lepido Diptera","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
+node_metadata$color = factor(node_metadata$color, levels = c("Mecopterida","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
 p1A = ggtree(arbrePhylotips,layout="roundrect",size=1)
 # %>% flip(264, 375)
 p1A <- p1A %<+% node_metadata  + aes(color=color) + 
@@ -40,36 +40,41 @@ ylabel = "gc3"
 xlabel = "gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 lm_y = dt_graph[,ylabel]
-lm_x = (dt_graph[,xlabel])
+lm_x = dt_graph[,xlabel]
 shorebird <- comparative.data(arbrePhylo, 
                               data.frame(species=dt_graph$species,
                                          pgls_x=lm_x,
                                          pgls_y=lm_y), species, vcv=TRUE)
 
-
-
 p1B = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   # geom_errorbar(aes(ymin = gc3-sqrt(var_gc3), ymax = gc3+sqrt(var_gc3)),alpha=0.2) +
   # geom_errorbarh(aes(xmin = gci-sqrt(var_gci), xmax =gci+sqrt(var_gci)),alpha=0.2) +
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=25,family="economica"),
-    axis.title.y = element_text(color="black", size=25, family="economica"),
+    axis.title.x = element_text(color="black", size=26,family="economica"),
+    axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=20, family="economica"),
-    axis.text.x =  element_text(color="black",vjust=.5, size=20, family="economica"),
-    title =  element_text(color="black", size=15, family="economica"),
-    legend.text =  element_text(color="black", size=15, family="economica")
-  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
+    axis.text.x =  element_text(color="black", size=20, family="economica"),
+    title =  element_text(color="black", size=20, family="economica"),
+    text =  element_text(color="black", size=31, family="economica"),
+    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
+    plot.caption.position =  "plot"
+  )+ theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
   ylab("Average per gene GC3") +
   xlab("Average per gene GCi") +
-  ggtitle(paste(
-    "LM: ",lm_eqn(lm(lm_y ~ lm_x)),
-    " / PGLS: ",lm_eqn(pgls(pgls_y~pgls_x,shorebird))
-    ,sep="")) 
+  labs(
+    caption = substitute(paste("LM: "," R"^2,lm_eqn," / PGLS:"," R"^2,pgls_eq), list(nbspecies=nrow(dt_graph),
+                                                                                     lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
+                                                                                     pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird)))),
+    title = substitute(paste("Nspecies = ",nbspecies), list(nbspecies=nrow(dt_graph),
+                                                            lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
+                                                            pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
+  ) 
 print(p1B)
 
 
 
-jpeg(paste(path_pannel,"p1B.jpg",sep=""), width = 4000/1, height = 2500/1,res=500/1)
+jpeg(paste(path_pannel,"p1B.jpg",sep=""), width = 4000/1, height = 3000/1,res=500/1)
 print(p1B)
 dev.off()
 
@@ -140,7 +145,14 @@ imgD = load.image(paste(path_pannel,"p1D.jpg",sep="") )
 clade_png<-readPNG(paste(path_require,"clade.png",sep=""))
 human<-readPNG(paste(path_require,"human.png",sep=""))
 Caenorhabditis_elegans = readPNG(paste(path_require,"Caenorhabditis_elegans.png",sep=""))
-Drosophila_melanogaster = readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
+
+
+aves<-readPNG(paste(path_require,"aves.png",sep=""))
+teleostei<-readPNG(paste(path_require,"teleostei.png",sep=""))
+monkey<-readPNG(paste(path_require,"monkey.png",sep=""))
+fly<-readPNG(paste(path_require,"fly.png",sep=""))
+bee<-readPNG(paste(path_require,"bee.png",sep=""))
+
 
 {
   pdf(file= paste(path_figure,"Figure1.pdf",sep=""), width=6.5, height=5)
@@ -160,16 +172,41 @@ Drosophila_melanogaster = readPNG(paste(path_require,"Drosophila_melanogaster.pn
   }
   layout(m)
   
-  par(mar=c(0, 2, 0, 0))
+  par(mar=c(0, 1, 0, 1))
   plot(imgA, axes=FALSE)
-  mtext("A",at=49.4,adj=0.1, side=2, line=1, font=2, cex=1.4,las=2)
-  xmonkey=900
-  ymonkey=2000
-  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/0.9+ymonkey, xright=400/0.9+xmonkey, ytop=ymonkey)
+  mtext("A",at=49.4,adj=-1, side=2, line=1, font=2, cex=1.4,las=2)
   
-  par(mar=c(0, 1, 0, 2))
+  xmonkey=920
+  ymonkey=2000
+  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/0.85+ymonkey, xright=500/.85+xmonkey, ytop=ymonkey)
+  
+  xaxis=700
+  yaxis=2800
+  rasterImage(teleostei,xleft=0+xaxis, ybottom=0+yaxis, xright=900/6+xaxis, ytop=-500/6+yaxis)
+
+  xaxis=680
+  yaxis=2350
+  rasterImage(aves,xleft=0+xaxis, ybottom=0+yaxis, xright=600/3.5+xaxis, ytop=-750/3.5+yaxis)
+  
+  xaxis=750
+  yaxis=1750
+  rasterImage(monkey,xleft=0+xaxis, ybottom=0+yaxis, xright=900/5+xaxis, ytop=-900/5+yaxis)
+  
+  xcel=1300
+  ycel=1050
+  rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=0+ycel, xright=1000/5+xcel, ytop=-350/5+ycel)
+  
+  xaxis=1100
+  yaxis=750
+  rasterImage(bee,xleft=0+xaxis, ybottom=0+yaxis, xright=900/6+xaxis, ytop=-700/6+yaxis)
+  
+  xaxis=1200
+  yaxis=350
+  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=900/8+xaxis, ytop=-900/8+yaxis)
+  
+  par(mar=c(0, 1, 2, 0))
   plot(imgB, axes=FALSE)
-  mtext("B",at=49.4,adj=0.1, side=2, line=1, font=2, cex=1.4,las=2)
+  mtext("B",at=49.4,adj=-1.5, side=2, line=1, font=2, cex=1.4,las=2)
   
   par(mar=c(0, 0, 0, 0))
   plot(imgC, axes=FALSE)
@@ -183,5 +220,6 @@ Drosophila_melanogaster = readPNG(paste(path_require,"Drosophila_melanogaster.pn
   ycel=-50
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/3-ycel, xright=1000/3+xcel, ytop=0-ycel)
   dev.off()
+  
 }
 

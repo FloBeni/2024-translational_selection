@@ -24,11 +24,11 @@ path_require = "figure/images_library/"
 
 wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
-Clade_color = c("Other Invertebrates"="#f5b48a","Lepido Diptera"="red","Other Tetrapods"="#A6CEE3","Other Insecta"="#FF7F00",
+Clade_color = c("Other Invertebrates"="#f5b48a","Mecopterida"="red","Other Tetrapods"="#A6CEE3","Other Insecta"="#FF7F00",
                 Nematoda="#B2DF8A",Teleostei="#1F78B4",Hymenoptera="#ba8e18",Aves="#5b5b5b",Mammalia="#66281A",Embryophyta="#33A02C"
 )
 
-Clade_color = Clade_color[c("Embryophyta","Lepido Diptera","Hymenoptera",
+Clade_color = Clade_color[c("Embryophyta","Mecopterida","Hymenoptera",
                             "Other Insecta","Nematoda","Other Invertebrates",
                             "Mammalia","Aves","Other Tetrapods","Teleostei")]
 
@@ -41,7 +41,7 @@ GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates" ,]$clade_group = "Other Tetrapods"
 
-GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = c("Lepido Diptera","Hymenoptera","Other Insecta",
+GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = c("Mecopterida","Hymenoptera","Other Insecta",
                                                                                        "Nematoda","Other Invertebrates","Teleostei",
                                                                                        "Mammalia","Aves","Other Tetrapods"))
 GTDrift_list_species$length_cm = life_history_traits[paste(GTDrift_list_species$species,"length_cm",sep="_"),]$value
