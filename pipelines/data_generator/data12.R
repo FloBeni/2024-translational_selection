@@ -5,7 +5,7 @@ path = "/home/fbenitiere/data/"
 library(stringi)
 stderror <- function(x) sd(x , na.rm = T)/sqrt(length(x[!is.na(x)] ))
 
-
+species = "Lucilia_cuprina"
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 code$nb_syn = table(code$aa_name)[code$aa_name]
@@ -52,9 +52,9 @@ for( species in list_species ){ print(species)
   i=i+1
   print(species)
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
-  taxID = GTDrift_list_species[species,]$NCBI.taxid
+  taxid = GTDrift_list_species[species,]$NCBI.taxid
   
-  path = paste("data/per_species/",species,"_NCBI.taxID",taxID,"/",genome_assembly,sep="")
+  path = paste("data/per_species/",species,"_NCBI.taxid",taxid,"/",genome_assembly,sep="")
   
   codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.tab.gz",sep="") )
   
