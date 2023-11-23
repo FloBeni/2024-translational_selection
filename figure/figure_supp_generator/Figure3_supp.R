@@ -1,44 +1,57 @@
-source("figure/figure_supp generator/library_path.R")
+# Generate Supplementary Figure 3
+source("figure/figure_supp_generator/library_path.R")
 
 
-############## Supplementary Pannel 3 A
-data12 = read.delim("data/data12.tab")
-data12$clade_group = clade_dt[data12$species,]$clade_group
+# Supplementary Pannel 3 A
 
-data12 = data12[data12$type_aa == "Wb_WC_notambiguous",]
+data1 = read.delim("data/data1.tab")
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
-arbrePhylo = read.tree(paste("data/phylogenetic_tree_root.nwk",sep=""))
-list_species = arbrePhylo$tip.label
-data12 = data12[data12$species %in% list_species,]
+data1 = data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05  & data1$nb_genes_filtered > 5000,]
 
-data12 = data12[ data12$nb_codon_not_decoded == 0 & data12$nb_genes > 5000 & data12$pval_aa_fpkm < 0.05 ,]
+dt_graph = data1
+ylabel = "expressed_overused_WB_WC_notambiguous"
+xlabel = "expressed_overused_background_WB_WC_notambiguous"
+dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+lm_y = dt_graph[,ylabel]
+lm_x = dt_graph[,xlabel]
+shorebird <- comparative.data(arbrePhylo, 
+                              data.frame(species=dt_graph$species,
+                                         pgls_x=lm_x,
+                                         pgls_y=lm_y), species, vcv=TRUE)
 
-data12$ecart = (data12$optifreq_top5 - data12$opti_freq_low50)
 
-p3A = ggplot(data12,aes(y=ecart*100,x=clade_group,fill=clade_group))  +
-  geom_hline(size=1,linetype="dashed",col="red",
-             yintercept = 0 ) + 
-  geom_boxplot(alpha=.1) + 
-  geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black",angle = 50, size=25,family="economica"),
-    axis.title.y = element_text(color="black", size=25, family="economica"),
-    axis.text.y =  element_text(color="black", size=20, family="economica"),
-    axis.text.x =  element_text(color="black",vjust=.5, size=0,angle = 50, family="economica"),
-    title =  element_text(color="black", size=15, family="economica"),
-    legend.text =  element_text(color="black", size=20, family="economica")
-  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + 
-  ylab("Difference in proportion of optimal codons between\nthe top 5% and bottom 50% expressed (%)")  + xlab("") 
+pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
+    axis.title.x = element_text(color="black", size=26,family="economica"),
+    axis.title.y = element_text(color="black", size=26, family="economica",margin = margin(t = 0, r = 20, b = 0, l = 0)),
+    axis.text.y =  element_text(color="black", size=24, family="economica"),
+    axis.text.x =  element_text(color="black", size=24, family="economica"),
+    title =  element_text(color="black", size=20, family="economica"),
+    text =  element_text(color="black", size=31, family="economica"),
+    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
+    plot.caption = element_text(hjust = 0.45, face= "italic", size=20, family="economica"),
+    plot.caption.position =  "plot"
+  )+ guides(fill = guide_legend(override.aes = list(size=5))) +
+  labs(
+    caption = substitute(paste("LM: "," R"^2,lm_eqn," / PGLS:"," R"^2,pgls_eq), list(nbspecies=nrow(dt_graph),
+                                                                                     lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
+                                                                                     pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird)))),
+    title = substitute(paste("N = ",nbspecies," species"), list(nbspecies=nrow(dt_graph),
+                                                            lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
+                                                            pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
+  ) + scale_fill_manual("Clades",values=Clade_color) + xlab("Difference in POC proportion between the top 5% and bottom 50% expressed (%)") +
+  ylab("Difference in POC proportion between the top 5% and\nbottom 50% expressed (%, accounting for POCMT variations)")
 
-p3A = ggMarginal(p3A, type="histogram",fill=set_color[1]) 
-p3A
+pA
+
+
 jpeg(paste(path_pannel,"p3A_supp.jpg",sep=""), width = 5500/1, height = 3000/1,res=400/1)
-print(p3A)
+print(pA)
 dev.off()
 
 
-
-
-############## Supplementary Figure 3
+# Supplementary Figure 3
 
 imgA = load.image(paste(path_pannel,"p3A_supp.jpg",sep="") )
 
@@ -47,6 +60,5 @@ imgA = load.image(paste(path_pannel,"p3A_supp.jpg",sep="") )
   
   par(mar=c(0, 2, 0, 0))
   plot(imgA, axes=FALSE)
-  # mtext("A", side=2,at=111, line=1, font=2, cex=1,las=2)
   dev.off()
 }

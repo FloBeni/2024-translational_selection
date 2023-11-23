@@ -114,7 +114,7 @@ df$prop_abundance_average = (df$abundance_rep_1 / sum(df$abundance_rep_1) + df$a
 df$prop_transcriptome_count = df$transcriptome_count / sum(df$transcriptome_count)
 
 
-data_supp_1 = df
+data1_supp = df
 
 
 ########## Fig 3D D. melanogaster
@@ -208,8 +208,8 @@ df$prop_abundance_average = (df$abundance_rep_1 / sum(df$abundance_rep_1) + df$a
 df$prop_transcriptome_count = df$transcriptome_count / sum(df$transcriptome_count)
 
 
-data_supp_1 = rbind(data_supp_1,df)
+data1_supp = rbind(data1_supp,df)
 
 
 
-write.table(data_supp_1,"data/data_supp_1.tab",quote=F,row.names = F,sep="\t")
+write.table(data1_supp,"data/data1_supp.tab",quote=F,row.names = F,sep="\t")

@@ -1,13 +1,15 @@
+# Generate Figure 2
 source("figure/figure_main_generator/library_path.R")
 
 
-############## Pannel 2 A
-data3 = read.delim("data/data3_bis.tab")
+# Pannel 2 A
+
+data3 = read.delim("data/data3.tab")
 dt_graph = data3[data3$species == "Caenorhabditis_elegans", ]
 
 spearman_method_aa = cor.test( dt_graph$tRNASE_copies, dt_graph$obs_codon,method="spearman",exact=F)
 
-p2A = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon)*100,y=tRNASE_copies,label=amino_acid)) +
+pA = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon)*100,y=tRNASE_copies,label=amino_acid)) +
   geom_smooth(formula = y ~ x, method="lm", size=1 , col=set_color[1],se=F,linetype='dashed') +
   geom_point(pch=21,size=5,fill=set_color[2]) +
   geom_text(nudge_x = .35,size=7,family="economica") + theme_bw() +  theme(
@@ -26,20 +28,21 @@ p2A = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon)*100,y=tRNASE_copies,labe
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = formatC(spearman_method_aa$p.value, format = "e", digits = 0)))
   ) 
-
+pA
 
 jpeg(paste(path_pannel,"p2A.jpg",sep=""), width = 4000/1, height = 2500/1,res=450/1)
-print(p2A)
+print(pA)
 dev.off()
 
 
-############## Pannel 2 B
-data1 = read.delim("data/data1_bis.tab")
+# Pannel 2 B
+
+data1 = read.delim("data/data1.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
-dt_graph = data1[ data1$nb_genes_filtered >= 5000 , ]
+dt_graph = data1
 
-p2B = ggplot(dt_graph,aes(y=rho_aa_fpkm,fill=clade_group,x=clade_group))  +
+pB = ggplot(dt_graph,aes(y=rho_aa_fpkm,fill=clade_group,x=clade_group))  +
   geom_hline(size=1,linetype="dashed",col="red", yintercept = min(dt_graph[dt_graph$rho_aa_fpkm & dt_graph$pval_aa_fpkm < 0.05,]$rho_aa_fpkm) ) +
   geom_text (label="p-value < 0.05", y=.4,x="Lepido Diptera",size=5,family="economica",col="red") + geom_boxplot(alpha=.1) + 
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
@@ -51,14 +54,15 @@ p2B = ggplot(dt_graph,aes(y=rho_aa_fpkm,fill=clade_group,x=clade_group))  +
     legend.text =  element_text(color="black", size=20, family="economica")
   ) + theme(legend.position='none')+ scale_fill_manual(values=Clade_color) + ylab("Spearmann Rho")  + xlab("") + ylim(0,1)
 
-p2B = ggMarginal(p2B, type="histogram",fill=set_color[1]) 
-p2B
+pB = ggMarginal(pB, type="histogram",fill=set_color[1]) 
+pB
 
 jpeg(paste(path_pannel,"p2B.jpg",sep=""), width = 4000/1, height = 2500/1,res=400/1)
-print(p2B)
+print(pB)
 dev.off()
 
-############## Figure 2
+
+# Figure 2
 
 imgA = load.image(paste(path_pannel,"p2A.jpg",sep="") )
 imgB = load.image(paste(path_pannel,"p2B.jpg",sep="") )

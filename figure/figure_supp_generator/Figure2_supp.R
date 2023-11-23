@@ -1,5 +1,5 @@
 # Generate Supplementary Figure 2
-source("figure/figure_supp generator/library_path.R")
+source("figure/figure_supp_generator/library_path.R")
 
 
 # Supplementary Pannel 2 A
@@ -59,6 +59,7 @@ pB=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=prop_abundance_average*1
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = formatC(spearman_method_aa$p.value, format = "e", digits = 0)))
   )
+pB
 
 jpeg(paste(path_pannel,"p2B_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=450/1)
 print(pB)
@@ -164,7 +165,7 @@ fly<-readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
   mtext("B", adj=-.2, side=2,at=-40, line=1, font=2, cex=1.2,las=2)
   xhuman=500
   yhuman=-90
-  rasterImage(human,xleft=0+xhuman, ybottom=350/0.8-yhuman, xright=190/0.8+xhuman, ytop=0-yhuman)
+  rasterImage(human,xleft=0+xhuman, ybottom=450/1-yhuman, xright=190/1+xhuman, ytop=0-yhuman)
 
   par(mar=c(0, 1, 1.5, 0))
   plot(imgC, axes=FALSE)
@@ -178,6 +179,6 @@ fly<-readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
   mtext("D", adj=-.2, side=2,at=-40, line=1, font=2, cex=1.2,las=2)
   xhuman=450
   yhuman=-90
-  rasterImage(human,xleft=0+xhuman, ybottom=350/0.8-yhuman, xright=190/0.8+xhuman, ytop=0-yhuman)
+  rasterImage(human,xleft=0+xhuman, ybottom=450/1-yhuman, xright=190/1+xhuman, ytop=0-yhuman)
   dev.off()
 }

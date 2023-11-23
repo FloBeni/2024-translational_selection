@@ -1,10 +1,10 @@
 # Generate Supplementary Figure 1
-source("figure/figure_supp generator/library_path.R")
+source("figure/figure_supp_generator/library_path.R")
 
 
 # Supplementary Pannel 1 A
 
-data1 = read.delim("data/data1_bis.tab")
+data1 = read.delim("data/data1.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 dt_graph = data1

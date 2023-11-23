@@ -23,13 +23,13 @@ path_require = "figure/images_library/"
 
 wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
-Clade_color = c("Other Invertebrates"="#f5b48a","Mecopterida"="red","Other Tetrapodes"="#A6CEE3","Other Insecta"="#FF7F00",
+Clade_color = c("Other Invertebrates"="#f5b48a","Mecopterida"="red","Other Tetrapods"="#A6CEE3","Other Insecta"="#FF7F00",
                 Nematoda="#B2DF8A",Teleostei="#1F78B4",Hymenoptera="#ba8e18",Aves="#5b5b5b",Mammalia="#66281A",Embryophyta="#33A02C"
 )
 
 Clade_color = Clade_color[c("Embryophyta","Mecopterida","Hymenoptera",
                             "Other Insecta","Nematoda","Other Invertebrates","Teleostei",
-                            "Mammalia","Aves","Other Tetrapodes")]
+                            "Mammalia","Aves","Other Tetrapods")]
 
 arbrePhylo = read.tree(paste("data/GTDrift_metazoa_phylogenetic_tree.nwk",sep=""))
 

@@ -1,6 +1,9 @@
-source("figure/figure_main generator/library_path.R")
+# Generate Figure 1
+source("figure/figure_main_generator/library_path.R")
 
-############## Pannel 1 A
+
+# Pannel 1 A
+
 arbrePhylotips = arbrePhylo
 arbrePhylotips$tip.label <- str_replace_all(arbrePhylotips$tip.label,"_"," ")
 edge_group <- str_replace_all(arbrePhylotips$tip.label,"_"," ")
@@ -17,21 +20,23 @@ for (clade in  names(listNomSpecies)){print(clade)
 }
 node_metadata = data.frame(node=arbrePhylotips$edge[,2],color=edge_clade)
 node_metadata$color = factor(node_metadata$color, levels = c("Mecopterida","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
-p1A = ggtree(arbrePhylotips,layout="roundrect",size=1)
+pA = ggtree(arbrePhylotips,layout="roundrect",size=1)
 # %>% flip(264, 375)
-p1A <- p1A %<+% node_metadata  + aes(color=color) + 
+pA <- pA %<+% node_metadata  + aes(color=color) + 
   scale_color_manual("Clade",values=Clade_color[unique(edge_clade)]) + theme(
     panel.background = element_rect(fill = "white", linetype = "dashed")
   ) + theme(legend.position = "none")
-p1A
+
+pA
 
 # jpeg(paste(path_pannel,"p1A.jpg",sep=""), width = 1500/1, height = 3000/1,res=250/1)
-# print(p1A)
+# print(pA)
 # dev.off()
 
 
-############## Pannel 1 B
-data1 = read.delim("data/data1_bis.tab")
+# Pannel 1 B
+
+data1 = read.delim("data/data1.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 dt_graph = data1
@@ -46,7 +51,7 @@ shorebird <- comparative.data(arbrePhylo,
                                          pgls_x=lm_x,
                                          pgls_y=lm_y), species, vcv=TRUE)
 
-p1B = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
+pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   # geom_errorbar(aes(ymin = gc3-sqrt(var_gc3), ymax = gc3+sqrt(var_gc3)),alpha=0.2) +
   # geom_errorbarh(aes(xmin = gci-sqrt(var_gci), xmax =gci+sqrt(var_gci)),alpha=0.2) +
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
@@ -67,25 +72,27 @@ p1B = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spe
                                                                                      lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
                                                                                      pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird)))),
     title = substitute(paste("N = ",nbspecies," species"), list(nbspecies=nrow(dt_graph),
-                                                            lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                            pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
+                                                                lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
+                                                                pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
   ) 
-print(p1B)
+pB
 
 
 
 jpeg(paste(path_pannel,"p1B.jpg",sep=""), width = 4000/1, height = 3000/1,res=500/1)
-print(p1B)
+print(pB)
 dev.off()
 
-############## Pannel 1 C
-data2 = read.delim("data/data2_bis.tab")
+
+# Pannel 1 C
+
+data2 = read.delim("data/data2.tab")
 dt_graph = data2[data2$species == "Homo_sapiens" ,]
 spearman_method_aa = cor.test( dt_graph$GCi, dt_graph$GC3,method="spearman",exact=F)
 
 
-p1C = ggplot(dt_graph ,
-             aes(x=GCi ,y=GC3))  +
+pC = ggplot(dt_graph ,
+            aes(x=GCi ,y=GC3))  +
   geom_point(col=set_color[8],alpha=0.4,size=.51)+
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
@@ -110,22 +117,22 @@ p1C = ggplot(dt_graph ,
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2,size=NA),
   )  +  ylab("GC3 rate per gene") + xlab("GCi rate per gene") +xlim(0.1,.8) +ylim(0.15,1)
-p1C
+pC
 
 jpeg(paste(path_pannel,"p1C.jpg",sep=""), 
      width = 6000/4.5,  5000/4,res=1000/4)
-print(p1C)
+print(pC)
 dev.off()
 
 
-############## Pannel 3 D
+# Pannel 1 D
 
 dt_graph = data2[data2$species == "Caenorhabditis_elegans" ,]
 spearman_method_aa = cor.test( dt_graph$GCi, dt_graph$GC3,method="spearman",exact=F)
 
 
-p1D = ggplot(dt_graph ,
-             aes(x=GCi ,y=GC3))  +
+pD = ggplot(dt_graph ,
+            aes(x=GCi ,y=GC3))  +
   geom_point(col=set_color[8],alpha=0.4,size=.51)+
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
@@ -150,16 +157,16 @@ p1D = ggplot(dt_graph ,
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2,size=NA),
   )  +  ylab("") + xlab("GCi rate per gene") +xlim(0.1,.8) +ylim(0.15,1)
-p1D
+pD
 
 jpeg(paste(path_pannel,"p1D.jpg",sep=""), 
      width = 5000/4.5,  5000/4,res=1000/4)
-print(p1D)
+print(pD)
 dev.off()
 
 
 
-############## Figure 1 
+# Figure 1 
 
 imgA = load.image(paste(path_pannel,"p1A.jpg",sep="") )
 imgB = load.image(paste(path_pannel,"p1B.jpg",sep="") )
@@ -205,8 +212,8 @@ bee<-readPNG(paste(path_require,"bee.png",sep=""))
   
   xaxis=700
   yaxis=2800
-  rasterImage(teleostei,xleft=0+xaxis, ybottom=0+yaxis, xright=900/6+xaxis, ytop=-500/6+yaxis)
-
+  rasterImage(teleostei,xleft=0+xaxis, ybottom=0+yaxis, xright=1100/6+xaxis, ytop=-500/6+yaxis)
+  
   xaxis=680
   yaxis=2350
   rasterImage(aves,xleft=0+xaxis, ybottom=0+yaxis, xright=600/3.5+xaxis, ytop=-750/3.5+yaxis)
@@ -221,11 +228,11 @@ bee<-readPNG(paste(path_require,"bee.png",sep=""))
   
   xaxis=1100
   yaxis=750
-  rasterImage(bee,xleft=0+xaxis, ybottom=0+yaxis, xright=900/6+xaxis, ytop=-700/6+yaxis)
+  rasterImage(bee,xleft=0+xaxis, ybottom=0+yaxis, xright=900/5+xaxis, ytop=-700/5+yaxis)
   
   xaxis=1200
   yaxis=350
-  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=900/8+xaxis, ytop=-900/8+yaxis)
+  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/8+xaxis, ytop=-900/8+yaxis)
   
   par(mar=c(0, 1, 2, 0))
   plot(imgB, axes=FALSE)
@@ -235,7 +242,7 @@ bee<-readPNG(paste(path_require,"bee.png",sep=""))
   plot(imgC, axes=FALSE)
   xhuman=300
   yhuman=-60
-  rasterImage(human,xleft=0+xhuman, ybottom=350/1.7-yhuman, xright=190/1.7+xhuman, ytop=0-yhuman)
+  rasterImage(human,xleft=0+xhuman, ybottom=450/1.9-yhuman, xright=190/1.9+xhuman, ytop=0-yhuman)
   mtext("C", adj=0.1,side=2,at=0, line=1, font=2, cex=1.4,las=2)
   par(mar=c(0, 0, 0, 2.5))
   plot(imgD, axes=FALSE)
@@ -243,6 +250,5 @@ bee<-readPNG(paste(path_require,"bee.png",sep=""))
   ycel=-50
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/3-ycel, xright=1000/3+xcel, ytop=0-ycel)
   dev.off()
-  
 }
 
