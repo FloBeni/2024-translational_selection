@@ -1,15 +1,17 @@
-source("figure/figure_main generator/library_path.R")
+source("figure/figure_main_generator/library_path.R")
 
 {
-  ##  Approximating tRNA isodecoders abundance
   
+  ##  Introduction
   data1 = read.delim("data/data1.tab")
-  dt_graph = data1[!duplicated(data1$species) & data1$species %in% clade_dt$species,]
-  dt_graph$clade = clade_dt[dt_graph$species,]$clade
-  dt_graph$clade_group = clade_dt[dt_graph$species,]$clade_group
+  data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
   
-  print(paste("metazoans covering a wide range of clades (N=",nrow(dt_graph),", ",sum(table(dt_graph$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")]),
-              " Vertebrates and ",nrow(dt_graph) - sum(table(dt_graph$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")])," Invertebrates)" , sep=""))
+  print(paste("selection intensity across " , nrow(data1) , " metazoan species" , sep = ""))
+  
+  
+  ##  Estimating the relative abundance of tRNA isodecoders
+  print(paste("metazoans covering a wide range of clades (N=",nrow(data1),", ",sum(table(data1$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")]),
+              " Vertebrates and ",nrow(data1) - sum(table(data1$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")])," Invertebrates)" , sep=""))
   
   
   print(paste("but in some cases (",table(dt_graph$tRNA_GFF)["not from GFF"]," species over ",nrow(dt_graph),
