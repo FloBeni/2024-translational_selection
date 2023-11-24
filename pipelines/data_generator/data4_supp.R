@@ -54,7 +54,7 @@ simulator_rate_rbinom <- function(vect_cds,true_rate,rep=100){
 }
 
 
-collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa){
+collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon){
   dt = data.frame(fpkm = tapply(xaxis, intervalle_list, median))
   for (region in c("codon","intron")){
     if(region == "codon"){
@@ -301,7 +301,7 @@ for (method_to_calculate in c("per_gene")){
   quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
   intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
   print(table(intervalle_list))
-  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa)
+  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
   
   cible = colnames(dt)[grepl("cible",colnames(dt))]
   mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
@@ -342,7 +342,7 @@ for (method_to_calculate in c("per_gene")){
   quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
   intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
   print(table(intervalle_list))
-  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa)
+  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
   
   cible = colnames(dt)[grepl("cible",colnames(dt))]
   mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
@@ -395,7 +395,7 @@ for (method_to_calculate in c("per_gene")){
   xaxis = count_codon_trinucl$median_fpkm
   quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
   intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
-  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa)
+  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
   print(table(intervalle_list))
   
   cible = colnames(dt)[grepl("cible",colnames(dt))]
@@ -438,7 +438,7 @@ for (method_to_calculate in c("per_gene")){
   quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
   intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
   print(table(intervalle_list))
-  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa)
+  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
   
   cible = colnames(dt)[grepl("cible",colnames(dt))]
   mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))

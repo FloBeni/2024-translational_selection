@@ -111,16 +111,18 @@ dev.off()
 
 imgA = load.image(paste(path_pannel,"F7pA.jpg",sep="") )
 imgB = load.image(paste(path_pannel,"F7pB.jpg",sep="") )
-imgC = load.image(paste(path_require,"hypothesis.png",sep=""))
+imgC = load.image(paste(path_pannel,"p3_DUC.jpg",sep=""))
+imgD = load.image(paste(path_require,"hypothesis.png",sep=""))
 fly<-readPNG(paste(path_require,"fly.png",sep=""))
 
 {
-  pdf(file= paste(path_figure,"Figure7.pdf",sep=""), width=10, height=8)
+  pdf(file= paste(path_figure,"Figure7.pdf",sep=""), width=10, height=8*3/2)
   
-  m = matrix(rep(NA,2*2), nrow=2)
+  m = matrix(rep(NA,2*3), nrow=3)
   
   m[1,]=c(1,2)
   m[2,]=c(3,3)
+  m[3,]=c(4,4)
   layout(m)
   
   par(mar=c(0,2, 2, 0))
@@ -136,7 +138,12 @@ fly<-readPNG(paste(path_require,"fly.png",sep=""))
   yaxis=1430
   rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/4.5+xaxis, ytop=-900/4.5+yaxis)
   
+  par(mar=c(0, 1, 0, 1))
   plot(imgC, axes=FALSE)
-  mtext("C",at=10,adj=-5, side=2, line=1, font=2, cex=2,las=2)
+  mtext("C",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
+  
+  par(mar=c(0,2, 2, 0))
+  plot(imgD, axes=FALSE)
+  mtext("D",at=10,adj=-3, side=2, line=1, font=2, cex=2,las=2)
   dev.off()
 }

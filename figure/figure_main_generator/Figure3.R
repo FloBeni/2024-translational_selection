@@ -1,8 +1,7 @@
 # Generate Figure 3
 source("figure/figure_main_generator/library_path.R")
 
-
-set_color = c("WCP + abond" = "#33A02C" ,"WCP" = "#B2DF8A","WBP + abond" = "#E31A1C","WBP" = "#FB9A99","not decoded" = "#e2cc1a")
+set_color = c( "WCP + abond" = "#33A02C" , "WCP" = "#B2DF8A" , "WBP + abond" = "#E31A1C" , "WBP" = "#FB9A99" , "not decoded" = "#e2cc1a" )
 
 wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
@@ -12,13 +11,13 @@ wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 data4 = read.delim("data/data4.tab")
 data4$Var1 = factor(data4$Var1,levels =  names(set_color))
 
-dt_graph = data4[data4$species == "metazoa",]
+dt_graph = data4[data4$species == "metazoa",] 
 
-vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
-dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) )
+vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA") 
+dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) ) 
 
 # dt_graph$title = factor(paste(dt_graph$codon," (",dt_graph$WB_type,")",sep=""),  
-dt_graph$title = factor(paste(dt_graph$codon,sep=""),  
+dt_graph$title = factor(paste(dt_graph$codon,sep="") , 
                         # sapply(levels(dt_graph$codon),function(x) paste(x," (",wobble_type[substr(x,3,3)],")",sep="")) )
                         sapply(levels(dt_graph$codon),function(x) paste(x,sep="")) )
 

@@ -7,10 +7,10 @@ set_color = brewer.pal(8, 'Paired')
 set_color = append(set_color,c("#fdfd99","#e2cc1a"))
 set_color_class = set_color
 names(set_color_class) = c("wobble -> watson-crick","watson-crick -> wobble",
-                           "non-optimal -> watson-crick",
-                           "non-optimal -> wobble","watson-crick -> non-optimal",
-                           "wobble -> non-optimal",
-                           "optimal -> non-optimal","non-optimal -> optimal")
+                           "non-POC -> watson-crick",
+                           "non-POC -> wobble","watson-crick -> non-POC",
+                           "wobble -> non-POC",
+                           "POC -> non-POC","non-POC -> POC")
 set_color_class[c(1,7,8)] = c("#e2cc1a","#E31A1C","#33A02C")
 set_shape_class = c(CDS=21,intron=24,CDS_simulation=23)
 set_linetype_class = c(CDS="solid",intron="dashed",CDS_simulation="dotted")
@@ -24,35 +24,35 @@ for (region in c("CDS","Intron")){
     
     if (ylabel == "SNP density"){
       data_variant = read.delim("data/data5_supp.tab") 
-    }else if (ylabel == "Subsitutions rate"){ 
+    } else if (ylabel == "Subsitutions rate"){ 
       data_variant = read.delim("data/data4_supp.tab")}
     
     dt_graph = data_variant[ data_variant$method_to_calculate == method_to_calculate & data_variant$group == "Wb_WC_notambiguous" ,]
     
-    pB = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("Wb_WC_notambiguous")
+    pB = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POC for non ambiguous amino acid")
     if (region == "CDS"){
-      pB = pB + geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="optimal -> non-optimal",pch='CDS',alpha='CDS'),size=3)+
-        geom_line(aes(y=simulation_density_optimal_to_nonoptimal_codon,color="optimal -> non-optimal",linetype='CDS_simulation',alpha='CDS'),size=1) +
+      pB = pB + geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="POC -> non-POC",pch='CDS',alpha='CDS'),size=3)+
+        geom_line(aes(y=simulation_density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS_simulation',alpha='CDS'),size=1) +
         geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_codon,
-                          ymax=confint_high_density_optimal_to_nonoptimal_codon,color="optimal -> non-optimal"),
+                          ymax=confint_high_density_optimal_to_nonoptimal_codon,color="POC -> non-POC"),
                       width=0.03,show.legend=FALSE) +
         
-        geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="non-optimal -> optimal",pch='CDS',alpha='CDS'),size=3)+
-        geom_line(aes(y=simulation_density_nonoptimal_to_optimal_codon,color="non-optimal -> optimal",linetype='CDS_simulation',alpha='CDS'),size=1) +
+        geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="non-POC -> POC",pch='CDS',alpha='CDS'),size=3)+
+        geom_line(aes(y=simulation_density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS_simulation',alpha='CDS'),size=1) +
         geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_codon,
-                          ymax=confint_high_density_nonoptimal_to_optimal_codon,color="non-optimal -> optimal"),
+                          ymax=confint_high_density_nonoptimal_to_optimal_codon,color="non-POC -> POC"),
                       width=0.03,show.legend=FALSE)
     } else {
-      pB = pB + geom_point(aes(y=density_optimal_to_nonoptimal_intron,fill="optimal -> non-optimal",linetype='intron',pch='intron',alpha='intron'),size=3)+
-        geom_line(aes(y=simulation_density_optimal_to_nonoptimal_intron,color="optimal -> non-optimal",linetype='CDS_simulation',alpha='intron'),size=1) +
+      pB = pB + geom_point(aes(y=density_optimal_to_nonoptimal_intron,fill="POC -> non-POC",linetype='intron',pch='intron',alpha='intron'),size=3)+
+        geom_line(aes(y=simulation_density_optimal_to_nonoptimal_intron,color="POC -> non-POC",linetype='CDS_simulation',alpha='intron'),size=1) +
         geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_intron,
-                          ymax=confint_high_density_optimal_to_nonoptimal_intron,color="optimal -> non-optimal"),
+                          ymax=confint_high_density_optimal_to_nonoptimal_intron,color="POC -> non-POC"),
                       width=0.03,show.legend=FALSE) +
         
-        geom_point(aes(y=density_nonoptimal_to_optimal_intron,fill="non-optimal -> optimal",linetype='intron',pch='intron',alpha='intron'),size=3)+
-        geom_line(aes(y=simulation_density_nonoptimal_to_optimal_intron,color="non-optimal -> optimal",linetype='CDS_simulation',alpha='intron'),size=1) +
+        geom_point(aes(y=density_nonoptimal_to_optimal_intron,fill="non-POC -> POC",linetype='intron',pch='intron',alpha='intron'),size=3)+
+        geom_line(aes(y=simulation_density_nonoptimal_to_optimal_intron,color="non-POC -> POC",linetype='CDS_simulation',alpha='intron'),size=1) +
         geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_intron,
-                          ymax=confint_high_density_nonoptimal_to_optimal_intron,color="non-optimal -> optimal"),
+                          ymax=confint_high_density_nonoptimal_to_optimal_intron,color="non-POC -> POC"),
                       width=0.03,show.legend=FALSE)
     }
     
@@ -84,7 +84,7 @@ for (region in c("CDS","Intron")){
     
     dt_graph = data_variant[ data_variant$method_to_calculate == method_to_calculate & data_variant$group == "duet_ambiguous" ,]
     
-    pC = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("Duet not ambiguous (watson-crick -> watson-crick of the most abundant tRNA)") 
+    pC = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("Wobble G:U for ambiguous duets") 
     
     if (region == "CDS"){
       pC = pC + geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="watson-crick -> wobble",pch='CDS',alpha='CDS'),size=3)+
@@ -123,7 +123,9 @@ for (region in c("CDS","Intron")){
       scale_x_log10(limits = c(0.01,1000),
                     breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
                     labels=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000)) +
-      ylab(paste(region,ylabel)) + scale_fill_manual("",values=set_color_class) + scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
+      ylab(paste(region,ylabel)) + 
+      scale_fill_manual("",values=set_color_class,labels=c("wobble -> watson-crick" = "wobble (NNT) -> watson-crick (NNC)","watson-crick -> wobble"="watson-crick (NNC) -> wobble (NNT)")) + 
+      scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
       scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
       guides(fill= guide_legend(override.aes = list(pch=21,byrow = TRUE),order = 2)
       ) +   theme(legend.spacing.y = unit(.2, 'cm'))  + theme(legend.position='top') + annotation_logticks(sides="b")+
@@ -138,7 +140,7 @@ for (region in c("CDS","Intron")){
     # Supplementary Pannel D
     dt_graph = data_variant[ data_variant$method_to_calculate == method_to_calculate & data_variant$group == "ic_abondant" ,]
     
-    pD = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("IC (watson-crick -> watson-crick of the most abundant tRNA)") 
+    pD = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("Wobble I:C")
     
     if (region == "CDS"){
       pD = pD + geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="watson-crick -> wobble",pch='CDS',alpha='CDS'),size=3)+
@@ -180,7 +182,9 @@ for (region in c("CDS","Intron")){
       scale_x_log10(limits = c(0.01,1000),
                     breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
                     labels=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000)) +
-      ylab(paste(region,ylabel)) + scale_fill_manual("",values=set_color_class) + scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
+      ylab(paste(region,ylabel)) + 
+      scale_fill_manual("",values=set_color_class,labels=c("wobble -> watson-crick" = "wobble (NNC) -> watson-crick (NNT)","watson-crick -> wobble"="watson-crick (NNT) -> wobble (NNC)")) + 
+      scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
       scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
       guides(fill= guide_legend(override.aes = list(pch=21,byrow = TRUE),order = 2)
       ) +   theme(legend.spacing.y = unit(.2, 'cm'))  + theme(legend.position='top') + annotation_logticks(sides="b")+

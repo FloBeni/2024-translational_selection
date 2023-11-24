@@ -11,10 +11,15 @@ code$nb_syn = table(code$aa_name)[code$aa_name]
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
-GTDrift_list_species = GTDrift_list_species[GTDrift_list_species$clade_group == "Mecopterida",]
+
+data1 = read.delim("data/data1.tab")
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
+
+data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
+data1 = data1[data1$clade_group == "Mecopterida",]
 
 data = data.frame()
-for (species in GTDrift_list_species$species){
+for (species in data1$species){
   print(species)
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
   taxID = GTDrift_list_species[species,]$NCBI.taxid
@@ -119,24 +124,29 @@ dt_graph[dt_graph$amino_acid == "Ter (3)",]$Prop = NA
 dt_graph[dt_graph$amino_acid == "Met (1)",]$Prop = NA
 dt_graph[dt_graph$amino_acid == "Trp (1)",]$Prop = NA
 
+{
 p3A = ggplot(dt_graph, aes(x = "" , y = Prop, fill = fct_inorder(categorie))) +
   geom_col(width = 1, color = 1) +
   coord_polar(theta = "y") + facet_wrap(~title+paste(amino_acid),nrow=4,dir="v")+
   theme_void() + theme(
     title =  element_text(size=36, family="economica"),
-    legend.text =  element_text(size=40, family="economica"),
+    legend.text =  element_text(color="black", size=40, family="economica",vjust = 1.5,margin = margin(t = 10)),
     strip.text = element_text(size=30, family="economica",face="bold"),
     legend.spacing.x = unit(1, 'cm'),
-    legend.position="top",
-    legend.box.spacing = unit(2, "cm"),
+    legend.position="right",
+    legend.key.size= unit(1, "cm"),
+    legend.box.margin=margin(l=50),
     plot.title = element_text(hjust = 0.5,margin = margin(0,0,20,0))
-  ) +
+  )  +
+  ## important additional element
+  guides(fill = guide_legend(byrow = TRUE))+
   # scale_fill_manual("",values = c("#33A02C","#B2DF8A","#FF7F00","#FDBF6F","#FB9A99","#E31A1C"))  + 
-  scale_fill_manual("",values = c("#FB9A99","#B2DF8A","#FF7F00","#FDBF6F","#FB9A99","#E31A1C"))  +
-  ggtitle(paste("Lepido Diptera"," (",dt_graph$total[1],")",sep=""))
+  scale_fill_manual("",values = c("#FB9A99","#B2DF8A","#FF7F00","#FDBF6F","#FB9A99","#E31A1C"))
+  # ggtitle(paste("Mecopterida"," (",dt_graph$total[1],")",sep=""))
 p3A
 
 
-jpeg(paste(path_pannel,"p3_DUC.jpg",sep=""), width = 8000/1,  3600/1,res=300/1)
+jpeg(paste(path_pannel,"p3_DUC.jpg",sep=""), width = 10000/1,  3600/1,res=300/1)
 print(p3A)
 dev.off()
+}
