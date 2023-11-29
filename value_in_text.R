@@ -8,17 +8,18 @@ source("figure/figure_main_generator/library_path.R")
   
   print(paste("selection intensity across " , nrow(data1) , " metazoan species" , sep = ""))
   
-  
   ##  Estimating the relative abundance of tRNA isodecoders
   print(paste("metazoans covering a wide range of clades (N=",nrow(data1),", ",sum(table(data1$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")]),
               " Vertebrates and ",nrow(data1) - sum(table(data1$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")])," Invertebrates)" , sep=""))
   
   
-  print(paste("but in some cases (",table(dt_graph$tRNA_GFF)["not from GFF"]," species over ",nrow(dt_graph),
-              ") the tRNA are not annotated. We annotated the remaining ",table(dt_graph$tRNA_GFF)["not from GFF"],sep=""))
+  print(paste("but in some cases (",sum(!data1$tRNA_GFF)," species over ",nrow(data1),
+              ") the tRNA are not annotated. We annotated the remaining ",sum(!data1$tRNA_GFF),sep=""))
   
   
-  dt_graph = dt_graph[ dt_graph$nb_gene > 5000 , ]
+  dt_graph = data1[ data1$pval_aa_fpkm < 0.05 , ]
+  
+  dt_graph = data1[ data1$nb_genes_filtered > 5000 , ]
   print(paste("the studied species with at least 5,000 protein-coding genes expressed (N=",nrow(dt_graph),")",sep=""))
   
   
@@ -121,8 +122,6 @@ source("figure/figure_main_generator/library_path.R")
   
   print(paste("We observe that in Diptera there is a differences reaching ",round(max(dt_analysis[dt_analysis$clade_group == "Lepido Diptera",]$ecart*100)),
               "% (average = ",round(mean(dt_analysis[dt_analysis$clade_group == "Lepido Diptera",]$ecart*100)),"%.",sep=""))
-  
-  
 }
 
 

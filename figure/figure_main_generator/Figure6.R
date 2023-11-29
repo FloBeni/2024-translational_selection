@@ -19,7 +19,7 @@ pA = ggplot(data1,aes(y=expressed_overused_background_WC_duet_ambiguous,x=clade_
     axis.text.x =  element_text(color="black",vjust=.5, size=0,angle = 50, family="economica"),
     title =  element_text(color="black", size=0, family="economica"),
     legend.text =  element_text(color="black", size=20, family="economica")
-  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +ylab("Difference in proportion of WCP codons between\nthe top 5% and bottom 50% expressed")+
+  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +ylab("Difference in proportion of WCp codons between\nthe top 5% and bottom 50% expressed")+
   xlab("")  + scale_y_continuous(breaks = seq(-10,25,5))
 
 pA = ggMarginal(pA, type="histogram",fill=set_color[1])
@@ -46,7 +46,7 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spe
   geom_abline() +
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
-    axis.title.y = element_text(color="black", size=26, family="economica",margin = margin(t = 0, r = 20, b = 0, l = 0)),
+    axis.title.y = element_text(color="black", size=26,hjust=c(1,1), family="economica",margin = margin(t = 0, r = 20, b = 0, l = 0)),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
     axis.text.x =  element_text(color="black", size=24, family="economica"),
     title =  element_text(color="black", size=20, family="economica"),
@@ -64,7 +64,7 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spe
     #                                                         pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
   ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
   xlab("Difference in proportion of optimal codons between\nthe top 5% and bottom 50% expressed (%)")  + 
-  ylab("Difference in proportion of WCp codons between\nthe top 5% and bottom 50% expressed") + scale_y_continuous(breaks = seq(-10,25,5))
+  ylab("Difference in proportion of WCp codons between\nthe top 5% and bottom 50% expressed        ") + scale_y_continuous(breaks = seq(-10,25,5))
 
 pB
 

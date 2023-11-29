@@ -36,6 +36,16 @@ for (species in GTDrift_list_species$species){
   taxID = GTDrift_list_species[species,]$NCBI.taxid
   
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
+  if (
+    file.exists(paste(path,"/tRNAscan.tab.gz",sep="")) &
+    file.size(paste(path,"/tRNAscan.tab.gz",sep="")) != 33 ){
+    tRNA_GFF = T
+  } else if (
+    file.exists(paste(path,"/tRNAscan_SE.tab.gz",sep="")) &
+    file.size(paste(path,"/tRNAscan_SE.tab.gz",sep="")) != 33  ){
+    tRNA_GFF = F
+  } else { tRNASE_copies_table = 0
+  tRNA_GFF = "" }
   
   codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.tab.gz",sep="") )
   nb_genes = length(unique(codon_usage$gene_id))
@@ -95,16 +105,32 @@ for (species in GTDrift_list_species$species){
   # abond_duet = abond_duet[abond_duet$aa_name %in% names(vector[vector != 2]),]
   # abond_duet = abond_duet[!duplicated(abond_duet$aa_name),]$codon
   # 
-  # amino_acid_gc2 = tRNA_optimal[tRNA_optimal$nb_syn == 2 & !tRNA_optimal$aa_name %in% tRNA_optimal[tRNA_optimal$Wobble_abond,]$aa_name,]$codon
-  # GC2_obs = rowSums(codon_usage[amino_acid_gc2[substr(amino_acid_gc2,3,3) %in% c("G","C")]],na.rm = T)
-  # ATGC2_obs = rowSums(codon_usage[amino_acid_gc2],na.rm = T)
-  # 
-  # amino_acid_gc4 = tRNA_optimal[tRNA_optimal$nb_syn == 4,]$codon
-  # GC4_obs = rowSums(codon_usage[amino_acid_gc4[substr(amino_acid_gc4,3,3) %in% c("G","C")]],na.rm = T)
-  # ATGC4_obs = rowSums(codon_usage[amino_acid_gc4],na.rm = T)
+  amino_acid_gc2 = tRNA_optimal[tRNA_optimal$nb_syn == 2 ,]$codon
+  GC2_obs = rowSums(codon_usage[amino_acid_gc2[substr(amino_acid_gc2,3,3) %in% c("G","C")]],na.rm = T)
+  ATGC2_obs = rowSums(codon_usage[amino_acid_gc2],na.rm = T)
+
+  amino_acid_gc4 = tRNA_optimal[tRNA_optimal$nb_syn == 4,]$codon
+  GC4_obs = rowSums(codon_usage[amino_acid_gc4[substr(amino_acid_gc4,3,3) %in% c("G","C")]],na.rm = T)
+  ATGC4_obs = rowSums(codon_usage[amino_acid_gc4],na.rm = T)
+  
+  G4_obs = rowSums(codon_usage[amino_acid_gc4[substr(amino_acid_gc4,3,3) == "G"]] , na.rm = T)
+  GC4_obs = rowSums(codon_usage[amino_acid_gc4[substr(amino_acid_gc4,3,3) %in% c("G","C")]] , na.rm = T)
+  
+  A4_obs = rowSums(codon_usage[amino_acid_gc4[substr(amino_acid_gc4,3,3) == "A"]] , na.rm = T)
+  AT4_obs = rowSums(codon_usage[amino_acid_gc4[substr(amino_acid_gc4,3,3) %in% c("T","A")]] , na.rm = T)
+  
+  GCi_obs = rowSums(codon_usage[c("Ci","Gi")],na.rm = T)
+  ATGCi_obs = rowSums(codon_usage[c("Ai","Ti","Ci","Gi")],na.rm = T)
   
   GC3_obs = rowSums(codon_usage[c("C3","G3")],na.rm = T)
   ATGC3_obs = rowSums(codon_usage[c("A3","T3","C3","G3")],na.rm = T)
+  
+  
+  Gi_obs = rowSums(codon_usage[c("Gi")],na.rm = T)
+  GCi_obs = rowSums(codon_usage[c("Ci","Gi")],na.rm = T)
+  
+  Ai_obs = rowSums(codon_usage[c("Ai")],na.rm = T)
+  ATi_obs = rowSums(codon_usage[c("Ai","Ti")],na.rm = T)
   
   GCi_obs = rowSums(codon_usage[c("Ci","Gi")],na.rm = T)
   ATGCi_obs = rowSums(codon_usage[c("Ai","Ti","Ci","Gi")],na.rm = T)
@@ -163,6 +189,7 @@ for (species in GTDrift_list_species$species){
   
   dt_species = rbind(dt_species,data.frame(
     species,
+    tRNA_GFF,
     median_copy_tRNA = median(tRNA_optimal$nb_tRNA_copies / nb_genes),
     nb_genes,
     nb_genes_filtered = nrow(codon_usage),
@@ -177,11 +204,26 @@ for (species in GTDrift_list_species$species){
     
     gc_duc = sum(substr(DUC,3,3) %in% c("G","C")) / length(DUC),
     gc_abond_ag = sum(substr(abond_AG,3,3) %in% c("G","C")) / length(abond_AG),
+    
     gc3 = mean(GC3_obs / ATGC3_obs,na.rm=T),
     gc3_top5 = tapply( GC3_obs / ATGC3_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
     std_gc3 = stderror(GC3_obs / ATGC3_obs),
     var_gc3 = var(GC3_obs / ATGC3_obs,na.rm=T),
     
+    g4 = mean(G4_obs / GC4_obs,na.rm=T),
+    g4_top5 = tapply( G4_obs / GC4_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
+    a4 = mean(A4_obs / AT4_obs,na.rm=T),
+    a4_top5 = tapply( A4_obs / AT4_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
+    gc4 = mean(GC4_obs / ATGC4_obs,na.rm=T),
+    gc4_top5 = tapply( GC4_obs / ATGC4_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
+    gc2 = mean(GC2_obs / ATGC2_obs,na.rm=T),
+    gc2_top5 = tapply( GC2_obs / ATGC2_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
+    
+    
+    gi = mean(Gi_obs / GCi_obs,na.rm=T),
+    gi_top5 = tapply( Gi_obs / GCi_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
+    ai = mean(Ai_obs / ATi_obs,na.rm=T),
+    ai_top5 = tapply( Ai_obs / ATi_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
     gci = mean(GCi_obs / ATGCi_obs,na.rm=T),
     gci_top5 = tapply( GCi_obs / ATGCi_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
     std_gci = stderror(GCi_obs / ATGCi_obs),

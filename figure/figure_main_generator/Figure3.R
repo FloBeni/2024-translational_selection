@@ -1,7 +1,7 @@
 # Generate Figure 3
 source("figure/figure_main_generator/library_path.R")
 
-set_color = c( "WCP + abond" = "#33A02C" , "WCP" = "#B2DF8A" , "WBP + abond" = "#E31A1C" , "WBP" = "#FB9A99" , "not decoded" = "#e2cc1a" )
+set_color = c( "WCp + abond" = "#33A02C" , "WCp" = "#B2DF8A" , "WBp + abond" = "#E31A1C" , "WBp" = "#FB9A99" , "not decoded" = "#e2cc1a" )
 
 wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 

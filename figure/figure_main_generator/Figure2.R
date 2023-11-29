@@ -79,14 +79,14 @@ Caenorhabditis_elegans = readPNG(paste(path_require,"Caenorhabditis_elegans.png"
   
   par(mar=c(0, 1, 1, 1))
   plot(imgA, axes=FALSE)
-  mtext("A", adj=-0.1, side=2,at=1, line=1, font=2, cex=1.2,las=2)
+  mtext("A", adj=-0.1, side=2,at=1, line=1, font=2, cex=1.4,las=2)
   xcel=500
   ycel=-140
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/1.5-ycel, xright=1000/1.4+xcel, ytop=0-ycel)
   
   par(mar=c(0, 1, 0, 0))
   plot(imgB, axes=FALSE)
-  mtext("B",adj=-0.1, side=2,at=1, line=1, font=2, cex=1.2,las=2)
+  mtext("B",adj=-0.1, side=2,at=1, line=1, font=2, cex=1.4,las=2)
   dev.off()
 }
 

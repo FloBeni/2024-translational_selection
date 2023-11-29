@@ -29,10 +29,10 @@ for (species in unique(data1$species)){
   tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
   rownames(tRNA_optimal) = tRNA_optimal$codon
   
-  tRNA_optimal[tRNA_optimal$nb_tRNA_copies != 0,"categorie"] = "WCP"
-  tRNA_optimal[tRNA_optimal$nb_tRNA_copies == 0,"categorie"] = "WBP"
-  tRNA_optimal[tRNA_optimal$WC_abond,"categorie"] = "WCP + abond"
-  tRNA_optimal[tRNA_optimal$Wobble_abond,"categorie"] = "WBP + abond"
+  tRNA_optimal[tRNA_optimal$nb_tRNA_copies != 0,"categorie"] = "WCp"
+  tRNA_optimal[tRNA_optimal$nb_tRNA_copies == 0,"categorie"] = "WBp"
+  tRNA_optimal[tRNA_optimal$WC_abond,"categorie"] = "WCp + abond"
+  tRNA_optimal[tRNA_optimal$Wobble_abond,"categorie"] = "WBp + abond"
   tRNA_optimal[!tRNA_optimal$decoded,"categorie"] = "not decoded"
   
   tRNA_optimal = tRNA_optimal[,c("codon","aa_name","anticodon","categorie")]
@@ -80,7 +80,7 @@ data4$codon = factor(data4$codon,levels =  unlist(lapply(vect_debut,function(x) 
 data4$title = factor(paste(data4$codon," (",data4$WB_type,")",sep=""),
                      sapply(levels(data4$codon),function(x) paste(x," (",wobble_type[substr(x,3,3)],")",sep="")) )
 
-set_color = c("WCP + abond" = "#33A02C" ,"WCP" = "#B2DF8A","WBP + abond" = "#E31A1C","WBP" = "#FB9A99","not decoded" = "#e2cc1a")
+set_color = c("WCp + abond" = "#33A02C" ,"WCp" = "#B2DF8A","WBp + abond" = "#E31A1C","WBp" = "#FB9A99","not decoded" = "#e2cc1a")
 data4$Var1 = factor(data4$Var1,levels =  names(set_color))
 
 write.table(data4,"data/data4.tab",quote=F,row.names = F,sep="\t")

@@ -204,16 +204,16 @@ for (region in c("CDS","Intron")){
     if (ylabel == "SNP density"){
       imgA = load.image(paste(path_require,"polymorphism.png",sep="") )
       if (region == "CDS"){
-        pdf(file= paste(path_figure,"Figure6_supp.pdf",sep=""), width=10, height=7)
+        pdf(file= paste(path_figure,"Figure7_supp.pdf",sep=""), width=10, height=7)
       } else if (region == "Intron"){
-        pdf(file= paste(path_figure,"Figure8_supp.pdf",sep=""), width=10, height=7)
+        pdf(file= paste(path_figure,"Figure9_supp.pdf",sep=""), width=10, height=7)
       }
     } else if (ylabel == "Subsitutions rate"){ 
       imgA = load.image(paste(path_require,"substitutions.png",sep="") )
       if (region == "CDS"){
-        pdf(file= paste(path_figure,"Figure7_supp.pdf",sep=""), width=10, height=7)
+        pdf(file= paste(path_figure,"Figure6_supp.pdf",sep=""), width=10, height=7)
       } else if (region == "Intron"){
-        pdf(file= paste(path_figure,"Figure9_supp.pdf",sep=""), width=10, height=7)
+        pdf(file= paste(path_figure,"Figure8_supp.pdf",sep=""), width=10, height=7)
       }
     }
     {
