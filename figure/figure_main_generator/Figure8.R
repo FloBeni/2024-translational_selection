@@ -14,8 +14,8 @@ dt_graph = data1
 ylabel = "expressed_overused_background_global"
 xlabel = "lifespan_days"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
-lm_y = log10(dt_graph[,ylabel])
-lm_x = dt_graph[,xlabel]
+lm_y = dt_graph[,ylabel]
+lm_x = log10(dt_graph[,xlabel])
 shorebird <- comparative.data(arbrePhylo, 
                               data.frame(species=dt_graph$species,
                                          pgls_x=lm_x,

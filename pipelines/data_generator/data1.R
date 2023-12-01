@@ -104,11 +104,11 @@ for (species in GTDrift_list_species$species){
   # vector = (tapply(abond_duet$nb_tRNA_copies , abond_duet$aa_name,function(x) sum(x == max(x))))
   # abond_duet = abond_duet[abond_duet$aa_name %in% names(vector[vector != 2]),]
   # abond_duet = abond_duet[!duplicated(abond_duet$aa_name),]$codon
-  # 
+  
   amino_acid_gc2 = tRNA_optimal[tRNA_optimal$nb_syn == 2 ,]$codon
   GC2_obs = rowSums(codon_usage[amino_acid_gc2[substr(amino_acid_gc2,3,3) %in% c("G","C")]],na.rm = T)
   ATGC2_obs = rowSums(codon_usage[amino_acid_gc2],na.rm = T)
-
+  
   amino_acid_gc4 = tRNA_optimal[tRNA_optimal$nb_syn == 4,]$codon
   GC4_obs = rowSums(codon_usage[amino_acid_gc4[substr(amino_acid_gc4,3,3) %in% c("G","C")]],na.rm = T)
   ATGC4_obs = rowSums(codon_usage[amino_acid_gc4],na.rm = T)
@@ -182,8 +182,8 @@ for (species in GTDrift_list_species$species){
   
   DUC = data_optiplus[data_optiplus$expressed_overused_background > 0 ,]$codon
   DUC = data_optiplus[data_optiplus$rank == 1 &
-                           data_optiplus$codon %in% tRNA_optimal[tRNA_optimal$nb_syn >= 2,]$codon & 
-                           !data_optiplus$amino_acid %in% c("Met","Trp"),]$codon
+                        data_optiplus$codon %in% tRNA_optimal[tRNA_optimal$nb_syn >= 2,]$codon & 
+                        !data_optiplus$amino_acid %in% c("Met","Trp"),]$codon
   
   
   
@@ -197,7 +197,6 @@ for (species in GTDrift_list_species$species){
     
     rho_aa_fpkm = spearman_method_aa$estimate,
     pval_aa_fpkm = spearman_method_aa$p.value,
-    
     
     rho_gc3_gci = spearman_method_gc3gci$estimate,
     pval_gc3_gci = spearman_method_gc3gci$p.value,
@@ -218,7 +217,6 @@ for (species in GTDrift_list_species$species){
     gc4_top5 = tapply( GC4_obs / ATGC4_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
     gc2 = mean(GC2_obs / ATGC2_obs,na.rm=T),
     gc2_top5 = tapply( GC2_obs / ATGC2_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
-    
     
     gi = mean(Gi_obs / GCi_obs,na.rm=T),
     gi_top5 = tapply( Gi_obs / GCi_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
@@ -268,7 +266,7 @@ for (species in GTDrift_list_species$species){
     
     if ( length(list_COA) != 0 ){
       
-      ##### Over-used of pOC in expressed genes
+      ##### Over-used of POC in expressed genes
       
       COA_obs = rowSums(codon_usage[ list_COA ],na.rm = T)
       COA_neg_obs = rowSums(codon_usage[ list_COA_neg ],na.rm = T)
@@ -276,13 +274,14 @@ for (species in GTDrift_list_species$species){
       COA_neg_obs_intronic = rowSums(codon_usage[paste(list_COA_neg,'_intronic',sep = "")],na.rm = T)
       
       
-      ## Over-used of pOC in constraint sites
+      ## Over-used of POC in constraint sites
       
       if (GTDrift_list_species[species,]$clade_group %in% c("Mammalia","Aves","Other Tetrapods")){
-        data_conservation_sub = data_conservation_rmfirst1000bp[data_conservation_rmfirst1000bp$species == species,] 
+        data_conservation_sub = data_conservation_rmfirst1000bp[data_conservation_rmfirst1000bp$species == species & data_conservation_rmfirst1000bp$protein %in% codon_usage$protein_id,] 
       } else {
-        data_conservation_sub = data_conservation[data_conservation$species == species,] 
+        data_conservation_sub = data_conservation[data_conservation$species == species ,] 
       }
+      
       
       table_constrain = data.frame(busco_id = data_conservation_sub$busco_id)
       for (constrain in c("_highconst","_modconst","_sligconst","_unconst")){
@@ -291,6 +290,7 @@ for (species in GTDrift_list_species$species){
       }
       
       dt_translational_selection = data.frame(
+        nb_aa = length(list_aa),
         average_RTF_abundant_tRNA = mean( tRNA_optimal[list_COA,]$RTF[tRNA_optimal[list_COA,]$RTF != 0] ) ,
         expressed_overused = 100*(round(tapply( COA_obs / COA_neg_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) - 
                                     round( mean( (COA_obs / COA_neg_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) ,
@@ -304,6 +304,7 @@ for (species in GTDrift_list_species$species){
       )
     } else {
       dt_translational_selection = data.frame(
+        nb_aa = NA,
         average_RTF_abundant_tRNA = NA,
         expressed_overused = NA,
         expressed_overused_background = NA,

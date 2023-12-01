@@ -34,7 +34,7 @@ pA = ggplot(data3_supp[data3_supp$nb_genes >= 200,],aes(x = group,group=clade_gr
     strip.text = element_text(family = "economica", size = 14)
   ) + scale_fill_manual(values = Clade_color)+ scale_color_manual(values = Clade_color) + 
   scale_x_continuous(breaks=c(-1,-2,-3,-4,1,2,3,4),labels = c(0.01,0.1,1,10,0.01,0.1,1,10)) +
-  xlab("Distance from start codon or stop codon (kilobase, log10 scale)") + ylab ("GC introns")  + theme(legend.position='none') 
+  xlab("Distance from start codon or stop codon (kilobase, log scale)") + ylab ("GC introns")  + theme(legend.position='none') 
 pA
 
 
@@ -62,7 +62,7 @@ insect = readPNG(paste(path_require,"insect.png",sep=""))
 {
   pdf(file= paste(path_figure,"Figure5_supp.pdf",sep=""), width=6.75, height=4)
   
-  par(mar=c(0, 2, 0, 0))
+  par(mar=c(0, 0, 0, 0))
   plot(imgA, axes=FALSE)
   # mtext("A", side=2,at=111, line=1, font=2, cex=1,las=2)
   

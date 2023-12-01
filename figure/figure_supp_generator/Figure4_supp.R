@@ -39,7 +39,7 @@ pA = ggplot(dt_graph[dt_graph$nb_genes >= max(dt_graph$nb_genes)*0.5,],aes(x = g
   scale_x_continuous(breaks=c(-1,-2,-3,-4,-5,1,2,3,4,5),labels = c(0.01,0.1,1,10,100,0.01,0.1,1,10,100)) +
   guides(fill = guide_legend(override.aes = list(lwd=3))) +
   # annotation_logticks(sides="b") +
-  xlab("Distance from start codon or stop codon (kilobase, log10 scale)") + ylab ("GC introns") + ylim(c(0.3,0.7))
+  xlab("Distance from start codon or stop codon (kilobase, log scale)") + ylab ("GC introns") + ylim(c(0.3,0.7))
 pA
 
 jpeg(paste(path_pannel,"p4A_supp.jpg",sep=""), width = 5500/1, height = 2200/1,res=400/1)
@@ -74,7 +74,7 @@ pB = ggplot(dt_graph[dt_graph$nb_genes >= max(dt_graph$nb_genes)*0.5,],aes(x = g
   guides(fill = guide_legend(override.aes = list(lwd=3))) +
   # scale_x_log10(breaks=c(10,100,1000,10000),labels = c(10,100,"1kb","10kb")) +
   # annotation_logticks(sides="b") +
-  xlab("Distance from start codon or stop codon (kilobase, log10 scale)") +  ylab ("GC introns") + ylim(c(0.3,0.7))
+  xlab("Distance from start codon or stop codon (kilobase, log scale)") +  ylab ("GC introns") + ylim(c(0.3,0.7))
 pB
 
 jpeg(paste(path_pannel,"p4B_supp.jpg",sep=""), width = 5500/1, height = 2200/1,res=400/1)

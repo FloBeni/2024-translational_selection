@@ -4,8 +4,8 @@ source("figure/figure_supp_generator/library_path.R")
 
 # Supplementary Pannel 2 A
 
-data_supp_1 = read.delim("data/data_supp_1.tab")
-dt_graph = data_supp_1[data_supp_1$species == "Drosophila_melanogaster",]
+data1_supp = read.delim("data/data1_supp.tab")
+dt_graph = data1_supp[data1_supp$species == "Drosophila_melanogaster",]
 
 spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
 
@@ -37,7 +37,7 @@ dev.off()
 
 # Supplementary Pannel 2 B
 
-dt_graph = data_supp_1[data_supp_1$species == "Homo_sapiens",]
+dt_graph = data1_supp[data1_supp$species == "Homo_sapiens",]
 spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
 
 pB=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=prop_abundance_average*100)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[1],size=2) +
@@ -68,7 +68,7 @@ dev.off()
 
 # Supplementary Pannel 2 C
 
-dt_graph = data_supp_1[data_supp_1$species == "Drosophila_melanogaster",]
+dt_graph = data1_supp[data1_supp$species == "Drosophila_melanogaster",]
 spearman_method_aa = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
 
 pC=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[3],size=2) +
@@ -100,7 +100,7 @@ dev.off()
 
 # Supplementary Pannel 2 D
 
-dt_graph = data_supp_1[data_supp_1$species == "Homo_sapiens",]
+dt_graph = data1_supp[data1_supp$species == "Homo_sapiens",]
 spearman_method_aa = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
 
 pD=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[1],size=2) +

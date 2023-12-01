@@ -17,14 +17,14 @@ set_linetype_class = c(CDS="solid",intron="dashed",CDS_simulation="dotted")
 set_alpha_class = c(CDS=1,intron=0.5)
 
 for (region in c("CDS","Intron")){
-  for (ylabel in c( "SNP density","Subsitutions rate")){
+  for (ylabel in c( "SNP density","subsitutions rate")){
     method_to_calculate = "per_gene"
     
     # Supplementary Pannel B
     
     if (ylabel == "SNP density"){
       data_variant = read.delim("data/data5_supp.tab") 
-    } else if (ylabel == "Subsitutions rate"){ 
+    } else if (ylabel == "subsitutions rate"){ 
       data_variant = read.delim("data/data4_supp.tab")}
     
     dt_graph = data_variant[ data_variant$method_to_calculate == method_to_calculate & data_variant$group == "Wb_WC_notambiguous" ,]
@@ -61,8 +61,8 @@ for (region in c("CDS","Intron")){
       axis.title.y = element_text(color="black", size=35, family="economica"),
       axis.text.y =  element_text(color="black", size=30, family="economica"),
       axis.text.x =  element_text(color="black", size=30, family="economica"),
-      title =  element_text(color="black", size=20, family="economica"),
-      legend.text =  element_text(color="black", size=20, family="economica")
+      title =  element_text(color="black", size=25, family="economica"),
+      legend.text =  element_text(color="black", size=25, family="economica")
     )+ xlab("Gene expression level (FPKM, log scale)") +
       scale_x_log10(limits = c(0.01,1000),
                     breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
@@ -70,7 +70,7 @@ for (region in c("CDS","Intron")){
       ylab(paste(region,ylabel)) + scale_fill_manual("",values=set_color_class) + 
       scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
       scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
-      guides(fill= guide_legend(override.aes = list(pch=21,byrow = TRUE),order = 2)
+      guides(fill= guide_legend(override.aes = list(size=7,pch=21,byrow = TRUE),order = 2)
       ) +   theme(legend.spacing.y = unit(.2, 'cm'))  + theme(legend.position='top') + annotation_logticks(sides="b")+
       guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F)
     pB
@@ -117,8 +117,8 @@ for (region in c("CDS","Intron")){
       axis.title.y = element_text(color="black", size=35, family="economica"),
       axis.text.y =  element_text(color="black", size=30, family="economica"),
       axis.text.x =  element_text(color="black", size=30, family="economica"),
-      title =  element_text(color="black", size=20, family="economica"),
-      legend.text =  element_text(color="black", size=20, family="economica")
+      title =  element_text(color="black", size=25, family="economica"),
+      legend.text =  element_text(color="black", size=25, family="economica")
     )+ xlab("Gene expression level (FPKM, log scale)") +
       scale_x_log10(limits = c(0.01,1000),
                     breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
@@ -127,7 +127,7 @@ for (region in c("CDS","Intron")){
       scale_fill_manual("",values=set_color_class,labels=c("wobble -> watson-crick" = "wobble (NNT) -> watson-crick (NNC)","watson-crick -> wobble"="watson-crick (NNC) -> wobble (NNT)")) + 
       scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
       scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
-      guides(fill= guide_legend(override.aes = list(pch=21,byrow = TRUE),order = 2)
+      guides(fill= guide_legend(override.aes = list(size=7,pch=21,byrow = TRUE),order = 2)
       ) +   theme(legend.spacing.y = unit(.2, 'cm'))  + theme(legend.position='top') + annotation_logticks(sides="b")+
       guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F)
     pC
@@ -176,8 +176,8 @@ for (region in c("CDS","Intron")){
       axis.title.y = element_text(color="black", size=35, family="economica"),
       axis.text.y =  element_text(color="black", size=30, family="economica"),
       axis.text.x =  element_text(color="black", size=30, family="economica"),
-      title =  element_text(color="black", size=20, family="economica"),
-      legend.text =  element_text(color="black", size=20, family="economica")
+      title =  element_text(color="black", size=25, family="economica"),
+      legend.text =  element_text(color="black", size=25, family="economica")
     )+ xlab("Gene expression level (FPKM, log scale)") +
       scale_x_log10(limits = c(0.01,1000),
                     breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
@@ -186,7 +186,7 @@ for (region in c("CDS","Intron")){
       scale_fill_manual("",values=set_color_class,labels=c("wobble -> watson-crick" = "wobble (NNC) -> watson-crick (NNT)","watson-crick -> wobble"="watson-crick (NNT) -> wobble (NNC)")) + 
       scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
       scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
-      guides(fill= guide_legend(override.aes = list(pch=21,byrow = TRUE),order = 2)
+      guides(fill= guide_legend(override.aes = list(size=7,pch=21,byrow = TRUE),order = 2)
       ) +   theme(legend.spacing.y = unit(.2, 'cm'))  + theme(legend.position='top') + annotation_logticks(sides="b")+
       guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F)
     pD
@@ -200,6 +200,7 @@ for (region in c("CDS","Intron")){
     imgB = load.image(paste(path_pannel,"p6789B_supp.jpg",sep="") )
     imgC = load.image(paste(path_pannel,"p6789C_supp.jpg",sep="") )
     imgD = load.image(paste(path_pannel,"p6789D_supp.jpg",sep="") )
+    fly<-readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
     
     if (ylabel == "SNP density"){
       imgA = load.image(paste(path_require,"polymorphism.png",sep="") )
@@ -208,7 +209,7 @@ for (region in c("CDS","Intron")){
       } else if (region == "Intron"){
         pdf(file= paste(path_figure,"Figure9_supp.pdf",sep=""), width=10, height=7)
       }
-    } else if (ylabel == "Subsitutions rate"){ 
+    } else if (ylabel == "subsitutions rate"){ 
       imgA = load.image(paste(path_require,"substitutions.png",sep="") )
       if (region == "CDS"){
         pdf(file= paste(path_figure,"Figure6_supp.pdf",sep=""), width=10, height=7)
@@ -217,7 +218,6 @@ for (region in c("CDS","Intron")){
       }
     }
     {
-      
       m = matrix(rep(NA,10*10), nrow=10)
       for(i in 1:5){
         m[,i]=c(rep(1,5),rep(3,5))
@@ -230,16 +230,20 @@ for (region in c("CDS","Intron")){
       
       par(mar=c(0, 0, 0, 0))
       plot(imgA, axes=FALSE)
-      mtext("A",at=100,adj=-1, side=2, line=1, font=2, cex=1.2,las=2)
-      par(mar=c(0, 0, 0, 0))
+      mtext("A",at=-100,adj=-1, side=2, line=1, font=2, cex=1.7,las=2)
+      xaxis=570/1.1
+      yaxis=0/1.1
+      rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1100/12+xaxis, ytop=-900/12+yaxis)
+      par(mar=c(0, 2, 0, 0))
       plot(imgB, axes=FALSE)
-      mtext("B",at=100,adj=-1, side=2, line=1, font=2, cex=1.2,las=2)
-      par(mar=c(0, 0, 3, 0))
+      mtext("B",at=100,adj=-1, side=2, line=1, font=2, cex=1.7,las=2)
+      par(mar=c(0, 1, 2, 0))
       plot(imgC, axes=FALSE)
-      mtext("C",at=100,adj=-1, side=2, line=1, font=2, cex=1.2,las=2)
-      par(mar=c(0, 0, 0, 0))
+      mtext("C",at=100,adj=-1, side=2, line=1, font=2, cex=1.7,las=2)
       plot(imgD, axes=FALSE)
-      mtext("D",at=100,adj=-1, side=2, line=1, font=2, cex=1.2,las=2)
+      mtext("D",at=100,adj=-1, side=2, line=1, font=2, cex=1.7,las=2)
+      
+      
       dev.off()
     }
   }

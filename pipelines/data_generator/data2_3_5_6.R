@@ -142,14 +142,13 @@ for (species in species_list){
   ))
   
   
-  ## Over-used of pOC in constraint sites
+  ## Over-used of POC in constraint sites
   
   if (GTDrift_list_species[species,]$clade_group %in% c("Mammalia","Aves","Other Tetrapods")){
     data_conservation_sub = data_conservation_rmfirst1000bp[data_conservation_rmfirst1000bp$species == species & data_conservation_rmfirst1000bp$protein %in% codon_usage$protein_id,] 
   } else {
     data_conservation_sub = data_conservation[data_conservation$species == species & data_conservation$protein %in% codon_usage$protein_id,] 
   }
-  data_conservation_sub = data_conservation_sub[data_conservation_sub$len_high_const_seq != 0 & data_conservation_sub$len_unconst_seq != 0 , ]
   
   table_constrain = data.frame(busco_id = data_conservation_sub$busco_id)
   for (constrain in c("_highconst","_modconst","_sligconst","_unconst")){

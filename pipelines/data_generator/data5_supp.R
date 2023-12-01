@@ -276,48 +276,6 @@ for (method_to_calculate in c("per_gene")){
   taxID = GTDrift_list_species[species,]$NCBI.taxid
   
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
-  ### WC duet not ambiguous
-  
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
-
-    rownames(tRNA_optimal) = tRNA_optimal$codon
-  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
-  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
-  
-  tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn == 2 , ]
-  list_aa = tRNA_optimal[ !tRNA_optimal$Wobble_abond & !tRNA_optimal$WC_abond , ]
-  list_aa = names(table(list_aa$aa_name)[table(list_aa$aa_name) != 0])
-  
-  list_codon_optimal = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$WC_abond , ]$codon
-  list_codon_nonoptimal = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & !tRNA_optimal$WC_abond & !tRNA_optimal$Wobble_abond , ]$codon
-  list_codon = list(
-    optimal=list_codon_optimal,
-    nonoptimal=list_codon_nonoptimal
-  )
-  print(list_aa)
-  print(list_codon)
-  
-  xaxis = count_codon_trinucl$median_fpkm
-  quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
-  intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
-  print(table(intervalle_list))
-  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa)
-  
-  cible = colnames(dt)[grepl("cible",colnames(dt))]
-  mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
-  min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
-  cible = str_replace_all(cible,"cible_|density_","")
-  cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
-  
-  print("Number of sites")
-  for(i in 1:length(cible)){
-    if(!duplicated(cible)[i]){
-      print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
-    }
-  }
-  dt$group = "duet_notambiguous"
-  dt$method_to_calculate = method_to_calculate
-  data5_supp = rbind(data5_supp,dt)
   
   ###### gu
   tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
@@ -327,7 +285,7 @@ for (method_to_calculate in c("per_gene")){
   
   tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn == 2 , ]
   list_aa = tRNA_optimal[ tRNA_optimal$Wobble_abond  , ]
-  list_aa = names(table(list_aa$aa_name)[table(list_aa$aa_name) != 0])
+  list_aa = list_aa$aa_name
   
   list_codon_wobble = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$Wobble_abond , ]$codon
   list_codon_wc = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$WC_abond  , ]$codon
