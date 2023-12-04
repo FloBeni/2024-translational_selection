@@ -31,9 +31,9 @@ for( species in list_species$species ){
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
   
   if (
-    file.exists(paste(path,"/tRNAscan.tab.gz",sep="")) &
-    file.size(paste(path,"/tRNAscan.tab.gz",sep="")) != 33 ){
-    tRNASE_gff = read.delim( paste(path,"/tRNAscan.tab.gz",sep="") )
+    file.exists(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) &
+    file.size(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) != 33 ){
+    tRNASE_gff = read.delim( paste(path,"/tRNA_from_GFF.tab.gz",sep="") )
     tRNASE_gff$codon = sapply(tRNASE_gff$anticodon,function(x) chartr("TUACG","AATGC",stri_reverse(x))  )
     tRNASE_gff_table = table(tRNASE_gff$codon)
     tRNASE_copies_table = tRNASE_gff_table
@@ -41,10 +41,7 @@ for( species in list_species$species ){
   } else if (
     file.exists(paste(path,"/tRNAscan_SE.tab.gz",sep="")) &
     file.size(paste(path,"/tRNAscan_SE.tab.gz",sep="")) != 33  ){
-    tRNASE_copies = read.delim(paste(path,"/tRNAscan_SE.tab.gz",sep=""), header = F)
-    colnames(tRNASE_copies) = unlist(tRNASE_copies[2,])
-    tRNASE_copies = tRNASE_copies[4:nrow(tRNASE_copies),]
-    tRNASE_copies = tRNASE_copies[ !is.na(as.numeric(tRNASE_copies$Score)),]
+    tRNASE_copies = read.delim(paste(path,"/tRNAscan_SE.tab.gz",sep=""), header = T)
     tRNASE_copies = tRNASE_copies[as.numeric(tRNASE_copies$Score) > 55,]
     tRNASE_copies = tRNASE_copies[tRNASE_copies$Note != "pseudo",]
     tRNASE_copies$anticodon = sapply(tRNASE_copies$Codon,function(x) chartr("TUACG","TTACG",x)  )

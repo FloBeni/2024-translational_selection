@@ -21,13 +21,21 @@ for (species in list_species$species){print(species)
   
   
   # Get tRNA table and compress.
-  bash_command <- paste("cp ",pathData,"Annotations/",species,"/formatted_data/tRNAscan.tab ","data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
+  bash_command <- paste("cp ",pathData,"Annotations/",species,"/formatted_data/tRNAscan.tab ","data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,"/tRNA_from_GFF.tab",sep="")
   system(bash_command)
-  bash_command <- paste("gzip data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,"/tRNAscan.tab",sep="")
+  bash_command <- paste("gzip data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,"/tRNA_from_GFF.tab",sep="")
   system(bash_command)
   
-  bash_command <- paste("cp ",pathData,"Annotations/",species,"/formatted_data/tRNAscan_SE.tab ","data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
-  system(bash_command)
+  if (file.size(paste(pathData,"Annotations/",species,"/formatted_data/tRNAscan_SE.tab",sep="")) != 0){
+    tRNASE_copies = read.delim(paste(pathData,"Annotations/",species,"/formatted_data/tRNAscan_SE.tab",sep=""), header = F)
+    colnames(tRNASE_copies) = unlist(tRNASE_copies[2,])
+    tRNASE_copies = tRNASE_copies[ !is.na(as.numeric(tRNASE_copies$Score)),]
+    tRNASE_copies = tRNASE_copies[,-c(2)]
+    write.table(tRNASE_copies,paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,"/tRNAscan_SE.tab",sep=""),sep="\t",quote=F,row.names=F)
+  } else {
+    bash_command <- paste("cp ",pathData,"Annotations/",species,"/formatted_data/tRNAscan_SE.tab ","data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
+    system(bash_command)
+  }
   bash_command <- paste("gzip data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,"/tRNAscan_SE.tab",sep="")
   system(bash_command)
   
