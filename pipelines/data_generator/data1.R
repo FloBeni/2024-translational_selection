@@ -37,15 +37,14 @@ for (species in GTDrift_list_species$species){
   
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
   if (
-    file.exists(paste(path,"/tRNAscan.tab.gz",sep="")) &
-    file.size(paste(path,"/tRNAscan.tab.gz",sep="")) != 33 ){
+    file.exists(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) &
+    file.size(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) != 38 ){
     tRNA_GFF = T
   } else if (
     file.exists(paste(path,"/tRNAscan_SE.tab.gz",sep="")) &
-    file.size(paste(path,"/tRNAscan_SE.tab.gz",sep="")) != 33  ){
+    file.size(paste(path,"/tRNAscan_SE.tab.gz",sep="")) != 36  ){
     tRNA_GFF = F
-  } else { tRNASE_copies_table = 0
-  tRNA_GFF = "" }
+  } 
   
   codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.tab.gz",sep="") )
   nb_genes = length(unique(codon_usage$gene_id))
