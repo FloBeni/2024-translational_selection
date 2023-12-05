@@ -34,7 +34,7 @@ Laboratoire d'Ecologie des Hydrosystèmes Naturels et Anthropisés, Université 
 
     -   'Data1_supp.tab' encompasses per species data on life history traits, number of identified genes among the eukaryota BUSCO gene set, and the number of genes that have been associated to one annotated protein-coding gene only (Fig. 1,2,3,5,6,7,8).
 
--   The 'pipelines' folder contains the bionformatics pipelines for three different purposes: to download data from repository; to analyze various characteristics as part of our study ('codon_usage_pipeline'); to generate data table located in the 'data' directory ('data_generator').
+-   The 'pipelines' folder contains the bionformatics pipelines for three different purposes: to download dataw from repository; to analyze various characteristics as part of our study ('codon_usage_pipeline'); to generate data table located in the 'data' directory ('data_generator').
 
 ### 
 

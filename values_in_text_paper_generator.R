@@ -1,7 +1,7 @@
 source("figure/figure_main_generator/library_path.R")
 
 {
-  data1 = read.delim("data/data1.tab")
+  data1 = read.delim("data/data1_supp.tab")
   rownames(data1) = data1$species
   data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
   
@@ -27,7 +27,7 @@ source("figure/figure_main_generator/library_path.R")
   
   print(paste("GC3 and GCi are highly correlated (rho=",round(data1["Homo_sapiens",]$rho_gc3_gci,2),")",sep=""))
   
-  data2 = read.delim("data/data2.tab")
+  data2 = read.delim("data/data2_supp.tab")
   dt_graph = data2[data2$species == "Homo_sapiens" & !is.na(data2$GCi),]
   print(paste("(10th percentile ranging from ",round(quantile(dt_graph$GC3,0.1),2)," to ",round(quantile(dt_graph$GC3,0.9),2),")",sep=""))
   
@@ -38,13 +38,13 @@ source("figure/figure_main_generator/library_path.R")
   print(paste("but in some cases (",sum(!data1$tRNA_GFF)," species over ",nrow(data1),
               ") the tRNA are not annotated. We annotated the remaining ",sum(!data1$tRNA_GFF),sep=""))
   
-  data1_supp = read.delim("data/data1_supp.tab")
-  dt_graph = data1_supp[data1_supp$species == "Drosophila_melanogaster",]
+  data7 = read.delim("data/data7_supp.tab")
+  dt_graph = data7[data7$species == "Drosophila_melanogaster",]
   spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
   print(paste(" (rho = ",round(spearman_method_aa$estimate,2),")",sep=""))
-  dt_graph = data1_supp[data1_supp$species == "Homo_sapiens",]
+  dt_graph = data7[data7$species == "Homo_sapiens",]
   spearman_method_aa_human = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
-  dt_graph = data1_supp[data1_supp$species == "Drosophila_melanogaster",]
+  dt_graph = data7[data7$species == "Drosophila_melanogaster",]
   spearman_method_aa_droso = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
   print(paste(" (rho = ",round(spearman_method_aa$estimate,2),") as well with the gene copy number, (rho = ",round(spearman_method_aa_droso$estimate,2)," and ",round(spearman_method_aa_human$estimate,2)," respectively)",sep=""))
   
@@ -83,7 +83,7 @@ source("figure/figure_main_generator/library_path.R")
   print(paste("AAT accounting for ",round(AAT/(AAC+AAT)*100),"% of the occurrences, respectively.",sep=""))
   
   
-  data4 = read.delim("data/data4.tab")
+  data4 = read.delim("data/data4_supp.tab")
   data4 = data4[data4$species == "metazoa",]
   codon_count_absent = sapply(data4$codon,function(x){
     dt = data4[data4$codon == x & data4$Var1 %in% c("WBp + abond","WBp","not decoded"),]
@@ -123,7 +123,7 @@ source("figure/figure_main_generator/library_path.R")
   ## The most constraint sites tend to be enriched in POC
   print("The most constraint sites tend to be enriched in POC")
   
-  data6 = read.delim("data/data6.tab")
+  data6 = read.delim("data/data6_supp.tab")
   dt_analysis = data6[data6$species == "Caenorhabditis_elegans",]
   
   print(paste("the most constrained sites displaying a higher proportion of POC (on average ",
@@ -145,16 +145,16 @@ source("figure/figure_main_generator/library_path.R")
   print(paste("Mecopterida exhibit on average ",round(mean(data1[data1$clade_group == "Mecopterida",]$expressed_overused_background_WB_WC_notambiguous)),
               "% difference in POC",sep=""))
   
-  data_variant = read.delim("data/data4_supp.tab")
-  dt_graph = data_variant[ data_variant$method_to_calculate == "per_gene" & data_variant$group == "Wb_WC_notambiguous" ,]
+  data4 = read.delim("data/data4_supp.tab")
+  dt_graph = data4[ data4$method_to_calculate == "per_gene" & data4$group == "Wb_WC_notambiguous" ,]
   print(paste("for high expressed genes, from ",round(min(dt_graph$density_nonoptimal_to_optimal_codon*100),1),"% to ",
               round(max(dt_graph$density_nonoptimal_to_optimal_codon*100),1),"%. ",sep=""))
   
-  dt_graph = data_variant[ data_variant$method_to_calculate == "per_gene" & data_variant$group == "duet_ambiguous" ,]
+  dt_graph = data4[ data4$method_to_calculate == "per_gene" & data4$group == "duet_ambiguous" ,]
   print(paste("to wobble increases from ",round(min(dt_graph$density_nonoptimal_to_optimal_codon*100),1),"% to ",
               round(max(dt_graph$density_nonoptimal_to_optimal_codon*100),1),"%, suggesting that WBp to WCp",sep=""))
   
-  dt_graph = data_variant[ data_variant$method_to_calculate == "per_gene" & data_variant$group == "ic_abondant" ,]
+  dt_graph = data4[ data4$method_to_calculate == "per_gene" & data4$group == "ic_abondant" ,]
   print(paste("were preferentially selected in highly expressed genes (from ",round(min(dt_graph$density_optimal_to_nonoptimal_codon*100),1),"% to ",
               round(max(dt_graph$density_optimal_to_nonoptimal_codon*100),1),"%.",sep=""))
   
@@ -169,7 +169,7 @@ source("figure/figure_main_generator/library_path.R")
   ## Discussion
   print("Discussion")
   
-  data1 = read.delim("data/data1.tab")
+  data1 = read.delim("data/data1_supp.tab")
   print(paste("encompassing ",nrow(data1)," species.",sep=""))
   
 }
