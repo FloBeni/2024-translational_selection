@@ -2,7 +2,9 @@
 
 This archive includes all processed data that have been generated and used in the paper 'Non-adaptive mechanisms are the primary drivers of codon usage in metazoans', as well as the scripts used to analyze the data and to generate the figures.
 
-Developed by Florian Bénitière, Tristan Lefébure and Laurent Duret. Laboratoire de Biométrie et Biologie Évolutive, Université Lyon 1, UMR CNRS 5558, Villeurbanne, France. Laboratoire d'Ecologie des Hydrosystèmes Naturels et Anthropisés, Université Lyon 1, UMR CNRS 5023, Villeurbanne, France.
+Developed by Florian Bénitière, Tristan Lefébure and Laurent Duret.
+Laboratoire de Biométrie et Biologie Évolutive, Université Lyon 1, UMR CNRS 5558, Villeurbanne, France.
+Laboratoire d'Ecologie des Hydrosystèmes Naturels et Anthropisés, Université Lyon 1, UMR CNRS 5023, Villeurbanne, France.
 
 ### Directories content
 

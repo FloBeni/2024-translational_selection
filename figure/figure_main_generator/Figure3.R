@@ -16,9 +16,7 @@ dt_graph = data4[data4$species == "metazoa",]
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA") 
 dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) ) 
 
-# dt_graph$title = factor(paste(dt_graph$codon," (",dt_graph$WB_type,")",sep=""),  
 dt_graph$title = factor(paste(dt_graph$codon,sep="") , 
-                        # sapply(levels(dt_graph$codon),function(x) paste(x," (",wobble_type[substr(x,3,3)],")",sep="")) )
                         sapply(levels(dt_graph$codon),function(x) paste(x,sep="")) )
 
 dt_graph[dt_graph$amino_acid == "Ter (3)",]$Prop = NA
@@ -108,7 +106,6 @@ dev.off()
 dt_graph = data4
 dt_graph$amino_acid = str_replace_all(dt_graph$amino_acid," [(][:digit:][)]","")
 dt_graph = dt_graph[dt_graph$species == "Caenorhabditis_elegans",]
-# dt_graph = dt_graph[dt_graph$species == "Drosophila_melanogaster",]
 dc = dt_graph[dt_graph$amino_acid == "Thr",]
 dc$amino_acid = "qua"
 dc$codon = c("XXA","XXT","XXC","XXG")

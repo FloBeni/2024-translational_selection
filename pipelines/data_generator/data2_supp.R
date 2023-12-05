@@ -12,19 +12,6 @@ species="Drosophila_melanogaster"
 data2_supp = data.frame()
 for (species in c("Homo_sapiens","Drosophila_melanogaster")){print(species)
   dt = read.delim(paste(path,"Projet-NeGA/translational_selection/GC_gap_per_window_per_species/",species,".tab",sep=""))
-  # da = read.delim(paste(path,"Projet-SplicedVariants/Annotations/",species,"/formatted_data/gc3_gci_per_100bp.tab.gz",sep=""))
-  # da = da[da$gene_id != "gene_id",]
-  # 
-  # da[, c("cds_length","gene_length" ,"start","end","pos3_sites","gc3_count","posi_sites" , "gci_count")] = lapply(da[, c("cds_length","gene_length" ,"start","end","pos3_sites","gc3_count","posi_sites" , "gci_count")],as.numeric)
-  # 
-  # da_reduce = da[!duplicated(da$protein) ,]
-  # da_reduce = da_reduce[order(da_reduce$cds_length,decreasing = T),]
-  # da_reduce = da_reduce[!duplicated(da_reduce$gene_id),]
-  # 
-  # da = da[da$protein %in% da_reduce$protein,]
-  # 
-  # dt=da
-  
   
   size_windows = 100
   value_windows = floor(seq(0,max(dt$start),100)/size_windows) *size_windows+size_windows/2

@@ -9,7 +9,7 @@ data5$set = str_replace_all(data5$set,"all,","genes,")
 dt_graph = data5[ data5$species == "Homo_sapiens" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
 
 
-pA = ggplot(data5 ,
+pA = ggplot(dt_graph ,
              aes(x=fpkm ,y=freq*100,fill=categorie,col=categorie))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2) +
   geom_point(data=dt_graph,pch=21,col="black",size=4)+
@@ -32,12 +32,10 @@ pA = ggplot(data5 ,
   ) + scale_x_log10(
     breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
     labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000)) + ylim(0.3*100,0.7*100) +
-  # geom_hline(yintercept = 0.50129,size=1,linetype="dashed",col="#E31A1C") +
-  # geom_hline(yintercept = 0.47242,size=1,linetype="dashed",col="#FB9A99") +
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("(POC)",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("(POCMT)",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
-  geom_point(data =  dt_graph[grepl("(POC)",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#E31A1C",size=6)+
-  geom_point(data = dt_graph[grepl("(POCMT)",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#FB9A99",size=6)+
+  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
+  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
+  geom_point(data =  dt_graph[!grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#E31A1C",size=6)+
+  geom_point(data = dt_graph[grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#FB9A99",size=6)+
   ggtitle(paste(unique(dt_graph$set)," genes",sep="")) +   guides(fill="none",color="none",linetype="none",shape="none")+ annotation_logticks(sides = "b")
 
 pA
@@ -51,7 +49,7 @@ dev.off()
 
 dt_graph = data5[ data5$species == "Caenorhabditis_elegans" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
 
-pB = ggplot(data5 ,
+pB = ggplot(dt_graph ,
              aes(x=fpkm ,y=freq*100,fill=categorie,col=categorie))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2) +
   geom_point(data=dt_graph,pch=21,col="black",size=4)+
@@ -74,12 +72,10 @@ pB = ggplot(data5 ,
   )+          scale_x_log10(
     breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
     labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000))+ ylim(0.3*100,0.7*100) +
-  # geom_hline(yintercept = 0.48283,size=1,linetype="dashed",col="#E31A1C") +
-  # geom_hline(yintercept = 0.40359,size=1,linetype="dashed",col="#FB9A99") +
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("(POC)",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("(POCMT)",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
-  geom_point(data =  dt_graph[grepl("(POC)",dt_graph$categorie) &dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#E31A1C",size=6)+
-  geom_point(data = dt_graph[grepl("(POCMT)",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#FB9A99",size=6) +
+  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
+  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
+  geom_point(data =  dt_graph[!grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#E31A1C",size=6)+
+  geom_point(data = dt_graph[grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#FB9A99",size=6)+
   ggtitle(paste(unique(dt_graph$set)," genes",sep="")) +   guides(linetype="none",shape="none")+ annotation_logticks(sides = "b")
 pB
 

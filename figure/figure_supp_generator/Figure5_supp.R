@@ -5,7 +5,6 @@ source("figure/figure_supp_generator/library_path.R")
 # Supplementary Pannel 5 A
 
 data3_supp = read.delim(paste("data/data3_supp.tab",sep="") , header=T )
-# data3_supp = read.delim(paste("/home/fbenitiere/data/Projet-NeGA/translational_selection/GC_gap_per_window_per_species_100bp_bins_all_genes.tab",sep="") , header=T )
 
 data3_supp$clade_group = GTDrift_list_species[data3_supp$species,]$clade_group
 data3_supp$from = str_replace_all(data3_supp$from , "from_5prime","From start codons")

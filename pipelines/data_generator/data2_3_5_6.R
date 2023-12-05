@@ -1,4 +1,4 @@
-# Generate Data 2, 3 5 and 6
+# Generate Data 2, 3, 5 and 6
 
 path_data = "/home/fbenitiere/data/"
 
@@ -8,8 +8,6 @@ stop_codon = rownames(code[code$aa_name == "Ter",])
 
 data_conservation = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
 data_conservation_rmfirst1000bp = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
-# data_conservation = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_cons_pergene_25_50_75.tab",sep=""))
-# data_conservation_rmfirst1000bp = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_cons_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
 
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")

@@ -5,8 +5,6 @@ path_data = "/home/fbenitiere/data/"
 
 data_conservation = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
 data_conservation_rmfirst1000bp = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
-# data_conservation = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_cons_pergene_25_50_75.tab",sep=""))
-# data_conservation_rmfirst1000bp = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_cons_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
 
 stderror <- function(x) sd(x , na.rm = T)/sqrt(length(x[!is.na(x)] ))
 
@@ -25,8 +23,6 @@ wobble_associat_wc = list("T"="C",
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
-# GTDrift_list_species = GTDrift_list_species[GTDrift_list_species$clade_group == "Lepido Diptera",]
-
 
 data1 = data.frame()
 for (species in GTDrift_list_species$species){
@@ -96,13 +92,6 @@ for (species in GTDrift_list_species$species){
   vector = (tapply(abond_AG$nb_tRNA_copies , abond_AG$aa_name_scu,function(x) sum(x == max(x))))
   abond_AG = abond_AG[abond_AG$aa_name_scu %in% names(vector[vector != 2]),]
   abond_AG = abond_AG[!duplicated(paste(abond_AG$aa_name_scu)),]$codon
-  
-  # abond_duet = tRNA_optimal[tRNA_optimal$nb_syn_scu == 2 & tRNA_optimal$aa_name %in% c("Lys" , "Glu" , "Gln" , "Arg" , "Leu"),]
-  # abond_duet = abond_duet[ !abond_duet$aa_name %in% abond_duet[abond_duet$nb_tRNA_copies == 0,]$aa_name,]
-  # abond_duet = abond_duet[order(abond_duet$nb_tRNA_copies,decreasing = T),]
-  # vector = (tapply(abond_duet$nb_tRNA_copies , abond_duet$aa_name,function(x) sum(x == max(x))))
-  # abond_duet = abond_duet[abond_duet$aa_name %in% names(vector[vector != 2]),]
-  # abond_duet = abond_duet[!duplicated(abond_duet$aa_name),]$codon
   
   amino_acid_gc2 = tRNA_optimal[tRNA_optimal$nb_syn == 2 ,]$codon
   GC2_obs = rowSums(codon_usage[amino_acid_gc2[substr(amino_acid_gc2,3,3) %in% c("G","C")]],na.rm = T)

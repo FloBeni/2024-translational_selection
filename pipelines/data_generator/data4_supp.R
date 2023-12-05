@@ -9,7 +9,6 @@ proportion = 0.025
 
 options(stringsAsFactors = F, scipen = 999)
 library(stringr)
-# library(seqinr)
 library(stringi)
 library(ggplot2)
 library(dplyr)
@@ -276,6 +275,7 @@ for (method_to_calculate in c("per_gene")){
   taxID = GTDrift_list_species[species,]$NCBI.taxid
   
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
+  
   ###### gu
   tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
   rownames(tRNA_optimal) = tRNA_optimal$codon
@@ -284,7 +284,7 @@ for (method_to_calculate in c("per_gene")){
   
   tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn == 2 , ]
   list_aa = tRNA_optimal[ tRNA_optimal$Wobble_abond  , ]
-  list_aa = names(table(list_aa$aa_name)[table(list_aa$aa_name) != 0])
+  list_aa = list_aa$aa_name
   
   list_codon_wobble = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$Wobble_abond , ]$codon
   list_codon_wc = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$WC_abond  , ]$codon
