@@ -4,7 +4,7 @@ source("figure/figure_main_generator/library_path.R")
 
 # Pannel 2 A
 
-data3 = read.delim("data/data3.tab")
+data3 = read.delim("data/data3_supp.tab")
 dt_graph = data3[data3$species == "Caenorhabditis_elegans", ]
 
 spearman_method_aa = cor.test( dt_graph$tRNASE_copies, dt_graph$obs_codon,method="spearman",exact=F)
@@ -37,7 +37,7 @@ dev.off()
 
 # Pannel 2 B
 
-data1 = read.delim("data/data1.tab")
+data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 dt_graph = data1

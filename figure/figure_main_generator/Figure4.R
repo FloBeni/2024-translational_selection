@@ -4,7 +4,7 @@ source("figure/figure_main_generator/library_path.R")
 
 # Pannel 4 A
 
-data5 = read.delim("data/data5.tab")
+data5 = read.delim("data/data5_supp.tab")
 data5$set = str_replace_all(data5$set,"all,","genes,")
 dt_graph = data5[ data5$species == "Homo_sapiens" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
 
@@ -86,7 +86,7 @@ dev.off()
 
 # Pannel 4 C
 
-data1 = read.delim("data/data1.tab")
+data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,]

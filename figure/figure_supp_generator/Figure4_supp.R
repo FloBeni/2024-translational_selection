@@ -4,7 +4,7 @@ source("figure/figure_supp_generator/library_path.R")
 
 # Supplementary Pannel 4 A
 
-data2_supp = read.delim(paste("data/data2_supp.tab",sep="") , header=T )
+data2_supp = read.delim(paste("data/data8_supp.tab",sep="") , header=T )
 data2_supp$clade_group = GTDrift_list_species[data2_supp$species,]$clade_group
 
 data2_supp$from = str_replace_all(data2_supp$from , "from_5prime","From start codons")

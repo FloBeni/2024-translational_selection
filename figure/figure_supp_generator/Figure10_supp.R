@@ -4,7 +4,7 @@ source("figure/figure_supp_generator/library_path.R")
 
 # Supplementary Pannel 10 A
 
-data1 = read.delim("data/data1.tab")
+data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
 rownames(dnds) = dnds$species

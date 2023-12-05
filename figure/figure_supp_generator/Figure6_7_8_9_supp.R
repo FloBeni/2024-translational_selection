@@ -23,9 +23,9 @@ for (region in c("CDS","Intron")){
     # Supplementary Pannel B
     
     if (ylabel == "SNP density"){
-      data_variant = read.delim("data/data5_supp.tab") 
+      data_variant = read.delim("data/data11_supp.tab") 
     } else if (ylabel == "subsitutions rate"){ 
-      data_variant = read.delim("data/data4_supp.tab")}
+      data_variant = read.delim("data/data10_supp.tab")}
     
     dt_graph = data_variant[ data_variant$method_to_calculate == method_to_calculate & data_variant$group == "Wb_WC_notambiguous" ,]
     

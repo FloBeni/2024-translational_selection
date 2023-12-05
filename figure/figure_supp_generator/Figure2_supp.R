@@ -4,7 +4,7 @@ source("figure/figure_supp_generator/library_path.R")
 
 # Supplementary Pannel 2 A
 
-data1_supp = read.delim("data/data1_supp.tab")
+data1_supp = read.delim("data/data7_supp.tab")
 dt_graph = data1_supp[data1_supp$species == "Drosophila_melanogaster",]
 
 spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_transcriptome_count,method="spearman",exact=F)

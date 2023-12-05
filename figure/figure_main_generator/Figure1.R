@@ -36,7 +36,7 @@ pA
 
 # Pannel 1 B
 
-data1 = read.delim("data/data1.tab")
+data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 dt_graph = data1
@@ -86,7 +86,7 @@ dev.off()
 
 # Pannel 1 C
 
-data2 = read.delim("data/data2.tab")
+data2 = read.delim("data/data2_supp.tab")
 dt_graph = data2[data2$species == "Homo_sapiens" ,]
 spearman_method_aa = cor.test( dt_graph$GCi, dt_graph$GC3,method="spearman",exact=F)
 

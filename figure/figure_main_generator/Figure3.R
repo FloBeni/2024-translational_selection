@@ -8,7 +8,7 @@ wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
 # Pannel 3 A
 
-data4 = read.delim("data/data4.tab")
+data4 = read.delim("data/data4_supp.tab")
 data4$Var1 = factor(data4$Var1,levels =  names(set_color))
 
 dt_graph = data4[data4$species == "metazoa",] 
