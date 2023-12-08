@@ -1,5 +1,20 @@
-# Generate Data 1
 library(stringi)
+library(ggplot2)
+library(seqinr)
+library(stringr)
+library(ape)
+library(patchwork)
+library(png)
+library(ggtree)
+library(caper)
+library(ggExtra)
+library(phylolm)
+library(imager)
+library(ggplot2)
+library(RColorBrewer)
+library(stringi)
+library(forcats)
+library(scales)
 
 path_data = "/home/fbenitiere/data/"
 
@@ -12,7 +27,7 @@ code$nb_syn = table(code$aa_name)[code$aa_name]
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
-data1 = read.delim("data/data1.tab")
+data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
@@ -94,8 +109,23 @@ for (species in data1$species){
 data4 = data.frame()
 for ( codon in unique(code$codon)){
   total = nrow(data[data$codon == codon,])
-  # dc = data.frame(table(data[data$codon == codon,"rank"]))
-  dc = data.frame(table(data[data$codon == codon,"expressed_overused_background"] > 0))
+  dc =  data.frame(
+    group = "Best DUC",
+    Freq = sum(data[data$codon == codon,"rank"] == 1 & data[data$codon == codon,"expressed_overused_background"] > 0)
+  )
+  
+  dc = rbind(dc,
+                data.frame(
+                  group = "DUC",
+                  Freq = sum(data[data$codon == codon,"rank"] != 1 & data[data$codon == codon,"expressed_overused_background"] > 0)
+                ))
+  
+  dc = rbind(dc,
+                data.frame(
+                  group = "not DUC",
+                  Freq = sum(data[data$codon == codon,"expressed_overused_background"] <= 0)
+                ))
+  
   dc$Prop = dc$Freq / total
   dc$total = total
   dc$amino_acid = paste(code[codon,]$aa_name , " (",code[codon,]$nb_syn,")",sep="")
@@ -104,12 +134,7 @@ for ( codon in unique(code$codon)){
 }
 
 
-data4$rank = factor(data4$Var1,levels =  c(1:6))
-data4$Var1 = as.character(data4$Var1)
-data4[data4$rank == 1,"categorie"] = "Best DUC"
-data4[data4$Var1 == "TRUE","categorie"] = "DUC"
-data4[data4$Var1 == "FALSE","categorie"] = "not DUC"
-data4$categorie = factor(data4$categorie,levels =  c("not DUC","DUC"))
+data4$categorie = factor(data4$group,levels =  c("Best DUC","DUC","not DUC"))
 dt_graph = data4
 
 
@@ -140,8 +165,7 @@ p3A = ggplot(dt_graph, aes(x = "" , y = Prop, fill = fct_inorder(categorie))) +
   )  +
   ## important additional element
   guides(fill = guide_legend(byrow = TRUE))+
-  # scale_fill_manual("",values = c("#33A02C","#B2DF8A","#FF7F00","#FDBF6F","#FB9A99","#E31A1C"))  + 
-  scale_fill_manual("",values = c("#FB9A99","#B2DF8A","#FF7F00","#FDBF6F","#FB9A99","#E31A1C"))
+  scale_fill_manual("",values = c("#33A02C","#B2DF8A","#FB9A99"))
   # ggtitle(paste("Mecopterida"," (",dt_graph$total[1],")",sep=""))
 p3A
 

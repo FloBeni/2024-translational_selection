@@ -11,7 +11,7 @@ data1 = data1[data1$clade_group == "Mecopterida",]
 
 dt_graph = data1
 
-ylabel = "gc_abond_ag"
+ylabel = "g_abond_ag"
 xlabel = "gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 lm_y = dt_graph[,ylabel]
