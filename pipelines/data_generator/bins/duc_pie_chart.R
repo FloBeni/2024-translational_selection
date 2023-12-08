@@ -104,9 +104,9 @@ for ( codon in unique(code$codon)){
 }
 
 
-# data4$Var1 = factor(data4$Var1,levels =  c(1:6))
+data4$rank = factor(data4$Var1,levels =  c(1:6))
 data4$Var1 = as.character(data4$Var1)
-# data4 = data4[order(data4$Var1),]
+data4[data4$rank == 1,"categorie"] = "Best DUC"
 data4[data4$Var1 == "TRUE","categorie"] = "DUC"
 data4[data4$Var1 == "FALSE","categorie"] = "not DUC"
 data4$categorie = factor(data4$categorie,levels =  c("not DUC","DUC"))
