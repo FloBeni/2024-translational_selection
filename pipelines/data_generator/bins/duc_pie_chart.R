@@ -135,12 +135,14 @@ for ( codon in unique(code$codon)){
 
 
 data4$categorie = factor(data4$group,levels =  c("Best DUC","DUC","not DUC"))
+data4$codon = str_replace_all(data4$codon,"T","U")
 dt_graph = data4
 
 
 
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
-dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) )
+vect_debut = str_replace_all(vect_debut,"T","U")
+dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) )
 
 dt_graph$title = factor(paste(dt_graph$codon,sep=""),  
                         sapply(levels(dt_graph$codon),function(x) paste(x,sep="")) )

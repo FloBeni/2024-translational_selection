@@ -10,11 +10,15 @@ wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
 data4 = read.delim("data/data4_supp.tab")
 data4$Var1 = factor(data4$Var1,levels =  names(set_color))
+data4$codon = str_replace_all(data4$codon,"T","U")
 
 dt_graph = data4[data4$species == "metazoa",] 
 
-vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA") 
-dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) ) 
+vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
+vect_debut = str_replace_all(vect_debut,"T","U")
+dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
+
+
 
 dt_graph$title = factor(paste(dt_graph$codon,sep="") , 
                         sapply(levels(dt_graph$codon),function(x) paste(x,sep="")) )
@@ -48,22 +52,23 @@ dev.off()
 # Pannel 3 B
 
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA","XX")
+vect_debut = str_replace_all(vect_debut,"T","U")
 dt_graph = data4
 dt_graph$amino_acid = str_replace_all(dt_graph$amino_acid," [(][:digit:][)]","")
 dt_graph = dt_graph[dt_graph$species == "Homo_sapiens",]
 dc = dt_graph[dt_graph$amino_acid == "Thr",]
 dc$amino_acid = "qua"
-dc$codon = c("XXA","XXT","XXC","XXG")
+dc$codon = c("XXA","XXU","XXC","XXG")
 dt_graph = rbind(dt_graph,dc)
 
-dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) )
+dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) )
 dt_graph$title = dt_graph$codon
 
 amino_acid_list = unique(c(dt_graph[order(dt_graph$codon)[seq(1,68,4)],]$amino_acid,dt_graph[order(dt_graph$codon)[seq(3,68,4)],]$amino_acid))
 
 pB = ggplot(dt_graph[dt_graph$amino_acid == "Met",], aes(x = "" , y = Prop , group=amino_acid, fill = fct_inorder(Var1))) + theme_void()  
 for (aa in amino_acid_list[!amino_acid_list %in% c("qua","Met","Trp","Ter")]){
-  title_label = c("XXA","XXT","XXC","XXG",as.character(dt_graph[dt_graph$amino_acid == aa,]$codon))
+  title_label = c("XXA","XXU","XXC","XXG",as.character(dt_graph[dt_graph$amino_acid == aa,]$codon))
   names(title_label) = title_label
   title_label[1:4] =  ""
   if (nrow(dt_graph[dt_graph$amino_acid == aa,]) <= 4){
@@ -108,17 +113,17 @@ dt_graph$amino_acid = str_replace_all(dt_graph$amino_acid," [(][:digit:][)]","")
 dt_graph = dt_graph[dt_graph$species == "Caenorhabditis_elegans",]
 dc = dt_graph[dt_graph$amino_acid == "Thr",]
 dc$amino_acid = "qua"
-dc$codon = c("XXA","XXT","XXC","XXG")
+dc$codon = c("XXA","XXU","XXC","XXG")
 dt_graph = rbind(dt_graph,dc)
 
-dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) )
+dt_graph$codon = factor(dt_graph$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) )
 
 amino_acid_list = unique(c(dt_graph[order(dt_graph$codon)[seq(1,68,4)],]$amino_acid,dt_graph[order(dt_graph$codon)[seq(3,68,4)],]$amino_acid))
 
 
 pC = ggplot(dt_graph[dt_graph$amino_acid == "Met",], aes(x = "" , y = Prop , group=amino_acid, fill = fct_inorder(Var1))) + theme_void()
 for (aa in amino_acid_list[!amino_acid_list %in% c("qua","Met","Trp","Ter")]){
-  title_label = c("XXA","XXT","XXC","XXG",as.character(dt_graph[dt_graph$amino_acid == aa,]$codon))
+  title_label = c("XXA","XXU","XXC","XXG",as.character(dt_graph[dt_graph$amino_acid == aa,]$codon))
   names(title_label) = title_label
   title_label[1:4] =  ""
   if (nrow(dt_graph[dt_graph$amino_acid == aa,]) <= 4){
@@ -183,10 +188,10 @@ Drosophila_melanogaster = readPNG(paste(path_require,"Drosophila_melanogaster.pn
   
   par(mar=c(0, 0, 1.5, 0))
   plot(imgA, axes=FALSE)
-  mtext("A",at=-11,adj=-1.5, side=2, line=1, font=2, cex=1.4,las=2)
+  mtext("A",at=-40,adj=-1.5, side=2, line=1, font=2, cex=1.4,las=2)
+  
   par(mar=c(0, 0, 0.2, 0))
   plot(imgB, axes=FALSE)
-  
   par(mar=c(0, 1, 1, 0))
   plot(imgC, axes=FALSE)
   mtext("B",at=-50,adj=-1, side=2, line=1, font=2, cex=1.4,las=2)

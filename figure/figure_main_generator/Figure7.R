@@ -40,7 +40,12 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
                                                            pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
   )  + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
   ylab("Average GC of most abundant tRNAs A/G") + 
-  xlab("Average per gene GCi")
+  xlab("Average per gene GCi") +
+  labs(
+    caption = substitute(paste("LM: "," R"^2,lm_eqn," / PGLS:"," R"^2,pgls_eq), list(nbspecies=nrow(dt_graph),
+                                                                                     lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
+                                                                                     pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird)))),
+    )
 
 pA
 
@@ -52,7 +57,7 @@ dev.off()
 # Pannel 7 B
 dt_graph = data1
 
-ylabel = "gc_duc"
+ylabel = "c_duc_ic"
 xlabel = "gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 lm_y = dt_graph[,ylabel]
@@ -97,7 +102,7 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
                                                            lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
                                                            pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
   ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
-  ylab("Average GC of most selected codon set") + 
+  ylab("Average GC of most selected codon set\n (NNC decoded through I:C WBp and NNU)") + 
   xlab("Average per gene GCi")
 
 pB
