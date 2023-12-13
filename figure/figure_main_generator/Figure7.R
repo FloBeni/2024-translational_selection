@@ -102,7 +102,7 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
                                                            lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
                                                            pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
   ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
-  ylab("Average GC of most selected codon set\n (NNC decoded through I:C WBp and NNU)") + 
+  ylab("Average GC of most selected codon set\n(NNC decoded through I:C WBp and NNU)") + 
   xlab("Average per gene GCi")
 
 pB
