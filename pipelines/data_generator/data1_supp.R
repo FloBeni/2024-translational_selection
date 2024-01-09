@@ -4,6 +4,9 @@ library(stringi)
 
 path_data = "/home/fbenitiere/data/"
 
+busco_tab = read.delim("/home/fbenitiere/data/Projet-SplicedVariants/DnDs/Metazoa_clades_v2/gene_No_aas_cds")
+rownames(busco_tab) = busco_tab$species
+
 data_conservation = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
 data_conservation_rmfirst1000bp = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
 
@@ -57,6 +60,7 @@ for (species in GTDrift_list_species$species){
   codon_usage = codon_usage[order(codon_usage$length_cds,decreasing = T),]
   codon_usage = codon_usage[!duplicated(codon_usage$gene_id),]
   codon_usage = codon_usage[!is.na(codon_usage$median_fpkm) ,]
+  prop_cds_expressed = nrow(codon_usage[codon_usage$median_fpkm != 0 ,]) / nrow(codon_usage)
   codon_usage = codon_usage[codon_usage$median_fpkm != 0 ,]
   
   observation = colSums( codon_usage[3:70] * codon_usage$median_fpkm , na.rm = T )
@@ -65,7 +69,6 @@ for (species in GTDrift_list_species$species){
   rownames(tRNA_optimal) = tRNA_optimal$codon
   tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
   nb_codon_not_decoded = sum(!tRNA_optimal$decoded)
-  
   
   aa_data = data.frame()
   for (amino_acid in unique(code$aa_name)){
@@ -190,7 +193,10 @@ for (species in GTDrift_list_species$species){
   dt_species = rbind(dt_species,data.frame(
     species,
     tRNA_GFF,
-    median_copy_tRNA = median(tRNA_optimal$nb_tRNA_copies / nb_genes),
+    prop_cds_expressed,
+    # median_copy_tRNA = median(tRNA_optimal$nb_tRNA_copies / nb_genes),
+    median_copy_tRNA_ponderate = median(tRNA_optimal$nb_tRNA_copies )/ nb_genes,
+    median_copy_tRNA = median(tRNA_optimal$nb_tRNA_copies ),
     nb_genes,
     nb_genes_filtered = nrow(codon_usage),
     nb_codon_not_decoded,
@@ -207,6 +213,7 @@ for (species in GTDrift_list_species$species){
     c_duc_gu = sum(substr(DUC_GU,3,3) %in% c("C")) / length(DUC_GU),
     ct_abundant_tRNA4 = sum(substr(abundant_tRNA,3,3) %in% c("C","T")) / length(abundant_tRNA),
     
+    gc3_expression = sum(observation[c("C3","G3")],na.rm = T) / sum(observation[c("A3","T3","C3","G3")],na.rm = T),
     ct3 = mean(CT3_obs / ATGC3_obs,na.rm=T),
     gc3 = mean(GC3_obs / ATGC3_obs,na.rm=T),
     gc3_top5 = tapply( GC3_obs / ATGC3_obs   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],
@@ -297,7 +304,9 @@ for (species in GTDrift_list_species$species){
 
       dt_translational_selection = data.frame(
         nb_aa = length(list_aa),
-        average_RTF_abundant_tRNA = mean( tRNA_optimal[list_COA,]$RTF[tRNA_optimal[list_COA,]$RTF != 0] ) ,
+        nb_busco = busco_tab[species,]$No_CDS_Busco,
+        average_RTF_abundant_tRNA = mean( tRNA_optimal[list_COA,]$RTF[tRNA_optimal[list_COA,]$WC_abond] ) ,
+        average_RTFprime_abundant_tRNA = mean( tRNA_optimal[list_COA,]$RTF_prime[tRNA_optimal[list_COA,]$WC_abond ] ) ,
         expressed_overused = 100*(round(tapply( COA_obs / COA_neg_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
                                     round( mean( (COA_obs / COA_neg_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) ,
         expressed_overused_background = 100*((round(tapply( COA_obs / COA_neg_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
@@ -311,7 +320,9 @@ for (species in GTDrift_list_species$species){
     } else {
       dt_translational_selection = data.frame(
         nb_aa = NA,
+        nb_busco = NA,
         average_RTF_abundant_tRNA = NA,
+        average_RTFprime_abundant_tRNA = NA,
         expressed_overused = NA,
         expressed_overused_background = NA,
         constraint_overused = NA

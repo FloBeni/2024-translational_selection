@@ -140,11 +140,13 @@ for( species in list_species$species ){
   code_table$nb_tRNA_copies = sapply(code_table$codon,function(codon) sum(tRNASE_copies_table[codon],na.rm = T))
   code_table$nb_tRNA_copies_aa = sapply(code_table$aa_name,function(aa) sum(codon_data[codon_data$amino_acid == aa,]$tRNA_WC_copies,na.rm = T))
   code_table$RTF = code_table$nb_tRNA_copies / (code_table$nb_tRNA_copies_aa / code_table$nb_syn)
-  
+  code_table$decoding_tRNA = tapply(code_table$nb_tRNA_copies != 0 , code_table$aa_name , sum)[code_table$aa_name]
+  code_table$RTF_prime = code_table$nb_tRNA_copies / (code_table$nb_tRNA_copies_aa / code_table$decoding_tRNA)
+  code_table = code_table[,-which(colnames(code_table) == "decoding_tRNA")]
   rownames(code_table) = code_table$anticodon
   
   write.table(code_table,paste(path,"/decoding_table.tab",sep=""),sep="\t",quote=F,row.names=F)
-  bash_command <- paste("gzip ",path,"/decoding_table.tab",sep="")
+  bash_command <- paste("gzip -f ",path,"/decoding_table.tab",sep="")
   system(bash_command)
   
 }

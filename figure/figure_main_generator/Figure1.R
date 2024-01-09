@@ -54,7 +54,7 @@ shorebird <- comparative.data(arbrePhylo,
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   # geom_errorbar(aes(ymin = gc3-sqrt(var_gc3), ymax = gc3+sqrt(var_gc3)),alpha=0.2) +
   # geom_errorbarh(aes(xmin = gci-sqrt(var_gci), xmax =gci+sqrt(var_gci)),alpha=0.2) +
-  geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
+  geom_point(aes(fill=clade_group),size=4,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=20, family="economica"),
