@@ -1,7 +1,6 @@
 # Generate Figure 1
 source("figure/figure_main_generator/library_path.R")
 
-
 # Pannel 1 A
 
 arbrePhylotips = arbrePhylo
@@ -19,9 +18,14 @@ for (clade in  names(listNomSpecies)){print(clade)
   edge_clade[ which.edge(arbrePhylotips, arbrePhylotips$edge[,2][edge_clade == clade] ) ] = clade
 }
 node_metadata = data.frame(node=arbrePhylotips$edge[,2],color=edge_clade)
-node_metadata$color = factor(node_metadata$color, levels = c("Mecopterida","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
-pA = ggtree(arbrePhylotips,layout="roundrect",size=1)
-# %>% flip(264, 375)
+# node_metadata$color = factor(node_metadata$color, levels = c("Mecopterida","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
+node_metadata$color = factor(node_metadata$color, levels = c("Diptera","Lepidoptera","Coleoptera","Hymenoptera",
+                                                             "Other Insecta","Nematoda","Other Metazoans",
+                                                             "Mammalia","Aves","Other Tetrapods","Teleostei"))
+
+offspring.tbl_tree_item <- utils::getFromNamespace(".offspring.tbl_tree_item", "tidytree") # to use flip deprecated
+
+pA = ggtree(arbrePhylotips,layout="roundrect",size=1) %>% flip(264, 375)
 pA <- pA %<+% node_metadata  + aes(color=color) + 
   scale_color_manual("Clade",values=Clade_color[unique(edge_clade)]) + theme(
     panel.background = element_rect(fill = "white", linetype = "dashed")
@@ -29,9 +33,9 @@ pA <- pA %<+% node_metadata  + aes(color=color) +
 
 pA
 
-# jpeg(paste(path_pannel,"p1A.jpg",sep=""), width = 1500/1, height = 3000/1,res=250/1)
-# print(pA)
-# dev.off()
+jpeg(paste(path_pannel,"p1A.jpg",sep=""), width = 1500/1, height = 3000/1,res=250/1)
+print(pA)
+dev.off()
 
 
 # Pannel 1 B
@@ -44,14 +48,12 @@ dt_graph = data1
 ylabel = "gc3"
 xlabel = "gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
-lm_y = dt_graph[,ylabel]
-lm_x = dt_graph[,xlabel]
-shorebird <- comparative.data(arbrePhylo, 
-                              data.frame(species=dt_graph$species,
-                                         pgls_x=lm_x,
-                                         pgls_y=lm_y), species, vcv=TRUE)
+
+
+model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo)
 
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
+  geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   # geom_errorbar(aes(ymin = gc3-sqrt(var_gc3), ymax = gc3+sqrt(var_gc3)),alpha=0.2) +
   # geom_errorbarh(aes(xmin = gci-sqrt(var_gci), xmax =gci+sqrt(var_gci)),alpha=0.2) +
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=0.7) + theme_bw() + theme(
@@ -68,12 +70,8 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
   ylab("Average per gene GC3") +
   xlab("Average per gene GCi") +
   labs(
-    caption = substitute(paste("LM: "," R"^2,lm_eqn," / PGLS:"," R"^2,pgls_eq), list(nbspecies=nrow(dt_graph),
-                                                                                     lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                                                     pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird)))),
-    title = substitute(paste("N = ",nbspecies," species"), list(nbspecies=nrow(dt_graph),
-                                                                lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                                pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
+    caption = substitute(paste(model,": AIC = ",aic,", R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) 
 pB
 
@@ -223,7 +221,7 @@ bee<-readPNG(paste(path_require,"bee.png",sep=""))
   rasterImage(monkey,xleft=0+xaxis, ybottom=0+yaxis, xright=900/5+xaxis, ytop=-900/5+yaxis)
   
   xcel=1300
-  ycel=1050
+  ycel=1100
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=0+ycel, xright=1000/5+xcel, ytop=-350/5+ycel)
   
   xaxis=1100

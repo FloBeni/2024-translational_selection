@@ -9,12 +9,10 @@ stop_codon = rownames(code[code$aa_name == "Ter",])
 data_conservation = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
 data_conservation_rmfirst1000bp = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
 
-
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
-
-species_list = c("Caenorhabditis_elegans","Drosophila_melanogaster","Homo_sapiens","Musca_domestica")
+species_list = c( "Caenorhabditis_elegans" , "Drosophila_melanogaster" , "Homo_sapiens" , "Musca_domestica" )
 
 data2 = data.frame()
 data3 = data.frame()

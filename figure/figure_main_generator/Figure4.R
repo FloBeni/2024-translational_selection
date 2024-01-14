@@ -98,7 +98,7 @@ pC = ggplot(data1,aes(y=expressed_overused_background_WB_WC_notambiguous,x=clade
     axis.title.x = element_text(color="black",angle = 50, size=25,family="economica"),
     axis.title.y = element_text(color="black", size=25, family="economica",margin = margin(t = 0, r = 20, b = 0, l = 0)),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
-    axis.text.x =  element_text(color="black",vjust=.5, size=0,angle = 50, family="economica"),
+    axis.text.x =  element_text(color="black",hjust=1, size=20,angle = 50, family="economica"),
     title =  element_text(color="black", size=0, family="economica"),
     legend.text =  element_text(color="black", size=20, family="economica")
   ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
@@ -148,13 +148,14 @@ clade_png<-readPNG(paste(path_require,"clade.png",sep=""))
   xcel=500
   ycel=-350
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/1.5-ycel, xright=1000/1.5+xcel, ytop=0-ycel)
-  par(mar=c(1,12, 0, 13))
+  par(mar=c(1,10, 0, 9))
+  # par(mar=c(1,12, 0, 13))
   plot(imgC, axes=FALSE)
   mtext("C",at=200,adj=1, side=2, line=1, font=2, cex=1.7,las=2)
-  par(mar=c(1,0, 0, 0))
-  xmonkey=5500
-  ymonkey=500
-  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/.4+ymonkey, xright=500/.4+xmonkey, ytop=ymonkey)
+  # par(mar=c(1,0, 0, 0))
+  # xmonkey=5500
+  # ymonkey=500
+  # rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/.4+ymonkey, xright=500/.4+xmonkey, ytop=ymonkey)
   dev.off()
 }
 
