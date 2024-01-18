@@ -25,11 +25,11 @@ path_require = "figure/images_library/"
 
 wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
-Clade_color = c("Other Metazoans"="#f5b48a","Diptera"="red","Other Tetrapods"="#A6CEE3","Other Insecta"="#FF7F00",
+Clade_color = c("Other Metazoans"="#f5b48a","Mecopterida"="red","Other Tetrapods"="#A6CEE3","Other Insecta"="#FF7F00",
                 Nematoda="#B2DF8A",Teleostei="#1F78B4",Hymenoptera="#ba8e18",Aves="#5b5b5b",Mammalia="#66281A",Lepidoptera="#33A02C",Coleoptera="#f1dd41"
 )
 
-Clade_color = Clade_color[c("Embryophyta","Diptera","Lepidoptera","Coleoptera","Hymenoptera",
+Clade_color = Clade_color[c("Embryophyta","Diptera","Lepidoptera","Mecopterida","Coleoptera","Hymenoptera",
                             "Other Insecta","Nematoda","Other Metazoans",
                             "Mammalia","Aves","Other Tetrapods","Teleostei")]
 
@@ -43,13 +43,13 @@ rownames(life_history_traits) = paste(life_history_traits$species,life_history_t
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
-GTDrift_list_species[GTDrift_list_species$clade == "Coleoptera" ,]$clade_group = "Coleoptera"
-GTDrift_list_species[GTDrift_list_species$clade == "Diptera" ,]$clade_group = "Diptera"
-GTDrift_list_species[GTDrift_list_species$clade == "Lepidoptera" ,]$clade_group = "Lepidoptera"
+GTDrift_list_species[GTDrift_list_species$clade == "Coleoptera" ,]$clade_group = "Other Insecta"
+GTDrift_list_species[GTDrift_list_species$clade == "Diptera" ,]$clade_group = "Mecopterida"
+GTDrift_list_species[GTDrift_list_species$clade == "Lepidoptera" ,]$clade_group = "Mecopterida"
 GTDrift_list_species[GTDrift_list_species$clade_group == "Other Invertebrates" ,]$clade_group = "Other Metazoans"
 GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates" ,]$clade_group = "Other Tetrapods"
 
-GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = c("Diptera","Lepidoptera","Coleoptera","Hymenoptera",
+GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = c("Diptera","Lepidoptera","Mecopterida","Coleoptera","Hymenoptera",
                                                                                         "Other Insecta","Nematoda",
                                                                                         "Mammalia","Aves","Other Tetrapods","Teleostei","Other Metazoans"))
 
@@ -94,6 +94,18 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
     intercept = coef(fit)[1]
   ))
   
+  fit <- phylolm(y~x, phy = shorebird$phy, data = shorebird$data, model = "lambda")
+  summ_fit = summary(fit)
+  dt_fit = rbind(dt_fit,data.frame(
+    model="lambda",
+    p_val_slope = summ_fit$coefficients[2,4],
+    r.squared = summ_fit$r.squared,
+    adj.r.squared = summ_fit$adj.r.squared,
+    aic = AIC(fit),
+    slope = coef(fit)[2],
+    intercept = coef(fit)[1]
+  ))
+  
   model_sub = dt_fit[dt_fit$aic != min(dt_fit$aic),]
   dt_fit = dt_fit[dt_fit$aic == min(dt_fit$aic),]
   
@@ -104,7 +116,7 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
   model_non_opti = ""
   
   if ( length(tree) != 1){
-    model_non_opti = paste("/ ",model_sub$model,": AIC = ",round(model_sub$aic),sep="")
+    model_non_opti = paste(paste("/ ",model_sub$model,": AIC = ",round(model_sub$aic),sep=""),collapse = " ")
   }
   return(list(model=model,aic=AIC,r2=R2,pvalue=pvalue,model_non_opti=model_non_opti,slope=dt_fit$slope,intercept=dt_fit$intercept))
 } 

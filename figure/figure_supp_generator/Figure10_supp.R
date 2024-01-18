@@ -24,6 +24,9 @@ shorebird <- comparative.data(arbrePhylo,
                                          pgls_x=lm_x,
                                          pgls_y=lm_y), species, vcv=TRUE)
 
+model_to_use = fitted_model(x=lm_x,y=lm_y,label=dt_graph$species,tree=arbrePhylo)
+
+GLS(shorebird)[[1]]
 
 pA = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
@@ -68,6 +71,7 @@ shorebird <- comparative.data(arbrePhylo,
                                          pgls_x=lm_x,
                                          pgls_y=lm_y), species, vcv=TRUE)
 
+GLS(shorebird)[[1]]
 
 pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
@@ -112,6 +116,7 @@ shorebird <- comparative.data(arbrePhylo,
                                          pgls_x=lm_x,
                                          pgls_y=lm_y), species, vcv=TRUE)
 
+GLS(shorebird)[[1]]
 
 pC = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(

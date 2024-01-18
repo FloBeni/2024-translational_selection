@@ -19,7 +19,7 @@ for (clade in  names(listNomSpecies)){print(clade)
 }
 node_metadata = data.frame(node=arbrePhylotips$edge[,2],color=edge_clade)
 # node_metadata$color = factor(node_metadata$color, levels = c("Mecopterida","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
-node_metadata$color = factor(node_metadata$color, levels = c("Diptera","Lepidoptera","Coleoptera","Hymenoptera",
+node_metadata$color = factor(node_metadata$color, levels = c("Diptera","Lepidoptera","Mecopterida","Coleoptera","Hymenoptera",
                                                              "Other Insecta","Nematoda","Other Metazoans",
                                                              "Mammalia","Aves","Other Tetrapods","Teleostei"))
 

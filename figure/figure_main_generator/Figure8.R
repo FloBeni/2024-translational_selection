@@ -20,34 +20,43 @@ shorebird <- comparative.data(arbrePhylo,
                               data.frame(species=dt_graph$species,
                                          pgls_x=lm_x, pgls_y=lm_y), species, vcv=TRUE)
 
+GLS(shorebird)[[1]]
+model_to_use = fitted_model(x=lm_x,y=lm_y,label=dt_graph$species,tree=arbrePhylo)
 
 pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
-  geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
+  geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
+  geom_point(aes(fill=clade_group),size=5,pch=21,alpha=0.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
     axis.text.x =  element_text(color="black", size=24, family="economica"),
-    title =  element_text(color="black", size=20, family="economica"),
+    title =  element_text(color="black", size=25, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.3, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
+  )+ guides(fill = guide_legend(override.aes = list(size=5))) + 
+  # theme(legend.position="none")+
+  scale_y_continuous(breaks=seq(0,50,5), labels=paste(seq(0,50,5),"%")) +
+  # labs(
+  #   caption = substitute(paste("LM: "," R"^2,lm_eqn," / PGLS:"," R"^2,pgls_eq), list(nbspecies=nrow(dt_graph),
+  #                                                                                    lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
+  #                                                                                    pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird)))),
+  #   title = substitute(paste("N = ",nbspecies," species"), list(nbspecies=nrow(dt_graph),
+  #                                                           lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
+  #                                                           pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
+  # ) +
   labs(
-    caption = substitute(paste("LM: "," R"^2,lm_eqn," / PGLS:"," R"^2,pgls_eq), list(nbspecies=nrow(dt_graph),
-                                                                                     lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                                                     pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird)))),
-    title = substitute(paste("N = ",nbspecies," species"), list(nbspecies=nrow(dt_graph),
-                                                            lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                            pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
-  ) + scale_fill_manual(values=Clade_color) +
+    caption = substitute(paste(model,": AIC = ",aic,", R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    title = paste("N = ",nrow(dt_graph)," species",sep="")
+  ) + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Translational selection intensity") + 
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days log scale)")+ annotation_logticks(sides="b") 
 
 pA
 
-jpeg(paste(path_pannel,"F8pA.jpg",sep=""),width = 4200/2, height = 4000/2,res=700/2)
+jpeg(paste(path_pannel,"F8pA.jpg",sep=""), width = 9000/resolution, height = 6000/resolution,res=900/resolution)
 print(pA)
 dev.off()
 

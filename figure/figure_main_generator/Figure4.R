@@ -48,11 +48,12 @@ dev.off()
 # Pannel 4 B
 
 dt_graph = data5[ data5$species == "Caenorhabditis_elegans" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
-
+dt_graph[dt_graph$categorie=="POC-matching triplets (POCMT)",]$categorie = "Intronic triplets control"
+dt_graph[dt_graph$categorie=="Putative optimal codons (POC)",]$categorie = "Optimal codons"
 pB = ggplot(dt_graph ,
              aes(x=fpkm ,y=freq*100,fill=categorie,col=categorie))  + geom_point(alpha=0)+
-  geom_line(data=dt_graph,size=2) +
-  geom_point(data=dt_graph,pch=21,col="black",size=4)+
+  geom_line(data= dt_graph,size=2) +
+  geom_point(data= dt_graph ,pch=21,col="black",size=4)+
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
@@ -71,15 +72,15 @@ pB = ggplot(dt_graph ,
          shape = guide_legend(order = 2),
   )+          scale_x_log10(
     breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
-    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000))+ ylim(0.3*100,0.7*100) +
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
-  geom_point(data =  dt_graph[!grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#E31A1C",size=6)+
-  geom_point(data = dt_graph[grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#FB9A99",size=6)+
+    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.01,300))+ ylim(0.3*100,0.7*100) + 
+  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("Intronic",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
+  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("Intronic",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
+  geom_point(data =  dt_graph[!grepl("Intronic",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#E31A1C",size=6)+
+  geom_point(data = dt_graph[grepl("Intronic",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#FB9A99",size=6)+
   ggtitle(paste(unique(dt_graph$set)," genes",sep="")) +   guides(linetype="none",shape="none")+ annotation_logticks(sides = "b")
 pB
 
-jpeg(paste(path_pannel,"p4B.jpg",sep=""),  width = 12000/2,  5500/2,res=900/1.8)
+jpeg(paste(path_pannel,"p4B.jpg",sep=""),  width = 12000/2,  5500/2,res=1000/1.8)
 print(pB)
 dev.off()
 
