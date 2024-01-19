@@ -5,16 +5,21 @@ source("figure/figure_main_generator/library_path.R")
 # Pannel 4 A
 
 data5 = read.delim("data/data5_supp.tab")
-data5$set = str_replace_all(data5$set,"all,","genes,")
-dt_graph = data5[ data5$species == "Homo_sapiens" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
+data5$gene_set = str_replace_all(data5$gene_set,"all,","genes,")
+data5[data5$categorie=="POC-matching triplets (POCMT)",]$categorie = "control"
+data5[data5$categorie=="Putative optimal codons (POC)",]$categorie = ""
+
+dt_graph = data5[ data5$species == "Homo_sapiens"  ,]
+
+
 
 
 pA = ggplot(dt_graph ,
-             aes(x=fpkm ,y=freq*100,fill=categorie,col=categorie))  + geom_point(alpha=0)+
+             aes(x=fpkm ,y=freq*100,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2) +
   geom_point(data=dt_graph,pch=21,col="black",size=4)+
-  scale_fill_manual(values=set_color) +
-  scale_color_manual(values=set_color) +
+  scale_fill_manual(values=set_color[c(2,1,4,3)]) +
+  scale_color_manual(values=set_color[c(2,1,4,3)]) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
   xlab("Gene expression level (FPKM, log scale)") + ylab("Codon set frequency (%)") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=25,family="economica"),
@@ -32,12 +37,11 @@ pA = ggplot(dt_graph ,
   ) + scale_x_log10(
     breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
     labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000)) + ylim(0.3*100,0.7*100) +
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
-  geom_point(data =  dt_graph[!grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#E31A1C",size=6)+
-  geom_point(data = dt_graph[grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#FB9A99",size=6)+
-  ggtitle(paste(unique(dt_graph$set)," genes",sep="")) +   guides(fill="none",color="none",linetype="none",shape="none")+ annotation_logticks(sides = "b")
-
+  # geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
+  # geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("POCMT",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
+  # geom_point(data =  dt_graph[!grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#E31A1C",size=6)+
+  # geom_point(data = dt_graph[grepl("POCMT",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#FB9A99",size=6)+
+  ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) + annotation_logticks(sides = "b")+   guides(fill="none",color="none",linetype="none",shape="none")
 pA
 
 jpeg(paste(path_pannel,"p4A.jpg",sep=""),  width = 7500/2,  5400/2,res=900/1.8)
@@ -47,15 +51,14 @@ dev.off()
 
 # Pannel 4 B
 
-dt_graph = data5[ data5$species == "Caenorhabditis_elegans" & grepl("Wb_WC_notambiguous",data5$type_aa) ,]
-dt_graph[dt_graph$categorie=="POC-matching triplets (POCMT)",]$categorie = "Intronic triplets control"
-dt_graph[dt_graph$categorie=="Putative optimal codons (POC)",]$categorie = "Optimal codons"
+dt_graph = data5[ data5$species == "Caenorhabditis_elegans",]
+
 pB = ggplot(dt_graph ,
-             aes(x=fpkm ,y=freq*100,fill=categorie,col=categorie))  + geom_point(alpha=0)+
-  geom_line(data= dt_graph,size=2) +
-  geom_point(data= dt_graph ,pch=21,col="black",size=4)+
-  scale_fill_manual(values=set_color) +
-  scale_color_manual(values=set_color) +
+            aes(x=fpkm ,y=freq*100,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
+  geom_line(data=dt_graph,size=2) +
+  geom_point(data=dt_graph,pch=21,col="black",size=4)+
+  scale_fill_manual(values=set_color[c(2,1,4,3)]) +
+  scale_color_manual(values=set_color[c(2,1,4,3)]) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
   xlab("Gene expression level (FPKM, log scale)") + ylab("Codon set frequency (%)") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=25,family="economica"),
@@ -70,14 +73,14 @@ pB = ggplot(dt_graph ,
          color = guide_legend(order = 1),
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2),
-  )+          scale_x_log10(
+  ) + scale_x_log10(
     breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
-    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.01,300))+ ylim(0.3*100,0.7*100) + 
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("Intronic",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
-  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("Intronic",dt_graph$categorie),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
-  geom_point(data =  dt_graph[!grepl("Intronic",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#E31A1C",size=6)+
-  geom_point(data = dt_graph[grepl("Intronic",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) , ],col="black",pch=21,fill="#FB9A99",size=6)+
-  ggtitle(paste(unique(dt_graph$set)," genes",sep="")) +   guides(linetype="none",shape="none")+ annotation_logticks(sides = "b")
+    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.01,300))+ ylim(0.2*100,0.7*100) + 
+  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
+  geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
+  geom_point(data =  dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ],col="black",pch=21,fill="#E31A1C",size=6)+
+  geom_point(data = dt_graph[grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set), ],col="black",pch=21,fill="#FB9A99",size=6)+
+  ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) +   guides(linetype="none",shape="none")+ annotation_logticks(sides = "b")
 pB
 
 jpeg(paste(path_pannel,"p4B.jpg",sep=""),  width = 12000/2,  5500/2,res=1000/1.8)
@@ -96,10 +99,10 @@ pC = ggplot(data1,aes(y=expressed_overused_background_WB_WC_notambiguous,x=clade
   geom_hline(size=1,linetype="dashed",col="red", yintercept = 0 ) +
   geom_boxplot(alpha=.1) +
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=.8) + theme_bw() + theme(
-    axis.title.x = element_text(color="black",angle = 50, size=25,family="economica"),
+    axis.title.x = element_text(color="black",angle = 70, size=25,family="economica"),
     axis.title.y = element_text(color="black", size=25, family="economica",margin = margin(t = 0, r = 20, b = 0, l = 0)),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
-    axis.text.x =  element_text(color="black",hjust=1, size=20,angle = 50, family="economica"),
+    axis.text.x =  element_text(color="black",hjust=1, size=20,angle = 30, family="economica"),
     title =  element_text(color="black", size=0, family="economica"),
     legend.text =  element_text(color="black", size=20, family="economica")
   ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +

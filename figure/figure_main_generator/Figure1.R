@@ -14,14 +14,21 @@ for (group in unique(edge_group)){
   }
 }
 
-for (clade in  names(listNomSpecies)){print(clade)
-  edge_clade[ which.edge(arbrePhylotips, arbrePhylotips$edge[,2][edge_clade == clade] ) ] = clade
+edge_clade_prev = edge_clade
+list_inclusion =  list("Other Metazoans"=c("Diptera","Lepidoptera","Coleoptera","Other Insects","Other Vertebrates","Nematoda","Hymenoptera","Other Metazoans"),
+                       "Other Vertebrates"=c("Teleostei","Aves","Mammalia","Other Vertebrates"),"Other Insects"=c("Diptera","Lepidoptera","Coleoptera","Other Insects","Hymenoptera"),
+                       Nematoda="Nematoda",Teleostei="Teleostei",Hymenoptera="Hymenoptera",Aves="Aves",Mammalia="Mammalia","Diptera"="Diptera","Lepidoptera"="Lepidoptera","Coleoptera"="Coleoptera",Embryophyta="Embryophyta"
+)
+
+
+clade="Other Metazoans"
+
+for (clade in names(list_inclusion)){
+  edge_clade[ which.edge(arbrePhylotips,  arbrePhylotips$edge[,2][edge_clade_prev %in% unlist(list_inclusion[clade])] ) ] = clade
 }
 node_metadata = data.frame(node=arbrePhylotips$edge[,2],color=edge_clade)
-# node_metadata$color = factor(node_metadata$color, levels = c("Mecopterida","Hymenoptera","Other Insecta","Nematoda","Other Invertebrates","Teleostei","Mammalia","Aves","Other Tetrapods"))
-node_metadata$color = factor(node_metadata$color, levels = c("Diptera","Lepidoptera","Mecopterida","Coleoptera","Hymenoptera",
-                                                             "Other Insecta","Nematoda","Other Metazoans",
-                                                             "Mammalia","Aves","Other Tetrapods","Teleostei"))
+
+node_metadata$color = factor(node_metadata$color, levels = names(Clade_color))
 
 offspring.tbl_tree_item <- utils::getFromNamespace(".offspring.tbl_tree_item", "tidytree") # to use flip deprecated
 
@@ -48,9 +55,10 @@ dt_graph = data1
 ylabel = "gc3"
 xlabel = "gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+lm_x = dt_graph[,xlabel]
+lm_y = dt_graph[,ylabel]
 
-
-model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo)
+model_to_use = fitted_model(x=lm_x,y=lm_y,label=dt_graph$species,tree=arbrePhylo,display_other=T,pagels_obliged=F)
 
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
@@ -63,16 +71,16 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     axis.text.x =  element_text(color="black", size=20, family="economica"),
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
+    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 5)),
     plot.caption = element_text(hjust = 0.65, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
+  )  + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Average per gene GC3") +
-  xlab("Average per gene GCi") +
+  xlab("Average per gene GCi")+
   labs(
-    caption = substitute(paste(model,": AIC = ",aic,", R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
-  ) 
+  ) + theme(legend.position='none')
 pB
 
 
@@ -180,6 +188,8 @@ teleostei<-readPNG(paste(path_require,"teleostei.png",sep=""))
 monkey<-readPNG(paste(path_require,"monkey.png",sep=""))
 fly<-readPNG(paste(path_require,"fly.png",sep=""))
 bee<-readPNG(paste(path_require,"bee.png",sep=""))
+coleoptera<-readPNG(paste(path_require,"coleoptera.png",sep=""))
+lepidoptera<-readPNG(paste(path_require,"lepidoptera.png",sep=""))
 
 
 {
@@ -204,9 +214,9 @@ bee<-readPNG(paste(path_require,"bee.png",sep=""))
   plot(imgA, axes=FALSE)
   mtext("A",at=49.4,adj=-1, side=2, line=1, font=2, cex=1.4,las=2)
   
-  xmonkey=920
+  xmonkey=960
   ymonkey=2000
-  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/0.85+ymonkey, xright=500/.85+xmonkey, ytop=ymonkey)
+  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/0.85+ymonkey, xright=460/.85+xmonkey, ytop=ymonkey)
   
   xaxis=700
   yaxis=2800
@@ -220,17 +230,25 @@ bee<-readPNG(paste(path_require,"bee.png",sep=""))
   yaxis=1750
   rasterImage(monkey,xleft=0+xaxis, ybottom=0+yaxis, xright=900/5+xaxis, ytop=-900/5+yaxis)
   
-  xcel=1300
-  ycel=1100
+  xcel=1310
+  ycel=1120
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=0+ycel, xright=1000/5+xcel, ytop=-350/5+ycel)
   
   xaxis=1100
-  yaxis=750
+  yaxis=800
   rasterImage(bee,xleft=0+xaxis, ybottom=0+yaxis, xright=900/5+xaxis, ytop=-700/5+yaxis)
   
-  xaxis=1200
+  xaxis=1150
+  yaxis=440
+  rasterImage(coleoptera,xleft=0+xaxis, ybottom=0+yaxis, xright=1500/10+xaxis, ytop=-900/10+yaxis)
+
+  xaxis=1250
   yaxis=350
-  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/8+xaxis, ytop=-900/8+yaxis)
+  rasterImage(lepidoptera,xleft=0+xaxis, ybottom=0+yaxis, xright=1500/7+xaxis, ytop=-900/7+yaxis)
+  
+  xaxis=1300
+  yaxis=150
+  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/10+xaxis, ytop=-900/10+yaxis)
   
   par(mar=c(0, 1, 2, 0))
   plot(imgB, axes=FALSE)
