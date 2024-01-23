@@ -38,11 +38,11 @@ for (species in GTDrift_list_species$species){
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
   if (
     file.exists(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) &
-    file.size(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) != 38 ){
+    file.size(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) != 38 ){ # if non empty
     tRNA_GFF = T
   } else if (
     file.exists(paste(path,"/tRNAscan_SE.tab.gz",sep="")) &
-    file.size(paste(path,"/tRNAscan_SE.tab.gz",sep="")) != 36  ){
+    file.size(paste(path,"/tRNAscan_SE.tab.gz",sep="")) != 36  ){ # if non empty
     tRNA_GFF = F
   } 
   
@@ -189,7 +189,7 @@ for (species in GTDrift_list_species$species){
   
   DUC_GU = data_optiplus[data_optiplus$codon %in% c(gu_decoded , paste(sep="",substr(gu_decoded,1,2),"C")),]
   DUC_GU = DUC_GU[!duplicated(DUC_GU$amino_acid),]$codon
-    
+  
   dt_species = rbind(dt_species,data.frame(
     species,
     tRNA_GFF,
@@ -246,62 +246,62 @@ for (species in GTDrift_list_species$species){
   
   list_COA_global = c()
   list_COAneg_global = c()
-  for ( type_aa in c( "WB_WC_notambiguous","WC_duet_ambiguous","global")){
-    if (type_aa == "WB_WC_notambiguous" ){
+  for ( type_aa in c( "POC1","POC2","global")){
+    if (type_aa == "POC1" ){
       dt_selected = tRNA_optimal[ tRNA_optimal$nb_syn >= 2,]
       optimal_count = table( dt_selected[ dt_selected$Wobble_abond | dt_selected$WC_abond,]$aa_name )
-
+      
       list_aa = names(optimal_count)[ optimal_count != table(code$aa_name)[names(optimal_count)]]
       print(list_aa)
       list_COA = dt_selected[(dt_selected$Wobble_abond | dt_selected$WC_abond) & dt_selected$aa_name %in% list_aa,]$codon
       list_COA_neg = code[code$aa_name %in% list_aa,]$codon
-
+      
       list_COA_global = append(list_COA_global,list_COA)
       list_COAneg_global = append(list_COAneg_global,list_COA_neg)
-    } else if  (type_aa == "WC_duet_ambiguous" ){
-      dt_selected = tRNA_optimal[  tRNA_optimal$aa_name  %in% c("Phe","Asn","Asp","His","Cys","Tyr") ,]
-      optimal_count = table( dt_selected[dt_selected$Wobble_abond,]$aa_name )
-
-      list_aa = names(optimal_count)[optimal_count != table(code$aa_name)[names(optimal_count)]]
+    } else if  (type_aa == "POC2" ){
+      dt_selected = tRNA_optimal[ tRNA_optimal$nb_syn >= 2,]
+      optimal_count = table( dt_selected[dt_selected$nb_tRNA_copies != 0,]$aa_name )
+      
+      list_aa = names(optimal_count)[optimal_count == 1]
       print(list_aa)
       list_COA = dt_selected[dt_selected$WC_abond & dt_selected$aa_name %in% list_aa,]$codon
       list_COA_neg = code[code$aa_name %in% list_aa ,]$codon
       list_COA_global = append(list_COA_global,list_COA)
       list_COAneg_global = append(list_COAneg_global,list_COA_neg)
     } else if  (type_aa == "global" ){
-
+      
       list_COA = list_COA_global
       list_COA_neg = list_COAneg_global
     }
     print(list_COAneg_global)
     print(list_COA_global)
-
-
+    
+    
     if ( length(list_COA) != 0 ){
-
+      
       ##### Over-used of POC in expressed genes
-
+      
       COA_obs = rowSums(codon_usage[ list_COA ],na.rm = T)
       COA_neg_obs = rowSums(codon_usage[ list_COA_neg ],na.rm = T)
       COA_obs_intronic = rowSums(codon_usage[paste(list_COA,'_intronic',sep = "")],na.rm = T)
       COA_neg_obs_intronic = rowSums(codon_usage[paste(list_COA_neg,'_intronic',sep = "")],na.rm = T)
-
-
+      
+      
       ## Over-used of POC in constraint sites
-
+      
       if (GTDrift_list_species[species,]$clade_group %in% c("Mammalia","Aves","Other Tetrapods")){
         data_conservation_sub = data_conservation_rmfirst1000bp[data_conservation_rmfirst1000bp$species == species & data_conservation_rmfirst1000bp$protein %in% codon_usage$protein_id,]
       } else {
         data_conservation_sub = data_conservation[data_conservation$species == species ,]
       }
-
-
+      
+      
       table_constrain = data.frame(busco_id = data_conservation_sub$busco_id)
       for (constrain in c("_highconst","_modconst","_sligconst","_unconst")){
         table_constrain[,paste("COA",constrain,sep="")] = rowSums(data_conservation_sub[paste(list_COA,constrain,sep = "")],na.rm = T)
         table_constrain[,paste("COA_neg",constrain,sep="")] = rowSums(data_conservation_sub[paste(list_COA_neg,constrain,sep = "")],na.rm = T)
       }
-
+      
       dt_translational_selection = data.frame(
         nb_aa = length(list_aa),
         nb_busco = busco_tab[species,]$No_CDS_Busco,
@@ -329,7 +329,7 @@ for (species in GTDrift_list_species$species){
       )
     }
     colnames(dt_translational_selection) = paste(colnames(dt_translational_selection),type_aa,sep="_")
-
+    
     dt_species = cbind(dt_species,dt_translational_selection)
   }
   
