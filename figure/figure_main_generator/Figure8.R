@@ -5,7 +5,7 @@ source("figure/figure_main_generator/library_path.R")
 # Pannel 8 A
 
 data1 = read.delim("data/data1_supp.tab")
-data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_groups
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
 data1[,c("lifespan_days","length_cm","weight_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","weight_kg")]
@@ -14,13 +14,17 @@ dt_graph = data1
 ylabel = "expressed_overused_background_global"
 xlabel = "lifespan_days"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+
+dt_graph = dt_graph[dt_graph$var_gci <= 0.005,]
 lm_y = dt_graph[,ylabel]
 lm_x = log10(dt_graph[,xlabel])
 shorebird <- comparative.data(arbrePhylo, 
                               data.frame(species=dt_graph$species,
                                          pgls_x=lm_x, pgls_y=lm_y), species, vcv=TRUE)
 
-GLS(shorebird)[[1]]
+summary(lm(dt_graph$expressed_overused_background_global ~  dt_graph$var_gci))
+summary(lm(  dt_graph$var_gci ~ dt_graph$expressed_overused_background_global ))
+
 model_to_use = fitted_model(x=lm_x,y=lm_y,label=dt_graph$species,tree=arbrePhylo)
 
 pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
@@ -68,6 +72,7 @@ dt_graph = data1
 ylabel = "expressed_overused_background_global"
 xlabel = "var_gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+dt_graph = dt_graph[dt_graph$var_gci <=0.005,]
 lm_y = dt_graph[,ylabel]
 lm_x = dt_graph[,xlabel]
 shorebird <- comparative.data(arbrePhylo, 
@@ -89,10 +94,9 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + 
   labs(
-    title = substitute(paste("N = ",nbspecies," species"), list(nbspecies=nrow(dt_graph),
-                                                            lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                            pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
-  )+ scale_fill_manual("Clades",values=Clade_color) +
+    caption = substitute(paste(model,": AIC = ",aic,", R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    title = paste("N = ",nrow(dt_graph)," species",sep="")
+  ) + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Translational selection intensity") + 
   xlab("Variance per gene GCi")
 

@@ -1,65 +1,65 @@
-codon	aa	aa_name	info
-TTT	F	Phe	
-TCT	S	Ser	
-TAT	Y	Tyr	
-TGT	C	Cys	
-TTC	F	Phe	
-TCC	S	Ser	
-TAC	Y	Tyr	
-TGC	C	Cys	
-TTA	L	Leu	
-TCA	S	Ser	
-TAA	*	Ter	
-TGA	*	Ter	
-TTG	L	Leu	i
-TCG	S	Ser	
-TAG	*	Ter	
-TGG	W	Trp	
-CTT	L	Leu	
-CCT	P	Pro	
-CAT	H	His	
-CGT	R	Arg	
-CTC	L	Leu	
-CCC	P	Pro	
-CAC	H	His	
-CGC	R	Arg	
-CTA	L	Leu	
-CCA	P	Pro	
-CAA	Q	Gln	
-CGA	R	Arg	
-CTG	L	Leu	i
-CCG	P	Pro	
-CAG	Q	Gln	
-CGG	R	Arg	
-ATT	I	Ile	
-ACT	T	Thr	
-AAT	N	Asn	
-AGT	S	Ser	
-ATC	I	Ile	
-ACC	T	Thr	
-AAC	N	Asn	
-AGC	S	Ser	
-ATA	I	Ile	
-ACA	T	Thr	
-AAA	K	Lys	
-AGA	R	Arg	
-ATG	M	Met	i
-ACG	T	Thr	
-AAG	K	Lys	
-AGG	R	Arg	
-GTT	V	Val	
-GCT	A	Ala	
-GAT	D	Asp	
-GGT	G	Gly	
-GTC	V	Val	
-GCC	A	Ala	
-GAC	D	Asp	
-GGC	G	Gly	
-GTA	V	Val	
-GCA	A	Ala	
-GAA	E	Glu	
-GGA	G	Gly	
-GTG	V	Val	
-GCG	A	Ala	
-GAG	E	Glu	
-GGG	G	Gly	
+codon	aa	aa_name	info	nb_syn	anticodon
+TTT	Phenylalanine	Phe		2	AAA
+TCT	Serine	Ser		6	AGA
+TAT	Tyrosine	Tyr		2	ATA
+TGT	Cysteine	Cys		2	ACA
+TTC	Phenylalanine	Phe		2	GAA
+TCC	Serine	Ser		6	GGA
+TAC	Tyrosine	Tyr		2	GTA
+TGC	Cysteine	Cys		2	GCA
+TTA	Leucine	Leu		6	TAA
+TCA	Serine	Ser		6	TGA
+TAA	Termination	Ter		3	TTA
+TGA	Termination	Ter		3	TCA
+TTG	Leucine	Leu	i	6	CAA
+TCG	Serine	Ser		6	CGA
+TAG	Termination	Ter		3	CTA
+TGG	Tryptophan	Trp		1	CCA
+CTT	Leucine	Leu		6	AAG
+CCT	Proline	Pro		4	AGG
+CAT	Histidine	His		2	ATG
+CGT	Arginine	Arg		6	ACG
+CTC	Leucine	Leu		6	GAG
+CCC	Proline	Pro		4	GGG
+CAC	Histidine	His		2	GTG
+CGC	Arginine	Arg		6	GCG
+CTA	Leucine	Leu		6	TAG
+CCA	Proline	Pro		4	TGG
+CAA	Glutamine	Gln		2	TTG
+CGA	Arginine	Arg		6	TCG
+CTG	Leucine	Leu	i	6	CAG
+CCG	Proline	Pro		4	CGG
+CAG	Glutamine	Gln		2	CTG
+CGG	Arginine	Arg		6	CCG
+ATT	Isoleucine	Ile		3	AAT
+ACT	Threonine	Thr		4	AGT
+AAT	Asparagine	Asn		2	ATT
+AGT	Serine	Ser		6	ACT
+ATC	Isoleucine	Ile		3	GAT
+ACC	Threonine	Thr		4	GGT
+AAC	Asparagine	Asn		2	GTT
+AGC	Serine	Ser		6	GCT
+ATA	Isoleucine	Ile		3	TAT
+ACA	Threonine	Thr		4	TGT
+AAA	Lysine	Lys		2	TTT
+AGA	Arginine	Arg		6	TCT
+ATG	Methionine	Met	i	1	CAT
+ACG	Threonine	Thr		4	CGT
+AAG	Lysine	Lys		2	CTT
+AGG	Arginine	Arg		6	CCT
+GTT	Valine	Val		4	AAC
+GCT	Alanine	Ala		4	AGC
+GAT	Aspartic Acid	Asp		2	ATC
+GGT	Glycine	Gly		4	ACC
+GTC	Valine	Val		4	GAC
+GCC	Alanine	Ala		4	GGC
+GAC	Aspartic Acid	Asp		2	GTC
+GGC	Glycine	Gly		4	GCC
+GTA	Valine	Val		4	TAC
+GCA	Alanine	Ala		4	TGC
+GAA	Glutamic Acid	Glu		2	TTC
+GGA	Glycine	Gly		4	TCC
+GTG	Valine	Val		4	CAC
+GCG	Alanine	Ala		4	CGC
+GAG	Glutamic Acid	Glu		2	CTC
+GGG	Glycine	Gly		4	CCC

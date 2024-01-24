@@ -50,6 +50,7 @@ dev.off()
 data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
+data1 = data1[ data1$nb_genes_filtered >= 5000,]
 dt_graph = data1
 
 ylabel = "gc3"
@@ -58,12 +59,10 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 lm_x = dt_graph[,xlabel]
 lm_y = dt_graph[,ylabel]
 
-model_to_use = fitted_model(x=lm_x,y=lm_y,label=dt_graph$species,tree=arbrePhylo,display_other=T,pagels_obliged=F)
+model_to_use = fitted_model(x=lm_x,y=lm_y,label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
-  # geom_errorbar(aes(ymin = gc3-sqrt(var_gc3), ymax = gc3+sqrt(var_gc3)),alpha=0.2) +
-  # geom_errorbarh(aes(xmin = gci-sqrt(var_gci), xmax =gci+sqrt(var_gci)),alpha=0.2) +
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -72,7 +71,7 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 5)),
-    plot.caption = element_text(hjust = 0.65, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   )  + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Average per gene GC3") +
@@ -241,7 +240,7 @@ lepidoptera<-readPNG(paste(path_require,"lepidoptera.png",sep=""))
   xaxis=1150
   yaxis=440
   rasterImage(coleoptera,xleft=0+xaxis, ybottom=0+yaxis, xright=1500/10+xaxis, ytop=-900/10+yaxis)
-
+  
   xaxis=1250
   yaxis=350
   rasterImage(lepidoptera,xleft=0+xaxis, ybottom=0+yaxis, xright=1500/7+xaxis, ytop=-900/7+yaxis)
