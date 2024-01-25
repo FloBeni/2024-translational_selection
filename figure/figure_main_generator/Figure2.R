@@ -40,6 +40,8 @@ dev.off()
 data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
+data1 = data1[ data1$nb_genes_filtered >= 5000,]
+
 dt_graph = data1
 
 pB = ggplot(dt_graph,aes(y=rho_aa_fpkm,fill=clade_group,x=clade_group))  +
@@ -52,7 +54,7 @@ pB = ggplot(dt_graph,aes(y=rho_aa_fpkm,fill=clade_group,x=clade_group))  +
     axis.text.x =  element_text(color="black",vjust=1,hjust=1, size=22,angle = 30, family="economica"),
     title =  element_text(color="black", size=15, family="economica"),
     legend.text =  element_text(color="black", size=20, family="economica")
-  ) + theme(legend.position='none')+ scale_fill_manual(values=Clade_color) + ylab("Spearmann Rho")  + xlab("") + ylim(0,1)
+  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + ylab("Spearmann Rho")  + xlab("") + ylim(0,1)
 
 pB = ggMarginal(pB, type="histogram",fill=set_color[1]) 
 pB

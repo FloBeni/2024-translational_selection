@@ -1,0 +1,156 @@
+# Generate Figure 9
+source("figure/figure_main_generator/library_path.R")
+set_color
+
+data2 = read.delim("data/data2_supp.tab")
+dt_graph = data2[data2$species == "Homo_sapiens" ,]
+
+
+# Pannel 9 A
+pA = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=80)+ theme_bw() + theme(
+  axis.title.x = element_text(color="black", size=30,family="economica"),
+  axis.title.y = element_text(color="black", size=30, family="economica"),
+  axis.text.y =  element_text(color="black", size=25, family="economica"),
+  axis.text.x =  element_text(color="black", size=25, family="economica"),
+  title =  element_text(color="black", size=18, family="economica"),
+  legend.text =  element_text(color="black", size=16, family="economica"),
+  strip.text = element_text(size=15),
+  plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
+  plot.caption.position =  "plot"
+) + xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle("All genes") 
+pA
+
+jpeg(paste(path_pannel,"p9A.jpg",sep=""),
+     width = 6000/4.5,  5000/4,res=1000/4)
+print(pA)
+dev.off()
+
+# Pannel 9 B
+pB = ggplot(dt_graph[dt_graph$gene_expression >= quantile(dt_graph$gene_expression,0.80),] , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=50)+ theme_bw() + theme(
+  axis.title.x = element_text(color="black", size=30,family="economica"),
+  axis.title.y = element_text(color="black", size=30, family="economica"),
+  axis.text.y =  element_text(color="black", size=25, family="economica"),
+  axis.text.x =  element_text(color="black", size=25, family="economica"),
+  title =  element_text(color="black", size=18, family="economica"),
+  legend.text =  element_text(color="black", size=16, family="economica"),
+  strip.text = element_text(size=15),
+  plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
+  plot.caption.position =  "plot"
+)+ xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle("20% most expressed genes") 
+pB
+
+jpeg(paste(path_pannel,"p9B.jpg",sep=""),
+     width = 6000/4.5,  5000/4,res=1000/4)
+print(pB)
+dev.off()
+
+
+
+# Pannel 9 C
+
+data1 = read.delim("data/data1_supp.tab")
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
+
+data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
+data1[,c("lifespan_days","length_cm","weight_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","weight_kg")]
+
+dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
+rownames(dnds) = dnds$species
+data1[,c("dNdS")] = dnds[data1$species,c("dNdS")]
+
+
+dt_graph = data1
+ylabel = "expressed_overused_background_POCs"
+xlabel = "var_gci"
+dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+
+model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=T,pagels_obliged=F)
+
+pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
+    axis.title.x = element_text(color="black", size=26,family="economica"),
+    axis.title.y = element_text(color="black", size=26, family="economica"),
+    axis.text.y =  element_text(color="black", size=24, family="economica"),
+    axis.text.x =  element_text(color="black", size=24, family="economica"),
+    title =  element_text(color="black", size=20, family="economica"),
+    text =  element_text(color="black", size=31, family="economica"),
+    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 1)),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
+    plot.caption.position =  "plot"
+  )+ guides(fill = guide_legend(override.aes = list(size=5)))+
+  labs(
+    title = paste("N = ",nrow(dt_graph)," species",sep="")
+  )+ scale_fill_manual("Clades",values=Clade_color) +
+  ylab("Translational selection intensity") + 
+  xlab("Variance per gene GCi")
+
+pC
+
+jpeg(paste(path_pannel,"p9C.jpg",sep=""),width = 6000/2, height = 3550/2,res=700/2)
+print(pC)
+dev.off()
+
+
+# Pannel 9 D
+
+dt_graph = data1
+ylabel = "expressed_overused_background_POCs"
+xlabel = "var_gci"
+dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+
+pD =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  # geom_point(data=dt_graph[is.na(dt_graph$lifespan_days),],size=4,pch=21,alpha=.5,aes(fill=log10(lifespan_days)),fill="black") +
+  geom_point(data=dt_graph[!is.na(dt_graph$lifespan_days),],size=4,pch=21,alpha=.8,aes(fill=log10(lifespan_days))) + theme_bw() + theme(
+    axis.title.x = element_text(color="black", size=26,family="economica"),
+    axis.title.y = element_text(color="black", size=26, family="economica"),
+    axis.text.y =  element_text(color="black", size=24, family="economica"),
+    axis.text.x =  element_text(color="black", size=24, family="economica"),
+    title =  element_text(color="black", size=20, family="economica"),
+    text =  element_text(color="black", size=31, family="economica"),
+    legend.text =  element_text(color="black", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
+    plot.caption.position =  "plot"
+  )+ ylab("Translational selection intensity") +
+  xlab("Variance per gene GCi") + scale_fill_continuous('Lifespan\n(days, log scale)')+
+  labs(
+    title = paste("N = ",nrow(dt_graph)," species",sep="") 
+  )+ scale_fill_gradient2(low = "white",  high = "red")
+pD
+
+jpeg(paste(path_pannel,"p9D.jpg",sep=""),width = 6000/2, height = 3550/2,res=700/2)
+print(pD)
+dev.off()
+
+
+# Figure 9
+
+imgA = load.image(paste(path_pannel,"p9A.jpg",sep="") )
+imgB = load.image(paste(path_pannel,"p9B.jpg",sep="") )
+imgC = load.image(paste(path_pannel,"p9C.jpg",sep="") )
+imgD = load.image(paste(path_pannel,"p9D.jpg",sep="") )
+
+{
+  pdf(file= paste(path_figure,"Figure9.pdf",sep=""), width=11, height=8)
+  
+  m = matrix(rep(NA,2*100), nrow=2)
+  
+  m[1,]=c(rep(1,50),rep(2,50))
+  m[2,]=c(rep(3,51),rep(4,49))
+  layout(m)
+  
+  par(mar=c(0,0, 1, 0))
+  plot(imgA, axes=FALSE)
+  mtext("A",at=100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
+  
+  plot(imgB, axes=FALSE)
+  mtext("B",at=100,adj=0, side=2, line=1, font=2, cex=2,las=2)
+  
+  par(mar=c(0,1, 0, 1))
+  plot(imgC, axes=FALSE)
+  mtext("C",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
+  
+  par(mar=c(0,0, 0, 0))
+  plot(imgD, axes=FALSE)
+  mtext("D",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
+  dev.off()
+}

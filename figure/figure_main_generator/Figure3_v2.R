@@ -1,0 +1,121 @@
+# Generate Figure 3
+source("figure/figure_main_generator/library_path.R")
+
+# Pannel 3 B
+
+data1 = read.delim("data/data1_supp.tab")
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
+
+data1 = data1[data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,]
+
+tRNA_abundance = read.delim("/home/fbenitiere/data/papers/2024-translational_selection/data/tRNA_abundance.tab")
+
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+rownames(code) = code$codon
+
+code = code[!code$aa_name %in% c("Ter"),]
+
+rownames(code) = code$anticodon
+
+tRNA_abundance_data = data.frame()
+for (anticodon in code$anticodon){
+  dt = data.frame(abundance = tRNA_abundance[,anticodon])
+  dt$species = rownames(tRNA_abundance)
+  dt$nb_syn = code[anticodon,]$nb_syn
+  dt$amino_acid = code[anticodon,]$aa
+  dt$anticodon = anticodon
+  dt$codon = code[anticodon,]$codon
+  tRNA_abundance_data = rbind(tRNA_abundance_data,dt)
+}
+
+tRNA_abundance_data$color = sapply(tRNA_abundance_data$codon,function(x)substr(x,3,3))
+
+tRNA_abundance_data$amino_acid = factor(tRNA_abundance_data$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
+tRNA_abundance_data$anticodon = str_replace_all(tRNA_abundance_data$anticodon,'T','U')
+tRNA_abundance_data$codon = str_replace_all(tRNA_abundance_data$codon,'T','U')
+
+vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
+vect_debut = str_replace_all(vect_debut,"T","U")
+tRNA_abundance_data$title = paste(tRNA_abundance_data$anticodon,"\n(",tRNA_abundance_data$codon,")",sep="")
+tRNA_abundance_data$codon = factor(tRNA_abundance_data$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
+tRNA_abundance_data$title = factor(tRNA_abundance_data$title,levels= tapply(tRNA_abundance_data$title, as.integer(tRNA_abundance_data$codon),unique))
+
+
+set_color = c(A="#B2DF8A",T="#33A02C",C="#1F78B4",G="#A6CEE3")
+
+pA = ggplot(tRNA_abundance_data,aes(x=title,y=abundance)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
+  scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid,scales = "free")+
+  theme_bw() + theme(
+    title =  element_text(size=30, family="economica"),
+    
+    legend.text =  element_text(size=10, family="economica"),
+    strip.text = element_text(size=25, family="economica",face="bold"),
+    legend.spacing.x = unit(1, 'cm'),
+    legend.position="top",
+    legend.box.spacing = unit(2, "cm"),
+    axis.text.x =  element_text( size=20, family="economica"),
+    axis.text.y =  element_text( size=25, family="economica"),
+    plot.title = element_text(hjust = 0.5,margin = margin(0,0,20,0))
+  ) + theme(legend.position='none') + ylab("tRNA gene copy number") + xlab("")+
+  facetted_pos_scales(
+    x = list(
+      NULL
+    ),
+    y = list(
+      scale_y_continuous(limits = c(0, 55)),
+      scale_y_continuous(limits = c(0, 55)),
+      scale_y_continuous(limits = c(0, 55)),
+      scale_y_continuous(limits = c(0, 55)),
+      scale_y_continuous(limits = c(0, 55)),
+      scale_y_continuous(limits = c(0, 55)),
+      scale_y_continuous(limits = c(0, 55)),
+      scale_y_continuous(limits = c(0, 55)),
+      scale_y_continuous(limits = c(0, 35)),
+      scale_y_continuous(limits = c(0, 30)),
+      scale_y_continuous(limits = c(0, 55)),
+      scale_y_continuous(limits = c(0, 30)),
+      scale_y_continuous(limits = c(0, 30)),
+      scale_y_continuous(limits = c(0, 40)),
+      scale_y_continuous(limits = c(0, 40)),
+      scale_y_continuous(limits = c(0, 20)),
+      scale_y_continuous(limits = c(0, 30)),
+      scale_y_continuous(limits = c(0, 20)),
+      scale_y_continuous(limits = c(0, 20)),
+      scale_y_continuous(limits = c(0, 25))
+    )
+  )
+pA
+
+
+jpeg(paste(path_pannel,"p3A.jpg",sep=""), width = 2000/1,  1200/1,res=100/1)
+print(pA)
+dev.off()
+
+
+
+# Figure 3
+imgA = load.image(paste(path_require,"wobble_pairing.png",sep="") )
+imgB = load.image(paste(path_pannel,"p3A.jpg",sep="") )
+
+{
+  pdf(file= paste(path_figure,"Figure3.pdf",sep=""), width=7, height=4.8)
+  
+  m=matrix(rep(NA,10*10), nrow=10)
+  
+  for(i in 1:10){
+    m[,i]=c(rep(1,2),rep(2,8))
+  }
+  
+  layout(m)
+  m
+  
+  par(mar=c(0, 0, 0, 0))
+  plot(imgA, axes=FALSE)
+  mtext("A",at=60,adj=-6, side=2, line=1, font=2, cex=1.4,las=2)
+  
+  par(mar=c(0, 0, 0.2, 0))
+  plot(imgB, axes=FALSE)
+  par(mar=c(0, 1, 1, 0))
+  mtext("B",at=30,adj=-1, side=2, line=1, font=2, cex=1.4,las=2)
+  dev.off()
+}

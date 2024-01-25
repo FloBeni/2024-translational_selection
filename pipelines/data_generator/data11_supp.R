@@ -1,4 +1,7 @@
 # Generate Data 11
+options(stringsAsFactors = F, scipen = 999)
+library(stringr)
+library(stringi)
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
@@ -6,30 +9,13 @@ rownames(GTDrift_list_species) = GTDrift_list_species$species
 subst_or_snp = "snps"
 count_file = "snp"
 ylabel = "SNP density"
-proportion = 0.025
+proportion = 0.02
 
-options(stringsAsFactors = F, scipen = 999)
-library(stringr)
-library(stringi)
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-library(RColorBrewer)
-set_color = brewer.pal(8, 'Paired')
-set_color = append(set_color,c("#fdfd99","#e2cc1a"))
-set_color_class = set_color
-names(set_color_class) = c("wobble -> watson-crick","watson-crick -> wobble","non-optimal -> watson-crick","non-optimal -> wobble","watson-crick -> non-optimal","wobble -> non-optimal",
-                           "optimal -> non-optimal","non-optimal -> optimal")
-set_color_class[c(1,7,8)] = c("#e2cc1a","#E31A1C","#33A02C")
-set_shape_class = c(CDS=21,intron=24)
-set_alpha_class = c(CDS=1,intron=0.5)
 
 path_data = "/home/fbenitiere/data/"
 
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
-code$nb_syn = table(code$aa_name)[code$aa_name]
-code$anticodon = sapply(code$codon,function(x) chartr("TUACG","AATGC",stri_reverse(x))  )
 
 
 std <- function(x) sd(x)/sqrt(length(x))
@@ -269,151 +255,54 @@ print(paste("Number of gene after filtering for gene not expressed :",length((co
 method_to_calculate = "per_gene"
 
 data11 = data.frame()
-for (method_to_calculate in c("per_gene")){
-  species = "Drosophila_melanogaster"
-  print(species)
-  genome_assembly = GTDrift_list_species[species,]$assembly_accession
-  taxID = GTDrift_list_species[species,]$NCBI.taxid
-  
-  path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
-  
-  ###### gu
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
-  rownames(tRNA_optimal) = tRNA_optimal$codon
-  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
-  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
-  
-  tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn == 2 , ]
-  list_aa = tRNA_optimal[ tRNA_optimal$Wobble_abond  , ]
-  list_aa = list_aa$aa_name
-  
-  list_codon_wobble = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$Wobble_abond , ]$codon
-  list_codon_wc = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & tRNA_optimal$WC_abond  , ]$codon
-  list_codon = list(
-    nonoptimal=list_codon_wobble,
-    optimal=list_codon_wc
-  )
-  print(list_aa)
-  print(list_codon)
-  
-  xaxis = count_codon_trinucl$median_fpkm
-  quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
-  intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
-  print(table(intervalle_list))
-  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
-  
-  cible = colnames(dt)[grepl("cible",colnames(dt))]
-  mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
-  min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
-  cible = str_replace_all(cible,"cible_|density_","")
-  cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
-  
-  print("Number of sites")
-  for(i in 1:length(cible)){
-    if(!duplicated(cible)[i]){
-      print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
-    }
+species = "Drosophila_melanogaster"
+print(species)
+genome_assembly = GTDrift_list_species[species,]$assembly_accession
+taxID = GTDrift_list_species[species,]$NCBI.taxid
+
+path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
+
+###### gu
+tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+rownames(tRNA_optimal) = tRNA_optimal$codon
+tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
+
+subset_selected = tRNA_optimal[tRNA_optimal$POC2 | tRNA_optimal$POC1,]
+list_aa = subset_selected$aa_name
+list_POC = subset_selected$codon
+list_nonPOC = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa & !tRNA_optimal$codon %in% list_POC,]$codon
+
+print(list_POC)
+print(list_nonPOC)
+
+list_codon = list(
+  nonoptimal=list_nonPOC,
+  optimal=list_POC
+)
+
+xaxis = count_codon_trinucl$median_fpkm
+quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
+intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
+
+dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
+
+cible = colnames(dt)[grepl("cible",colnames(dt))]
+mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
+min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
+cible = str_replace_all(cible,"cible_|density_","")
+cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
+
+print("Number of sites")
+for(i in 1:length(cible)){
+  if(!duplicated(cible)[i]){
+    print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
   }
-  
-  dt$group = "duet_ambiguous"
-  dt$method_to_calculate = method_to_calculate
-  data11 = rbind(data11,dt)
-  
-  
-  ###### IC
-  wobble_pairing = c("C"="IC","T"="GU","G"="UG","A"="IA")
-  
-  wobble_associat_wc = list("T"="C",
-                            "A"="A",
-                            "G"="A",
-                            "C"="T")
-  type_aa = "IC"
-  
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
-  tRNA_optimal$wb = wobble_pairing[substr(tRNA_optimal$codon,3,3)]
-  tRNA_optimal$decoded_codon = sapply(tRNA_optimal$codon,function(x) paste(substr(x,1,2),wobble_associat_wc[[substr(x,3,3)]],collapse="",sep=""))
-  rownames(tRNA_optimal) = tRNA_optimal$codon
-  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
-  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
-  
-  tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn > 2 , ]
-  list_aa = tRNA_optimal[ tRNA_optimal$Wobble_abond & tRNA_optimal$wb == type_aa , ]
-  list_aa = names(table(list_aa$aa_name)[table(list_aa$aa_name) != 0])
-  
-  list_codon_wobble = tRNA_optimal[ tRNA_optimal$Wobble_abond & tRNA_optimal$wb == type_aa & tRNA_optimal$aa_name %in% list_aa,]$codon
-  list_codon_wc =  tRNA_optimal[ tRNA_optimal$Wobble_abond & tRNA_optimal$wb == type_aa & tRNA_optimal$aa_name %in% list_aa,]$decoded_codon
-  
-  list_codon = list(
-    nonoptimal=list_codon_wobble,
-    optimal=list_codon_wc
-  )
-  print(list_aa)
-  print(list_codon)
-  
-  xaxis = count_codon_trinucl$median_fpkm
-  quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
-  intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
-  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
-  print(table(intervalle_list))
-  
-  cible = colnames(dt)[grepl("cible",colnames(dt))]
-  mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
-  min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
-  cible = str_replace_all(cible,"cible_|density_","")
-  cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
-  
-  print("Number of sites")
-  for(i in 1:length(cible)){
-    if(!duplicated(cible)[i]){
-      print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
-    }
-  }
-  dt$group = "ic_abondant"
-  dt$method_to_calculate = method_to_calculate
-  data11 = rbind(data11,dt)
-  
-  ###### Wb_WC_notambiguous
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
-  rownames(tRNA_optimal) = tRNA_optimal$codon
-  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Met",]
-  tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
-  
-  tRNA_optimal = tRNA_optimal[ tRNA_optimal$nb_syn >= 2 , ]
-  optimal_count = table( tRNA_optimal[ tRNA_optimal$Wobble_abond | tRNA_optimal$WC_abond,]$aa_name )
-  list_aa = names(optimal_count)[ optimal_count != table(tRNA_optimal$aa_name)[names(optimal_count)]]
-  
-  list_codon_nonoptimal = tRNA_optimal[ !tRNA_optimal$WC_abond & !tRNA_optimal$Wobble_abond & tRNA_optimal$aa_name %in% list_aa , ]$codon
-  list_codon_optimal =  tRNA_optimal[ (tRNA_optimal$WC_abond | tRNA_optimal$Wobble_abond) & tRNA_optimal$aa_name %in% list_aa,]$codon
-  
-  list_codon = list(
-    nonoptimal=list_codon_nonoptimal,
-    optimal=list_codon_optimal
-  )
-  print(list_aa)
-  print(list_codon)
-  
-  xaxis = count_codon_trinucl$median_fpkm
-  quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
-  intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
-  print(table(intervalle_list))
-  dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
-  
-  cible = colnames(dt)[grepl("cible",colnames(dt))]
-  mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
-  min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
-  cible = str_replace_all(cible,"cible_|density_","")
-  cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
-  
-  print("Number of sites")
-  for(i in 1:length(cible)){
-    if(!duplicated(cible)[i]){
-      print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
-    }
-  }
-  dt$group = "Wb_WC_notambiguous"
-  dt$method_to_calculate = method_to_calculate
-  data11 = rbind(data11,dt[,colnames(data11)])
 }
+
+dt$group = "POCs"
+dt$method_to_calculate = method_to_calculate
+data11 = rbind(data11,dt)
+
 
 write.table(data11,"data/data11_supp.tab",quote=F,row.names = F,sep="\t")
 

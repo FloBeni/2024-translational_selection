@@ -15,6 +15,7 @@ library(RColorBrewer)
 library(stringi)
 library(forcats)
 library(scales)
+library(ggh4x)
 set_color = brewer.pal(8, 'Paired')
 set_color = append(set_color,c("#fdfd99","#e2cc1a"))
 

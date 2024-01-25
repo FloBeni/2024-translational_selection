@@ -53,7 +53,8 @@ for (species in species_list){
   data2 = rbind(data2,data.frame(
     species,
     GCi,
-    GC3
+    GC3,
+    gene_expression = codon_usage$median_fpkm
   ))
   
   
@@ -96,65 +97,59 @@ for (species in species_list){
   
   FPKM_bins = tapply(xaxis, intervalle_FPKM, median)
   
-  
-  for (set in c("POC1","POC2")){
-    if (set == "POC1"){
-      dt_selected = tRNA_optimal[ tRNA_optimal$nb_syn >= 2,]
-      optimal_count = table( dt_selected[ dt_selected$Wobble_abond | dt_selected$WC_abond,]$aa_name )
-      
-      list_aa = names(optimal_count)[ optimal_count != table(code$aa_name)[names(optimal_count)]]
-      nb_aa = length(list_aa)
-      
-      list_COA = dt_selected[(dt_selected$Wobble_abond | dt_selected$WC_abond) & dt_selected$aa_name %in% list_aa,]$codon
-      list_COA_neg = code[code$aa_name %in% list_aa,]$codon
-      nb_poc = length(list_COA)
-    } else if (set == "POC2"){
-      
-      dt_selected = tRNA_optimal[ tRNA_optimal$nb_syn == 2 & tRNA_optimal$aa_name %in% c("Phe","Asn","Asp","His","Cys","Tyr"),]
-      optimal_count = table( dt_selected[ dt_selected$Wobble_abond ,]$aa_name )
-      
-      list_aa = names(optimal_count)[ optimal_count != table(code$aa_name)[names(optimal_count)]]
-      nb_aa = length(list_aa)
-      
-      list_COA = dt_selected[dt_selected$WC_abond & dt_selected$aa_name %in% list_aa,]$codon
-      print(table(list_COA))
-      list_COA_neg = code[code$aa_name %in% list_aa,]$codon
-      nb_poc = length(list_COA)
+  for ( type_aa in c( "POC1","POC2","POCs")){
+    if (type_aa == "POC1" ){
+      subset_selected = tRNA_optimal[tRNA_optimal$POC1,]
+      list_POC = subset_selected$codon
+      list_aa = subset_selected$aa_name
+      list_codon = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa,]$codon
+    } else if  (type_aa == "POC2" ){
+      subset_selected = tRNA_optimal[tRNA_optimal$POC2,]
+      list_POC = subset_selected$codon
+      list_aa = subset_selected$aa_name
+      list_codon = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa,]$codon
+    } else if  (type_aa == "POCs" ){
+      subset_selected = tRNA_optimal[tRNA_optimal$POC2 | tRNA_optimal$POC1,]
+      list_POC = subset_selected$codon
+      list_aa = subset_selected$aa_name
+      list_codon = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa,]$codon
     }
+    print(list_POC)
+    print(list_codon)
     
     
     
-    COA_obs = rowSums(codon_usage[ list_COA ],na.rm = T)
-    COA_neg_obs = rowSums(codon_usage[ list_COA_neg ],na.rm = T)
+    POC_obs = rowSums(codon_usage[ list_POC ],na.rm = T)
+    POC_codon = rowSums(codon_usage[ list_codon ],na.rm = T)
     
-    COA_obs_intronic = rowSums(codon_usage[paste(list_COA,'_intronic',sep = "")],na.rm = T)
-    COA_neg_obs_intronic = rowSums(codon_usage[paste(list_COA_neg,'_intronic',sep = "")],na.rm = T)
+    POC_obs_intronic = rowSums(codon_usage[paste(list_POC,'_intronic',sep = "")],na.rm = T)
+    POC_codon_intronic = rowSums(codon_usage[paste(list_codon,'_intronic',sep = "")],na.rm = T)
     
     data5 = rbind(data5,data.frame(
       species,
-      set,
-      freq =  tapply( COA_obs / COA_neg_obs  , intervalle_FPKM , function(x) mean(x,na.rm=T)),
+      set = type_aa,
+      freq =  tapply( POC_obs / POC_codon  , intervalle_FPKM , function(x) mean(x,na.rm=T)),
       fpkm = FPKM_bins,
       categorie = "Putative optimal codons (POC)",
-      type_aa=paste("Wb_WC_notambiguous"," codons, Nb aa = ",nb_aa,sep=""),
-      gene_set=paste("N = " , sum(ATGC3_neg_obs != 0),sep=""),
-      nb_poc ,
-      nb_aa,
-      list=paste(list_COA,collapse =";")
+      type_aa=paste(type_aa," codons, Nb aa = ",length(list_aa),sep=""),
+      gene_set = paste("N = " , sum(ATGC3_neg_obs != 0),sep=""),
+      nb_poc =  length(list_POC) ,
+      nb_aa = length(list_aa),
+      list=paste(list_POC,collapse =";")
     ))
     
     
     data5 = rbind(data5,data.frame(
       species,
-      set,
-      freq =   tapply( COA_obs_intronic / COA_neg_obs_intronic  , intervalle_FPKM , function(x) mean(x,na.rm=T)),
+      set = type_aa,
+      freq =   tapply( POC_obs_intronic / POC_codon_intronic  , intervalle_FPKM , function(x) mean(x,na.rm=T)),
       fpkm = FPKM_bins,
       categorie = "POC-matching triplets (POCMT)",
-      type_aa=paste("Wb_WC_notambiguous"," codons, Nb aa = ",nb_aa,sep=""),
+      type_aa=paste(type_aa," codons, Nb aa = ",length(list_aa),sep=""),
       gene_set=paste("N = " , sum(ATGCi_neg_obs != 0),sep=""),
-      nb_poc ,
-      nb_aa,
-      list=paste(list_COA,collapse=";")
+      nb_poc =  length(list_POC),
+      nb_aa = length(list_aa),
+      list=paste(list_POC,collapse=";")
     ))
     
     
@@ -168,14 +163,14 @@ for (species in species_list){
     
     table_constrain = data.frame(busco_id = data_conservation_sub$busco_id)
     for (constrain in c("_highconst","_modconst","_sligconst","_unconst")){
-      table_constrain[,paste("COA",constrain,sep="")] = rowSums(data_conservation_sub[paste(list_COA,constrain,sep = "")],na.rm = T)
-      table_constrain[,paste("COA_neg",constrain,sep="")] = rowSums(data_conservation_sub[paste(list_COA_neg,constrain,sep = "")],na.rm = T)
+      table_constrain[,paste("POC",constrain,sep="")] = rowSums(data_conservation_sub[paste(list_POC,constrain,sep = "")],na.rm = T)
+      table_constrain[,paste("POC_codon",constrain,sep="")] = rowSums(data_conservation_sub[paste(list_codon,constrain,sep = "")],na.rm = T)
     }
     
     data6 = rbind(data6, data.frame(
       species,
-      set,
-      freq = table_constrain$COA_highconst / table_constrain$COA_neg_highconst ,
+      type_aa,
+      freq = table_constrain$POC_highconst / table_constrain$POC_codon_highconst ,
       nb_site = sum(data_conservation_sub$len_high_const_seq),
       nb_genes = nrow(data_conservation_sub),
       categorie = "Highly constrained"
@@ -183,24 +178,24 @@ for (species in species_list){
     
     data6 = rbind(data6, data.frame(
       species,
-      set,
-      freq = table_constrain$COA_modconst / table_constrain$COA_neg_modconst ,
+      type_aa,
+      freq = table_constrain$POC_modconst / table_constrain$POC_codon_modconst ,
       nb_site = sum(data_conservation_sub$len_mod_const_seq),
       nb_genes = nrow(data_conservation_sub),
       categorie = "Moderately constrained"
     ))
     data6 = rbind(data6, data.frame(
       species,
-      set,
-      freq = table_constrain$COA_sligconst / table_constrain$COA_neg_sligconst ,
+      type_aa,
+      freq = table_constrain$POC_sligconst / table_constrain$POC_codon_sligconst ,
       nb_site = sum(data_conservation_sub$len_slight_const_seq),
       nb_genes = nrow(data_conservation_sub),
       categorie = "Slighlty constrained"
     ))
     data6 = rbind(data6, data.frame(
       species,
-      set,
-      freq = table_constrain$COA_unconst / table_constrain$COA_neg_unconst ,
+      type_aa,
+      freq = table_constrain$POC_unconst / table_constrain$POC_codon_unconst ,
       nb_site = sum(data_conservation_sub$len_unconst_seq),
       nb_genes = nrow(data_conservation_sub),
       categorie = "Unconstrained"

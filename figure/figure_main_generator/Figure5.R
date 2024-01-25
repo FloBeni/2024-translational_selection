@@ -6,7 +6,7 @@ source("figure/figure_main_generator/library_path.R")
 
 data6 = read.delim("data/data6_supp.tab")
 data6$categorie = factor(data6$categorie,levels = rev( unique(data6$categorie))) 
-dt_graph = data6[data6$species == "Homo_sapiens",]
+dt_graph = data6[data6$species == "Homo_sapiens" & data6$type_aa == "POCs",]
 # dt_graph = data6[data6$species == "Drosophila_melanogaster",]
 
 pA = ggplot( dt_graph ,
@@ -41,7 +41,7 @@ dev.off()
 
 # Pannel 5 B
 
-dt_graph = data6[data6$species == "Caenorhabditis_elegans",]
+dt_graph = data6[data6$species == "Caenorhabditis_elegans" & data6$type_aa == "POCs",]
 
 pB = ggplot( dt_graph ,
               aes(y=freq,fill=categorie))  +
@@ -64,7 +64,7 @@ pB = ggplot( dt_graph ,
          color = guide_legend(order = 1),
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2),
-  )+ xlab("")+ coord_cartesian(ylim=c(0.2,0.8))
+  )+ xlab("") + coord_cartesian(ylim=c(0.2,0.8))
 pB
 
 jpeg(paste(path_pannel,"p5B.jpg",sep=""),  width = 11000/2,  8000/2,res=1500/2)
@@ -74,27 +74,25 @@ dev.off()
 
 # Pannel 5 C
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp (copie).tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
 
-pC = ggplot(data1,aes(y=constraint_overused_WB_WC_notambiguous,x=clade_group,fill=clade_group))  +
+pC = ggplot(data1,aes(y=constraint_overused_POCs,x=clade_group,fill=clade_group))  +
   geom_hline(size=1,linetype="dashed",col="red",
              yintercept = 0 ) +
   geom_boxplot(alpha=.1) +
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black",angle = 50, size=25,family="economica"),
-    axis.title.y = element_text(color="black", size=25, family="economica",margin = margin(t = 0, r = 20, b = 0, l = 0)),
-    axis.text.y =  element_text(color="black", size=24, family="economica"),
-    axis.text.x =  element_text(color="black",vjust=.5, size=0,angle = 50, family="economica"),
-    title =  element_text(color="black", size=0, family="economica"),
-    legend.text =  element_text(color="black", size=20, family="economica"),
-    legend.position = "left"
+    axis.title.y = element_text(color="black", size=27, family="economica"),
+    axis.text.y =  element_text(color="black", size=22, family="economica"),
+    axis.text.x =  element_text(color="black",vjust=1,hjust=1, size=22,angle = 30, family="economica"),
+    title =  element_text(color="black", size=15, family="economica"),
+    legend.text =  element_text(color="black", size=20, family="economica")
   ) + scale_fill_manual("Clades",values=Clade_color)+ 
-  ylab("Difference in POC proportion between\nthe 25% highest and the 25% lowest constrained sites") + xlab("")+ theme(legend.position='none')
-
-pC = ggMarginal(pC, type="histogram",fill=set_color[1])
+  ylab("POC frequency variations with constraint (%)") + xlab("") + theme(legend.position='none')
+# ylab("Difference in POC proportion between\nthe 25% highest and the 25% lowest constrained sites") +
 pC
 
 
@@ -110,7 +108,6 @@ imgB = load.image(paste(path_pannel,"p5B.jpg",sep="") )
 imgC = load.image(paste(path_pannel,"p5C.jpg",sep="") )
 human<-readPNG(paste(path_require,"human.png",sep=""))
 Caenorhabditis_elegans<-readPNG(paste(path_require,"Caenorhabditis_elegans.png",sep=""))
-clade_png<-readPNG(paste(path_require,"clade.png",sep=""))
 
 {
   pdf(file= paste(path_figure,"Figure5.pdf",sep=""), width=6, height=5)
@@ -140,13 +137,9 @@ clade_png<-readPNG(paste(path_require,"clade.png",sep=""))
   ycel=-400
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom = 350/1.6-ycel, xright = 1000/1.6+xcel, ytop=0-ycel)
   
-  par(mar=c(2, 0, 0, 8))
+  par(mar=c(1, 0, 2, 0))
   plot(imgC, axes=FALSE)
   mtext("C",at=50,adj=-2, side=2, line=1, font=2, cex=1.3,las=2)
-  par(mar=c( 0, 0, 0, 0 ))
-  xaxis=5500
-  yaxis=600
-  rasterImage(clade_png,xleft=0+xaxis, ybottom=800/.44+yaxis, xright=500/.44+xaxis, ytop=yaxis)
   dev.off()
 }
 
