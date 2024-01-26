@@ -85,10 +85,11 @@ dev.off()
 
 # Pannel 4 C
 
-data1 = read.delim("data/data1_supp (copie).tab")
+data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
+
 dt_graph = data1
 ylabel = "expressed_overused_background_POC2"
 xlabel = "expressed_overused_background_POC1"
@@ -132,6 +133,7 @@ dt_graph = data.frame(
   value = c(data1$expressed_overused_background_POC1,data1$expressed_overused_background_POC2))
 
 dt_graph$clade_group_facet = str_replace_all(dt_graph$clade_group," ","\n")
+dt_graph$clade_group_facet = factor(dt_graph$clade_group_facet, levels = str_replace_all(names(Clade_color)," ","\n"))
 
 pD = ggplot(dt_graph,aes(y=value,x=category,label=species,fill=clade_group))  +
   geom_hline(size=1,linetype="dashed",col="red", yintercept = 0 ) +geom_point(size=2,pch=21,alpha=.8)+
