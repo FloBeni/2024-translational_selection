@@ -1,6 +1,5 @@
 # Generate Figure 9
 source("figure/figure_main_generator/library_path.R")
-set_color
 
 data2 = read.delim("data/data2_supp.tab")
 dt_graph = data2[data2$species == "Homo_sapiens" ,]
@@ -100,8 +99,7 @@ xlabel = "var_gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
 pD =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
-  # geom_point(data=dt_graph[is.na(dt_graph$lifespan_days),],size=4,pch=21,alpha=.5,aes(fill=log10(lifespan_days)),fill="black") +
-  geom_point(data=dt_graph[!is.na(dt_graph$lifespan_days),],size=4,pch=21,alpha=.8,aes(fill=log10(lifespan_days))) + theme_bw() + theme(
+  geom_point(data=dt_graph[!is.na(dt_graph$lifespan_days),],size=4,pch=21,alpha=1,aes(fill=log10(lifespan_days))) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
@@ -116,11 +114,90 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   xlab("Variance per gene GCi") + 
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
-  )+ scale_fill_gradient2('Lifespan\n(days, log scale)',low = "white",  high = "red")
+  )+ scale_fill_gradient2('Lifespan\n(days, log scale)',mid = "white",  high = "red")
 pD
 
 jpeg(paste(path_pannel,"p9D.jpg",sep=""),width = 5800/2, height = 3550/2,res=700/2)
 print(pD)
+dev.off()
+
+
+# Pannel 9 E
+
+data1 = read.delim("data/data1_supp.tab")
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
+
+data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
+data1[,c("lifespan_days","length_cm","weight_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","weight_kg")]
+
+dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
+rownames(dnds) = dnds$species
+data1[,c("dNdS")] = dnds[data1$species,c("dNdS")]
+
+
+dt_graph = data1
+ylabel = "expressed_overused_background_POCs"
+xlabel = "lifespan_days"
+dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+
+model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=T,pagels_obliged=F)
+
+pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
+    axis.title.x = element_text(color="black", size=26,family="economica"),
+    axis.title.y = element_text(color="black", size=26, family="economica"),
+    axis.text.y =  element_text(color="black", size=24, family="economica"),
+    axis.text.x =  element_text(color="black", size=24, family="economica"),
+    title =  element_text(color="black", size=20, family="economica"),
+    text =  element_text(color="black", size=31, family="economica"),
+    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 1)),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
+    plot.caption.position =  "plot",
+    legend.title =  element_text(color="black", size=25, family="economica")
+  )+ guides(fill = guide_legend(override.aes = list(size=5)))+
+  labs(
+    title = paste("N = ",nrow(dt_graph)," species",sep="")
+  )+ scale_fill_manual("Clades",values=Clade_color) +
+  ylab("Translational selection intensity") + 
+  scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
+  xlab("Longevity (days log scale)")+ annotation_logticks(sides="b") 
+
+pE
+
+jpeg(paste(path_pannel,"p9E.jpg",sep=""),width = 6000/2, height = 3550/2,res=700/2)
+print(pE)
+dev.off()
+
+
+# Pannel 9 F
+
+dt_graph = data1
+ylabel = "expressed_overused_background_POCs"
+xlabel = "lifespan_days"
+dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+dt_graph = dt_graph[dt_graph$var_gci<0.015,]
+pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_point(data=dt_graph[!is.na(dt_graph$lifespan_days),],size=4,pch=21,alpha=1,aes(fill=var_gci)) + theme_bw() + theme(
+    axis.title.x = element_text(color="black", size=26,family="economica"),
+    axis.title.y = element_text(color="black", size=26, family="economica"),
+    axis.text.y =  element_text(color="black", size=24, family="economica"),
+    axis.text.x =  element_text(color="black", size=24, family="economica"),
+    title =  element_text(color="black", size=20, family="economica"),
+    text =  element_text(color="black", size=31, family="economica"),
+    legend.text =  element_text(color="black", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
+    plot.caption.position =  "plot",
+    legend.title =  element_text(color="black", size=23, family="economica")
+  )+ ylab("Translational selection intensity") +
+  labs(
+    title = paste("N = ",nrow(dt_graph)," species",sep="") 
+  )+ scale_fill_gradient2('Variance\nper gene GCi',mid = "white",  high = "red") +
+  scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
+  xlab("Longevity (days log scale)")+ annotation_logticks(sides="b") 
+pF
+
+jpeg(paste(path_pannel,"p9F.jpg",sep=""),width = 5800/2, height = 3550/2,res=700/2)
+print(pF)
 dev.off()
 
 
@@ -130,14 +207,17 @@ imgA = load.image(paste(path_pannel,"p9A.jpg",sep="") )
 imgB = load.image(paste(path_pannel,"p9B.jpg",sep="") )
 imgC = load.image(paste(path_pannel,"p9C.jpg",sep="") )
 imgD = load.image(paste(path_pannel,"p9D.jpg",sep="") )
+imgE = load.image(paste(path_pannel,"p9E.jpg",sep="") )
+imgF = load.image(paste(path_pannel,"p9F.jpg",sep="") )
 
 {
-  pdf(file= paste(path_figure,"Figure9.pdf",sep=""), width=11, height=8)
+  pdf(file= paste(path_figure,"Figure9.pdf",sep=""), width=11, height=8*3/2)
   
-  m = matrix(rep(NA,2*100), nrow=2)
+  m = matrix(rep(NA,3*100), nrow=3)
   
   m[1,]=c(rep(1,50),rep(2,50))
   m[2,]=c(rep(3,51),rep(4,49))
+  m[3,]=c(rep(5,51),rep(6,49))
   layout(m)
   
   par(mar=c(0,0, 1, 0))
@@ -154,5 +234,13 @@ imgD = load.image(paste(path_pannel,"p9D.jpg",sep="") )
   par(mar=c(0,0, 0, 1))
   plot(imgD, axes=FALSE)
   mtext("D",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
+  
+  par(mar=c(0,0, 0, 1))
+  plot(imgE, axes=FALSE)
+  mtext("E",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
+  
+  par(mar=c(0,0, 0, 1))
+  plot(imgF, axes=FALSE)
+  mtext("F",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
   dev.off()
 }
