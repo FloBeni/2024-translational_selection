@@ -8,7 +8,8 @@ data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,]
 
-tRNA_abundance = read.delim("/home/fbenitiere/data/papers/2024-translational_selection/data/tRNA_abundance.tab")
+tRNA_abundance = read.delim("data/tRNA_abundance.tab")
+tRNA_abundance = tRNA_abundance[rownames(tRNA_abundance) %in% data1$species,]
 
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
@@ -40,11 +41,17 @@ tRNA_abundance_data$title = paste(tRNA_abundance_data$anticodon,"\n(",tRNA_abund
 tRNA_abundance_data$codon = factor(tRNA_abundance_data$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
 tRNA_abundance_data$title = factor(tRNA_abundance_data$title,levels= tapply(tRNA_abundance_data$title, as.integer(tRNA_abundance_data$codon),unique))
 
+nb_sp = length(unique(tRNA_abundance_data$species))
+tRNA_abundance_data$nb_species_0 = tapply(tRNA_abundance_data$abundance != 0,tRNA_abundance_data$codon,sum)[tRNA_abundance_data$codon]
+tRNA_abundance_data$nb_species_0 = round(tRNA_abundance_data$nb_species_0 / nb_sp*100)
+tRNA_abundance_data$y_axis_0 = tapply(tRNA_abundance_data$abundance ,tRNA_abundance_data$codon,function(x) quantile(x,0.9))[tRNA_abundance_data$codon]
+tRNA_abundance_data[duplicated(tRNA_abundance_data$codon) | tRNA_abundance_data$nb_species_0 > 30,]$nb_species_0 = NA
+tRNA_abundance_data[!is.na(tRNA_abundance_data$nb_species_0),]$nb_species_0 = paste(tRNA_abundance_data[!is.na(tRNA_abundance_data$nb_species_0),]$nb_species_0 ,"%")
 
 set_color = c(A="#B2DF8A",T="#33A02C",C="#1F78B4",G="#A6CEE3")
 
-pA = ggplot(tRNA_abundance_data,aes(x=title,y=abundance)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
-  scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid,scales = "free")+
+pA = ggplot(tRNA_abundance_data,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
+  scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid,scales = "free")+ geom_text(family="economica",size=5,aes(y = y_axis_0 + 3 ),vjust=0.1) + 
   theme_bw() + theme(
     title =  element_text(size=30, family="economica"),
     legend.text =  element_text(size=10, family="economica"),
