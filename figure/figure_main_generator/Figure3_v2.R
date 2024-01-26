@@ -47,7 +47,6 @@ pA = ggplot(tRNA_abundance_data,aes(x=title,y=abundance)) + geom_boxplot(aes(fil
   scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid,scales = "free")+
   theme_bw() + theme(
     title =  element_text(size=30, family="economica"),
-    
     legend.text =  element_text(size=10, family="economica"),
     strip.text = element_text(size=25, family="economica",face="bold"),
     legend.spacing.x = unit(1, 'cm'),

@@ -107,17 +107,18 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spe
     axis.text.x =  element_text(color="black", size=25, family="economica"),
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.6, face= "italic", size=20, family="economica"),
-    plot.caption.position =  "plot"
-  )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none") +
+    legend.text =  element_text(color="black", size=20, family="economica",vjust = 1.5,margin = margin(t = 10)),
+    plot.caption = element_text(hjust = 0.4, face= "italic", size=20, family="economica"),
+    plot.caption.position =  "plot",
+    legend.title =  element_text(color="black", size=25, family="economica"),
+  )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
     caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
-  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
+  )  + scale_fill_manual("Clades",values=Clade_color) +
   xlab("POC1 frequency variations with expression (%)")  +
   ylab("POC2 frequency variations with expression (%)") + scale_y_continuous(breaks = seq(-10,25,5))
-
+# + theme(legend.position='none')
 pC
 
 jpeg(paste(path_pannel,"p4C.jpg",sep=""),width = 5200/2, height = 4000/2,res=600/2)

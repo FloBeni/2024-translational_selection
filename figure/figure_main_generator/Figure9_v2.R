@@ -76,7 +76,8 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 1)),
     plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
-    plot.caption.position =  "plot"
+    plot.caption.position =  "plot",
+    legend.title =  element_text(color="black", size=25, family="economica")
   )+ guides(fill = guide_legend(override.aes = list(size=5)))+
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
@@ -109,15 +110,16 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=20, family="economica"),
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
-    plot.caption.position =  "plot"
+    plot.caption.position =  "plot",
+    legend.title =  element_text(color="black", size=23, family="economica")
   )+ ylab("Translational selection intensity") +
-  xlab("Variance per gene GCi") + scale_fill_continuous('Lifespan\n(days, log scale)')+
+  xlab("Variance per gene GCi") + 
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
-  )+ scale_fill_gradient2(low = "white",  high = "red")
+  )+ scale_fill_gradient2('Lifespan\n(days, log scale)',low = "white",  high = "red")
 pD
 
-jpeg(paste(path_pannel,"p9D.jpg",sep=""),width = 6000/2, height = 3550/2,res=700/2)
+jpeg(paste(path_pannel,"p9D.jpg",sep=""),width = 5800/2, height = 3550/2,res=700/2)
 print(pD)
 dev.off()
 
@@ -145,11 +147,11 @@ imgD = load.image(paste(path_pannel,"p9D.jpg",sep="") )
   plot(imgB, axes=FALSE)
   mtext("B",at=100,adj=0, side=2, line=1, font=2, cex=2,las=2)
   
-  par(mar=c(0,1, 0, 1))
+  par(mar=c(0,0, 0, 1))
   plot(imgC, axes=FALSE)
   mtext("C",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
   
-  par(mar=c(0,0, 0, 0))
+  par(mar=c(0,0, 0, 1))
   plot(imgD, axes=FALSE)
   mtext("D",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
   dev.off()

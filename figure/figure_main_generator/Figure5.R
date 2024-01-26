@@ -74,7 +74,7 @@ dev.off()
 
 # Pannel 5 C
 
-data1 = read.delim("data/data1_supp (copie).tab")
+data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
@@ -110,20 +110,20 @@ human<-readPNG(paste(path_require,"human.png",sep=""))
 Caenorhabditis_elegans<-readPNG(paste(path_require,"Caenorhabditis_elegans.png",sep=""))
 
 {
-  pdf(file= paste(path_figure,"Figure5.pdf",sep=""), width=6, height=5)
+  pdf(file= paste(path_figure,"Figure5.pdf",sep=""), width=5.7, height=5)
   
-  m = matrix(rep(NA,100*10), nrow=100)
+  m = matrix(rep(NA,100*100), nrow=100)
   
-  for(i in 1:55){
-    m[i,]=c(rep(1,5),rep(2,5))
+  for(i in 1:50){
+    m[i,]=c(rep(1,40),rep(2,60))
   }
-  for(i in 45:100){
-    m[i,]=c(rep(3,10))
+  for(i in 50:100){
+    m[i,]=c(rep(3,100))
   }
   layout(m)
   m
   
-  par(mar=c(0, 2, 1, 3))
+  par(mar=c(0, 0, 1, 0))
   plot(imgA, axes=FALSE)
   mtext("A",at=40,adj=-1, side=2, line=1, font=2, cex=1.3,las=2)
   xhuman=700
@@ -132,14 +132,14 @@ Caenorhabditis_elegans<-readPNG(paste(path_require,"Caenorhabditis_elegans.png",
   
   par(mar=c(0, 0, 1, 0))
   plot(imgB, axes=FALSE)
-  mtext("B",at=40,adj=0, side=2, line=1, font=2, cex=1.3,las=2)
+  mtext("B",at=40,adj=-1, side=2, line=1, font=2, cex=1.3,las=2)
   xcel=700
   ycel=-400
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom = 350/1.6-ycel, xright = 1000/1.6+xcel, ytop=0-ycel)
   
-  par(mar=c(1, 0, 2, 0))
+  par(mar=c(0, 1, 0, 1))
   plot(imgC, axes=FALSE)
-  mtext("C",at=50,adj=-2, side=2, line=1, font=2, cex=1.3,las=2)
+  mtext("C",at=50,adj=-1, side=2, line=1, font=2, cex=1.3,las=2)
   dev.off()
 }
 

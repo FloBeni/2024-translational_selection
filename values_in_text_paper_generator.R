@@ -4,7 +4,7 @@ source("figure/figure_main_generator/library_path.R")
   data1 = read.delim("data/data1_supp.tab")
   rownames(data1) = data1$species
   data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
-  w
+  
   nrow(data1[ data1$nb_genes_filtered >= 5000,])
   nrow(data1[  data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,])
   nrow(data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,])
