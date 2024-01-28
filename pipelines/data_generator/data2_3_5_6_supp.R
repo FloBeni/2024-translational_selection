@@ -1,13 +1,11 @@
 # Generate Data 2, 3, 5 and 6
 
-path_data = "/home/fbenitiere/data/"
-
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 stop_codon = rownames(code[code$aa_name == "Ter",])
 
-data_conservation = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
-data_conservation_rmfirst1000bp = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
+data_conservation = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
+data_conservation_rmfirst1000bp = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
@@ -170,6 +168,7 @@ for (species in species_list){
     data6 = rbind(data6, data.frame(
       species,
       type_aa,
+      busco_id=table_constrain$busco_id,
       freq = table_constrain$POC_highconst / table_constrain$POC_codon_highconst ,
       nb_site = sum(data_conservation_sub$len_high_const_seq),
       nb_genes = nrow(data_conservation_sub),
@@ -179,6 +178,7 @@ for (species in species_list){
     data6 = rbind(data6, data.frame(
       species,
       type_aa,
+      busco_id=table_constrain$busco_id,
       freq = table_constrain$POC_modconst / table_constrain$POC_codon_modconst ,
       nb_site = sum(data_conservation_sub$len_mod_const_seq),
       nb_genes = nrow(data_conservation_sub),
@@ -187,6 +187,7 @@ for (species in species_list){
     data6 = rbind(data6, data.frame(
       species,
       type_aa,
+      busco_id=table_constrain$busco_id,
       freq = table_constrain$POC_sligconst / table_constrain$POC_codon_sligconst ,
       nb_site = sum(data_conservation_sub$len_slight_const_seq),
       nb_genes = nrow(data_conservation_sub),
@@ -195,6 +196,7 @@ for (species in species_list){
     data6 = rbind(data6, data.frame(
       species,
       type_aa,
+      busco_id=table_constrain$busco_id,
       freq = table_constrain$POC_unconst / table_constrain$POC_codon_unconst ,
       nb_site = sum(data_conservation_sub$len_unconst_seq),
       nb_genes = nrow(data_conservation_sub),

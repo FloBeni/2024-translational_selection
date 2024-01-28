@@ -26,8 +26,8 @@ path_require = "figure/images_library/"
 
 wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
-Clade_color = c(Embryophyta="#33A02C",Diptera="red",Lepidoptera="#FB9A99",Coleoptera="#e2cc1a",Hymenoptera="#ba8e18","Other Insects"="#FF7F00",
-                Nematoda="#B2DF8A",Teleostei="#1F78B4",Mammalia="#66281A",Aves="#5b5b5b","Other Vertebrates"="#A6CEE3","Other Metazoans"="#f5b48a","branch"="black"
+Clade_color = c(Diptera="red",Lepidoptera="#FB9A99",Coleoptera="#e2cc1a",Hymenoptera="#ba8e18","Other Insects"="#FF7F00",
+                Nematoda="#B2DF8A",Mammalia="#66281A",Aves="#5b5b5b","Other Tetrapods"="#A6CEE3",Teleostei="#1F78B4","Other Metazoans"="#f5b48a","branch"="black"
 )
 
 
@@ -39,6 +39,14 @@ rownames(life_history_traits) = paste(life_history_traits$species,life_history_t
   
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
+
+# Check if other Vertebrates are Tetrapoda
+# taxonomy = read.delim("data/GTDrift_Metazoa_taxonomy.tab")
+# taxonomy = taxonomy[taxonomy$species %in% GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates",]$species,]
+# table(taxonomy[taxonomy$rank_no == 16,]$name)
+
+GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates",]$clade_group = "Other Tetrapods"
+
 
 GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = names(Clade_color))
 

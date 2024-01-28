@@ -190,8 +190,8 @@ Caenorhabditis_elegans = readPNG(paste(path_require,"Caenorhabditis_elegans.png"
   par(mar=c(1, 1, 2, 0))
   plot(imgA, axes=FALSE)
   mtext("A",at=50,adj=-1, side=2, line=1, font=2, cex=1.7,las=2)
-  xhuman=470
-  yhuman=-350
+  xhuman = 470
+  yhuman = -350
   rasterImage(human,xleft=0+xhuman, ybottom=450/.9-yhuman, xright=190/.9+xhuman, ytop=0-yhuman)
   par(mar=c(0, 0, 1, 0))
   plot(imgB, axes=FALSE)

@@ -4,11 +4,11 @@ library(stringi)
 
 path_data = "/home/fbenitiere/data/"
 
-busco_tab = read.delim("/home/fbenitiere/data/Projet-SplicedVariants/DnDs/Metazoa_clades_v2/gene_No_aas_cds")
-rownames(busco_tab) = busco_tab$species
+# busco_tab = read.delim("/home/fbenitiere/data/Projet-SplicedVariants/DnDs/Metazoa_clades_v2/gene_No_aas_cds")
+# rownames(busco_tab) = busco_tab$species
 
-data_conservation = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
-data_conservation_rmfirst1000bp = read.delim(paste(path_data,"Projet-NeGA/translational_selection/scu_on_constraint_site/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
+data_conservation = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
+data_conservation_rmfirst1000bp = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
 
 stderror <- function(x) sd(x , na.rm = T)/sqrt(length(x[!is.na(x)] ))
 
@@ -223,7 +223,7 @@ for (species in GTDrift_list_species$species){
       
       dt_translational_selection = data.frame(
         nb_aa = length(list_aa),
-        nb_busco = busco_tab[species,]$No_CDS_Busco,
+        nb_busco = nrow(table_constrain),
         expressed_overused = 100*(round(tapply( POC_obs / POC_codons_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
                                     round( mean( (POC_obs / POC_codons_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) ,
         expressed_overused_background = 100*((round(tapply( POC_obs / POC_codons_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
@@ -231,8 +231,8 @@ for (species in GTDrift_list_species$species){
                                                   round(tapply( POC_obs_intronic / POC_codons_obs_intronic   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
                                                     round( mean( (POC_obs_intronic / POC_codons_obs_intronic)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T),5)
                                                 )),
-        constraint_overused = 100*(mean(table_constrain$POC_highconst/table_constrain$POC_codon_highconst,na.rm = T) -
-                                     mean(table_constrain$POC_unconst/table_constrain$POC_codon_unconst,na.rm = T))
+        # constraint_overused = 100*(mean(table_constrain$POC_highconst/table_constrain$POC_codon_highconst ,na.rm = T) - mean(table_constrain$POC_unconst/table_constrain$POC_codon_unconst,na.rm = T))
+        constraint_overused = 100 * mean(table_constrain$POC_highconst/table_constrain$POC_codon_highconst - table_constrain$POC_unconst/table_constrain$POC_codon_unconst,na.rm = T)
       )
     } else {
       dt_translational_selection = data.frame(

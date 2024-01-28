@@ -15,9 +15,9 @@ for (group in unique(edge_group)){
 }
 
 edge_clade_prev = edge_clade
-list_inclusion =  list("Other Metazoans"=c("Diptera","Lepidoptera","Coleoptera","Other Insects","Other Vertebrates","Nematoda","Hymenoptera","Other Metazoans"),
-                       "Other Vertebrates"=c("Teleostei","Aves","Mammalia","Other Vertebrates"),"Other Insects"=c("Diptera","Lepidoptera","Coleoptera","Other Insects","Hymenoptera"),
-                       Nematoda="Nematoda",Teleostei="Teleostei",Hymenoptera="Hymenoptera",Aves="Aves",Mammalia="Mammalia","Diptera"="Diptera","Lepidoptera"="Lepidoptera","Coleoptera"="Coleoptera",Embryophyta="Embryophyta"
+list_inclusion =  list("Other Metazoans"=c("Diptera","Lepidoptera","Coleoptera","Other Insects","Other Tetrapods","Nematoda","Hymenoptera","Other Metazoans"),
+                       "Other Tetrapods"=c("Aves","Mammalia","Other Tetrapods"),"Other Insects"=c("Diptera","Lepidoptera","Coleoptera","Other Insects","Hymenoptera"),
+                       Nematoda="Nematoda",Teleostei="Teleostei",Hymenoptera="Hymenoptera",Aves="Aves",Mammalia="Mammalia","Diptera"="Diptera","Lepidoptera"="Lepidoptera","Coleoptera"="Coleoptera"
 )
 
 
@@ -50,30 +50,32 @@ dev.off()
 data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
+labels = paste(names(tapply(data1$species,data1$clade_group,length))," N=",tapply(data1$species,data1$clade_group,length),sep="")
+names(labels) = names(tapply(data1$species,data1$clade_group,length))
+
 data1 = data1[ data1$nb_genes_filtered >= 5000,]
 dt_graph = data1
 
 ylabel = "gc3"
 xlabel = "gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
-lm_x = dt_graph[,xlabel]
-lm_y = dt_graph[,ylabel]
 
-model_to_use = fitted_model(x=lm_x,y=lm_y,label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
+model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
+
 
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
-    axis.text.y =  element_text(color="black", size=20, family="economica"),
-    axis.text.x =  element_text(color="black", size=20, family="economica"),
+    axis.text.y =  element_text(color="black", size=24, family="economica"),
+    axis.text.x =  element_text(color="black", size=24, family="economica"),
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 5)),
+    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
     plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  )  + scale_fill_manual("Clades",values=Clade_color) +
+  )  + scale_fill_manual("Clades",values=Clade_color,labels=labels) +
   ylab("Average per gene GC3") +
   xlab("Average per gene GCi")+
   labs(
@@ -121,7 +123,7 @@ pC = ggplot(dt_graph ,
          color = guide_legend(order = 1),
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2,size=NA),
-  )  +  ylab("GC3 rate per gene") + xlab("GCi rate per gene") +xlim(0.1,.8) +ylim(0.15,1)
+  )  +  ylab("GC3 rate per gene") + xlab("GCi rate per gene") + xlim(0.1,.8) +ylim(0.15,1)
 pC
 
 jpeg(paste(path_pannel,"p1C.jpg",sep=""), 
@@ -151,7 +153,7 @@ pD = ggplot(dt_graph ,
     strip.text = element_text(size=15),
     plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  )+labs(fill='Categories',color='Categories',shape='',linetype='') + 
+  )+ labs(fill='Categories',color='Categories',shape='',linetype='') + 
   labs(
     caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
@@ -161,7 +163,7 @@ pD = ggplot(dt_graph ,
          color = guide_legend(order = 1),
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2,size=NA),
-  )  +  ylab("") + xlab("GCi rate per gene") +xlim(0.1,.8) +ylim(0.15,1)
+  )  +  ylab("") + xlab("GCi rate per gene") + xlim(0.1,.8) +ylim(0.15,1)
 pD
 
 jpeg(paste(path_pannel,"p1D.jpg",sep=""), 
@@ -213,46 +215,46 @@ lepidoptera<-readPNG(paste(path_require,"lepidoptera.png",sep=""))
   plot(imgA, axes=FALSE)
   mtext("A",at=49.4,adj=-1, side=2, line=1, font=2, cex=1.4,las=2)
   
-  xmonkey=960
-  ymonkey=2000
-  rasterImage(clade_png,xleft=0+xmonkey, ybottom=800/0.85+ymonkey, xright=460/.85+xmonkey, ytop=ymonkey)
+  xclade=900
+  yclade=2000
+  rasterImage(clade_png,xleft=0+xclade, ybottom=850/0.85+yclade, xright=520/.85+xclade, ytop=yclade)
   
   xaxis=700
   yaxis=2800
   rasterImage(teleostei,xleft=0+xaxis, ybottom=0+yaxis, xright=1100/6+xaxis, ytop=-500/6+yaxis)
-  
+
   xaxis=680
   yaxis=2350
   rasterImage(aves,xleft=0+xaxis, ybottom=0+yaxis, xright=600/3.5+xaxis, ytop=-750/3.5+yaxis)
-  
+
   xaxis=750
   yaxis=1750
   rasterImage(monkey,xleft=0+xaxis, ybottom=0+yaxis, xright=900/5+xaxis, ytop=-900/5+yaxis)
-  
+
   xcel=1310
   ycel=1120
   rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=0+ycel, xright=1000/5+xcel, ytop=-350/5+ycel)
-  
+
   xaxis=1100
   yaxis=800
   rasterImage(bee,xleft=0+xaxis, ybottom=0+yaxis, xright=900/5+xaxis, ytop=-700/5+yaxis)
-  
+
   xaxis=1150
   yaxis=440
   rasterImage(coleoptera,xleft=0+xaxis, ybottom=0+yaxis, xright=1500/10+xaxis, ytop=-900/10+yaxis)
-  
+
   xaxis=1250
   yaxis=350
   rasterImage(lepidoptera,xleft=0+xaxis, ybottom=0+yaxis, xright=1500/7+xaxis, ytop=-900/7+yaxis)
-  
+
   xaxis=1300
   yaxis=150
   rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/10+xaxis, ytop=-900/10+yaxis)
-  
+
   par(mar=c(0, 1, 2, 0))
   plot(imgB, axes=FALSE)
   mtext("B",at=49.4,adj=-1.5, side=2, line=1, font=2, cex=1.4,las=2)
-  
+
   par(mar=c(0, 0, 0, 0))
   plot(imgC, axes=FALSE)
   xhuman=300

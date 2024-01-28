@@ -46,6 +46,7 @@ pB = pB + theme_bw() + theme(
   )  + annotation_logticks(sides="b")+
   guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.005,0.04)+
   theme(legend.position = c(0.8, 0.15),
+        legend.background = element_rect(fill="NA"),
         legend.spacing.x = unit(0.5, 'cm'),
         legend.spacing.y = unit(0.5, 'cm')
         )
@@ -137,6 +138,7 @@ pE = pE + theme_bw() + theme(
   )  + annotation_logticks(sides="b")+
   guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.01,0.05)+
   theme(legend.position = c(0.8, 0.15),
+        legend.background = element_rect(fill="NA"),
         legend.spacing.x = unit(0.5, 'cm'),
         legend.spacing.y = unit(0.5, 'cm')
   )

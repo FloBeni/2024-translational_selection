@@ -3,55 +3,23 @@ source("figure/figure_main_generator/library_path.R")
 
 # Pannel 3 B
 
-data1 = read.delim("data/data1_supp.tab")
-data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
-
-data1 = data1[data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,]
-
-tRNA_abundance = read.delim("data/tRNA_abundance.tab")
-tRNA_abundance = tRNA_abundance[rownames(tRNA_abundance) %in% data1$species,]
-
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 
-code = code[!code$aa_name %in% c("Ter"),]
+data12 = read.delim("data/data12_supp.tab")
 
-rownames(code) = code$anticodon
 
-tRNA_abundance_data = data.frame()
-for (anticodon in code$anticodon){
-  dt = data.frame(abundance = tRNA_abundance[,anticodon])
-  dt$species = rownames(tRNA_abundance)
-  dt$nb_syn = code[anticodon,]$nb_syn
-  dt$amino_acid = code[anticodon,]$aa
-  dt$anticodon = anticodon
-  dt$codon = code[anticodon,]$codon
-  tRNA_abundance_data = rbind(tRNA_abundance_data,dt)
-}
-
-tRNA_abundance_data$color = sapply(tRNA_abundance_data$codon,function(x)substr(x,3,3))
-
-tRNA_abundance_data$amino_acid = factor(tRNA_abundance_data$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
-tRNA_abundance_data$anticodon = str_replace_all(tRNA_abundance_data$anticodon,'T','U')
-tRNA_abundance_data$codon = str_replace_all(tRNA_abundance_data$codon,'T','U')
-
+data12$amino_acid = factor(data12$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
 vect_debut = str_replace_all(vect_debut,"T","U")
-tRNA_abundance_data$title = paste(tRNA_abundance_data$anticodon,"\n(",tRNA_abundance_data$codon,")",sep="")
-tRNA_abundance_data$codon = factor(tRNA_abundance_data$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
-tRNA_abundance_data$title = factor(tRNA_abundance_data$title,levels= tapply(tRNA_abundance_data$title, as.integer(tRNA_abundance_data$codon),unique))
-
-nb_sp = length(unique(tRNA_abundance_data$species))
-tRNA_abundance_data$nb_species_0 = tapply(tRNA_abundance_data$abundance != 0,tRNA_abundance_data$codon,sum)[tRNA_abundance_data$codon]
-tRNA_abundance_data$nb_species_0 = round(tRNA_abundance_data$nb_species_0 / nb_sp*100)
-tRNA_abundance_data$y_axis_0 = tapply(tRNA_abundance_data$abundance ,tRNA_abundance_data$codon,function(x) quantile(x,0.9))[tRNA_abundance_data$codon]
-tRNA_abundance_data[duplicated(tRNA_abundance_data$codon) | tRNA_abundance_data$nb_species_0 > 30,]$nb_species_0 = NA
-tRNA_abundance_data[!is.na(tRNA_abundance_data$nb_species_0),]$nb_species_0 = paste(tRNA_abundance_data[!is.na(tRNA_abundance_data$nb_species_0),]$nb_species_0 ,"%")
+data12$title = paste(data12$anticodon,"\n(",data12$codon,")",sep="")
+data12$codon = factor(data12$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
+data12$title = factor(data12$title,levels= tapply(data12$title, as.integer(data12$codon),unique))
 
 set_color = c(A="#B2DF8A",T="#33A02C",C="#1F78B4",G="#A6CEE3")
 
-pA = ggplot(tRNA_abundance_data,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
-  scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid,scales = "free")+ geom_text(family="economica",size=5,aes(y = y_axis_0 + 3 ),vjust=0.1) + 
+pA = ggplot(data12,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
+  scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid,scales = "free")+ geom_text(family="economica",size=7,aes(y = y_axis_0 + 3 ),vjust=0.1) + 
   theme_bw() + theme(
     title =  element_text(size=30, family="economica"),
     legend.text =  element_text(size=10, family="economica"),

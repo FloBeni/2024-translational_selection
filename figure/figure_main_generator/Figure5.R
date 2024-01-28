@@ -45,9 +45,10 @@ dt_graph = data6[data6$species == "Caenorhabditis_elegans" & data6$type_aa == "P
 
 pB = ggplot( dt_graph ,
               aes(y=freq,fill=categorie))  +
-  geom_boxplot(outlier.shape = NA) +
+  # geom_line(data=dt_graph[dt_graph$categorie %in% c("Highly constrained","Unconstrained"),],aes(group=busco_id),alpha=0.2,col="black",linetype="dashed")+
+  geom_boxplot(outlier.shape = NA) + 
   scale_fill_manual("Categories",values=set_color[c(4,3,5,6)]) +
-  scale_shape_manual(values=c(24,22,21,23,25,20))+
+  scale_shape_manual(values=c(24,22,21,23,25,20)) +
   xlab("Constrain") + ylab("POC frequency") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=25,family="economica"),
     axis.title.y = element_text(color="black", size=25, family="economica"),
@@ -58,8 +59,7 @@ pB = ggplot( dt_graph ,
     strip.text = element_text(size=15),
     plot.caption = element_text(hjust = 0.42, face= "italic", size=18, family="economica"),
     plot.caption.position =  "plot"
-  )  +
-  scale_x_log10() + ggtitle(paste("N = " ,dt_graph$nb_genes[1]," BUSCO genes",sep="")) +
+  )  + ggtitle(paste("N = " ,dt_graph$nb_genes[1]," BUSCO genes",sep="")) +
   guides(fill = guide_legend(override.aes = list(pch=NA),order = 1),
          color = guide_legend(order = 1),
          linetype = guide_legend(order = 2),

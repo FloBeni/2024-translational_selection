@@ -79,16 +79,22 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     axis.text.x =  element_text(color="black", size=20, family="economica"),
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
+    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1,margin = margin(t = 5)),
+    legend.title = element_text(color="black", size=20, family="economica"),
     plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
+  )+ guides(fill = guide_legend(override.aes = list(size=5))) + 
   labs(
     caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
-  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
+  ) + theme(legend.position='none') + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Average GC of most selected codons set\n(nnC/nnU)") + 
-  xlab("Average per gene GCi")
+  xlab("Average per gene GCi") +   theme(legend.position = c(0.85, 0.2),
+                                         legend.background = element_rect(fill="NA"),
+                                         legend.spacing.x = unit(0.1, 'cm'),
+                                         legend.spacing.y = unit(0.1, 'cm'),
+                                         legend.box.background = element_rect(colour = "black")
+  )
 
 pB
 
@@ -117,14 +123,14 @@ fly<-readPNG(paste(path_require,"fly.png",sep=""))
   plot(imgA, axes=FALSE)
   mtext("A",at=-100,adj=0, side=2, line=1, font=2, cex=2,las=2)
   xaxis=2230
-  yaxis=1430
-  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/4.5+xaxis, ytop=-900/4.5+yaxis)
+  yaxis=150
+  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/5+xaxis, ytop=-900/5+yaxis)
   
   plot(imgB, axes=FALSE)
   mtext("B",at=-100,adj=0, side=2, line=1, font=2, cex=2,las=2)
   xaxis=2230
-  yaxis=1430
-  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/4.5+xaxis, ytop=-900/4.5+yaxis)
+  yaxis=150
+  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/5+xaxis, ytop=-900/5+yaxis)
   
   par(mar=c(0, 1, 0, 1))
   plot(imgC, axes=FALSE)
