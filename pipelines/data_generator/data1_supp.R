@@ -7,8 +7,8 @@ path_data = "/home/fbenitiere/data/"
 # busco_tab = read.delim("/home/fbenitiere/data/Projet-SplicedVariants/DnDs/Metazoa_clades_v2/gene_No_aas_cds")
 # rownames(busco_tab) = busco_tab$species
 
-data_conservation = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
-data_conservation_rmfirst1000bp = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
+data_conservation = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75.tab.gz",sep=""))
+data_conservation_rmfirst1000bp = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab.gz",sep=""))
 
 stderror <- function(x) sd(x , na.rm = T)/sqrt(length(x[!is.na(x)] ))
 
@@ -180,17 +180,17 @@ for (species in GTDrift_list_species$species){
     if (type_aa == "POC1" ){
       subset_selected = tRNA_optimal[tRNA_optimal$POC1,]
       list_POC = subset_selected$codon
-      list_aa = subset_selected$aa_name
+      list_aa = unique(subset_selected$aa_name)
       list_codon = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa,]$codon
     } else if  (type_aa == "POC2" ){
       subset_selected = tRNA_optimal[tRNA_optimal$POC2,]
       list_POC = subset_selected$codon
-      list_aa = subset_selected$aa_name
+      list_aa = unique(subset_selected$aa_name)
       list_codon = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa,]$codon
     } else if  (type_aa == "POCs" ){
       subset_selected = tRNA_optimal[tRNA_optimal$POC2 | tRNA_optimal$POC1,]
       list_POC = subset_selected$codon
-      list_aa = subset_selected$aa_name
+      list_aa = unique(subset_selected$aa_name)
       list_codon = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa,]$codon
     }
     print(list_POC)

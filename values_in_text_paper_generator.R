@@ -5,7 +5,6 @@ source("figure/figure_main_generator/library_path.R")
   rownames(data1) = data1$species
   data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
   
-  nrow(data1[ data1$nb_genes_filtered >= 5000,])
   nrow(data1[  data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,])
   nrow(data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,])
   
@@ -21,23 +20,36 @@ source("figure/figure_main_generator/library_path.R")
   
   
   ##  Non-adaptive processes shape codon usage variations across species
-  print("Non-adaptive processes shape codon usage variations across species")
-  print(paste("metazoans covering a wide range of clades (N=",nrow(data1),", ",sum(table(data1$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")]),
-              " Vertebrates and ",nrow(data1) - sum(table(data1$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")])," Invertebrates)" , sep=""))
+  print("Non-adaptive processes are the primary drivers of codon usage variations among metazoans")
+  
+  print(paste("position between ",nrow(data1[ data1$nb_genes_filtered >= 5000,])," metazoan species",sep=""))
+  print(paste("after removal of species lacking gene expression data (N=",nrow(data1[ data1$nb_genes_filtered < 5000,]),")",sep=""))
+  
+  data1 = data1[ data1$nb_genes_filtered >= 5000,]
+  
+  print(paste("clades (",sum(table(data1$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")]),
+              " vertebrates, ",sum(table(data1$clade_group)[c("Diptera","Lepidoptera","Coleoptera","Hymenoptera","Other Insects")]),
+              " insects and ",sum(table(data1$clade_group)[c("Other Metazoans","Nematoda")]),
+              " other metazoans).",sep=""))
+  
+  
+  
   
   print(paste("GCi extends from ",round(min(data1$gci),2)," to ",round(max(data1$gci),2),sep=""))
   print(paste("GC3 span from ",round(min(data1$gc3),2)," to ",round(max(data1$gc3),2),sep=""))
   
   
+  
+  print(paste("Diptera clade (N=",sum(table(data1$clade_group)[c("Diptera")]),")",sep=""))
+  print(paste("the wider range of GC3 variations (from ",round(min(data1[data1$clade_group == "Diptera",]$gc3),2),"% to ",round(max(data1[data1$clade_group == "Diptera",]$gc3),2),"%).",sep=""))
+  
+  
   print(paste("GC3 and GCi are highly correlated (rho=",round(data1["Homo_sapiens",]$rho_gc3_gci,2),")",sep=""))
-  
-  data2 = read.delim("data/data2_supp.tab")
-  dt_graph = data2[data2$species == "Homo_sapiens" & !is.na(data2$GCi),]
-  print(paste("(10th percentile ranging from ",round(quantile(dt_graph$GC3,0.1),2)," to ",round(quantile(dt_graph$GC3,0.9),2),")",sep=""))
+  print(paste("pronounced in Caenorhabditis elegans (rho=",round(data1["Caenorhabditis_elegans",]$rho_gc3_gci,2),",",sep=""))
   
   
-  ##  Estimating the relative abundance of tRNA isodecoders
-  print("Estimating the relative abundance of tRNA isodecoders")
+  ##  tRNA abundance matches transcriptome requirements
+  print("tRNA abundance matches transcriptome requirements")
   
   print(paste("but in some cases (",sum(!data1$tRNA_GFF)," species over ",nrow(data1),
               ") the tRNA are not annotated. We annotated the remaining ",sum(!data1$tRNA_GFF),sep=""))
@@ -52,16 +64,17 @@ source("figure/figure_main_generator/library_path.R")
   spearman_method_aa_droso = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
   print(paste(" (rho = ",round(spearman_method_aa$estimate,2),") as well with the gene copy number, (rho = ",round(spearman_method_aa_droso$estimate,2)," and ",round(spearman_method_aa_human$estimate,2)," respectively)",sep=""))
   
-  print(paste("the amino acid usage and the tRNA pool (rho=",round(data1["Caenorhabditis_elegans",]$rho_aa_fpkm,2),")",sep=""))
-  
-  print(paste("the studied species (N=",nrow(data1)," species)",sep=""))
+  print(paste(" This analysis was conducted across all studied species (N=",nrow(data1)," species )",sep=""))
   
   print(paste("in ",round(sum(data1$pval_aa_fpkm < 0.05)/nrow(data1)*100),"% of the analyzed species",sep=""))
-  print(paste("good proxy of their abundance, for the rest of our analyses we are focusing on this set of species (N=",sum(data1$pval_aa_fpkm < 0.05),")",sep=""))
+  
+  print(paste("with amino acid usage (N=",sum(data1$pval_aa_fpkm < 0.05)," species)",sep=""))
+  
+  data1 = data1[data1$pval_aa_fpkm < 0.05,]
   
   
-  ##  Identifying putative optimal codons for translation
-  print("Identifying putative optimal codons for translation")
+  ##  tRNA abundance defines putative-optimal codons
+  print("tRNA abundance defines putative-optimal codons")
   
   species = "Homo_sapiens"
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
@@ -86,56 +99,95 @@ source("figure/figure_main_generator/library_path.R")
   AAT = observation["AAT"]
   print(paste("AAT accounting for ",round(AAT/(AAC+AAT)*100),"% of the occurrences, respectively.",sep=""))
   
+  print(paste("we excluded ",sum(data1$nb_codon_not_decoded != 0)," species in which certain",sep=""))
+  data1 =   data1[ data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 & data1$nb_codon_not_decoded == 0,]
   
-  data4 = read.delim("data/data4_supp.tab")
-  data4 = data4[data4$species == "metazoa",]
-  codon_count_absent = sapply(data4$codon,function(x){
-    dt = data4[data4$codon == x & data4$Var1 %in% c("WBp + abond","WBp","not decoded"),]
-    sum(dt$Freq)
-  })
-  tapply(data4$Freq,data4$codon,sum)[1]
-  print(paste("these seven codons lack the corresponding tRNA in most species (average=",
-              round(mean(codon_count_absent[c("AGT","TTT","AAT","GAT","CAT","TGT","TAT")]/tapply(data4$Freq,data4$codon,sum)[1] * 100)),"%; Fig 2B)",sep=""))
+  data12 = read.delim("data/data12_supp.tab")
+  data12 = data12[data12$species %in% data1$species,]
   
-  print(paste("except for the Glycine where GGT tRNA is highly avoided (",round(mean(codon_count_absent[c("GGT")]/tapply(data4$Freq,data4$codon,sum)[1] * 100)),"%).",sep=""))
+  list_species = c()
+  for(species in unique(data12$species)){
+    aa_present = table(data12[data12$species == species & data12$nb_syn != 1 & data12$abundance != 0 ,]$amino_acid)
+    aa_present = names(aa_present[aa_present >= 2 ])
+    if (any(!(aa_present %in% unique(data12[data12$species == species & data12$amino_acid %in% aa_present & data12$POC1, ]$amino_acid)))){
+      print(species)
+      list_species=append(list_species,species)
+      print(aa_present[!(aa_present %in% unique(data12[data12$species == species & data12$amino_acid %in% aa_present & data12$POC1, ]$amino_acid))])
+    }
+  }
   
+  print(paste(" gene copy number and decodes all synonymous codons (found in N=",length(list_species)," species)",sep=""))
   
-  data1 = data1[data1$pval_aa_fpkm < 0.05,]
-  print(paste("On average, the optimal codons can be defined for ", round(mean(data1$nb_aa_WB_WC_notambiguous))," amino acids per species.",sep=""))
-  print(paste("In our analysis, we excluded ",sum(data1$nb_codon_not_decoded != 0)," species in which certain",sep=""))
-  
-  
-  ## Highly expressed genes are enriched in POC
-  print("Highly expressed genes are enriched in POC")
-  
-  data1 = data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,]
-  print(paste("5,000 protein-coding genes expressed (N=",nrow(data1)," species)",sep=""))
-  
-  print(paste("The results depicted in Fig4C indicate that, for ",table(data1$expressed_overused_background_WB_WC_notambiguous > 0)["TRUE"],
-              " species (",round(table(data1$expressed_overused_background_WB_WC_notambiguous > 0)["TRUE"]/nrow(data1)*100),"%)",sep=""))
+  print(paste(" Phe, Asn, Asp, His, Cys and Tyr ( ",100*round(1-1/sum(table(data12[data12$POC2 & data12$species%in%data1$species,]$amino_acid)),3) ,")%",sep=""))
   
   
-  print(paste("Resulting in an elevation of ",round(data1[data1$species == "Caenorhabditis_elegans",]$expressed_overused_background_WB_WC_notambiguous),
-              "% in Caenorhabditis elegans, ",round(mean(data1[data1$clade_group == "Mecopterida",]$expressed_overused_background_WB_WC_notambiguous)),
-              "% in Mecopterida, and ",
-              round(mean(data1[data1$clade_group %in% c("Invertebrates","Mammalia","Aves","Other Tetrapods","Teleostei"),]$expressed_overused_background_WB_WC_notambiguous)),
-              "% in vertebrates, with Aves exhibiting a higher translational intensity.",sep=""))
-  
-  print(paste("Not accounting for POCMT variations does not changed the results as it remains positive for ",table(data1$expressed_overused_WB_WC_notambiguous > 0)["TRUE"]," species ",sep=""))
+  print(paste("In the case of human we are able to identify POC1 for ",length(unique(data12[data12$species == "Homo_sapiens" & data12$POC1,]$amino_acid)),
+              " amino acid and POC2 for ",length(unique(data12[data12$species == "Homo_sapiens" & data12$POC2,]$amino_acid))," codons.",sep=""))
   
   
-  ## The most constraint sites tend to be enriched in POC
-  print("The most constraint sites tend to be enriched in POC")
+  
+  print(paste("we can define POC1 and POC2 for ",length(unique(data12[data12$species == "Caenorhabditis_elegans" & data12$POC1,]$amino_acid)),
+              " and ",length(unique(data12[data12$species == "Caenorhabditis_elegans" & data12$POC2,]$amino_acid))," amino acids",sep=""))
+  
+  
+  print(paste("POC1 are defined for ", round(mean(data1$nb_aa_POC1),1),
+              " amino acids and POC2 for ", round(mean(data1$nb_aa_POC2),1),
+              " amino acids.",sep=""))
+  
+  
+  ## Highly expressed genes are enriched in POC1 and POC2
+  print("Highly expressed genes are enriched in POC1 and POC2")
+  
+  data5 = read.delim("data/data5_supp.tab")
+  data5$gene_set = str_replace_all(data5$gene_set,"all,","genes,")
+  data5[data5$categorie == "POC-matching triplets (POCMT)",]$categorie = "control"
+  data5[data5$categorie == "Putative optimal codons (POC)",]$categorie = ""
+  
+  dt_graph = data5[ data5$species == "Caenorhabditis_elegans",]
+  
+  print(paste("we observed a rise in POC1 from ",round(min(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) &
+                                                                      !grepl("control",dt_graph$categorie) &
+                                                                      grepl("POC1",dt_graph$set),]$freq),2)*100,"% to ",
+              round(dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ]$freq,2)*100,"% for highly expressed genes"))
+  
+  print(paste("This analysis was performed for each of the studied species (N=",nrow(data1)," species).",sep=""))
+  
+  print(paste("For 206 species (",round(table(data1$expressed_overused_background_POC1 > 0)["TRUE"]/nrow(data1)*100),"%), the prevalence of POC1",sep=""))
+  
+  print(paste("The strongest variation is observed in Caenorhabditis elegans (+",
+              round(data1[data1$species == "Caenorhabditis_elegans",]$expressed_overused_background_POC1),
+              "%).",sep=""))
+  
+  
+  print(paste("clades from +",round(mean(data1[data1$clade_group == "Diptera",]$expressed_overused_background_POC1)),
+              "% on average in Diptera to and +",
+              round(mean(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Teleostei"),]$expressed_overused_background_POC1)),
+              "% in vertebrates",sep=""))
+  
+  print(paste("Not accounting for POCMT variations does not changed the results as it remains positive for ",table(data1$expressed_overused_POC1 > 0)["TRUE"]," species ",sep=""))
+  
+  
+  # print(paste(,sep=""))
+  
+  
+  ## Most constrained sites tend to be enriched in POCs
+  print("Most constrained sites tend to be enriched in POCs")
+  
+  
+  print(paste("for most tetrapods (N=",nrow(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods"),])," species)",sep=""))
   
   data6 = read.delim("data/data6_supp.tab")
   dt_analysis = data6[data6$species == "Caenorhabditis_elegans",]
   
-  print(paste("the most constrained sites displaying a higher proportion of POC (on average ",
-              round(mean(dt_analysis[dt_analysis$categorie == "Highly constrained",]$freq,na.rm=T)*100,1),"% vs ",
-              round(mean(dt_analysis[dt_analysis$categorie == "Unconstrained",]$freq,na.rm=T)*100,1),"%;",sep=""))
+  print(paste("the most constrained sites displaying a higher proportion of POCs (on average ",
+              round(mean(dt_analysis[dt_analysis$type_aa == "POCs" & dt_analysis$categorie == "Highly constrained",]$freq,na.rm=T)*100,1),"% vs ",
+              round(mean(dt_analysis[dt_analysis$type_aa == "POCs" & dt_analysis$categorie == "Unconstrained",]$freq,na.rm=T)*100,1),"%;",sep=""))
   
-  print(paste("In Mecopterida we observe a difference reaching ",round(max(data1[data1$clade_group == "Mecopterida",]$constraint_overused_WB_WC_notambiguous),1),
-              "% (with an average of ",round(mean(data1[data1$clade_group == "Mecopterida",]$constraint_overused_WB_WC_notambiguous),1),
+  print(paste("Our findings indicate that a majority of the species (",round(sum(data1$constraint_overused_POCs>0)/nrow(data1)*100,),"%) exhibit a positive shift in POC",sep=""))
+  
+  
+  print(paste("In Diptera we observed a difference reaching ",round(max(data1[data1$clade_group == "Diptera",]$constraint_overused_POCs),1),
+              "% (with an average of ",round(mean(data1[data1$clade_group == "Diptera",]$constraint_overused_POCs),1),
               "%).",sep=""))
   
   

@@ -46,6 +46,17 @@ for (anticodon in code$anticodon){
   data12 = rbind(data12,dt)
 }
 
+for (species in GTDrift_list_species$species){
+  genome_assembly = GTDrift_list_species[species,]$assembly_accession
+  taxID = GTDrift_list_species[species,]$NCBI.taxid
+  path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  rownames(tRNA_optimal) = tRNA_optimal$codon
+  data12[data12$species == species,c("POC1","POC2")] = tRNA_optimal[ data12[data12$species == species,]$codon,c("POC1","POC2")]
+}  
+
+
+
 data12$color = sapply(data12$codon,function(x)substr(x,3,3))
 
 data12$amino_acid = factor(data12$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
