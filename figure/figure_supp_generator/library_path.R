@@ -24,13 +24,10 @@ path_require = "figure/images_library/"
 
 wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
-Clade_color = c("Other Invertebrates"="#f5b48a","Mecopterida"="red","Other Tetrapods"="#A6CEE3","Other Insecta"="#FF7F00",
-                Nematoda="#B2DF8A",Teleostei="#1F78B4",Hymenoptera="#ba8e18",Aves="#5b5b5b",Mammalia="#66281A",Embryophyta="#33A02C"
+Clade_color = c(Diptera="red",Lepidoptera="#FB9A99",Coleoptera="#e2cc1a",Hymenoptera="#ba8e18","Other Insects"="#FF7F00",
+                Nematoda="#B2DF8A",Mammalia="#66281A",Aves="#5b5b5b","Other Tetrapods"="#A6CEE3",Teleostei="#1F78B4","Other Metazoans"="#f5b48a","branch"="black"
 )
 
-Clade_color = Clade_color[c("Embryophyta","Mecopterida","Hymenoptera",
-                            "Other Insecta","Nematoda","Other Invertebrates","Teleostei",
-                            "Mammalia","Aves","Other Tetrapods")]
 
 arbrePhylo = read.tree(paste("data/GTDrift_metazoa_phylogenetic_tree.nwk",sep=""))
 
@@ -39,11 +36,11 @@ rownames(life_history_traits) = paste(life_history_traits$species,life_history_t
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
-GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates" ,]$clade_group = "Other Tetrapods"
 
-GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = c("Mecopterida","Hymenoptera","Other Insecta",
-                                                                                       "Nematoda","Other Invertebrates","Teleostei",
-                                                                                       "Mammalia","Aves","Other Tetrapods"))
+GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates",]$clade_group = "Other Tetrapods"
+
+
+GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = names(Clade_color))
 
 GTDrift_list_species$length_cm = life_history_traits[paste(GTDrift_list_species$species,"length_cm",sep="_"),]$value
 GTDrift_list_species$lifespan_days = life_history_traits[paste(GTDrift_list_species$species,"lifespan_days",sep="_"),]$value
@@ -54,12 +51,78 @@ listNomSpecies = tapply(GTDrift_list_species$species,GTDrift_list_species$clade_
 
 
 
-lm_eqn <- function(m=lm(Y ~ X,data)){
-  pvalue = summary(m)$coefficients[2,4]
-  if (pvalue<10^-100){
-    paste(" = ", round(summary(m)$r.squared, 2) , ", p-value = 0",sep="")
-  } else {
-    paste(" = ", round(summary(m)$r.squared, 2) , ", p-value = ",formatC(pvalue, format = "e", digits = 0),sep="")
+fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree = NA,display_other=T,pagels_obliged=F){
+  # Function to choose which model between PGLS, LM and Pagel's lambda is best suited to the data.
+  dt_fit = data.frame()
+  if ( length(tree) != 1){
+    shorebird <- comparative.data(tree, 
+                                  data.frame(label=label,
+                                             x=x,
+                                             y=y), label, vcv=TRUE)
+    fit = pgls(y~x,shorebird)
+    summ_fit = summary(fit)
+    dt_fit = rbind(dt_fit,data.frame(
+      model="PGLS",
+      p_val_slope = summ_fit$coefficients[2,4],
+      r.squared = summ_fit$r.squared,
+      adj.r.squared = summ_fit$adj.r.squared,
+      aic = AIC(fit),
+      slope = coef(fit)[2],
+      intercept = coef(fit)[1]
+    ))
+    
+    fit <- phylolm(y~x, phy = shorebird$phy, data = shorebird$data, model = "lambda")
+    summ_fit = summary(fit)
+    dt_fit = rbind(dt_fit,data.frame(
+      model="Pagel's lambda",
+      p_val_slope = summ_fit$coefficients[2,4],
+      r.squared = summ_fit$r.squared,
+      adj.r.squared = summ_fit$adj.r.squared,
+      aic = AIC(fit),
+      slope = coef(fit)[2],
+      intercept = coef(fit)[1]
+    ))
+    
+    if (pagels_obliged){
+      
+      dt_fit = rbind(dt_fit,data.frame(
+        model="Pagel's lambda",
+        p_val_slope = summ_fit$coefficients[2,4],
+        r.squared = summ_fit$r.squared,
+        adj.r.squared = summ_fit$adj.r.squared,
+        aic = -1000000000000,
+        slope = coef(fit)[2],
+        intercept = coef(fit)[1]
+      ))
+    }
+  } 
+  
+  fit = lm(y~x)
+  summ_fit = summary(fit)
+  dt_fit = rbind(dt_fit,data.frame(
+    model="LM",
+    p_val_slope = summ_fit$coefficients[2,4],
+    r.squared = summ_fit$r.squared,
+    adj.r.squared = summ_fit$adj.r.squared,
+    aic = AIC(fit),
+    slope = coef(fit)[2],
+    intercept = coef(fit)[1]
+  ))
+  
+  print(dt_fit)
+  
+  model_sub = dt_fit[dt_fit$aic != min(dt_fit$aic),]
+  dt_fit = dt_fit[dt_fit$aic == min(dt_fit$aic),]
+  
+  model = paste(dt_fit$model,sep="")
+  R2 = paste(round(dt_fit$r.squared, 2),sep="")
+  pvalue = paste(formatC(dt_fit$p_val_slope, format = "e", digits = 0),sep="")
+  model_non_opti = ""
+  
+  if ( length(tree) != 1 & display_other){
+    AIC = paste(" AIC = ",round(dt_fit$aic),",",sep="")
+    model_non_opti = paste(paste("/ ",model_sub$model,": AIC = ",round(model_sub$aic),sep=""),collapse = " ")
   }
-}
+  return(list(model=model,aic=AIC,r2=R2,pvalue=pvalue,model_non_opti=model_non_opti,slope=dt_fit$slope,intercept=dt_fit$intercept))
+} 
 

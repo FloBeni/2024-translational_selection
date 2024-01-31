@@ -64,6 +64,7 @@ model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_gra
 
 
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
+  geom_abline(linetype="dashed") +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
@@ -98,8 +99,8 @@ dt_graph = data2[data2$species == "Homo_sapiens" ,]
 spearman_method_aa = cor.test( dt_graph$GCi, dt_graph$GC3,method="spearman",exact=F)
 
 
-pC = ggplot(dt_graph ,
-            aes(x=GCi ,y=GC3))  +
+pC = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
+  geom_abline(linetype="dashed") +
   geom_point(col=set_color[8],alpha=0.4,size=.51)+
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
@@ -138,8 +139,8 @@ dt_graph = data2[data2$species == "Caenorhabditis_elegans" ,]
 spearman_method_aa = cor.test( dt_graph$GCi, dt_graph$GC3,method="spearman",exact=F)
 
 
-pD = ggplot(dt_graph ,
-            aes(x=GCi ,y=GC3))  +
+pD = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
+  geom_abline(linetype="dashed") +
   geom_point(col=set_color[8],alpha=0.4,size=.51)+
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +

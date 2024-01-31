@@ -131,9 +131,9 @@ source("figure/figure_main_generator/library_path.R")
   
   
   print(paste("POC1 are defined for ", round(mean(data1$nb_aa_POC1),1),
-              " amino acids and POC2 for ", round(mean(data1$nb_aa_POC2),1),
-              " amino acids.",sep=""))
-  
+              " amino acids \textit{per} species (ranging from ",min(data1$nb_aa_POC1)," to ",max(data1$nb_aa_POC1),") and POC2 for ", round(mean(data1$nb_aa_POC2),1),
+              " amino acids (ranging from ",min(data1$nb_aa_POC2)," to ",max(data1$nb_aa_POC2),")"
+              ,sep="")) # Tyto alba is the only one having 7 because Ile
   
   ## Highly expressed genes are enriched in POC1 and POC2
   print("Highly expressed genes are enriched in POC1 and POC2")
@@ -152,19 +152,19 @@ source("figure/figure_main_generator/library_path.R")
   
   print(paste("This analysis was performed for each of the studied species (N=",nrow(data1)," species).",sep=""))
   
-  print(paste("For 206 species (",round(table(data1$expressed_overused_background_POC1 > 0)["TRUE"]/nrow(data1)*100),"%), the prevalence of POC1",sep=""))
+  print(paste("For 206 species (",round(table(data1$expressed_overused_background_POCs > 0)["TRUE"]/nrow(data1)*100),"%), the prevalence of POCs",sep=""))
   
   print(paste("The strongest variation is observed in Caenorhabditis elegans (+",
-              round(data1[data1$species == "Caenorhabditis_elegans",]$expressed_overused_background_POC1),
+              round(data1[data1$species == "Caenorhabditis_elegans",]$expressed_overused_background_POCs),
               "%).",sep=""))
   
   
-  print(paste("clades from +",round(mean(data1[data1$clade_group == "Diptera",]$expressed_overused_background_POC1)),
+  print(paste("clades from +",round(mean(data1[data1$clade_group == "Diptera",]$expressed_overused_background_POCs)),
               "% on average in Diptera to and +",
-              round(mean(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Teleostei"),]$expressed_overused_background_POC1)),
+              round(mean(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Teleostei"),]$expressed_overused_background_POCs)),
               "% in vertebrates",sep=""))
   
-  print(paste("Not accounting for POCMT variations does not changed the results as it remains positive for ",table(data1$expressed_overused_POC1 > 0)["TRUE"]," species ",sep=""))
+  print(paste("Not accounting for POC-control variations does not changed the results as it remains positive for ",table(data1$expressed_overused_POCs > 0)["TRUE"]," species ",sep=""))
   
   
   # print(paste(,sep=""))
@@ -174,7 +174,7 @@ source("figure/figure_main_generator/library_path.R")
   print("Most constrained sites tend to be enriched in POCs")
   
   
-  print(paste("for most tetrapods (N=",nrow(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods"),])," species)",sep=""))
+  # print(paste("for most tetrapods (N=",nrow(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods"),])," species)",sep=""))
   
   data6 = read.delim("data/data6_supp.tab")
   dt_analysis = data6[data6$species == "Caenorhabditis_elegans",]

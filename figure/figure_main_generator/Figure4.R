@@ -99,7 +99,7 @@ model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_gra
 
 pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species"))  +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
-  geom_abline() +
+  geom_abline(linetype="dashed") +
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),

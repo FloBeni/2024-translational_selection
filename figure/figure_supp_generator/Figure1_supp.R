@@ -6,23 +6,20 @@ source("figure/figure_supp_generator/library_path.R")
 
 data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
+data1 = data1[ data1$nb_genes_filtered >= 5000,]
 
 dt_graph = data1
 
 ylabel = "var_gc3"
 xlabel = "var_gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
-lm_y = dt_graph[,ylabel]
-lm_x = dt_graph[,xlabel]
-shorebird <- comparative.data(arbrePhylo, 
-                              data.frame(species=dt_graph$species,
-                                         pgls_x=lm_x,
-                                         pgls_y=lm_y), species, vcv=TRUE)
 
 dt_graph[,c(ylabel,xlabel)] = sqrt(dt_graph[,c(ylabel,xlabel)])
 
+model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pA = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
+  geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -30,19 +27,16 @@ pA = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     axis.text.x =  element_text(color="black", size=20, family="economica"),
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
+    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 5)),
+    legend.title =  element_text(color="black", size=25, family="economica"),
     plot.caption = element_text(hjust = 0.30, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   )  + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Standard deviation per gene GC3") +
   xlab("Standard deviation per gene GCi") +
   labs(
-    caption = substitute(paste("LM: "," R"^2,lm_eqn," / PGLS:"," R"^2,pgls_eq), list(nbspecies=nrow(dt_graph),
-                                                                                     lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                                                     pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird)))),
-    title = substitute(paste("N = ",nbspecies," species"), list(nbspecies=nrow(dt_graph),
-                                                                lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                                pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
+    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) +
   guides(fill = guide_legend(override.aes = list(size=5)),
   )
@@ -59,15 +53,11 @@ ylabel = "rho_gc3_gci"
 xlabel = "var_gci"
 
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
-lm_y = dt_graph[,ylabel]
-lm_x = dt_graph[,xlabel]
-shorebird <- comparative.data(arbrePhylo, 
-                              data.frame(species=dt_graph$species,
-                                         pgls_x=lm_x,
-                                         pgls_y=lm_y), species, vcv=TRUE)
 
+model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
+  # geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -80,13 +70,10 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     plot.caption.position =  "plot"
   ) + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Spearmann Rho GC3 GCi per species") +
-  xlab("Standard deviation per gene GCi") + labs(
-    caption = substitute(paste("LM: "," R"^2,lm_eqn," / PGLS:"," R"^2,pgls_eq), list(nbspecies=nrow(dt_graph),
-                                                                                     lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                                                     pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird)))),
-    title = substitute(paste("N = ",nbspecies," species"), list(nbspecies=nrow(dt_graph),
-                                                                lm_eqn=lm_eqn(lm(lm_y ~ lm_x)),
-                                                                pgls_eq=lm_eqn(pgls(pgls_y~pgls_x,shorebird))))
+  xlab("Standard deviation per gene GCi")  +
+  labs(
+    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) +
   guides(fill = guide_legend(override.aes = list(size=5)),
   )  + theme(legend.position='none')

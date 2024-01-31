@@ -10,7 +10,7 @@ dt_graph = data3[data3$species == "Caenorhabditis_elegans", ]
 spearman_method_aa = cor.test( dt_graph$tRNASE_copies, dt_graph$obs_codon,method="spearman",exact=F)
 
 pA = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon)*100,y=tRNASE_copies,label=amino_acid)) +
-  geom_smooth(formula = y ~ x, method="lm", size=1 , col=set_color[1],se=F,linetype='dashed') +
+  # geom_smooth(formula = y ~ x, method="lm", size=1 , col=set_color[1],se=F,linetype='dashed') +
   geom_point(pch=21,size=4,fill=set_color[2]) +
   geom_text(nudge_x = .35,size=5,family="economica") + theme_bw() +  theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),

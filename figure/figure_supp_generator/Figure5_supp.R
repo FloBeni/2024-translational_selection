@@ -37,7 +37,7 @@ pA = ggplot(data3_supp[data3_supp$nb_genes >= 200,],aes(x = group,group=clade_gr
 pA
 
 
-jpeg(paste(path_pannel,"p5A_supp.jpg",sep=""), width = 5500/1, height = 3000/1,res=400/1)
+jpeg(paste(path_pannel,"p5A_supp.jpg",sep=""), width = 5500/1, height = 4000/1,res=400/1)
 print(pA)
 dev.off()
 
@@ -59,7 +59,7 @@ cnidaria = readPNG(paste(path_require,"cnidaria.png",sep=""))
 insect = readPNG(paste(path_require,"insect.png",sep=""))
 
 {
-  pdf(file= paste(path_figure,"Figure5_supp.pdf",sep=""), width=6.75, height=4)
+  pdf(file= paste(path_figure,"Figure5_supp.pdf",sep=""), width=6.75, height=5)
   
   par(mar=c(0, 0, 0, 0))
   plot(imgA, axes=FALSE)
