@@ -89,7 +89,7 @@ for (species in species_list){
   ##### Over-used of pOC in expressed genes
   
   xaxis = codon_usage$median_fpkm 
-  proportion = 1/100
+  proportion = 5/100
   quantile = unique( quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T ))
   intervalle_FPKM = cut(xaxis, quantile,include.lowest = T,include.higher=T)
   
@@ -126,6 +126,7 @@ for (species in species_list){
     data5 = rbind(data5,data.frame(
       species,
       set = type_aa,
+      nb_genes = as.numeric(table(intervalle_FPKM)),
       freq =  tapply( POC_obs / POC_codon  , intervalle_FPKM , function(x) mean(x,na.rm=T)),
       fpkm = FPKM_bins,
       categorie = "Putative optimal codons (POC)",
@@ -140,6 +141,7 @@ for (species in species_list){
     data5 = rbind(data5,data.frame(
       species,
       set = type_aa,
+      nb_genes = as.numeric(table(intervalle_FPKM)),
       freq =   tapply( POC_obs_intronic / POC_codon_intronic  , intervalle_FPKM , function(x) mean(x,na.rm=T)),
       fpkm = FPKM_bins,
       categorie = "POC-matching triplets (POCMT)",
