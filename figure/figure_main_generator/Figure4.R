@@ -47,14 +47,18 @@ dev.off()
 
 dt_graph = data5[ data5$species == "Caenorhabditis_elegans" & data5$set != "POCs",]
 
+
+logit = function(x){log(x/(1-x))}
+
 pB = ggplot(dt_graph ,
-            aes(x=fpkm ,y=freq*100,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
+            aes(x=logit(fpkm/max(fpkm)) ,y=freq*100,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2,aes(linetype=paste(set,categorie))) +
   geom_point(data=dt_graph,pch=21,col="black",size=4)+
   scale_fill_manual(values=set_color[c(2,1,4,3)]) +
   scale_color_manual(values=set_color[c(2,1,4,3)]) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
-  scale_linetype_manual(values=c("solid","dashed","solid","dashed"))+
+  scale_linetype_manual(values=c("solid","dashed","solid","dashed"))
+pB
   xlab("Gene expression level (FPKM, log scale)") + ylab("Codon set frequency (%)") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=25,family="economica"),
     axis.title.y = element_text(color="black", size=25, family="economica"),

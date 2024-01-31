@@ -4,8 +4,8 @@ code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 stop_codon = rownames(code[code$aa_name == "Ter",])
 
-data_conservation = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75.tab",sep=""))
-data_conservation_rmfirst1000bp = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab",sep=""))
+data_conservation = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75.tab.gz",sep=""))
+data_conservation_rmfirst1000bp = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab.gz",sep=""))
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
@@ -89,7 +89,7 @@ for (species in species_list){
   ##### Over-used of pOC in expressed genes
   
   xaxis = codon_usage$median_fpkm 
-  proportion = 5/100
+  proportion = 1/100
   quantile = unique( quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T ))
   intervalle_FPKM = cut(xaxis, quantile,include.lowest = T,include.higher=T)
   
