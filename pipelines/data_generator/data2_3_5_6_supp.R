@@ -89,7 +89,7 @@ for (species in species_list){
   ##### Over-used of pOC in expressed genes
   
   xaxis = codon_usage$median_fpkm 
-  proportion = 5/100
+  proportion = 2/100
   quantile = unique( quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T ))
   intervalle_FPKM = cut(xaxis, quantile,include.lowest = T,include.higher=T)
   

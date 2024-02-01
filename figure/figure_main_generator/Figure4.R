@@ -14,11 +14,11 @@ dt_graph = data5[ data5$species == "Homo_sapiens" & data5$set != "POCs",]
 pA = ggplot(dt_graph ,
             aes(x=fpkm ,y=freq*100,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2,aes(linetype=paste(set,categorie))) +
-  geom_point(data=dt_graph,pch=21,col="black",size=4)+
+  geom_point(data=dt_graph,pch=21,col="black",size=3)+
   scale_fill_manual(values=set_color[c(2,1,4,3)]) +
   scale_color_manual(values=set_color[c(2,1,4,3)]) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
-  scale_linetype_manual(values=c("solid","dashed","solid","dashed"))+
+  scale_linetype_manual(values=c("solid","solid","solid","solid"))+
   xlab("Gene expression level (FPKM, log scale)") + ylab("Codon set frequency (%)") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=25,family="economica"),
     axis.title.y = element_text(color="black", size=25, family="economica"),
@@ -34,7 +34,7 @@ pA = ggplot(dt_graph ,
          shape = guide_legend(order = 2),
   ) + scale_x_log10(
     breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
-    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.01,350)) +  ylim(0.2*100,0.7*100) +
+    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.8*100) +
   ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) + annotation_logticks(sides = "b")+   guides(fill="none",color="none",linetype="none",shape="none")
 pA
 
@@ -50,11 +50,11 @@ dt_graph = data5[ data5$species == "Caenorhabditis_elegans" & data5$set != "POCs
 pB = ggplot(dt_graph ,
             aes(x=fpkm ,y=freq*100,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2,aes(linetype=paste(set,categorie))) +
-  geom_point(data=dt_graph,pch=21,col="black",size=4)+
+  geom_point(data=dt_graph,pch=21,col="black",size=3)+
   scale_fill_manual(values=set_color[c(2,1,4,3)]) +
   scale_color_manual(values=set_color[c(2,1,4,3)]) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
-  scale_linetype_manual(values=c("solid","dashed","solid","dashed"))+
+  scale_linetype_manual(values=c("solid","solid","solid","solid"))+
   xlab("Gene expression level (FPKM, log scale)") + ylab("Codon set frequency (%)") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=25,family="economica"),
     axis.title.y = element_text(color="black", size=25, family="economica"),
@@ -70,7 +70,7 @@ pB = ggplot(dt_graph ,
          shape = guide_legend(order = 2),
   ) + scale_x_log10(
     breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
-    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.01,350))+ ylim(0.2*100,0.7*100) + 
+    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.8*100) + 
   geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
   geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
   geom_point(data =  dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ],col="black",pch=21,fill="#E31A1C",size=6)+

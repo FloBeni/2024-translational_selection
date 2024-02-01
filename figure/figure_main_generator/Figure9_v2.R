@@ -96,10 +96,12 @@ dev.off()
 dt_graph = data1
 ylabel = "expressed_overused_background_POCs"
 xlabel = "var_gci"
-dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label ,] 
+dt_graph = dt_graph[!is.na(dt_graph$lifespan_days),]
+dt_graph = dt_graph[order(dt_graph$lifespan_days,decreasing = T),]
 
-pD =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
-  geom_point(data=dt_graph[!is.na(dt_graph$lifespan_days),],size=4,pch=21,alpha=1,aes(fill=log10(lifespan_days))) + theme_bw() + theme(
+pD =  ggplot(dt_graph,aes_string(y=ylabel , x=xlabel))  +
+  geom_point(size=4,pch=21,alpha=1,aes(fill=log10(lifespan_days))) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
@@ -114,7 +116,8 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   xlab("Variance per gene GCi") + 
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
-  )+ scale_fill_gradient2('Lifespan\n(days, log scale)',mid = "white",  high = "red")
+  ) + scale_fill_gradient2('Longevity\n(days, log scale)',mid = "white",  high = "red")
+
 pD
 
 jpeg(paste(path_pannel,"p9D.jpg",sep=""),width = 5800/2, height = 3550/2,res=700/2)
@@ -123,17 +126,6 @@ dev.off()
 
 
 # Pannel 9 E
-
-data1 = read.delim("data/data1_supp.tab")
-data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
-
-data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
-data1[,c("lifespan_days","length_cm","weight_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","weight_kg")]
-
-dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
-rownames(dnds) = dnds$species
-data1[,c("dNdS")] = dnds[data1$species,c("dNdS")]
-
 
 dt_graph = data1
 ylabel = "expressed_overused_background_POCs"
@@ -160,7 +152,7 @@ pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   )+ scale_fill_manual("Clades",values=Clade_color) +
   ylab("Translational selection intensity") + 
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
-  xlab("Longevity (days log scale)")+ annotation_logticks(sides="b") 
+  xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") 
 
 pE
 
@@ -176,8 +168,11 @@ ylabel = "expressed_overused_background_POCs"
 xlabel = "lifespan_days"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 dt_graph = dt_graph[dt_graph$var_gci<0.015,]
+
+dt_graph = dt_graph[order(dt_graph$var_gci,decreasing = T),]
+
 pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
-  geom_point(data=dt_graph[!is.na(dt_graph$lifespan_days),],size=4,pch=21,alpha=1,aes(fill=var_gci)) + theme_bw() + theme(
+  geom_point(size=4,pch=21,alpha=1,aes(fill=var_gci)) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
@@ -193,10 +188,10 @@ pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
   )+ scale_fill_gradient2('Variance\nper gene GCi',mid = "white",  high = "red") +
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
-  xlab("Longevity (days log scale)")+ annotation_logticks(sides="b") 
+  xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") 
 pF
 
-jpeg(paste(path_pannel,"p9F.jpg",sep=""),width = 5800/2, height = 3550/2,res=700/2)
+jpeg(paste(path_pannel,"p9F.jpg",sep=""),width = 5500/2, height = 3550/2,res=700/2)
 print(pF)
 dev.off()
 
@@ -239,7 +234,7 @@ imgF = load.image(paste(path_pannel,"p9F.jpg",sep="") )
   plot(imgE, axes=FALSE)
   mtext("E",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
   
-  par(mar=c(0,0, 0, 1))
+  par(mar=c(0,0, 0, 2))
   plot(imgF, axes=FALSE)
   mtext("F",at=-100,adj=-1, side=2, line=1, font=2, cex=2,las=2)
   dev.off()

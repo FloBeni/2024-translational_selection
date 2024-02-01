@@ -106,10 +106,10 @@ for (species in GTDrift_list_species$species){
   spearman_method_gc3gci = cor.test( gc3, gci,method = "spearman",exact=F)
   
   xaxis = codon_usage$median_fpkm 
-  proportion = 5/100
+  proportion = 2/100
   quantile = unique( quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T ))
   intervalle_FPKM = cut(xaxis, quantile,include.lowest = T,include.higher=T)
-  
+  print(mean(table(intervalle_FPKM)))
   FPKM_bins = tapply(xaxis, intervalle_FPKM, median)
   
   ## Translational selection signal
@@ -193,8 +193,8 @@ for (species in GTDrift_list_species$species){
       list_aa = unique(subset_selected$aa_name)
       list_codon = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa,]$codon
     }
-    print(list_POC)
-    print(list_codon)
+    # print(list_POC)
+    # print(list_codon)
     
     
     if ( length(list_POC) != 0 ){
@@ -223,6 +223,7 @@ for (species in GTDrift_list_species$species){
       
       dt_translational_selection = data.frame(
         nb_aa = length(list_aa),
+        nb_genes_per_bins = mean(table(intervalle_FPKM)),
         nb_busco = nrow(table_constrain),
         expressed_overused = 100*(round(tapply( POC_obs / POC_codons_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
                                     round( mean( (POC_obs / POC_codons_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) ,
@@ -237,6 +238,7 @@ for (species in GTDrift_list_species$species){
     } else {
       dt_translational_selection = data.frame(
         nb_aa = 0,
+        nb_genes_per_bins = NA,
         nb_busco = NA,
         expressed_overused = NA,
         expressed_overused_background = NA,
