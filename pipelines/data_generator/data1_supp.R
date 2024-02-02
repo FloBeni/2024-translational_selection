@@ -221,14 +221,16 @@ for (species in GTDrift_list_species$species){
         table_constrain[,paste("POC_codon",constrain,sep="")] = rowSums(data_conservation_sub[paste(list_codon,constrain,sep = "")],na.rm = T)
       }
       
+      Fpoc_expressed = round(tapply( POC_obs / POC_codons_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5)
+      Fpoc_noexpressed = round( mean( (POC_obs / POC_codons_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)
+      
       dt_translational_selection = data.frame(
         nb_aa = length(list_aa),
         nb_genes_per_bins = mean(table(intervalle_FPKM)),
         nb_busco = nrow(table_constrain),
-        expressed_overused = 100*(round(tapply( POC_obs / POC_codons_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
-                                    round( mean( (POC_obs / POC_codons_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) ,
-        expressed_overused_background = 100*((round(tapply( POC_obs / POC_codons_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
-                                                round( mean( (POC_obs / POC_codons_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)) - (
+        S = log(Fpoc_expressed/(1-Fpoc_expressed)) - log(Fpoc_noexpressed/(1-Fpoc_noexpressed)),
+        expressed_overused = 100 * (Fpoc_expressed - Fpoc_noexpressed) ,
+        expressed_overused_background = 100*((Fpoc_expressed - Fpoc_noexpressed) - (
                                                   round(tapply( POC_obs_intronic / POC_codons_obs_intronic   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
                                                     round( mean( (POC_obs_intronic / POC_codons_obs_intronic)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T),5)
                                                 )),
@@ -240,6 +242,7 @@ for (species in GTDrift_list_species$species){
         nb_aa = 0,
         nb_genes_per_bins = NA,
         nb_busco = NA,
+        S = NA,
         expressed_overused = NA,
         expressed_overused_background = NA,
         constraint_overused = NA

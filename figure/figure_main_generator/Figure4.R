@@ -47,12 +47,31 @@ dev.off()
 
 dt_graph = data5[ data5$species == "Caenorhabditis_elegans" & data5$set != "POCs",]
 
+data1 = read.delim("data/data1_supp.tab")
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
+
+data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
+
+S_high_exp = data1[data1$species == "Caenorhabditis_elegans",]$S_POC1
+
+Fpoc_low_exp = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)
+Fpkm_high_exp = dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ]$fpkm
+
+lambda = exp(log(Fpoc_low_exp/(1-Fpoc_low_exp)))
+k = S_high_exp/Fpkm_high_exp
+
+S_function = function(fpkm){k * fpkm}
+
+Fop_estimation = function(fpkm){
+  lambda/(lambda + (exp(-S_function(fpkm))-1)/(1-exp(S_function(fpkm))))
+}
+
 pB = ggplot(dt_graph ,
-            aes(x=fpkm ,y=freq*100,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
+            aes(x=fpkm ,y=100*freq,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2,aes(linetype=paste(set,categorie))) +
   geom_point(data=dt_graph,pch=21,col="black",size=3)+
-  scale_fill_manual(values=set_color[c(2,1,4,3)]) +
-  scale_color_manual(values=set_color[c(2,1,4,3)]) +
+  scale_fill_manual(values=set_color[c(2,1,4,3,8)]) +
+  scale_color_manual(values=set_color[c(2,1,4,3,8)]) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
   scale_linetype_manual(values=c("solid","solid","solid","solid"))+
   xlab("Gene expression level (FPKM, log scale)") + ylab("Codon set frequency (%)") + theme_bw() + theme(
@@ -68,14 +87,16 @@ pB = ggplot(dt_graph ,
          color = guide_legend(order = 1),
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2),
-  ) + scale_x_log10(
+  )  + scale_x_log10(
     breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
-    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.8*100) + 
+    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.8*100) +
   geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
   geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
   geom_point(data =  dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ],col="black",pch=21,fill="#E31A1C",size=6)+
   geom_point(data = dt_graph[grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set), ],col="black",pch=21,fill="#FB9A99",size=6)+
-  ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) +   guides(linetype="none",shape="none")+ annotation_logticks(sides = "b")
+  ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) +   guides(linetype="none",shape="none")+ annotation_logticks(sides = "b") +
+  geom_line(data = data.frame(Fop_estimate = Fop_estimation(dt_graph$fpkm),fpkm=dt_graph$fpkm),
+            aes(x=fpkm ,y=100*Fop_estimate,fill="simulation",col="simulation"),size=2) 
 pB
 
 jpeg(paste(path_pannel,"p4B.jpg",sep=""),  width = 11000/2,  5500/2,res=1000/1.8)
@@ -84,11 +105,6 @@ dev.off()
 
 
 # Pannel 4 C
-
-data1 = read.delim("data/data1_supp.tab")
-data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
-
-data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
 
 dt_graph = data1
 ylabel = "expressed_overused_background_POC2"
@@ -131,7 +147,7 @@ dt_graph = data.frame(
   species = c(data1$species,data1$species),
   clade_group = c(data1$clade_group,data1$clade_group),
   category = c(rep("POC1",nrow(data1)), rep("POC2",nrow(data1))),
-  value = c(data1$expressed_overused_background_POC1,data1$expressed_overused_background_POC2))
+  value = c(data1$S_POC1,data1$S_POC2))
 
 dt_graph$clade_group_facet = str_replace_all(dt_graph$clade_group," ","\n")
 dt_graph$clade_group_facet = factor(dt_graph$clade_group_facet, levels = str_replace_all(names(Clade_color)," ","\n"))

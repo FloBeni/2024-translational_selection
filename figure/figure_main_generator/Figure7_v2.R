@@ -17,7 +17,7 @@ data1[,c("dNdS")] = dnds[data1$species,c("dNdS")]
 
 dt_graph = data1
 
-ylabel = "expressed_overused_background_POCs"
+ylabel = "S_POCs"
 xlabel = "lifespan_days"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
@@ -55,7 +55,7 @@ dev.off()
 
 dt_graph = data1
 
-ylabel = "expressed_overused_background_POCs"
+ylabel = "S_POCs"
 xlabel = "length_cm"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
@@ -91,7 +91,7 @@ dev.off()
 
 dt_graph = data1
 
-ylabel = "expressed_overused_background_POCs"
+ylabel = "S_POCs"
 xlabel = "weight_kg"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
@@ -127,7 +127,7 @@ dev.off()
 
 dt_graph = data1
 
-ylabel = "expressed_overused_background_POCs"
+ylabel = "S_POCs"
 xlabel = "dNdS"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
