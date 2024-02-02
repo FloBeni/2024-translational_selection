@@ -2,6 +2,8 @@
 options(stringsAsFactors = F, scipen = 999)
 library(stringr)
 library(stringi)
+library(tidyr)
+library(dplyr)
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
@@ -58,7 +60,7 @@ collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa
       names(list_codon)[sapply(df_synonymous$substituted,function(x) grep(x,list_codon))]
       ,sep="")
     
-    for ( categorie in unique(df_synonymous$codon)){
+    for ( categorie in unique( df_synonymous$codon )){
       count_codon_trinucl[,paste(categorie,region,sep="_")] = table( df_synonymous[ df_synonymous$codon == categorie ,]$protein_id )[count_codon_trinucl$protein_id]
       if(region == "codon"){
         if (length(list_codon[str_split(categorie,"->")[[1]][1]][[1]]) != 1){
@@ -75,11 +77,11 @@ collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa
       }
       name_col = str_replace(paste("density",categorie,region,sep="_"),"->","_to_")
       
-      dt[,paste("cible",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  sum(x,na.rm=T))
+      dt[,paste("sum_cible",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  sum(x,na.rm=T))
       dt[,paste("median_cible",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  median(x,na.rm=T))
+      dt[,paste("sum_subst",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  sum(x,na.rm=T))
       dt[,paste("median_subst_per_gene",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  median(x,na.rm=T))
       dt[,paste("average_subst_per_gene",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  mean(x,na.rm=T))
-      
       
       
       if (method_to_calculate == "concatenate"){
@@ -108,6 +110,7 @@ collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa
   }
   return(dt)
 }
+
 
 
 
@@ -306,4 +309,9 @@ data11 = rbind(data11,dt)
 
 write.table(data11,"data/data11_supp.tab",quote=F,row.names = F,sep="\t")
 
+
+sum(data11$sum_subst_density_nonoptimal_to_optimal_codon)
+sum(data11$sum_subst_density_optimal_to_nonoptimal_codon)
+sum(data11$sum_subst_density_nonoptimal_to_optimal_intron)
+sum(data11$sum_subst_density_optimal_to_nonoptimal_intron)
 
