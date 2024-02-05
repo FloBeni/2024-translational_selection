@@ -198,52 +198,49 @@ dev.off()
 
 # Figure 6
 
-imgA = load.image(paste(path_require,"polymorphism.png",sep="") )
+imgA = load.image(paste(path_require,"poly_subst.png",sep="") )
 imgB = load.image(paste(path_pannel,"p6B.jpg",sep="") )
 imgC = load.image(paste(path_pannel,"p6C.jpg",sep="") )
-imgD = load.image(paste(path_require,"substitutions.png",sep="") )
+# imgD = load.image(paste(path_require,"substitutions.png",sep="") )
 imgE = load.image(paste(path_pannel,"p6E.jpg",sep="") )
 imgF = load.image(paste(path_pannel,"p6F.jpg",sep="") )
 fly<-readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
 
 {
   pdf(file= paste(path_figure,"Figure6.pdf",sep=""), width=8, height=7)
-  m = matrix(rep(NA,10*12), nrow=12)
+  m = matrix(rep(NA,10*120), nrow=120)
+  # for(i in 1:6){
+  #   m[i,]=c(rep(1,10))
+  # }
+  
   for(i in 1:6){
-    m[,i]=c(rep(1,6),rep(4,6))
+    m[,i]=c(rep(1,50),rep(2,35),rep(3,35))
   }
   for(i in 6:10){
-    m[,i]=c(rep(2,3),rep(3,3),rep(5,3),rep(6,3))
+    m[,i]=c(rep(1,50),rep(4,35),rep(5,35))
   }
-  layout(m)
   m
+  layout(m)
   
   par(mar=c(0, 0, 0, 0))
   plot(imgA, axes=FALSE)
-  mtext("A",at=-100,adj=-1, side=2, line=1, font=2, cex=1.7,las=2)
-  xaxis=570/1.1
-  yaxis=0/1.1
+  mtext("A",at=100,adj=-4, side=2, line=1, font=2, cex=1.7,las=2)
+  xaxis=1300/1.1
+  yaxis=120/1.1
   rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1100/13+xaxis, ytop=-900/13+yaxis)
-  par(mar=c(0, 0, 1, 0))
+  par(mar=c(0, 1, 1.5, 0))
   plot(imgB, axes=FALSE)
-  mtext("B",at=100,adj=-0.7, side=2, line=1, font=2, cex=1.6,las=2)
-  par(mar=c(0, 0, 0, 0))
+  mtext("B",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
+  par(mar=c(0.5, 1, 0, 0))
   plot(imgC, axes=FALSE)
-  mtext("C",at=100,adj=-0.7, side=2, line=1, font=2, cex=1.6,las=2)
+  mtext("C",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
   
-  
-  par(mar=c(0, 0, 0, 0))
-  plot(imgD, axes=FALSE)
-  mtext("D",at=-100,adj=-1, side=2, line=1, font=2, cex=1.7,las=2)
-  xaxis=570/1.1
-  yaxis=0/1.1
-  rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1100/11+xaxis, ytop=-900/11+yaxis)
-  par(mar=c(0, 0, 1, 0))
+  par(mar=c(0, 1, 1.5, 0))
   plot(imgE, axes=FALSE)
-  mtext("E",at=100,adj=-0.7, side=2, line=1, font=2, cex=1.6,las=2)
-  par(mar=c(0, 0, 0, 0))
+  mtext("E",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
+  par(mar=c(0.5, 1, 0, 0))
   plot(imgF, axes=FALSE)
-  mtext("F",at=100,adj=-0.7, side=2, line=1, font=2, cex=1.6,las=2)
+  mtext("F",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
   
   dev.off()
 }

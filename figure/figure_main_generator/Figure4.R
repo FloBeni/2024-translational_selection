@@ -33,8 +33,8 @@ pA = ggplot(dt_graph ,
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2),
   ) + scale_x_log10(
-    breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
-    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.8*100) +
+    breaks=c(0.01,0.1,1,10,100,1000,10000,50000),
+    labels=c(0.01,0.1,1,10,100,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.8*100) +
   ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) + annotation_logticks(sides = "b")+   guides(fill="none",color="none",linetype="none",shape="none")
 pA
 
@@ -88,15 +88,15 @@ pB = ggplot(dt_graph ,
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2),
   )  + scale_x_log10(
-    breaks=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),
-    labels=c(0.005,0.01,0.1,1,10,100,500,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.8*100) +
+    breaks=c(0.01,0.1,1,10,100,1000,10000,50000),
+    labels=c(0.01,0.1,1,10,100,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.8*100) +
   geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)*100,size=1,linetype="dashed",col="#E31A1C") +
   geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
   geom_point(data =  dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ],col="black",pch=21,fill="#E31A1C",size=6)+
   geom_point(data = dt_graph[grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set), ],col="black",pch=21,fill="#FB9A99",size=6)+
-  ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) +   guides(linetype="none",shape="none")+ annotation_logticks(sides = "b") +
-  geom_line(data = data.frame(Fop_estimate = Fop_estimation(dt_graph$fpkm),fpkm=dt_graph$fpkm),
-            aes(x=fpkm ,y=100*Fop_estimate,fill="simulation",col="simulation"),size=2) 
+  ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) +   guides(linetype="none",shape="none")+ annotation_logticks(sides = "b") 
+  # geom_line(data = data.frame(Fop_estimate = Fop_estimation(dt_graph$fpkm),fpkm=dt_graph$fpkm),
+  #           aes(x=fpkm ,y=100*Fop_estimate,fill="simulation",col="simulation"),size=2) 
 pB
 
 jpeg(paste(path_pannel,"p4B.jpg",sep=""),  width = 11000/2,  5500/2,res=1000/1.8)
