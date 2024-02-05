@@ -59,7 +59,7 @@ data1[,c("dNdS")] = dnds[data1$species,c("dNdS")]
 
 
 dt_graph = data1
-ylabel = "expressed_overused_background_POCs"
+ylabel = "S_POCs"
 xlabel = "var_gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
@@ -81,7 +81,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Translational selection intensity") + 
+  ylab("Translational selection intensity (S)") + 
   xlab("Variance per gene GCi")
 
 pC
@@ -94,7 +94,7 @@ dev.off()
 # Pannel 9 D
 
 dt_graph = data1
-ylabel = "expressed_overused_background_POCs"
+ylabel = "S_POCs"
 xlabel = "var_gci"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label ,] 
 dt_graph = dt_graph[!is.na(dt_graph$lifespan_days),]
@@ -112,7 +112,7 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel , x=xlabel))  +
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
     plot.caption.position =  "plot",
     legend.title =  element_text(color="black", size=23, family="economica")
-  )+ ylab("Translational selection intensity") +
+  )+ ylab("Translational selection intensity (S)") +
   xlab("Variance per gene GCi") + 
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
@@ -128,7 +128,7 @@ dev.off()
 # Pannel 9 E
 
 dt_graph = data1
-ylabel = "expressed_overused_background_POCs"
+ylabel = "S_POCs"
 xlabel = "lifespan_days"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
@@ -150,7 +150,7 @@ pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Translational selection intensity") + 
+  ylab("Translational selection intensity (S)") + 
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") 
 
@@ -164,7 +164,7 @@ dev.off()
 # Pannel 9 F
 
 dt_graph = data1
-ylabel = "expressed_overused_background_POCs"
+ylabel = "S_POCs"
 xlabel = "lifespan_days"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 dt_graph = dt_graph[dt_graph$var_gci<0.015,]
@@ -183,7 +183,7 @@ pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
     plot.caption.position =  "plot",
     legend.title =  element_text(color="black", size=23, family="economica")
-  )+ ylab("Translational selection intensity") +
+  )+ ylab("Translational selection intensity (S)") +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
   )+ scale_fill_gradient2('Variance\nper gene GCi',mid = "white",  high = "red") +

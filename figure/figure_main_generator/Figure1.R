@@ -15,7 +15,7 @@ for (group in unique(edge_group)){
 }
 
 edge_clade_prev = edge_clade
-list_inclusion =  list("Other Metazoans"=c("Diptera","Lepidoptera","Coleoptera","Other Insects","Other Tetrapods","Nematoda","Hymenoptera","Other Metazoans"),
+list_inclusion =  list("Other Metazoans"=c("Diptera","Lepidoptera","Coleoptera","Other Insects","Other Tetrapods","Nematoda","Hymenoptera","Teleostei","Other Metazoans"),
                        "Other Tetrapods"=c("Aves","Mammalia","Other Tetrapods"),"Other Insects"=c("Diptera","Lepidoptera","Coleoptera","Other Insects","Hymenoptera"),
                        Nematoda="Nematoda",Teleostei="Teleostei",Hymenoptera="Hymenoptera",Aves="Aves",Mammalia="Mammalia","Diptera"="Diptera","Lepidoptera"="Lepidoptera","Coleoptera"="Coleoptera"
 )

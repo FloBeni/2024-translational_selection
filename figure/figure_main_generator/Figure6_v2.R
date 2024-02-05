@@ -237,10 +237,10 @@ fly<-readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
   
   par(mar=c(0, 1, 1.5, 0))
   plot(imgE, axes=FALSE)
-  mtext("E",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
+  mtext("D",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
   par(mar=c(0.5, 1, 0, 0))
   plot(imgF, axes=FALSE)
-  mtext("F",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
+  mtext("E",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
   
   dev.off()
 }

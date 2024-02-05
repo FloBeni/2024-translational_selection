@@ -8,6 +8,7 @@ data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
 data1 = data1[data1$clade_group %in% c("Diptera","Lepidoptera"),]
+data1 = data1[data1$species != "Eumeta_japonica",]
 
 dt_graph = data1
 
@@ -18,6 +19,7 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_abline(linetype="dashed") +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
@@ -79,7 +81,7 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     axis.text.x =  element_text(color="black", size=20, family="economica"),
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1,margin = margin(t = 5)),
+    legend.text =  element_text(color="black", size=20, family="economica",vjust = 1,margin = margin(t = 5)),
     legend.title = element_text(color="black", size=20, family="economica"),
     plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
@@ -89,7 +91,7 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + theme(legend.position='none') + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Average GC of most selected codons set\n(nnC/nnU)") + 
-  xlab("Average per gene GCi") +   theme(legend.position = c(0.85, 0.2),
+  xlab("Average per gene GCi") +   theme(legend.position = c(0.87, 0.15),
                                          legend.background = element_rect(fill="NA"),
                                          legend.spacing.x = unit(0.1, 'cm'),
                                          legend.spacing.y = unit(0.1, 'cm'),

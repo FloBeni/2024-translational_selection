@@ -152,7 +152,7 @@ source("figure/figure_main_generator/library_path.R")
   
   print(paste("This analysis was performed for each of the studied species (N=",nrow(data1)," species).",sep=""))
   
-  print(paste("For 206 species (",round(table(data1$expressed_overused_background_POCs > 0)["TRUE"]/nrow(data1)*100),"%), the prevalence of POCs",sep=""))
+  print(paste("For ",table(data1$expressed_overused_background_POCs > 0)["TRUE"]," species (",round(table(data1$expressed_overused_background_POCs > 0)["TRUE"]/nrow(data1)*100),"%), the prevalence of POCs",sep=""))
   
   print(paste("The strongest variation is observed in Caenorhabditis elegans (+",
               round(data1[data1$species == "Caenorhabditis_elegans",]$expressed_overused_background_POCs),

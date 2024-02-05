@@ -133,7 +133,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spe
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )  + scale_fill_manual("Clades",values=Clade_color) +
   xlab("POC1 frequency variations with expression (%)")  +
-  ylab("POC2 frequency variations with expression (%)") + scale_y_continuous(breaks = seq(-10,25,5))
+  ylab("POC2 frequency variations with expression (%)") + scale_y_continuous(breaks = seq(-10,50,10))
 # + theme(legend.position='none')
 pC
 
@@ -147,7 +147,7 @@ dt_graph = data.frame(
   species = c(data1$species,data1$species),
   clade_group = c(data1$clade_group,data1$clade_group),
   category = c(rep("POC1",nrow(data1)), rep("POC2",nrow(data1))),
-  value = c(data1$S_POC1,data1$S_POC2))
+  value = c(data1$expressed_overused_background_POC1,data1$expressed_overused_background_POC2))
 
 dt_graph$clade_group_facet = str_replace_all(dt_graph$clade_group," ","\n")
 dt_graph$clade_group_facet = factor(dt_graph$clade_group_facet, levels = str_replace_all(names(Clade_color)," ","\n"))

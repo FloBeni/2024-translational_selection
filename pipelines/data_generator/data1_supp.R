@@ -121,10 +121,10 @@ for (species in GTDrift_list_species$species){
     for ( codon in codon_used ){
       COA_obs =  unlist(codon_usage[codon])
       COA_neg_obs = amino_acid_count
-
+      
       COA_obs_intronic =  unlist(codon_usage[paste(codon,'_intronic',sep = "")])
       COA_neg_obs_intronic = triplet_intronic
-
+      
       data_optiplus = rbind(data_optiplus,data.frame(
         species,
         amino_acid,
@@ -141,14 +141,14 @@ for (species in GTDrift_list_species$species){
   data_optiplus = data_optiplus[order(data_optiplus$expressed_overused_background,decreasing = T),]
   data_optiplus = data_optiplus[order(data_optiplus$amino_acid,decreasing = F),]
   data_optiplus$rank = unlist(tapply(data_optiplus$expressed_overused_background,data_optiplus$amino_acid , function(x) rev(rank(x))))
-
-
-  ic_decoded = tRNA_optimal[substr(tRNA_optimal$codon,3,3) %in% c("C","T") & tRNA_optimal$nb_syn != 2,]$codon
-
-  DUC_IC = data_optiplus[data_optiplus$codon %in% ic_decoded,]
+  
+  DUC_IC = data_optiplus[substr(data_optiplus$codon,3,3) %in% c("C","T"),]
+  DUC_IC = DUC_IC[ DUC_IC$aa_name_scu %in% tRNA_optimal[tRNA_optimal$nb_tRNA_copies == 0,]$aa_name_scu,]
+  print(DUC_IC$aa_name_scu)
   DUC_IC = DUC_IC[!duplicated(DUC_IC$amino_acid),]$codon
-
-
+  
+  
+  
   dt_species = rbind(dt_species,data.frame(
     species,
     tRNA_GFF,
@@ -231,9 +231,9 @@ for (species in GTDrift_list_species$species){
         S = log(Fpoc_expressed/(1-Fpoc_expressed)) - log(Fpoc_noexpressed/(1-Fpoc_noexpressed)),
         expressed_overused = 100 * (Fpoc_expressed - Fpoc_noexpressed) ,
         expressed_overused_background = 100*((Fpoc_expressed - Fpoc_noexpressed) - (
-                                                  round(tapply( POC_obs_intronic / POC_codons_obs_intronic   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
-                                                    round( mean( (POC_obs_intronic / POC_codons_obs_intronic)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T),5)
-                                                )),
+          round(tapply( POC_obs_intronic / POC_codons_obs_intronic   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
+            round( mean( (POC_obs_intronic / POC_codons_obs_intronic)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T),5)
+        )),
         # constraint_overused = 100*(mean(table_constrain$POC_highconst/table_constrain$POC_codon_highconst ,na.rm = T) - mean(table_constrain$POC_unconst/table_constrain$POC_codon_unconst,na.rm = T))
         constraint_overused = 100 * mean(table_constrain$POC_highconst/table_constrain$POC_codon_highconst - table_constrain$POC_unconst/table_constrain$POC_codon_unconst,na.rm = T)
       )

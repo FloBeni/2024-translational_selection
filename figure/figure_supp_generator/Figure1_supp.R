@@ -29,7 +29,7 @@ pA = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 5)),
     legend.title =  element_text(color="black", size=25, family="economica"),
-    plot.caption = element_text(hjust = 0.30, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.370, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   )  + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Standard deviation per gene GC3") +
