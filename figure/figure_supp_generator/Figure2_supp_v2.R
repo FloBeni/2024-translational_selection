@@ -1,19 +1,6 @@
 # Generate Supplementary Figure 2
 source("figure/figure_supp_generator/library_path.R")
 
-require(ade4)
-require(adephylo)
-require(ape)
-require(ggtree)
-require(treeio)
-require(tidyr)
-require(tibble)
-require(ggplot2)
-require(ggExtra)
-require(aplot)
-require(dplyr)
-require(adegraphics)
-
 tRNA <- read.table("data/tRNA_abundance.tab")
 rownames(tRNA) = str_replace_all(rownames(tRNA) , "_"," ")
 newick <- readLines('data/GTDrift_metazoa_phylogenetic_tree.nwk')
@@ -21,10 +8,6 @@ newick <- readLines('data/GTDrift_metazoa_phylogenetic_tree.nwk')
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$anticodon
 
-# phylog <- newick2phylog(newick)
-# table.phylog(tRNA, phylog, cnodes='', labels.row='', grid=F, cleaves=0, csize=1)
-# tree <- read.tree(text = newick)
-# p <- ggtree(tree)
 arbrePhylotips = arbrePhylo
 arbrePhylotips$tip.label <- str_replace_all(arbrePhylotips$tip.label,"_"," ")
 edge_group <- str_replace_all(arbrePhylotips$tip.label,"_"," ")
@@ -59,10 +42,10 @@ pA = ggtree(arbrePhylotips) %>% flip(264, 375)
 pA <- pA %<+% node_metadata  + aes(color=color) + 
   scale_color_manual("Clade",values=Clade_color[unique(edge_clade)]) + theme(
     panel.background = element_rect(fill = "white", linetype = "dashed")
-  )  + theme(legend.position = "none")
+  )  + theme(legend.position = "none")+ geom_tiplab(align=TRUE, linetype='dashed', linesize=.3,size=0)
 
 pA
-# + geom_tiplab(align=TRUE, linetype='dashed', linesize=.3,size=0)
+ 
 # tidy the data
 tRNA_long <- 
   tRNA %>% rownames_to_column(var='sp') %>%
@@ -88,14 +71,9 @@ tRNA_long$title = factor(tRNA_long$title,levels= tapply(tRNA_long$title, as.inte
 tRNA_long$color = sapply(tRNA_long$codon,function(x)substr(x,3,3))
 tRNA_long$color = paste("NN",tRNA_long$color,sep="")
 set_color = c(NNA="#B2DF8A",NNU="#33A02C",NNC="#1F78B4",NNG="#A6CEE3")
-# %>% filter(count == 0)  # #NOT WORKNG, don't know why, 
-# will use a ifelse in the size argument (beurk)
-# found a better solution with stroke
-# Plot it
 
 
 b <- ggplot(tRNA_long[!tRNA_long$aa_name %in% c("Ter"),], aes(x=title, y=sp,color=color)) + 
-  #geom_point(aes(size= ifelse(count==0, NA, count))) +  #not good to introduce NAs
   geom_point(aes(size=count), stroke = 0) + # stroke=0 so that we don't see the 0, but they are still here 
   #scale_size(range=c(0, 10)) +
   scale_size_area("Gene copy number") +                       # better eye rendering than radius
@@ -120,14 +98,6 @@ b <- ggplot(tRNA_long[!tRNA_long$aa_name %in% c("Ter"),], aes(x=title, y=sp,colo
   guides(colour = guide_legend(override.aes = list(size=5)))
 b
 
-# ggMarginal(b, type="histogram")    DOES NOT WORK ;(
-
-#p + geom_facet(panel='tRNA',    #NOT WRKING
-#               data=tRNA_long, 
-#               geom=geom_point,
-#               mapping=aes(x=tRNA, y=sp, size=count))
-
-# histogram of the total number of tRNA loci per species
 h <- tRNA_long %>% group_by(sp) %>%
   summarize(tRNAlociCount = sum(count),clade_group=unique(clade_group)) %>% 
   ggplot(aes(y=sp, x=tRNAlociCount,fill=clade_group)) +
@@ -148,7 +118,7 @@ h <- tRNA_long %>% group_by(sp) %>%
     )+
   xlab(NULL) + ylab(NULL)
 h
-# "#A6CEE3" "#1F78B4" "#B2DF8A" "#33A02C" "#FB9A99" "#E31A1C" "#FDBF6F" "#FF7F00" "#fdfd99" "#e2cc1a"
+
 #make hist
 
 pB = b %>% insert_left(pA, width=0.7) %>% insert_right(h, width=0.4 )
