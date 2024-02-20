@@ -70,10 +70,10 @@ data12$codon = factor(data12$codon,levels =  unlist(lapply(vect_debut,function(x
 data12$title = factor(data12$title,levels= tapply(data12$title, as.integer(data12$codon),unique))
 
 nb_sp = length(unique(data12$species))
-data12$nb_species_0 = tapply(data12$abundance != 0,data12$codon,sum)[data12$codon]
+data12$nb_species_0 = tapply(data12$abundance == 0,data12$codon,sum)[data12$codon]
 data12$nb_species_0 = round(data12$nb_species_0 / nb_sp*100)
 data12$y_axis_0 = tapply(data12$abundance ,data12$codon,function(x) quantile(x,0.9))[data12$codon]
-data12[duplicated(data12$codon) | data12$nb_species_0 > 30,]$nb_species_0 = NA
+data12[duplicated(data12$codon) | data12$nb_species_0 < 50,]$nb_species_0 = NA
 data12[!is.na(data12$nb_species_0),]$nb_species_0 = paste(data12[!is.na(data12$nb_species_0),]$nb_species_0 ,"%")
 
 

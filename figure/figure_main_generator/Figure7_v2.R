@@ -40,7 +40,7 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Translational selection intensity (S)") + 
+  ylab("Population-scaled selection coefficient (S)") + 
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") 
 
@@ -78,7 +78,7 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
-  ylab("Translational selection intensity (S)") +
+  ylab("Population-scaled selection coefficient (S)") +
   scale_x_log10(breaks=c(0.01,0.1,1,10,100,1000,5000),labels=c(0.01,0.1,1,10,100,1000,5000)) + xlab("Body length (cm, log scale)")+ annotation_logticks(sides="b") 
 pB
 
@@ -114,7 +114,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Translational selection intensity (S)") +  theme(legend.position="none")+
+  ylab("Population-scaled selection coefficient (S)") +  theme(legend.position="none")+
   scale_x_log10(breaks=c(10^-6,10^-4,10^-2,10^0,10^2,10^4,10^6),labels=label_log(digits = 2),limits = c(0.000001,1000000)) + xlab("Body Weight (kg, log scale)")
 pC
 
@@ -150,7 +150,7 @@ pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
-  ylab("Translational selection intensity (S)") + xlab("dN/dS")
+  ylab("Population-scaled selection coefficient (S)") + xlab("dN/dS")
 pD
 
 jpeg(paste(path_pannel,"p7D.jpg",sep=""),width = 4200/2, height = 4000/2,res=700/2)

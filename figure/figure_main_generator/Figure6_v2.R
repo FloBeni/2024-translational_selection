@@ -48,7 +48,7 @@ pB = pB + theme_bw() + theme(
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
   guides(fill= guide_legend(override.aes = list(size=7,pch=21,byrow = TRUE),order = 2)
   )  + annotation_logticks(sides="b")+
-  guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.01,0.05)+
+  guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.01,0.055)+
   theme(legend.position = c(0.8, 0.15),
         legend.background = element_rect(fill="NA"),
         legend.spacing.x = unit(0.5, 'cm'),
@@ -94,7 +94,7 @@ pC = pC + theme_bw() + theme(
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
   guides(fill= guide_legend(override.aes = list(size=7,pch=21,byrow = TRUE),order = 2)
   ) +   theme(legend.spacing.y = unit(.2, 'cm'))  + theme(legend.position='top') + annotation_logticks(sides="b")+
-  guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.01,0.05)
+  guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.01,0.055)
 pC
 
 jpeg(paste(path_pannel,"p6C.jpg",sep=""), width = 6000/1, height = 3000/1,res=600/1)

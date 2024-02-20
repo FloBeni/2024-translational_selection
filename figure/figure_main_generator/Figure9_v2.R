@@ -6,17 +6,17 @@ dt_graph = data2[data2$species == "Homo_sapiens" ,]
 
 
 # Pannel 9 A
-pA = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=80)+ theme_bw() + theme(
+pA = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=80,size=0.2)+ theme_bw() + theme(
   axis.title.x = element_text(color="black", size=30,family="economica"),
   axis.title.y = element_text(color="black", size=30, family="economica"),
   axis.text.y =  element_text(color="black", size=25, family="economica"),
   axis.text.x =  element_text(color="black", size=25, family="economica"),
-  title =  element_text(color="black", size=18, family="economica"),
+  title =  element_text(color="black", size=16, family="economica"),
   legend.text =  element_text(color="black", size=16, family="economica"),
   strip.text = element_text(size=15),
   plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
   plot.caption.position =  "plot"
-) + xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle("All genes") 
+) + xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle("All genes") + xlim(0,1)
 pA
 
 jpeg(paste(path_pannel,"p9A.jpg",sep=""),
@@ -24,18 +24,37 @@ jpeg(paste(path_pannel,"p9A.jpg",sep=""),
 print(pA)
 dev.off()
 
+
 # Pannel 9 B
-pB = ggplot(dt_graph[dt_graph$gene_expression >= quantile(dt_graph$gene_expression,0.80),] , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=50)+ theme_bw() + theme(
+
+# Load data on gene features + meiotic expression from Pouyet et al. 2017
+D=read.table(file="data/human_genes_summary", header = TRUE)
+# Load data on somatic expression from Pouyet et al. 2017
+EF=read.table(file="data/human_genes_expression_in_tissues", header = TRUE)
+merge_dt = merge.data.frame(x=D,y=EF,by="Ensembl.Gene.ID")
+top_quantile = 0.8
+ltissue = names(merge_dt)[39:65]
+
+merge_dt$NbTissueTopExp = 0
+for(tissue in ltissue) {
+  qX=quantile(merge_dt[,tissue], probs = top_quantile, na.rm=TRUE)
+  lsel=which(merge_dt[,tissue]>qX)
+  merge_dt$NbTissueTopExp[lsel]=merge_dt$NbTissueTopExp[lsel]+1
+}
+
+dt_graph=merge_dt[which(merge_dt$NbTissueTopExp>20),]
+# pB = ggplot(dt_graph[dt_graph$gene_expression >= quantile(dt_graph$gene_expression,0.80),] , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=50)+ theme_bw() + theme(
+pB = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=50,size=0.2)+ theme_bw() + theme(
   axis.title.x = element_text(color="black", size=30,family="economica"),
   axis.title.y = element_text(color="black", size=30, family="economica"),
   axis.text.y =  element_text(color="black", size=25, family="economica"),
   axis.text.x =  element_text(color="black", size=25, family="economica"),
-  title =  element_text(color="black", size=18, family="economica"),
+  title =  element_text(color="black", size=16, family="economica"),
   legend.text =  element_text(color="black", size=16, family="economica"),
   strip.text = element_text(size=15),
   plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
   plot.caption.position =  "plot"
-)+ xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle("20% most expressed genes") 
+) + xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle(paste(nrow(dt_graph),"housekeeping genes from Pouyet et al. 2017") ) + xlim(0,1)
 pB
 
 jpeg(paste(path_pannel,"p9B.jpg",sep=""),
@@ -81,7 +100,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Translational selection intensity (S)") + 
+  ylab("Population-scaled selection coefficient (S)") + 
   xlab("Variance per gene GCi")
 
 pC
@@ -112,7 +131,7 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel , x=xlabel))  +
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
     plot.caption.position =  "plot",
     legend.title =  element_text(color="black", size=23, family="economica")
-  )+ ylab("Translational selection intensity (S)") +
+  )+ ylab("Population-scaled selection coefficient (S)") +
   xlab("Variance per gene GCi") + 
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
@@ -150,7 +169,7 @@ pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Translational selection intensity (S)") + 
+  ylab("Population-scaled selection coefficient (S)") + 
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") 
 
@@ -183,7 +202,7 @@ pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
     plot.caption.position =  "plot",
     legend.title =  element_text(color="black", size=23, family="economica")
-  )+ ylab("Translational selection intensity (S)") +
+  )+ ylab("Population-scaled selection coefficient (S)") +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
   )+ scale_fill_gradient2('Variance\nper gene GCi',mid = "white",  high = "red") +

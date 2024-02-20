@@ -1,5 +1,5 @@
 abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_species_0	y_axis_0
-0	Microtus_ochrogaster	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	15 %	1
+0	Microtus_ochrogaster	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	85 %	1
 0	Lonchura_striata	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	1
 0	Callithrix_jacchus	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	1
 5	Pelodiscus_sinensis	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	1
@@ -459,7 +459,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 20	Steinernema_carpocapsae	6	Serine	AGA	UCU	FALSE	FALSE	T	AGA(UCU)	NA	28.1
 39	Penaeus_chinensis	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	28.1
 4	Chloebia_gouldiae	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	28.1
-0	Microtus_ochrogaster	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	9 %	0
+0	Microtus_ochrogaster	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	91 %	0
 0	Lonchura_striata	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
 0	Callithrix_jacchus	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
 2	Pelodiscus_sinensis	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
@@ -689,7 +689,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 0	Steinernema_carpocapsae	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
 1	Penaeus_chinensis	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
 0	Chloebia_gouldiae	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
-0	Microtus_ochrogaster	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	21 %	1
+0	Microtus_ochrogaster	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	79 %	1
 1	Lonchura_striata	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	1
 0	Callithrix_jacchus	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	1
 1	Pelodiscus_sinensis	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	1
@@ -1149,7 +1149,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 36	Steinernema_carpocapsae	2	Phenylalanine	GAA	UUC	TRUE	FALSE	C	GAA(UUC)	NA	27.3
 86	Penaeus_chinensis	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	27.3
 7	Chloebia_gouldiae	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	27.3
-0	Microtus_ochrogaster	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	17 %	3
+0	Microtus_ochrogaster	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	83 %	3
 0	Lonchura_striata	6	Serine	GGA	UCC	FALSE	FALSE	C	GGA(UCC)	NA	3
 0	Callithrix_jacchus	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	3
 1	Pelodiscus_sinensis	6	Serine	GGA	UCC	FALSE	FALSE	C	GGA(UCC)	NA	3
@@ -3449,7 +3449,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 36	Steinernema_carpocapsae	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	22.2
 66	Penaeus_chinensis	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	22.2
 2	Chloebia_gouldiae	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	22.2
-0	Microtus_ochrogaster	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	7 %	0
+0	Microtus_ochrogaster	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	93 %	0
 0	Lonchura_striata	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
 0	Callithrix_jacchus	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
 0	Pelodiscus_sinensis	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
@@ -3909,7 +3909,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 39	Steinernema_carpocapsae	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	24.1
 67	Penaeus_chinensis	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	24.1
 6	Chloebia_gouldiae	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	24.1
-0	Microtus_ochrogaster	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	5 %	0
+0	Microtus_ochrogaster	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	95 %	0
 0	Lonchura_striata	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
 0	Callithrix_jacchus	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
 1	Pelodiscus_sinensis	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
@@ -4139,7 +4139,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 0	Steinernema_carpocapsae	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	NA	0
 0	Penaeus_chinensis	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	NA	0
 0	Chloebia_gouldiae	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
-1	Microtus_ochrogaster	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	9 %	0
+1	Microtus_ochrogaster	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	91 %	0
 0	Lonchura_striata	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
 0	Callithrix_jacchus	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
 0	Pelodiscus_sinensis	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
@@ -4599,7 +4599,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 25	Steinernema_carpocapsae	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	29
 45	Penaeus_chinensis	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	29
 4	Chloebia_gouldiae	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	29
-0	Microtus_ochrogaster	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	7 %	0
+0	Microtus_ochrogaster	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	93 %	0
 0	Lonchura_striata	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
 4	Callithrix_jacchus	6	Arginine	GCG	CGC	FALSE	FALSE	C	GCG(CGC)	NA	0
 1	Pelodiscus_sinensis	6	Arginine	GCG	CGC	FALSE	FALSE	C	GCG(CGC)	NA	0
@@ -7129,7 +7129,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 38	Steinernema_carpocapsae	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	42
 62	Penaeus_chinensis	4	Threonine	AGU	ACU	FALSE	FALSE	T	AGU(ACU)	NA	42
 1	Chloebia_gouldiae	4	Threonine	AGU	ACU	FALSE	FALSE	T	AGU(ACU)	NA	42
-0	Microtus_ochrogaster	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	21 %	1
+0	Microtus_ochrogaster	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	79 %	1
 0	Lonchura_striata	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	1
 0	Callithrix_jacchus	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	1
 1	Pelodiscus_sinensis	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	1
@@ -7359,7 +7359,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 0	Steinernema_carpocapsae	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	1
 1	Penaeus_chinensis	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	1
 0	Chloebia_gouldiae	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	1
-0	Microtus_ochrogaster	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	14 %	1
+0	Microtus_ochrogaster	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	86 %	1
 0	Lonchura_striata	6	Serine	ACU	AGU	TRUE	FALSE	T	ACU(AGU)	NA	1
 0	Callithrix_jacchus	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	1
 0	Pelodiscus_sinensis	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	1
@@ -7589,7 +7589,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 0	Steinernema_carpocapsae	6	Serine	ACU	AGU	TRUE	FALSE	T	ACU(AGU)	NA	1
 0	Penaeus_chinensis	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	1
 0	Chloebia_gouldiae	6	Serine	ACU	AGU	TRUE	FALSE	T	ACU(AGU)	NA	1
-1	Microtus_ochrogaster	3	Isoleucine	GAU	AUC	FALSE	FALSE	C	GAU(AUC)	23 %	2
+1	Microtus_ochrogaster	3	Isoleucine	GAU	AUC	FALSE	FALSE	C	GAU(AUC)	77 %	2
 0	Lonchura_striata	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	2
 2	Callithrix_jacchus	3	Isoleucine	GAU	AUC	FALSE	FALSE	C	GAU(AUC)	NA	2
 2	Pelodiscus_sinensis	3	Isoleucine	GAU	AUC	FALSE	FALSE	C	GAU(AUC)	NA	2
@@ -7819,7 +7819,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 0	Steinernema_carpocapsae	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	2
 8	Penaeus_chinensis	3	Isoleucine	GAU	AUC	FALSE	FALSE	C	GAU(AUC)	NA	2
 0	Chloebia_gouldiae	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	2
-0	Microtus_ochrogaster	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	19 %	1.09999999999999
+0	Microtus_ochrogaster	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	81 %	1.09999999999999
 0	Lonchura_striata	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	1.09999999999999
 0	Callithrix_jacchus	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	1.09999999999999
 0	Pelodiscus_sinensis	4	Threonine	GGU	ACC	FALSE	FALSE	C	GGU(ACC)	NA	1.09999999999999
@@ -10809,7 +10809,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 38	Steinernema_carpocapsae	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	38.1
 22	Penaeus_chinensis	4	Alanine	AGC	GCU	FALSE	FALSE	T	AGC(GCU)	NA	38.1
 7	Chloebia_gouldiae	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	38.1
-0	Microtus_ochrogaster	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	10 %	0.0999999999999943
+0	Microtus_ochrogaster	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	90 %	0.0999999999999943
 0	Lonchura_striata	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0.0999999999999943
 0	Callithrix_jacchus	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0.0999999999999943
 0	Pelodiscus_sinensis	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0.0999999999999943
@@ -11039,7 +11039,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 0	Steinernema_carpocapsae	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0.0999999999999943
 0	Penaeus_chinensis	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0.0999999999999943
 0	Chloebia_gouldiae	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0.0999999999999943
-0	Microtus_ochrogaster	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	13 %	1
+0	Microtus_ochrogaster	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	87 %	1
 0	Lonchura_striata	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	1
 0	Callithrix_jacchus	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	1
 0	Pelodiscus_sinensis	4	Glycine	ACC	GGU	FALSE	FALSE	T	ACC(GGU)	NA	1
@@ -11269,7 +11269,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 0	Steinernema_carpocapsae	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	1
 1	Penaeus_chinensis	4	Glycine	ACC	GGU	FALSE	FALSE	T	ACC(GGU)	NA	1
 0	Chloebia_gouldiae	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	1
-0	Microtus_ochrogaster	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	30 %	2
+0	Microtus_ochrogaster	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	70 %	2
 1	Lonchura_striata	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	2
 0	Callithrix_jacchus	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	2
 2	Pelodiscus_sinensis	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	2
@@ -11499,7 +11499,7 @@ abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_spe
 1	Steinernema_carpocapsae	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	2
 0	Penaeus_chinensis	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	2
 1	Chloebia_gouldiae	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	2
-1	Microtus_ochrogaster	4	Alanine	GGC	GCC	FALSE	FALSE	C	GGC(GCC)	20 %	2
+1	Microtus_ochrogaster	4	Alanine	GGC	GCC	FALSE	FALSE	C	GGC(GCC)	80 %	2
 0	Lonchura_striata	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	2
 0	Callithrix_jacchus	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	2
 0	Pelodiscus_sinensis	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	2

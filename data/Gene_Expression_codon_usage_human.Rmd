@@ -1,0 +1,106 @@
+---
+title: "GC3 vs gene expression in human"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+
+---
+
+# Introduction
+
+
+```{r, echo=FALSE}
+# Functions
+
+
+plot_histGC3_Xvar_binned<-function(D, Xvar, nbins=3, main="", plot_leg=TRUE) {
+  print(quantile(D$GC3, probs = c(0,0.025, 0.5, 0.975, 1)))
+  q=quantile(D[,Xvar], probs = c(0:nbins)/nbins, na.rm = TRUE)
+  q[1]=q[1]-1
+  TabSum=data.frame(X=c(1:nbins))
+  for(ii in 1:nbins) {
+    tmp=D[which(D[,Xvar]>q[ii] & D[,Xvar]<=q[ii+1]),]
+    if(nbins>1 & nrow(tmp)>0) {
+          medX=median(tmp[,Xvar])
+          medianX=sprintf("%.1f", medX)
+          if(medX < 0.1) medianX=sprintf("%.2f", medX)
+          if(medX < 0.01) medianX=sprintf("%.3f", medX)
+          if(medX < 0.001) medianX=sprintf("%.4f", medX)
+          
+          sub=sprintf("%s quantile %d/%d (median=%s)", Xvar, ii, nbins, medianX, nrow(tmp))
+    } else {
+          sub=NULL
+    }
+    main2=sprintf("%s N=%d", main, nrow(tmp))
+    hist(tmp$GC3, breaks = c(0:50)/50, main=main2, sub=sub, xlab="GC3", col="darkgrey", xlim=c(0.2,1), cex.axis=1.5, cex.lab=2.5)
+  meanLgCDS=mean(tmp$LgCDS)
+  medianLgCDS=median(tmp$LgCDS)
+  meanGC3=mean(tmp$GC3)
+  meanLgGenes=mean(tmp$LgGenes, na.rm=TRUE)
+  medianLgGenes=median(tmp$LgGenes, na.rm=TRUE)
+  leg1=sprintf("Mean (med) Lg genes=%.0f (%.0f) bp", meanLgGenes, medianLgGenes)
+  leg2=sprintf("Mean (med) Lg CDS=%.0f (%.0f) bp", meanLgCDS, medianLgCDS)
+  leg3=sprintf("Mean GC3=%.2f", meanGC3)
+  leg4=sprintf("N=%.d genes", nrow(tmp))
+  if(plot_leg) legend("topleft", legend = c(leg1, leg2, leg3, leg4), bty="n")
+  }
+
+  
+}
+
+
+```
+
+# Load data
+```{r, echo=FALSE}
+date()
+library(data.table)
+
+# Load data on gene features + meiotic expression from Pouyet et al. 2017
+infile="human_genes_summary"
+D=fread(file=infile, header = TRUE)
+D=data.frame(D)
+
+# Load data on somatic expression from Pouyet et al. 2017
+infile="human_genes_expression_in_tissues"
+EF=fread(file=infile, header = TRUE)
+EF=data.frame(EF)
+
+
+ltissue=names(EF)[3:29]
+
+for(tissue in ltissue) {
+  D[,tissue]=EF[match(as.character(D$Ensembl.Gene.ID), as.character(EF$Ensembl.Gene.ID)),tissue]
+}
+```
+
+
+# Widely expressed genes
+
+Select genes that are in the top 20% most expressed genes in at least 20 of the 27 tissues.
+
+```{r, echo=FALSE, fig.height=8, fig.width=15}
+par(mfrow=c(1,2))
+top_quantile=0.8
+
+ltissue=names(EF)[3:29]
+
+D$NbTissueTopExp=0
+for(tissue in ltissue) {
+  qX=quantile(D[,tissue], probs = top_quantile, na.rm=TRUE)
+  lsel=which(D[,tissue]>qX)
+  D$NbTissueTopExp[lsel]=D$NbTissueTopExp[lsel]+1
+}
+
+summary(D$LgCDS)
+
+summary(D$NbTissueTopExp)
+quantile(D$NbTissueTopExp, probs = c(0.5,0.75,0.9, 0.95))
+
+D2=D[which(D$NbTissueTopExp>20),]
+plot_histGC3_Xvar_binned(D, Xvar="Exp_Meiosis", nbins=1, main="All genes", plot_leg = FALSE)
+plot_histGC3_Xvar_binned(D2, Xvar="Exp_Meiosis", nbins=1, main="HKG", plot_leg = FALSE)
+mean(D2$GC3)
+median(D2$GC3)
+```
