@@ -227,5 +227,9 @@ source("figure/figure_main_generator/library_path.R")
   
   data1 = read.delim("data/data1_supp.tab")
   print(paste("encompassing ",nrow(data1)," species.",sep=""))
+
   
+  paste(data1$S_POCs,sep="")  
+  tapply(data1$S_POCs, data1$clade_group, mean)
 }
+max(data1$S_POCs)
