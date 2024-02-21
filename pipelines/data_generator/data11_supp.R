@@ -8,7 +8,7 @@ library(dplyr)
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
-subst_or_snp = "snps_v1"
+subst_or_snp = "snps"
 count_file = "snp"
 ylabel = "SNP density"
 proportion = 0.02
@@ -213,7 +213,7 @@ for (file in list_file){
 substitution_codon = substitution_codon[substitution_codon$protein_id %in% codon_usage$protein_id,]
 
 substitution_codon$ancestral = substitution_codon$ancestral_codon
-if (subst_or_snp == "snps_v1" ){
+if (subst_or_snp == "snps" ){
   substitution_codon$substituted = substitution_codon$derived_codon
 } else {
   substitution_codon$substituted = substitution_codon$substituted_codon
@@ -260,7 +260,7 @@ substitution_trinucl = substitution_trinucl %>%
 substitution_trinucl = substitution_trinucl[substitution_trinucl$protein_id %in% codon_usage$protein_id,]
 
 substitution_trinucl$ancestral = substitution_trinucl$ancestral_triplet
-if (subst_or_snp == "snps_v1" ){
+if (subst_or_snp == "snps" ){
   substitution_trinucl$substituted = substitution_trinucl$derived_triplet
 } else {
   substitution_trinucl$substituted = substitution_trinucl$substituted_triplet

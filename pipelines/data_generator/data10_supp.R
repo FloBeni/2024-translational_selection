@@ -8,7 +8,7 @@ library(dplyr)
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
-subst_or_snp = "substitutions_v1"
+subst_or_snp = "substitutions"
 count_file = "subst"
 ylabel = "Substitution rate"
 proportion = 0.02
@@ -218,37 +218,13 @@ for (file in list_file){
 substitution_codon = substitution_codon[substitution_codon$protein_id %in% codon_usage$protein_id,]
 
 substitution_codon$ancestral = substitution_codon$ancestral_codon
-if (subst_or_snp == "snps_v1" ){
+if (subst_or_snp == "snps" ){
   substitution_codon$substituted = substitution_codon$derived_codon
 } else {
   substitution_codon$substituted = substitution_codon$substituted_codon
 }
-
-substitution_codon$site_polymorph = apply(substitution_codon,1,function(x) {
-  sum(str_split(x["ancestral"],"")[[1]] != str_split(x["substituted"],"")[[1]])
-})
-
-polymorph_codon = substitution_codon[substitution_codon$site_polymorph != 1 ,]
-
-polymorph_codon$substituted = apply(polymorph_codon,1,function(x){
-  diff_sites = which(str_split(x["ancestral"],"")[[1]] !=   str_split(x["substituted"],"")[[1]])
-  paste(sapply(diff_sites,function(y){
-    codon = str_split(x["ancestral"],"")[[1]]
-    codon[y] = str_split(x["substituted"],"")[[1]][y]
-    return(paste(codon,collapse =""))
-  }),collapse=",")
-})
-
-polymorph_codon = polymorph_codon %>%
-  mutate(substituted = strsplit(as.character(substituted), ",")) %>%
-  unnest(substituted) 
-
-substitution_codon = substitution_codon[substitution_codon$site_polymorph == 1 ,]
-substitution_codon = rbind(substitution_codon, polymorph_codon)
-
 substitution_codon$aa_ancestral = code[ substitution_codon$ancestral,]$aa_name
 substitution_codon$aa_subst = code[ substitution_codon$substituted,]$aa_name
-
 
 
 list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",sep=""),
@@ -265,34 +241,11 @@ substitution_trinucl = substitution_trinucl %>%
 substitution_trinucl = substitution_trinucl[substitution_trinucl$protein_id %in% codon_usage$protein_id,]
 
 substitution_trinucl$ancestral = substitution_trinucl$ancestral_triplet
-if (subst_or_snp == "snps_v1" ){
+if (subst_or_snp == "snps" ){
   substitution_trinucl$substituted = substitution_trinucl$derived_triplet
 } else {
   substitution_trinucl$substituted = substitution_trinucl$substituted_triplet
 }
-
-substitution_trinucl$site_polymorph = apply(substitution_trinucl,1,function(x) {
-  sum(str_split(x["ancestral"],"")[[1]] != str_split(x["substituted"],"")[[1]])
-})
-
-polymorph_triplet = substitution_trinucl[substitution_trinucl$site_polymorph != 1 ,]
-
-polymorph_triplet$substituted = apply(polymorph_triplet,1,function(x){
-  diff_sites = which(str_split(x["ancestral"],"")[[1]] !=   str_split(x["substituted"],"")[[1]])
-  paste(sapply(diff_sites,function(y){
-    codon = str_split(x["ancestral"],"")[[1]]
-    codon[y] = str_split(x["substituted"],"")[[1]][y]
-    return(paste(codon,collapse =""))
-  }),collapse=",")
-})
-
-polymorph_triplet = polymorph_triplet %>%
-  mutate(substituted = strsplit(as.character(substituted), ",")) %>%
-  unnest(substituted) 
-
-substitution_trinucl = substitution_trinucl[substitution_trinucl$site_polymorph == 1 ,]
-substitution_trinucl = rbind(substitution_trinucl, polymorph_triplet)
-
 substitution_trinucl$aa_ancestral = code[ substitution_trinucl$ancestral,]$aa_name
 substitution_trinucl$aa_subst = code[ substitution_trinucl$substituted,]$aa_name
 
