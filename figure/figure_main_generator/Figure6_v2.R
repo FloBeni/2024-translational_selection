@@ -23,13 +23,13 @@ labels_name = c( "POC -> non-POC" = paste( format(sum(dt_graph$sum_subst_density
 pB = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pB = pB +
-  geom_line(aes(y=simulation_density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
+  geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="POC -> non-POC",pch='CDS',alpha='CDS'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_codon,
                     ymax=confint_high_density_optimal_to_nonoptimal_codon,color="POC -> non-POC"),
                 width=0.03,show.legend=FALSE) +
   
-  geom_line(aes(y=simulation_density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
+  geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="non-POC -> POC",pch='CDS',alpha='CDS'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_codon,
                     ymax=confint_high_density_nonoptimal_to_optimal_codon,color="non-POC -> POC"),
@@ -74,13 +74,13 @@ labels_name = c( "POC -> non-POC" = paste( format(sum(dt_graph$sum_subst_density
 pC = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pC = pC +
-  geom_line(aes(y=simulation_density_optimal_to_nonoptimal_intron,color="POC -> non-POC",linetype='intron',alpha='intron'),size=1) +
+  geom_line(aes(y=density_optimal_to_nonoptimal_intron,color="POC -> non-POC",linetype='intron',alpha='intron'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_intron,fill="POC -> non-POC",pch='intron',alpha='intron'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_intron,
                     ymax=confint_high_density_optimal_to_nonoptimal_intron,color="POC -> non-POC"),
                 width=0.03,show.legend=FALSE) +
   
-  geom_line(aes(y=simulation_density_nonoptimal_to_optimal_intron,color="non-POC -> POC",linetype='intron',alpha='intron'),size=1) +
+  geom_line(aes(y=density_nonoptimal_to_optimal_intron,color="non-POC -> POC",linetype='intron',alpha='intron'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_intron,fill="non-POC -> POC",pch='intron',alpha='intron'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_intron,
                     ymax=confint_high_density_nonoptimal_to_optimal_intron,color="non-POC -> POC"),
@@ -117,6 +117,7 @@ dev.off()
 
 ###
 
+# data_10 = read.delim("data/data10_simulans_supp.tab")
 data_10 = read.delim("data/data10_supp.tab")
 
 dt_graph = data_10[ data_10$group == "POCs" ,]
@@ -130,13 +131,13 @@ labels_name = c( "POC -> non-POC" = paste( format(sum(dt_graph$sum_subst_density
 pE = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pE = pE +
-  geom_line(aes(y=simulation_density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
+  geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="POC -> non-POC",pch='CDS',alpha='CDS'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_codon,
                     ymax=confint_high_density_optimal_to_nonoptimal_codon,color="POC -> non-POC"),
                 width=0.03,show.legend=FALSE) +
   
-  geom_line(aes(y=simulation_density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
+  geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="non-POC -> POC",pch='CDS',alpha='CDS'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_codon,
                     ymax=confint_high_density_nonoptimal_to_optimal_codon,color="non-POC -> POC"),
@@ -179,13 +180,13 @@ labels_name = c( "POC -> non-POC" = paste( format(sum(dt_graph$sum_subst_density
 pF = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pF = pF +
-  geom_line(aes(y=simulation_density_optimal_to_nonoptimal_intron,color="POC -> non-POC",linetype='intron',alpha='intron'),size=1) +
+  geom_line(aes(y=density_optimal_to_nonoptimal_intron,color="POC -> non-POC",linetype='intron',alpha='intron'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_intron,fill="POC -> non-POC",pch='intron',alpha='intron'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_intron,
                     ymax=confint_high_density_optimal_to_nonoptimal_intron,color="POC -> non-POC"),
                 width=0.03,show.legend=FALSE) +
   
-  geom_line(aes(y=simulation_density_nonoptimal_to_optimal_intron,color="non-POC -> POC",linetype='intron',alpha='intron'),size=1) +
+  geom_line(aes(y=density_nonoptimal_to_optimal_intron,color="non-POC -> POC",linetype='intron',alpha='intron'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_intron,fill="non-POC -> POC",pch='intron',alpha='intron'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_intron,
                     ymax=confint_high_density_nonoptimal_to_optimal_intron,color="non-POC -> POC"),

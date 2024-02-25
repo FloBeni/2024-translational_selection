@@ -137,6 +137,8 @@ collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa
           count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] =  ( count_codon_trinucl[,paste(list_codon[str_split(categorie,"->")[[1]][1]][[1]],"_intronic",sep="")] )
         }
       }
+    }
+    for ( categorie in unique( df_synonymous$codon )){
       name_col = str_replace(paste("density",categorie,region,sep="_"),"->","_to_")
       
       dt[,paste("sum_cible",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  sum(x,na.rm=T))
@@ -155,6 +157,7 @@ collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa
         
       } else if (method_to_calculate == "per_gene"){
         dt[,name_col] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] / count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  mean(x,na.rm=T))
+        dt[,paste("allsites_",name_col,sep="")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] / rowSums(count_codon_trinucl[,paste(str_split(categorie,"->")[[1]],region,sep="_")]) , intervalle_list,function(x)  mean(x,na.rm=T))
         dt[,paste("confint",c(1,2),"_",name_col,sep="")] = NA
       }
       
@@ -172,6 +175,7 @@ collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa
   }
   return(dt)
 }
+
 
 
 
@@ -338,17 +342,6 @@ intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
 dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
 
 cible = colnames(dt)[grepl("cible",colnames(dt))]
-mean = apply(dt[cible],2,function(x) mean(x[2:length(x)]))
-min = apply(dt[cible],2,function(x) min(x[2:length(x)]))
-cible = str_replace_all(cible,"cible_|density_","")
-cible = paste(sapply(cible,function(x) str_split(x,"_")[[1]][1]),sapply(cible,function(x) str_split(x,"_")[[1]][length(str_split(x,"_")[[1]])]),sep="_")
-
-print("Number of sites")
-for(i in 1:length(cible)){
-  if(!duplicated(cible)[i]){
-    print(paste(cible[i],"mean:",round(mean[i]),"min:",round(min[i]),collapse = " \n "))
-  }
-}
 
 dt$group = "POCs"
 dt$method_to_calculate = method_to_calculate
