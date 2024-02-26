@@ -8,6 +8,8 @@ source("figure/figure_main_generator/library_path.R")
   nrow(data1[  data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,])
   nrow(data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,])
   
+  data_NNC_NNU = data_NNC_NNU[data_NNC_NNU$species %in% data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,]$species,]
+  unique(data_NNC_NNU$species)
   ##  Abstract
   print("Abstract")
   print(paste("encompassing " , nrow(data1) , " species" , sep = ""))
@@ -174,6 +176,7 @@ source("figure/figure_main_generator/library_path.R")
   print("Most constrained sites tend to be enriched in POCs")
   
   
+  
   # print(paste("for most tetrapods (N=",nrow(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods"),])," species)",sep=""))
   
   data6 = read.delim("data/data6_supp.tab")
@@ -218,9 +221,14 @@ source("figure/figure_main_generator/library_path.R")
   ## tRNA pool partially modulated by neutral substitutions pattern
   print("tRNA pool partially modulated by neutral substitutions pattern")
   
-  print(paste("difference in non-adaptive exposition (ranging from ",round(min(data1[data1$clade_group == "Mecopterida",]$gci),2),
-              " to ",round(max(data1[data1$clade_group == "Mecopterida",]$gci),2),", ",sep=""))
+  print(paste("difference in non-adaptive exposition (ranging from ",round(min(data1[data1$clade_group %in% c("Diptera","Lepidoptera"),]$gci),2),
+              " to ",round(max(data1[data1$clade_group %in% c("Diptera","Lepidoptera"),]$gci),2),", ",sep=""))
   
+  print(paste("difference in non-adaptive exposition (ranging from ",round(min(data1[data1$clade_group %in% c("Diptera","Lepidoptera"),]$gci),2),
+              " to ",round(max(data1[data1$clade_group %in% c("Diptera","Lepidoptera"),]$gci),2),", ",sep=""))
+  
+  
+  print(paste("GCi extends from ",round(min(data1$gci),2)," to ",round(max(data1$gci),2),sep=""))
   
   ## Discussion
   print("Discussion")

@@ -28,6 +28,7 @@ GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 data1 = data.frame()
+data_NNC_NNU = data.frame()
 for (species in GTDrift_list_species$species){
   dt_species = data.frame()
   print(species)
@@ -141,12 +142,14 @@ for (species in GTDrift_list_species$species){
   data_optiplus = data_optiplus[order(data_optiplus$expressed_overused_background,decreasing = T),]
   data_optiplus = data_optiplus[order(data_optiplus$amino_acid,decreasing = F),]
   data_optiplus$rank = unlist(tapply(data_optiplus$expressed_overused_background,data_optiplus$amino_acid , function(x) rev(rank(x))))
-  
+  ## Faire mieux 
+  data_optiplus$nb_tRNA_copies = tRNA_optimal[data_optiplus$codon,]$nb_tRNA_copies
   DUC_IC = data_optiplus[substr(data_optiplus$codon,3,3) %in% c("C","T"),]
-  DUC_IC = DUC_IC[ DUC_IC$aa_name_scu %in% tRNA_optimal[tRNA_optimal$nb_tRNA_copies == 0,]$aa_name_scu,]
+  data_NNC_NNU = rbind(data_NNC_NNU,DUC_IC)
+  DUC_IC = DUC_IC[ DUC_IC$aa_name_scu %in% DUC_IC[DUC_IC$nb_tRNA_copies == 0 & substr(DUC_IC$codon,3,3) == "C",]$aa_name_scu,]
   print(DUC_IC$aa_name_scu)
   DUC_IC = DUC_IC[!duplicated(DUC_IC$amino_acid),]$codon
-  
+  table(substr(DUC_IC,3,3))
   
   
   dt_species = rbind(dt_species,data.frame(
@@ -256,3 +259,8 @@ for (species in GTDrift_list_species$species){
   data1 = rbind(data1,dt_species)
 }
 write.table(data1,"data/data1_supp.tab",quote=F,row.names = F,sep="\t")
+
+
+data_NNC_NNU = data_NNC_NNU[data_NNC_NNU$species %in% GTDrift_list_species[GTDrift_list_species$clade_group %in% c("Diptera","Lepidoptera"),]$species,]
+write.table(data_NNC_NNU,"data/data_NNC_NNU.tab",quote=F,row.names = F,sep="\t")
+
