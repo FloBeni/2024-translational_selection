@@ -1,7 +1,72 @@
 source("figure/figure_main_generator/library_path.R")
 
+
+data1 = read.delim("data/data1_supp.tab")
+rownames(data1) = data1$species
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
+
+
+##  Abstract
+print("Abstract")
+
+##  Introduction
+print("Introduction")
+
+##  Non-adaptive processes shape codon usage variations across species
+print("Non-adaptive processes are the primary drivers of codon usage variations among metazoans")
+
+print(paste("position between ",nrow(data1)," metazoan species",sep=""))
+print(paste("after removal of species lacking gene expression data (N=",nrow(data1[ data1$nb_genes_filtered < 5000,]),"",sep=""))
+
+print(paste("we investigated CU across ",nrow(data1[ data1$nb_genes_filtered >= 5000,])," metazoan",sep=""))
+
+data1 = data1[ data1$nb_genes_filtered >= 5000,]
+
+print(paste("clades (",sum(table(data1$clade_group)[c("Mammalia","Aves","Other Tetrapods","Teleostei")]),
+            " vertebrates, ",sum(table(data1$clade_group)[c("Diptera","Lepidoptera","Coleoptera","Hymenoptera","Other Insects")]),
+            " insects and ",sum(table(data1$clade_group)[c("Other Metazoans","Nematoda")]),
+            " other metazoans).",sep=""))
+
+
+print(paste("(GCi range=",round(min(data1$gci),2)," to ",round(max(data1$gci),2),")",sep=""))
+print(paste("spans from ",round(min(data1$gc3),2)," to ",round(max(data1$gc3),2),sep=""))
+
+print(paste("dipterans (N=",sum(table(data1$clade_group)[c("Diptera")]),")",sep=""))
+
+print(paste("the wider range of GC3 variations (from ",round(min(data1[data1$clade_group == "Diptera",]$gc3),2),
+            " to ",round(max(data1[data1$clade_group == "Diptera",]$gc3),2),").",sep=""))
+
+print(paste("GC3 and GCi are highly correlated (rho=",round(data1["Homo_sapiens",]$rho_gc3_gci,2),")",sep=""))
+print(paste("pronounced in Caenorhabditis elegans (rho=",round(data1["Caenorhabditis_elegans",]$rho_gc3_gci,2),",",sep=""))
+
+dt_graph = data1
+ylabel = "var_gc3"
+xlabel = "var_gci"
+dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
+dt_graph[,c(ylabel,xlabel)] = sqrt(dt_graph[,c(ylabel,xlabel)])
+
+model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
+
+
+
+print(paste("were higly correlated (R2=",model_to_use$r2,")",sep=""))
+
+print(paste(" gene GCi and GC3 ($SD_{GCi} > ",
+            round(min(sqrt(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Hymenoptera"),]$var_gci)),3),
+            "$, $SD_{GC3} > ",
+            round(min(sqrt(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Hymenoptera"),]$var_gc3)),3),sep=""))
+
+
+
+
+
+
+
+
+
 {
   data1 = read.delim("data/data1_supp.tab")
+  data_NNC_NNU = read.delim("data/data_NNC_NNU.tab")
   rownames(data1) = data1$species
   data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
   
@@ -9,7 +74,50 @@ source("figure/figure_main_generator/library_path.R")
   nrow(data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,])
   
   data_NNC_NNU = data_NNC_NNU[data_NNC_NNU$species %in% data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,]$species,]
+  data_NNC_NNU = data_NNC_NNU[data_NNC_NNU$species!="Eumeta_japonica",]
   unique(data_NNC_NNU$species)
+  
+  nrow(data_NNC_NNU[data_NNC_NNU$nb_tRNA_copies == 0,])/(nrow(data_NNC_NNU)/2)
+  
+  nrow(data_NNC_NNU[data_NNC_NNU$nb_tRNA_copies == 0 & data_NNC_NNU$amino_acid %in% c( "Phe", "Asn", "Asp", "His", "Cys",  "Tyr"),]) / 
+    (nrow(data_NNC_NNU[data_NNC_NNU$amino_acid %in% c( "Phe", "Asn", "Asp", "His", "Cys",  "Tyr"),])/2)
+  
+  duet_NNC_NNU = data_NNC_NNU[data_NNC_NNU$amino_acid %in% c( "Phe", "Asn", "Asp", "His", "Cys",  "Tyr"),]
+  duet_NNC_NNU = data_NNC_NNU[data_NNC_NNU$amino_acid %in% c( "Phe", "Asn", "Asp", "His", "Cys",  "Tyr"),]
+  table(substr(duet_NNC_NNU[duet_NNC_NNU$nb_tRNA_copies == 0,]$codon,3,3))
+  table(duet_NNC_NNU[duet_NNC_NNU$nb_tRNA_copies == 0,]$rank)
+  nrow(duet_NNC_NNU[duet_NNC_NNU$nb_tRNA_copies == 0,]) / (nrow(duet_NNC_NNU)/2)
+  
+  table(paste(data_NNC_NNU$species))
+  1-2/148
+  
+  duet_Ser = data_NNC_NNU[data_NNC_NNU$aa_name_scu %in% c( "Ser_2"),]
+  table(substr(duet_Ser[duet_Ser$nb_tRNA_copies == 0,]$codon,3,3))
+  table(duet_Ser[duet_Ser$nb_tRNA_copies == 0,]$rank)
+  table(duet_Ser[duet_Ser$nb_tRNA_copies != 0,]$rank)
+  
+  
+  
+  duet_Gly = data_NNC_NNU[data_NNC_NNU$aa_name_scu %in% c( "Gly"),]
+  duet_Gly = duet_Gly[duet_Gly$species %in% duet_Gly[duet_Gly$nb_tRNA_copies == 0,]$species , ]
+  
+  table(substr(duet_Gly[duet_Gly$nb_tRNA_copies == 0,]$codon,3,3))
+  table(substr(duet_Gly[!duplicated(duet_Gly$species),]$codon,3,3))
+  table(duet_Gly[duet_Gly$nb_tRNA_copies == 0,]$rank)
+  table(duet_Ser[duet_Ser$nb_tRNA_copies != 0,]$rank)
+  
+  
+  other_pairs = data_NNC_NNU[!data_NNC_NNU$aa_name_scu %in% c( "Phe", "Asn", "Asp", "His", "Cys",  "Tyr","Gly","Ser_2"),]
+  other_pairs = other_pairs[paste(other_pairs$species,other_pairs$aa_name_scu) %in% 
+                              paste(other_pairs[other_pairs$nb_tRNA_copies == 0,]$species,other_pairs[other_pairs$nb_tRNA_copies == 0,]$aa_name_scu) ,]
+  
+  table(substr(other_pairs[other_pairs$nb_tRNA_copies == 0,]$codon,3,3))
+  table(substr(other_pairs[!duplicated(paste(other_pairs$species,other_pairs$aa_name_scu)),]$codon,3,3))
+  # other_pairs = other_pairs[other_pairs$species %in% other_pairs[other_pairs$nb_tRNA_copies == 0,]$species , ]
+  table(substr(other_pairs[other_pairs$nb_tRNA_copies == 0,]$codon,3,3))
+  table(other_pairs[other_pairs$nb_tRNA_copies == 0,]$rank)
+  nrow(other_pairs)/2
+  195/208
   ##  Abstract
   print("Abstract")
   print(paste("encompassing " , nrow(data1) , " species" , sep = ""))
@@ -235,7 +343,7 @@ source("figure/figure_main_generator/library_path.R")
   
   data1 = read.delim("data/data1_supp.tab")
   print(paste("encompassing ",nrow(data1)," species.",sep=""))
-
+  
   
   paste(data1$S_POCs,sep="")  
   tapply(data1$S_POCs, data1$clade_group, mean)

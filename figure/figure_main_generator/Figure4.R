@@ -52,19 +52,19 @@ data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
 
-S_high_exp = data1[data1$species == "Caenorhabditis_elegans",]$S_POC1
-
-Fpoc_low_exp = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)
-Fpkm_high_exp = dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ]$fpkm
-
-lambda = exp(log(Fpoc_low_exp/(1-Fpoc_low_exp)))
-k = S_high_exp/Fpkm_high_exp
-
-S_function = function(fpkm){k * fpkm}
-
-Fop_estimation = function(fpkm){
-  lambda/(lambda + (exp(-S_function(fpkm))-1)/(1-exp(S_function(fpkm))))
-}
+# S_high_exp = data1[data1$species == "Caenorhabditis_elegans",]$S_POC1
+# 
+# Fpoc_low_exp = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & !grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)
+# Fpkm_high_exp = dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ]$fpkm
+# 
+# lambda = exp(log(Fpoc_low_exp/(1-Fpoc_low_exp)))
+# k = S_high_exp/Fpkm_high_exp
+# 
+# S_function = function(fpkm){k * fpkm}
+# 
+# Fop_estimation = function(fpkm){
+#   lambda/(lambda + (exp(-S_function(fpkm))-1)/(1-exp(S_function(fpkm))))
+# }
 
 pB = ggplot(dt_graph ,
             aes(x=fpkm ,y=100*freq,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+

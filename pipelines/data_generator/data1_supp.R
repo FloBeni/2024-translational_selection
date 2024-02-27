@@ -146,9 +146,9 @@ for (species in GTDrift_list_species$species){
   data_optiplus$nb_tRNA_copies = tRNA_optimal[data_optiplus$codon,]$nb_tRNA_copies
   DUC_IC = data_optiplus[substr(data_optiplus$codon,3,3) %in% c("C","T"),]
   data_NNC_NNU = rbind(data_NNC_NNU,DUC_IC)
-  DUC_IC = DUC_IC[ DUC_IC$aa_name_scu %in% DUC_IC[DUC_IC$nb_tRNA_copies == 0 & substr(DUC_IC$codon,3,3) == "C",]$aa_name_scu,]
+  DUC_IC = DUC_IC[ DUC_IC$aa_name_scu %in% DUC_IC[DUC_IC$nb_tRNA_copies == 0,]$aa_name_scu,]
   print(DUC_IC$aa_name_scu)
-  DUC_IC = DUC_IC[!duplicated(DUC_IC$amino_acid),]$codon
+  DUC_IC = DUC_IC[!duplicated(DUC_IC$aa_name_scu),]$codon
   table(substr(DUC_IC,3,3))
   
   
