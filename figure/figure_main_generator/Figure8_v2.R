@@ -7,8 +7,8 @@ data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
-data1 = data1[data1$clade_group %in% c("Diptera","Lepidoptera"),]
-data1 = data1[data1$species != "Eumeta_japonica",]
+# data1 = data1[data1$clade_group %in% c("Diptera","Lepidoptera"),]
+# data1 = data1[data1$species != "Eumeta_japonica",]
 
 dt_graph = data1
 
