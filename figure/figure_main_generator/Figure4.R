@@ -111,7 +111,7 @@ ylabel = "expressed_overused_background_POC2"
 xlabel = "expressed_overused_background_POC1"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,]
 
-model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
+model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=F,lm_obliged=T)
 
 pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species"))  +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+

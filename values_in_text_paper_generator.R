@@ -60,7 +60,9 @@ print(paste(" gene GCi and GC3 ($SD_{GCi} > ",
 
 
 
-
+table(data1$expressed_overused_background_POC1>0)/ sum(table(data1$expressed_overused_background_POC1>0))
+table(data1$expressed_overused_background_POC2>0) / sum(table(data1$expressed_overused_background_POC2>0))
+table(data1$expressed_overused_background_POCs>0)/ sum(table(data1$expressed_overused_background_POCs>0))
 
 
 

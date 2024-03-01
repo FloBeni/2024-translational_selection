@@ -59,7 +59,7 @@ listNomSpecies = tapply(GTDrift_list_species$species,GTDrift_list_species$clade_
 
 
 
-fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree = NA,display_other=T,pagels_obliged=F){
+fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree = NA,display_other=T,pagels_obliged=F,lm_obliged=F){
   # Function to choose which model between PGLS, LM and Pagel's lambda is best suited to the data.
   dt_fit = data.frame()
   if ( length(tree) != 1){
@@ -113,6 +113,20 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
     slope = coef(fit)[2],
     intercept = coef(fit)[1]
   ))
+  
+  
+  if (lm_obliged){
+    
+    dt_fit = rbind(dt_fit,data.frame(
+      model="LM",
+      p_val_slope = summ_fit$coefficients[2,4],
+      r.squared = summ_fit$r.squared,
+      adj.r.squared = summ_fit$adj.r.squared,
+      aic = -10000000000001,
+      slope = coef(fit)[2],
+      intercept = coef(fit)[1]
+    ))
+  }
   
   print(dt_fit)
   
