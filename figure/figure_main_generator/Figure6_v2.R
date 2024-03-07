@@ -20,17 +20,20 @@ dt_graph = data_11[ data_11$group == "POCs" ,]
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," SNPs PO>nPO",sep=""),
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," SNPs nPO>PO",sep=""))
 
+
 pB = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pB = pB +
   geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="PO>nPO",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="PO>nPO",pch='CDS',alpha='CDS'),size=3)+
+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_codon,
                     ymax=confint_high_density_optimal_to_nonoptimal_codon,color="PO>nPO"),
                 width=0.03,show.legend=FALSE) +
   
   geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="nPO>PO",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="nPO>PO",pch='CDS',alpha='CDS'),size=3)+
+
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_codon,
                     ymax=confint_high_density_nonoptimal_to_optimal_codon,color="nPO>PO"),
                 width=0.03,show.legend=FALSE)
@@ -132,10 +135,12 @@ pE = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 pE = pE +
   geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="PO>nPO",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="PO>nPO",pch='CDS',alpha='CDS'),size=3)+
+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_codon,
                     ymax=confint_high_density_optimal_to_nonoptimal_codon,color="PO>nPO"),
                 width=0.03,show.legend=FALSE) +
   
+
   geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="nPO>PO",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="nPO>PO",pch='CDS',alpha='CDS'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_codon,
