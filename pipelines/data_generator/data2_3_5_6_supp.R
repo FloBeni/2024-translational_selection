@@ -10,7 +10,8 @@ data_conservation_rmfirst1000bp = read.delim(paste("data/compilation_prop_gap_pe
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
-species_list = c( "Caenorhabditis_elegans" , "Drosophila_melanogaster" , "Homo_sapiens" , "Musca_domestica" )
+
+species_list = c( "Caenorhabditis_elegans" , "Drosophila_melanogaster" , "Homo_sapiens" , "Musca_domestica" ,"Anopheles_gambiae","Pieris_rapae" )
 
 data2 = data.frame()
 data3 = data.frame()
@@ -131,7 +132,7 @@ for (species in species_list){
       fpkm = FPKM_bins,
       categorie = "Putative optimal codons (POC)",
       type_aa=paste(type_aa," codons, Nb aa = ",length(list_aa),sep=""),
-      gene_set = paste("N = " , sum(ATGC3_neg_obs != 0),sep=""),
+      gene_set = paste("N = " , format(sum(!is.na(POC_obs / POC_codon) ),big.mark=",",scientific=T),sep=""),
       nb_poc =  length(list_POC) ,
       nb_aa = length(list_aa),
       list=paste(list_POC,collapse =";")
@@ -146,7 +147,7 @@ for (species in species_list){
       fpkm = FPKM_bins,
       categorie = "POC-matching triplets (POCMT)",
       type_aa=paste(type_aa," codons, Nb aa = ",length(list_aa),sep=""),
-      gene_set=paste("N = " , sum(ATGCi_neg_obs != 0),sep=""),
+      gene_set=paste("N = " , format(sum(!is.na(POC_obs_intronic / POC_codon_intronic) ),big.mark=",",scientific=T),sep=""),
       nb_poc =  length(list_POC),
       nb_aa = length(list_aa),
       list=paste(list_POC,collapse=";")
