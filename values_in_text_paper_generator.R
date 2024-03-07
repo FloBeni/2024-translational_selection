@@ -58,13 +58,32 @@ print(paste(" gene GCi and GC3 ($SD_{GCi} > ",
 
 
 
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+rownames(code) = code$codon
+code = code[code$aa_name != "Ter",]
 
+tRNA_abundance = read.delim("/home/fbenitiere/2024-translational_selection/data/tRNA_abundance.tab")
+tRNA_abundance = tRNA_abundance[,code$anticodon]
+
+data1$nb_tRNA = rowSums(tRNA_abundance)[data1$species]
+tapply(data1$nb_tRNA,data1$clade_group,mean)
+data1$nb_isodecoder = rowSums(tRNA_abundance!=0)[data1$species]
+data1 = data1[ data1$nb_codon_not_decoded == 0 & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,]
+
+max(data1$nb_isodecoder)
+min(data1$nb_isodecoder)
+mean(data1$nb_isodecoder)
+61-min(data1$nb_isodecoder)
 
 table(data1$expressed_overused_background_POC1>0)/ sum(table(data1$expressed_overused_background_POC1>0))
 table(data1$expressed_overused_background_POC2>0) / sum(table(data1$expressed_overused_background_POC2>0))
 table(data1$expressed_overused_background_POCs>0)/ sum(table(data1$expressed_overused_background_POCs>0))
 
 
+
+sum(18 - (data1$nb_aa_POC1 + data1$nb_aa_POC2))
+
+table( (data1$nb_aa_POC1 + data1$nb_aa_POC2)!=18)
 
 {
   data1 = read.delim("data/data1_supp.tab")
@@ -261,6 +280,11 @@ table(data1$expressed_overused_background_POCs>0)/ sum(table(data1$expressed_ove
                                                                       !grepl("control",dt_graph$categorie) &
                                                                       grepl("POC1",dt_graph$set),]$freq),2)*100,"% to ",
               round(dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ]$freq,2)*100,"% for highly expressed genes"))
+  
+  print(paste("we observed a rise in POC2 from ",round(min(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) &
+                                                                      !grepl("control",dt_graph$categorie) &
+                                                                      grepl("POC2",dt_graph$set),]$freq),2)*100,"% to ",
+              round(dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC2",dt_graph$set) , ]$freq,2)*100,"% for highly expressed genes"))
   
   print(paste("This analysis was performed for each of the studied species (N=",nrow(data1)," species).",sep=""))
   

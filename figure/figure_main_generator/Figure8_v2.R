@@ -7,8 +7,8 @@ data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
-# data1 = data1[data1$clade_group %in% c("Diptera","Lepidoptera"),]
-# data1 = data1[data1$species != "Eumeta_japonica",]
+data1 = data1[data1$clade_group %in% c("Diptera","Lepidoptera"),]
+data1 = data1[data1$species != "Eumeta_japonica",]
 
 dt_graph = data1
 
@@ -33,11 +33,11 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )  + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
   ylab("Average GC of most abundant tRNAs set\n(Unn/Cnn)") + 
-  xlab("Average per gene GCi") 
+  xlab("GCi") 
 
 pA
 
@@ -87,11 +87,11 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + 
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + theme(legend.position='none') + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Average GC of most selected codons set\n(nnC/nnU)") + 
-  xlab("Average per gene GCi") +   theme(legend.position = c(0.87, 0.15),
+  xlab("GCi") +   theme(legend.position = c(0.87, 0.15),
                                          legend.background = element_rect(fill="NA"),
                                          legend.spacing.x = unit(0.1, 'cm'),
                                          legend.spacing.y = unit(0.1, 'cm'),

@@ -16,7 +16,7 @@ pA = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",
   strip.text = element_text(size=15),
   plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
   plot.caption.position =  "plot"
-) + xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle("All genes") + xlim(0,1)
+) + xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle(paste("All genes, N=",format(nrow(dt_graph),big.mark=",",scientific=T))) + xlim(0,1)
 pA
 
 jpeg(paste(path_pannel,"p9A.jpg",sep=""),
@@ -54,7 +54,9 @@ pB = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",
   strip.text = element_text(size=15),
   plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
   plot.caption.position =  "plot"
-) + xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle(paste(nrow(dt_graph),"housekeeping genes") ) + xlim(0,1)
+) + xlab("GC3 rate per gene") + ylab("Number of genes") +
+  ggtitle(paste(format(nrow(dt_graph),big.mark=",",scientific=T),"housekeeping genes")) +
+  xlim(0,1)
 pB
 
 jpeg(paste(path_pannel,"p9B.jpg",sep=""),

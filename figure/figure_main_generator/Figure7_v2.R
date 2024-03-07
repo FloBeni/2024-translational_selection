@@ -37,7 +37,7 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
   ylab("Population-scaled selection coefficient (S)") + 
@@ -75,7 +75,7 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
   ylab("Population-scaled selection coefficient (S)") +
@@ -111,7 +111,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Population-scaled selection coefficient (S)") +  theme(legend.position="none")+
@@ -131,7 +131,7 @@ ylabel = "S_POCs"
 xlabel = "dNdS"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
-model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
+model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
@@ -147,10 +147,10 @@ pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
-  ylab("Population-scaled selection coefficient (S)") + xlab("dN/dS")
+  ylab("Population-scaled selection coefficient (S)") + xlab("dN/dS (log scale)") + scale_x_log10()+ annotation_logticks(sides="b") 
 pD
 
 jpeg(paste(path_pannel,"p7D.jpg",sep=""),width = 4200/2, height = 4000/2,res=700/2)

@@ -2,7 +2,7 @@
 source("figure/figure_main_generator/library_path.R")
 
 set_color_class = c("#E31A1C","#33A02C")
-names(set_color_class) = c( "POC -> non-POC","non-POC -> POC")
+names(set_color_class) = c( "PO>nPO","nPO>PO")
 set_shape_class = c(CDS=21,intron=24)
 set_linetype_class = c(CDS="solid",intron="dashed")
 set_alpha_class = c(CDS=1,intron=0.5)
@@ -17,24 +17,39 @@ dt_graph = data_11[ data_11$group == "POCs" ,]
 
 # Pannel B
 
+<<<<<<< HEAD
 labels_name = c( "POC -> non-POC" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," SNPs POC -> non-POC",sep=""),
                  "non-POC -> POC"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," SNPs non-POC -> POC",sep=""))
+=======
+labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," SNPs PO>nPO",sep=""),
+                 "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," SNPs nPO>PO",sep=""))
+>>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
 
 pB = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pB = pB +
+<<<<<<< HEAD
   geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
   # geom_line(aes(y=sum_subst_density_optimal_to_nonoptimal_codon/sum_cible_density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="POC -> non-POC",pch='CDS',alpha='CDS'),size=3)+
+=======
+  geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="PO>nPO",linetype='CDS',alpha='CDS'),size=1) +
+  geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="PO>nPO",pch='CDS',alpha='CDS'),size=3)+
+>>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_codon,
-                    ymax=confint_high_density_optimal_to_nonoptimal_codon,color="POC -> non-POC"),
+                    ymax=confint_high_density_optimal_to_nonoptimal_codon,color="PO>nPO"),
                 width=0.03,show.legend=FALSE) +
   
+<<<<<<< HEAD
   geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
   # geom_line(aes(y=sum_subst_density_nonoptimal_to_optimal_codon/sum_cible_density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="non-POC -> POC",pch='CDS',alpha='CDS'),size=3)+
+=======
+  geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="nPO>PO",linetype='CDS',alpha='CDS'),size=1) +
+  geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="nPO>PO",pch='CDS',alpha='CDS'),size=3)+
+>>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_codon,
-                    ymax=confint_high_density_nonoptimal_to_optimal_codon,color="non-POC -> POC"),
+                    ymax=confint_high_density_nonoptimal_to_optimal_codon,color="nPO>PO"),
                 width=0.03,show.legend=FALSE)
 
 pB = pB + theme_bw() + theme(
@@ -48,17 +63,16 @@ pB = pB + theme_bw() + theme(
   scale_x_log10(limits = c(0.01,1000),
                 breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
                 labels=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000)) +
-  ylab(paste("SNPs density within CDSs")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
+  ylab(paste("SNP rate within CDSs")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
   scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
-  guides(fill= guide_legend(override.aes = list(size=7,pch=21,byrow = TRUE),order = 2)
-  )  + annotation_logticks(sides="b")+
-  guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.01,0.055)+
+  annotation_logticks(sides="b")+
+  guides(color = F, size = F , linetype=F, pch=F, alpha=F)+ ylim(0.01,0.055)+
   theme(legend.position = c(0.76, 0.9),
         legend.background = element_rect(fill="NA"),
         legend.spacing.x = unit(0.5, 'cm'),
         legend.spacing.y = unit(0.5, 'cm')
-  )
+  ) + guides(fill= guide_legend(override.aes = list(size=7,pch=21), byrow = TRUE,order = 2))
 pB
 
 
@@ -70,22 +84,22 @@ dev.off()
 
 # Pannel C
 
-labels_name = c( "POC -> non-POC" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," SNPs POC -> non-POC",sep=""),
-                 "non-POC -> POC"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," SNPs non-POC -> POC",sep=""))
+labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," SNPs PO>nPO",sep=""),
+                 "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," SNPs nPO>PO",sep=""))
 
 pC = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pC = pC +
-  geom_line(aes(y=density_optimal_to_nonoptimal_intron,color="POC -> non-POC",linetype='intron',alpha='intron'),size=1) +
-  geom_point(aes(y=density_optimal_to_nonoptimal_intron,fill="POC -> non-POC",pch='intron',alpha='intron'),size=3)+
+  geom_line(aes(y=density_optimal_to_nonoptimal_intron,color="PO>nPO",linetype='intron',alpha='intron'),size=1) +
+  geom_point(aes(y=density_optimal_to_nonoptimal_intron,fill="PO>nPO",pch='intron',alpha='intron'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_intron,
-                    ymax=confint_high_density_optimal_to_nonoptimal_intron,color="POC -> non-POC"),
+                    ymax=confint_high_density_optimal_to_nonoptimal_intron,color="PO>nPO"),
                 width=0.03,show.legend=FALSE) +
   
-  geom_line(aes(y=density_nonoptimal_to_optimal_intron,color="non-POC -> POC",linetype='intron',alpha='intron'),size=1) +
-  geom_point(aes(y=density_nonoptimal_to_optimal_intron,fill="non-POC -> POC",pch='intron',alpha='intron'),size=3)+
+  geom_line(aes(y=density_nonoptimal_to_optimal_intron,color="nPO>PO",linetype='intron',alpha='intron'),size=1) +
+  geom_point(aes(y=density_nonoptimal_to_optimal_intron,fill="nPO>PO",pch='intron',alpha='intron'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_intron,
-                    ymax=confint_high_density_nonoptimal_to_optimal_intron,color="non-POC -> POC"),
+                    ymax=confint_high_density_nonoptimal_to_optimal_intron,color="nPO>PO"),
                 width=0.03,show.legend=FALSE)
 
 pC = pC + theme_bw() + theme(
@@ -99,17 +113,17 @@ pC = pC + theme_bw() + theme(
   scale_x_log10(limits = c(0.01,1000),
                 breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
                 labels=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000)) +
-  ylab(paste("SNPs density within introns")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
+  ylab(paste("SNP rate within introns")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
   scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
-  guides(fill= guide_legend(override.aes = list(size=7,pch=21,byrow = TRUE),order = 2)
-  ) +   theme(legend.spacing.y = unit(.2, 'cm'))  + theme(legend.position='top') + annotation_logticks(sides="b")+
-  guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.01,0.055) +
+  annotation_logticks(sides="b")+
+  guides(color = F, size = F , linetype=F, pch=F, alpha=F) + ylim(0.01,0.055) +
   theme(legend.position = c(0.76, 0.9),
         legend.background = element_rect(fill="NA"),
-        legend.spacing.x = unit(0.5, 'cm'),
-        legend.spacing.y = unit(0.5, 'cm')
-  )
+        legend.spacing.x = unit(.5, 'cm'),
+        legend.spacing.y = unit(.5, 'cm')
+  ) +  guides(fill= guide_legend(override.aes = list(size=7,pch=21),byrow = TRUE,order = 2))+
+  theme(axis.title.x = element_text(margin = margin(t = 10, r = 0, b = 0, l = 0)))
 pC
 
 jpeg(paste(path_pannel,"p6C.jpg",sep=""), width = 6000/1, height = 3000/1,res=600/1)
@@ -127,24 +141,34 @@ dt_graph = data_10[ data_10$group == "POCs" ,]
 
 # Pannel E
 
-labels_name = c( "POC -> non-POC" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," substitutions POC -> non-POC",sep=""),
-                 "non-POC -> POC"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," substitutions non-POC -> POC",sep=""))
+labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," substitutions PO>nPO",sep=""),
+                 "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," substitutions nPO>PO",sep=""))
 
 pE = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pE = pE +
+<<<<<<< HEAD
   geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
   # geom_line(aes(y=sum_subst_density_optimal_to_nonoptimal_codon/sum_cible_density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="POC -> non-POC",pch='CDS',alpha='CDS'),size=3)+
+=======
+  geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="PO>nPO",linetype='CDS',alpha='CDS'),size=1) +
+  geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="PO>nPO",pch='CDS',alpha='CDS'),size=3)+
+>>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_codon,
-                    ymax=confint_high_density_optimal_to_nonoptimal_codon,color="POC -> non-POC"),
+                    ymax=confint_high_density_optimal_to_nonoptimal_codon,color="PO>nPO"),
                 width=0.03,show.legend=FALSE) +
   
+<<<<<<< HEAD
   geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
   # geom_line(aes(y=sum_subst_density_nonoptimal_to_optimal_codon/sum_cible_density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="non-POC -> POC",pch='CDS',alpha='CDS'),size=3)+
+=======
+  geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="nPO>PO",linetype='CDS',alpha='CDS'),size=1) +
+  geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="nPO>PO",pch='CDS',alpha='CDS'),size=3)+
+>>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_codon,
-                    ymax=confint_high_density_nonoptimal_to_optimal_codon,color="non-POC -> POC"),
+                    ymax=confint_high_density_nonoptimal_to_optimal_codon,color="nPO>PO"),
                 width=0.03,show.legend=FALSE)
 
 pE = pE + theme_bw() + theme(
@@ -161,14 +185,13 @@ pE = pE + theme_bw() + theme(
   ylab(paste("Substitution rate within CDSs")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
   scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
-  guides(fill= guide_legend(override.aes = list(size=7,pch=21,byrow = TRUE),order = 2)
-  )  + annotation_logticks(sides="b")+
-  guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.005,0.05)+
+  annotation_logticks(sides="b")+
+  guides(color = F, size = F , linetype=F, pch=F, alpha=F) + ylim(0.005,0.05)+
   theme(legend.position = c(0.7, 0.9),
         legend.background = element_rect(fill="NA"),
-        legend.spacing.x = unit(0.5, 'cm'),
-        legend.spacing.y = unit(0.5, 'cm')
-  )
+        legend.spacing.x = unit(.5, 'cm'),
+        legend.spacing.y = unit(.5, 'cm')
+  ) +  guides(fill= guide_legend(override.aes = list(size=7,pch=21),byrow = TRUE,order = 2))
 pE
 
 jpeg(paste(path_pannel,"p6E.jpg",sep=""), width = 6000/1, height = 2800/1,res=600/1)
@@ -178,22 +201,22 @@ dev.off()
 
 # Pannel F
 
-labels_name = c( "POC -> non-POC" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," substitutions POC -> non-POC",sep=""),
-                 "non-POC -> POC"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," substitutions non-POC -> POC",sep=""))
+labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," substitutions PO>nPO",sep=""),
+                 "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," substitutions nPO>PO",sep=""))
 
 pF = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pF = pF +
-  geom_line(aes(y=density_optimal_to_nonoptimal_intron,color="POC -> non-POC",linetype='intron',alpha='intron'),size=1) +
-  geom_point(aes(y=density_optimal_to_nonoptimal_intron,fill="POC -> non-POC",pch='intron',alpha='intron'),size=3)+
+  geom_line(aes(y=density_optimal_to_nonoptimal_intron,color="PO>nPO",linetype='intron',alpha='intron'),size=1) +
+  geom_point(aes(y=density_optimal_to_nonoptimal_intron,fill="PO>nPO",pch='intron',alpha='intron'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_intron,
-                    ymax=confint_high_density_optimal_to_nonoptimal_intron,color="POC -> non-POC"),
+                    ymax=confint_high_density_optimal_to_nonoptimal_intron,color="PO>nPO"),
                 width=0.03,show.legend=FALSE) +
   
-  geom_line(aes(y=density_nonoptimal_to_optimal_intron,color="non-POC -> POC",linetype='intron',alpha='intron'),size=1) +
-  geom_point(aes(y=density_nonoptimal_to_optimal_intron,fill="non-POC -> POC",pch='intron',alpha='intron'),size=3)+
+  geom_line(aes(y=density_nonoptimal_to_optimal_intron,color="nPO>PO",linetype='intron',alpha='intron'),size=1) +
+  geom_point(aes(y=density_nonoptimal_to_optimal_intron,fill="nPO>PO",pch='intron',alpha='intron'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_intron,
-                    ymax=confint_high_density_nonoptimal_to_optimal_intron,color="non-POC -> POC"),
+                    ymax=confint_high_density_nonoptimal_to_optimal_intron,color="nPO>PO"),
                 width=0.03,show.legend=FALSE)
 
 pF = pF + theme_bw() + theme(
@@ -210,14 +233,14 @@ pF = pF + theme_bw() + theme(
   ylab(paste("Substitution rate within introns")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
   scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
-  guides(fill= guide_legend(override.aes = list(size=7,pch=21,byrow = TRUE),order = 2)
-  ) +   theme(legend.spacing.y = unit(.2, 'cm'))  + theme(legend.position='top') + annotation_logticks(sides="b")+
-  guides(color = FALSE, size = FALSE , linetype=F, pch=F, alpha=F) + theme(legend.position='none') + ylim(0.005,0.05) +
+  annotation_logticks(sides="b")+
+  guides(color = F, size = F , linetype=F, pch=F, alpha=F)  + ylim(0.005,0.05) +
   theme(legend.position = c(0.7, 0.9),
         legend.background = element_rect(fill="NA"),
-        legend.spacing.x = unit(0.5, 'cm'),
-        legend.spacing.y = unit(0.5, 'cm')
-  )
+        legend.spacing.x = unit(.5, 'cm'),
+        legend.spacing.y = unit(.5, 'cm')
+  ) +  guides(fill= guide_legend(override.aes = list(size=7,pch=21),byrow = TRUE,order = 2))+
+  theme(axis.title.x = element_text(margin = margin(t = 10, r = 0, b = 0, l = 0)))
 pF
 
 jpeg(paste(path_pannel,"p6F.jpg",sep=""), width = 6000/1, height = 3000/1,res=600/1)
