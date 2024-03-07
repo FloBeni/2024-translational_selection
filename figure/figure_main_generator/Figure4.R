@@ -94,7 +94,8 @@ pB = ggplot(dt_graph ,
   geom_hline(yintercept = mean(dt_graph[dt_graph$fpkm <= median(dt_graph$fpkm) & grepl("control",dt_graph$categorie) & grepl("POC1",dt_graph$set),]$freq)*100,size=1,linetype="dashed",col="#FB9A99") +
   geom_point(data =  dt_graph[!grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set) , ],col="black",pch=21,fill="#E31A1C",size=6)+
   geom_point(data = dt_graph[grepl("control",dt_graph$categorie) & dt_graph$fpkm == max(dt_graph$fpkm) & grepl("POC1",dt_graph$set), ],col="black",pch=21,fill="#FB9A99",size=6)+
-  ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) +   guides(linetype="none",shape="none")+ annotation_logticks(sides = "b") 
+  ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) +   guides(linetype="none",shape="none",fill="none")+ annotation_logticks(sides = "b") + 
+  guides(color = guide_legend(byrow = TRUE,override.aes = list(lwd=5))) +  theme(legend.spacing.y = unit(.1, 'cm')) 
   # geom_line(data = data.frame(Fop_estimate = Fop_estimation(dt_graph$fpkm),fpkm=dt_graph$fpkm),
   #           aes(x=fpkm ,y=100*Fop_estimate,fill="simulation",col="simulation"),size=2) 
 pB
@@ -132,8 +133,8 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spe
     caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )  + scale_fill_manual("Clades",values=Clade_color) +
-  xlab("POC1 frequency variations with expression (%)")  +
-  ylab("POC2 frequency variations with expression (%)") + scale_y_continuous(breaks = seq(-10,50,10))
+  xlab(substitute(paste(Delta," POC"[1]^"exp")))  +
+  ylab(substitute(paste(Delta," POC"[2]^"exp")))  + scale_y_continuous(breaks = seq(-10,50,10))
 # + theme(legend.position='none')
 pC
 
@@ -165,8 +166,8 @@ pD = ggplot(dt_graph,aes(y=value,x=category,label=species,fill=clade_group))  +
     panel.spacing = unit(0, "lines"),
     panel.border = element_rect(color = "grey", fill = NA)
     # strip.background = element_rect(color = "grey", size = 1)
-  ) + ylab("POC frequency variations with expression (%)") +
-  theme(legend.position='none') + scale_fill_manual(values=Clade_color) + xlab("")
+  ) + ylab(substitute(paste(Delta," POC"^"exp"))) +
+  theme(legend.position='none') + scale_fill_manual(values=Clade_color) + xlab("") 
 pD
 
 # Difference in proportion of POC between\nthe top 5% and bottom 50% expressed (%)

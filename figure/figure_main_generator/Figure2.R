@@ -22,7 +22,7 @@ pA = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon)*100,y=tRNASE_copies,label
     strip.text = element_text(size=15),
     plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  ) + xlab(paste("Frequency of amino acid weigthed FPKM (%)")) + ylab("tRNA gene copy number") + 
+  ) + xlab(paste("Frequency of amino acid (%)")) + ylab("tRNA gene copy number") + 
   labs(
     caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),

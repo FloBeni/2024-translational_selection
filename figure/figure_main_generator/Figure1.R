@@ -66,9 +66,9 @@ model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_gra
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   geom_abline(linetype="dashed") +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
-  geom_point(aes(fill=clade_group),size=4,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=26,family="economica"),
-    axis.title.y = element_text(color="black", size=26, family="economica"),
+  geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
+    axis.title.x = element_text(color="black", size=28,family="economica"),
+    axis.title.y = element_text(color="black", size=28, family="economica"),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
     axis.text.x =  element_text(color="black", size=24, family="economica"),
     title =  element_text(color="black", size=20, family="economica"),
@@ -77,17 +77,18 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   )  + scale_fill_manual("Clades",values=Clade_color,labels=labels) +
-  ylab("Average per gene GC3") +
-  xlab("Average per gene GCi")+
+  ylab("GC3") +
+  xlab("GCi")+
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    # caption = expression(lambda),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + theme(legend.position='none')
 pB
 
 
 
-jpeg(paste(path_pannel,"p1B.jpg",sep=""), width = 4000/1, height = 3000/1,res=500/1)
+jpeg(paste(path_pannel,"p1B.jpg",sep=""), width = 4000/1, height = 3500/1,res=600/1)
 print(pB)
 dev.off()
 
@@ -124,7 +125,7 @@ pC = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
          color = guide_legend(order = 1),
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2,size=NA),
-  )  +  ylab("GC3 rate per gene") + xlab("GCi rate per gene") + xlim(0.1,.8) +ylim(0.15,1)
+  )  +  ylab("GC3") + xlab("GCi") + xlim(0.1,.8) +ylim(0.15,1)
 pC
 
 jpeg(paste(path_pannel,"p1C.jpg",sep=""), 
@@ -164,7 +165,7 @@ pD = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
          color = guide_legend(order = 1),
          linetype = guide_legend(order = 2),
          shape = guide_legend(order = 2,size=NA),
-  )  +  ylab("") + xlab("GCi rate per gene") + xlim(0.1,.8) +ylim(0.15,1)
+  )  +  ylab("") + xlab("GCi") + xlim(0.1,.8) +ylim(0.15,1)
 pD
 
 jpeg(paste(path_pannel,"p1D.jpg",sep=""), 
@@ -252,7 +253,7 @@ lepidoptera<-readPNG(paste(path_require,"lepidoptera.png",sep=""))
   yaxis=150
   rasterImage(fly,xleft=0+xaxis, ybottom=0+yaxis, xright=1200/10+xaxis, ytop=-900/10+yaxis)
 
-  par(mar=c(0, 1, 2, 0))
+  par(mar=c(0, 0, 1, 2.5))
   plot(imgB, axes=FALSE)
   mtext("B",at=49.4,adj=-1.5, side=2, line=1, font=2, cex=1.4,las=2)
 

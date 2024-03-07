@@ -24,7 +24,7 @@ tRNA_abundance <- data.frame(sapply( tRNA_abundance, as.numeric ))
 rownames(tRNA_abundance) = GTDrift_list_species$species
 
 data1 = read.delim("data/data1_supp.tab")
-data1 = data1[data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000,]
+data1 = data1[data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 & data1$nb_codon_not_decoded == 0,]
 
 tRNA_abundance = tRNA_abundance[rownames(tRNA_abundance) %in% data1$species,]
 
