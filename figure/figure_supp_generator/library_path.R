@@ -78,7 +78,7 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
     fit <- phylolm(y~x, phy = shorebird$phy, data = shorebird$data, model = "lambda")
     summ_fit = summary(fit)
     dt_fit = rbind(dt_fit,data.frame(
-      model="Pagel's lambda",
+      model="Pagel's ",
       p_val_slope = summ_fit$coefficients[2,4],
       r.squared = summ_fit$r.squared,
       adj.r.squared = summ_fit$adj.r.squared,
@@ -90,7 +90,7 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
     if (pagels_obliged){
       
       dt_fit = rbind(dt_fit,data.frame(
-        model="Pagel's lambda",
+        model="Pagel's ",
         p_val_slope = summ_fit$coefficients[2,4],
         r.squared = summ_fit$r.squared,
         adj.r.squared = summ_fit$adj.r.squared,

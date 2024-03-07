@@ -17,37 +17,23 @@ dt_graph = data_11[ data_11$group == "POCs" ,]
 
 # Pannel B
 
-<<<<<<< HEAD
-labels_name = c( "POC -> non-POC" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," SNPs POC -> non-POC",sep=""),
-                 "non-POC -> POC"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," SNPs non-POC -> POC",sep=""))
-=======
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," SNPs PO>nPO",sep=""),
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," SNPs nPO>PO",sep=""))
->>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
+
 
 pB = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pB = pB +
-<<<<<<< HEAD
-  geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
-  # geom_line(aes(y=sum_subst_density_optimal_to_nonoptimal_codon/sum_cible_density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
-  geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="POC -> non-POC",pch='CDS',alpha='CDS'),size=3)+
-=======
   geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="PO>nPO",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="PO>nPO",pch='CDS',alpha='CDS'),size=3)+
->>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_codon,
                     ymax=confint_high_density_optimal_to_nonoptimal_codon,color="PO>nPO"),
                 width=0.03,show.legend=FALSE) +
   
-<<<<<<< HEAD
-  geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
-  # geom_line(aes(y=sum_subst_density_nonoptimal_to_optimal_codon/sum_cible_density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
-  geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="non-POC -> POC",pch='CDS',alpha='CDS'),size=3)+
-=======
   geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="nPO>PO",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="nPO>PO",pch='CDS',alpha='CDS'),size=3)+
->>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
+
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_codon,
                     ymax=confint_high_density_nonoptimal_to_optimal_codon,color="nPO>PO"),
                 width=0.03,show.legend=FALSE)
@@ -147,26 +133,16 @@ labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal
 pE = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
 
 pE = pE +
-<<<<<<< HEAD
-  geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
-  # geom_line(aes(y=sum_subst_density_optimal_to_nonoptimal_codon/sum_cible_density_optimal_to_nonoptimal_codon,color="POC -> non-POC",linetype='CDS',alpha='CDS'),size=1) +
-  geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="POC -> non-POC",pch='CDS',alpha='CDS'),size=3)+
-=======
   geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="PO>nPO",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="PO>nPO",pch='CDS',alpha='CDS'),size=3)+
->>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_codon,
                     ymax=confint_high_density_optimal_to_nonoptimal_codon,color="PO>nPO"),
                 width=0.03,show.legend=FALSE) +
   
-<<<<<<< HEAD
-  geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
-  # geom_line(aes(y=sum_subst_density_nonoptimal_to_optimal_codon/sum_cible_density_nonoptimal_to_optimal_codon,color="non-POC -> POC",linetype='CDS',alpha='CDS'),size=1) +
-  geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="non-POC -> POC",pch='CDS',alpha='CDS'),size=3)+
-=======
+
   geom_line(aes(y=density_nonoptimal_to_optimal_codon,color="nPO>PO",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_nonoptimal_to_optimal_codon,fill="nPO>PO",pch='CDS',alpha='CDS'),size=3)+
->>>>>>> 212c8cde9d8c6e686c6d6532e13a03b976d28e54
   geom_errorbar(aes(ymin=confint_low_density_nonoptimal_to_optimal_codon,
                     ymax=confint_high_density_nonoptimal_to_optimal_codon,color="nPO>PO"),
                 width=0.03,show.legend=FALSE)

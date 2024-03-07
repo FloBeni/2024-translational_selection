@@ -2,7 +2,29 @@
 source("figure/figure_main_generator/library_path.R")
 resolution=2
 
+lynch_dt = read.table("data/Lynch2023_embr202357561-sup-0002-metazoa.csv",header=T,sep="\t",dec=",")
+lynch_dt$species = str_replace_all(lynch_dt$Species," ","_")
+lynch_dt$species = sapply(lynch_dt$species ,function(x) paste(str_split_1(x,"_")[1],str_split_1(x,"_")[2],sep="_"))
+lynch_dt$genus = sapply(lynch_dt$species ,function(x) str_split_1(x,"_")[1])
+rownames(lynch_dt) = lynch_dt$species
+lynch_dt$mass = as.numeric(lynch_dt$Dry.Mass.at.Maturity...µg.)/1e9
+Ne_genus = tapply(lynch_dt$Ne,lynch_dt$genus,mean)
+mass_genus = tapply(lynch_dt$mass,lynch_dt$genus,function(x) mean(x,na.rm=T))
+
 data1 = read.delim("data/data1_supp.tab")
+data1$Ne = lynch_dt[data1$species,]$Ne
+data1$Ne_estimate = "from genus"
+data1[!is.na(data1$Ne),]$Ne_estimate = "from species"
+data1[is.na(data1$Ne),]$Ne = Ne_genus[sapply(data1[is.na(data1$Ne),]$species ,function(x) str_split_1(x,"_")[1])]
+data1[is.na(data1$Ne),]$Ne_estimate = ""
+
+data1$Mass_Lynch = lynch_dt[data1$species,]$mass
+data1$Mass_Lynch_estimate = "from genus"
+data1[!is.na(data1$Mass_Lynch),]$Mass_Lynch_estimate = "from species"
+data1[is.na(data1$Mass_Lynch),]$Mass_Lynch = mass_genus[sapply(data1[is.na(data1$Mass_Lynch),]$species ,function(x) str_split_1(x,"_")[1])]
+data1[is.na(data1$Mass_Lynch),]$Mass_Lynch_estimate = ""
+
+
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
@@ -92,21 +114,21 @@ dev.off()
 dt_graph = data1
 
 ylabel = "S_POCs"
-xlabel = "weight_kg"
+xlabel = "Ne"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
 model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
-pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   # geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
-  geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
+  geom_point(aes(fill=clade_group),size=4,alpha=.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
     axis.text.x =  element_text(color="black", size=24, family="economica"),
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
+    legend.text =  element_text(color="black", size=15, family="economica",vjust = 1.5 , margin = margin(t = 10)),
     plot.caption = element_text(hjust = 0.5, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
@@ -114,11 +136,13 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Population-scaled selection coefficient (S)") +  theme(legend.position="none")+
-  scale_x_log10(breaks=c(10^-6,10^-4,10^-2,10^0,10^2,10^4,10^6),labels=label_log(digits = 2),limits = c(0.000001,1000000)) + xlab("Body Weight (kg, log scale)")
+  ylab("Population-scaled selection coefficient (S)") +  
+  scale_x_log10(labels=label_log(digits = 2)) + xlab("Body Weight (kg, log scale)")+ annotation_logticks(sides="b") +
+  guides(fill = "none",
+         shape = guide_legend(byrow = TRUE,override.aes = list(fill="black")))  
 pC
 
-jpeg(paste(path_pannel,"p7C.jpg",sep=""),width = 4200/2, height = 4000/2,res=700/2)
+jpeg(paste(path_pannel,"p7C.jpg",sep=""),width = 5000/2, height = 4000/2,res=700/2)
 print(pC)
 dev.off()
 
