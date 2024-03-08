@@ -61,9 +61,9 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
   if ( length(tree) != 1){
     shorebird <- comparative.data(tree, 
                                   data.frame(label=label,
-                                             x=x,
-                                             y=y), label, vcv=TRUE)
-    fit = pgls(y~x,shorebird)
+                                             x_shorebird=x,
+                                             y_shorebird=y), label, vcv=TRUE)
+    fit = pgls(y_shorebird~x_shorebird,shorebird)
     summ_fit = summary(fit)
     dt_fit = rbind(dt_fit,data.frame(
       model="PGLS",
@@ -75,7 +75,7 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
       intercept = coef(fit)[1]
     ))
     
-    fit <- phylolm(y~x, phy = shorebird$phy, data = shorebird$data, model = "lambda")
+    fit <- phylolm(y_shorebird~x_shorebird, phy = shorebird$phy, data = shorebird$data, model = "lambda")
     summ_fit = summary(fit)
     dt_fit = rbind(dt_fit,data.frame(
       model="Pagel's ",
@@ -116,6 +116,7 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
   print(dt_fit)
   
   model_sub = dt_fit[dt_fit$aic != min(dt_fit$aic),]
+  dt_fit_lm = dt_fit[dt_fit$model == "LM",]
   dt_fit = dt_fit[dt_fit$aic == min(dt_fit$aic),]
   
   model = paste(dt_fit$model,sep="")
@@ -127,6 +128,7 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
     AIC = paste(" AIC = ",round(dt_fit$aic),",",sep="")
     model_non_opti = paste(paste("/ ",model_sub$model,": AIC = ",round(model_sub$aic),sep=""),collapse = " ")
   }
-  return(list(model=model,aic=AIC,r2=R2,pvalue=pvalue,model_non_opti=model_non_opti,slope=dt_fit$slope,intercept=dt_fit$intercept))
+  return(list(model=model,aic=AIC,r2=R2,pvalue=pvalue,model_non_opti=model_non_opti,slope=dt_fit$slope,intercept=dt_fit$intercept,
+              "LMr2"=paste(round(dt_fit_lm$r.squared, 2),sep=""),"LMpval"=paste(formatC(dt_fit_lm$p_val_slope, format = "e", digits = 0),sep="")))
 } 
 

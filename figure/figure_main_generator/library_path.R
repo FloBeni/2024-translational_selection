@@ -63,8 +63,8 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
   # Function to choose which model between PGLS, LM and Pagel's lambda is best suited to the data.
   dt_fit = data.frame()
   if ( length(tree) != 1){
-    shorebird <- comparative.data(tree,data.frame(label=label,x=x,y=y), label, vcv=TRUE)
-    fit = pgls(y~x,shorebird)
+    shorebird <- comparative.data(tree,data.frame(label=label,x_shorebird=x,y_shorebird=y), label, vcv=TRUE)
+    fit = pgls(y_shorebird~x_shorebird,shorebird)
     summ_fit = summary(fit)
     dt_fit = rbind(dt_fit,data.frame(
       model="PGLS",
@@ -76,7 +76,7 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
       intercept = coef(fit)[1]
     ))
     
-    fit <- phylolm(y~x, phy = shorebird$phy, data = shorebird$data, model = "lambda")
+    fit <- phylolm(y_shorebird~x_shorebird, phy = shorebird$phy, data = shorebird$data, model = "lambda")
     summ_fit = summary(fit)
     dt_fit = rbind(dt_fit,data.frame(
       model="Pagel's ",

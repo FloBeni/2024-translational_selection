@@ -35,14 +35,14 @@ rownames(dnds) = dnds$species
 data1[,c("dNdS")] = dnds[data1$species,c("dNdS")]
 
 # Pannel 7 A
-
 dt_graph = data1
 
 ylabel = "Ne"
 xlabel = "lifespan_days"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
-model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=log10(dt_graph[,ylabel]),label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
+model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=log10(dt_graph[,ylabel]),
+                            label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
@@ -58,13 +58,15 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti,
+                               "; LM"," : R"^2,"= ",LMr2,", p-value = ",LMpval), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   ylab(expression(paste(italic("N"[e])))) + 
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
-  xlab("Longevity (days, log scale)")+ annotation_logticks(sides="lb")  + scale_y_log10() + guides(fill = guide_legend(byrow = TRUE,override.aes = list(size=5,pch=21)),
-                                                                                                   shape = guide_legend(byrow = TRUE,override.aes = list(fill="black")))  +
+  xlab("Longevity (days, log scale)")+ annotation_logticks(sides="lb")  + scale_y_log10() + 
+  guides(fill = guide_legend(byrow = TRUE,override.aes = list(size=5,pch=21)),
+         shape = guide_legend(byrow = TRUE,override.aes = list(fill="black")))  +
   theme(legend.spacing.y = unit(-.1, 'cm'))   
 pA
 
@@ -97,12 +99,14 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))    +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti,
+                               "; LM"," : R"^2,"= ",LMr2,", p-value = ",LMpval), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   ylab(expression(paste(italic("N"[e])))) + 
-  scale_x_log10(breaks=c(0.01,0.1,1,10,100,1000,5000),labels=c(0.01,0.1,1,10,100,1000,5000)) + xlab("Body length (cm, log scale)")+  annotation_logticks(sides="lb")  + scale_y_log10() + guides(fill = guide_legend(override.aes = list(size=5,pch=21)),
-                                                                                                                                                                                                 shape = guide_legend(override.aes = list(fill="black"))) 
+  scale_x_log10(breaks=c(0.01,0.1,1,10,100,1000,5000),labels=c(0.01,0.1,1,10,100,1000,5000)) + xlab("Body length (cm, log scale)")+
+  annotation_logticks(sides="lb")  + scale_y_log10() + guides(fill = guide_legend(override.aes = list(size=5,pch=21)),
+                                                              shape = guide_legend(override.aes = list(fill="black"))) 
 pB
 
 jpeg(paste(path_pannel,"p7B.jpg",sep=""),width = 4200/2, height = 4000/2,res=700/2)
@@ -135,7 +139,8 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Mass_Lynch_estimate"))
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti,
+                               "; LM"," : R"^2,"= ",LMr2,", p-value = ",LMpval), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   ylab(expression(paste(italic("N"[e])))) +   theme(legend.position="none")+ xlab("Body Weight (kg, log scale)")+
@@ -173,7 +178,8 @@ pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))   +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti,
+                               "; LM"," : R"^2,"= ",LMr2,", p-value = ",LMpval), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   ylab(expression(paste(italic("N"[e])))) + xlab("dN/dS (log scale)") + scale_x_log10()+ annotation_logticks(sides="lb")  + 
