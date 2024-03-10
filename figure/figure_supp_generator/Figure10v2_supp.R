@@ -45,7 +45,7 @@ model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=log10(dt_graph[,ylabel]
                             label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  +
-  geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
+  geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept) +
   geom_point(aes(fill=clade_group),size=5,alpha=0.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=28,family="economica"),
     axis.title.y = element_text(color="black", size=28, family="economica"),
