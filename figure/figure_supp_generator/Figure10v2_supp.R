@@ -7,7 +7,7 @@ lynch_dt$species = str_replace_all(lynch_dt$Species," ","_")
 lynch_dt$species = sapply(lynch_dt$species ,function(x) paste(str_split_1(x,"_")[1],str_split_1(x,"_")[2],sep="_"))
 lynch_dt$genus = sapply(lynch_dt$species ,function(x) str_split_1(x,"_")[1])
 rownames(lynch_dt) = lynch_dt$species
-lynch_dt$mass = as.numeric(lynch_dt$Dry.Mass.at.Maturity...µg.)/1e9
+lynch_dt$mass = as.numeric(lynch_dt$Dry.Mass.at.Maturity...kg.)
 Ne_genus = tapply(lynch_dt$Ne,lynch_dt$genus,mean)
 mass_genus = tapply(lynch_dt$mass,lynch_dt$genus,function(x) mean(x,na.rm=T))
 
@@ -143,7 +143,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Mass_Lynch_estimate"))
                                "; LM"," : R"^2,"= ",LMr2,", p-value = ",LMpval), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
-  ylab(expression(paste(italic("N"[e])))) +   theme(legend.position="none")+ xlab("Body Weight (kg, log scale)")+
+  ylab(expression(paste(italic("N"[e])))) +   theme(legend.position="none")+ xlab("Body mass (kg, log scale)")+
   scale_x_log10(breaks=c(10^-12,10^-8,10^-4,10^0,10^4,10^6),labels=label_log(digits = 2),limits = c(0.00000000001,10000)) + 
   annotation_logticks(sides="lb")  + scale_y_log10() + guides(fill = guide_legend(override.aes = list(size=5,pch=21)),
                                                               shape = guide_legend(override.aes = list(fill="black"))) 
