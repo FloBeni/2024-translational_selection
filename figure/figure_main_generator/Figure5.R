@@ -43,11 +43,15 @@ dev.off()
 
 dt_graph = data6[data6$species == "Caenorhabditis_elegans" & data6$type_aa == "POCs",]
 
+
 pB = ggplot( dt_graph ,
               aes(y=freq,fill=categorie))  +
   # geom_line(data=dt_graph[dt_graph$categorie %in% c("Highly constrained","Unconstrained"),],aes(group=busco_id),alpha=0.2,col="black",linetype="dashed")+
   geom_boxplot(outlier.shape = NA) + 
-  scale_fill_manual("Categories",values=set_color[c(4,3,5,6)]) +
+  scale_fill_manual("Binning of codons per quartile\nof amino-acid constraint",values=set_color[c(4,3,5,6)],labels=c( "Unconstrained" = "25% least constrained" ,
+                                                                        "Slighlty constrained" = "25-50%" ,
+                                                                        "Moderately constrained" = "50-75%"  ,
+                                                                        "Highly constrained" = "25% most constrained")) +
   scale_shape_manual(values=c(24,22,21,23,25,20)) +
   xlab("Constrain") + ylab("POC frequency") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=25,family="economica"),

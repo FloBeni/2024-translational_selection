@@ -49,28 +49,29 @@ model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label
 
 pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   # geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
-  geom_point(aes(fill=clade_group),size=4,alpha=.8) + theme_bw() + theme(
+  geom_point(aes(fill=clade_group),size=4,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
     axis.text.x =  element_text(color="black", size=24, family="economica"),
-    title =  element_text(color="black", size=20, family="economica"),
+    title =  element_text(color="black", size=25, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=15, family="economica",vjust = 1.5 , margin = margin(t = 10)),
+    legend.text =  element_text(color="black", size=20, family="economica",vjust = 1.5 , margin = margin(t = 10)),
     plot.caption = element_text(hjust = 0.45, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Population-scaled selection coefficient (S)") +  
+  ylab("S") +  
   scale_x_log10(labels=label_log(digits = 2)) + xlab(expression(paste(italic("N"[e]))))+ annotation_logticks(sides="b") +
   guides(fill = "none",
-         shape = guide_legend(byrow = TRUE,override.aes = list(fill="black")))  
+         shape = guide_legend(byrow = TRUE,override.aes = list(fill="black")))   +
+  theme(legend.spacing.y = unit(-.1, 'cm'))   
 pA
 
-jpeg(paste(path_pannel,"p7A.jpg",sep=""),width = 5000/2, height = 4000/2,res=700/2)
+jpeg(paste(path_pannel,"p7A.jpg",sep=""),width = 5200/2, height = 4000/2,res=650/2)
 print(pA)
 dev.off()
 
@@ -87,7 +88,7 @@ model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label
 
 pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
-  geom_point(aes(fill=clade_group),size=5,pch=21,alpha=0.8) + theme_bw() + theme(
+  geom_point(aes(fill=clade_group),size=3.5,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=28,family="economica"),
     axis.title.y = element_text(color="black", size=28, family="economica"),
     axis.text.y =  element_text(color="black", size=26, family="economica"),
@@ -99,13 +100,13 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Population-scaled selection coefficient (S)") + 
+  ylab("S") + 
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") + 
-  guides(fill = guide_legend(byrow = TRUE),
+  guides(fill = guide_legend(byrow = TRUE,override.aes = list(size=5)),
          shape = guide_legend(byrow = TRUE))  +
   theme(legend.spacing.y = unit(-.1, 'cm'))   
 
@@ -128,7 +129,7 @@ model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label
 
 pC = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   # geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
-  geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
+  geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
@@ -136,14 +137,14 @@ pC = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.6, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.65, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
-  ylab("Population-scaled selection coefficient (S)") +
+  ylab("S") +
   scale_x_log10(breaks=c(0.01,0.1,1,10,100,1000,5000),labels=c(0.01,0.1,1,10,100,1000,5000)) + xlab("Body length (cm, log scale)")+ annotation_logticks(sides="b") 
 pC
 
@@ -165,7 +166,7 @@ model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label
 
 pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
-  geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
+  geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
     axis.text.y =  element_text(color="black", size=24, family="economica"),
@@ -177,10 +178,10 @@ pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
-  ylab("Population-scaled selection coefficient (S)") + xlab("dN/dS (log scale)") + scale_x_log10()+ annotation_logticks(sides="b") 
+  ylab("S") + xlab("dN/dS (log scale)") + scale_x_log10()+ annotation_logticks(sides="b") 
 pD
 
 jpeg(paste(path_pannel,"p7D.jpg",sep=""),width = 4200/2, height = 4000/2,res=700/2)
@@ -204,14 +205,15 @@ imgD = load.image(paste(path_pannel,"p7D.jpg",sep="") )
   m[2,]=c(rep(3,50),rep(4,50))
   layout(m)
   
-  par(mar=c(0,4, 2, 0))
+  par(mar=c(2.1, 2, 2.4, 1))
   plot(imgA, axes=FALSE)
-  mtext("A",at=0,adj=1, side=2, line=1, font=2, cex=2,las=2)
+  mtext("A",at=0,adj=-0, side=2, line=1, font=2, cex=2,las=2)
   
-  par(mar=c(0,0, 2, 0))
+  par(mar=c(0,0, 0, 0))
   plot(imgB, axes=FALSE)
   mtext("B",at=0,adj=1, side=2, line=1, font=2, cex=2,las=2)
 
+  par(mar=c(1,0, 2, 0))
   plot(imgC, axes=FALSE)
   mtext("C",at=0,adj=-1, side=2, line=1, font=2, cex=2,las=2)
 

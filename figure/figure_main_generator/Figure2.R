@@ -22,7 +22,7 @@ pA = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon)*100,y=tRNASE_copies,label
     strip.text = element_text(size=15),
     plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  ) + xlab(paste("Frequency of amino acid (%)")) + ylab("tRNA gene copy number") + 
+  ) + xlab(paste("Amino-acid frequency (%)")) + ylab("tRNA gene copy number") + 
   labs(
     caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
@@ -54,7 +54,7 @@ pB = ggplot(dt_graph,aes(y=rho_aa_fpkm,fill=clade_group,x=clade_group))  +
     axis.text.x =  element_text(color="black",vjust=1,hjust=1, size=22,angle = 30, family="economica"),
     title =  element_text(color="black", size=0, family="economica"),
     legend.text =  element_text(color="black", size=20, family="economica")
-  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + ylab("Spearmann Rho")  + xlab("") + ylim(0,1)
+  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + ylab("Spearmann rho")  + xlab("") + ylim(0,1)
 
 pB = ggMarginal(pB, type="histogram",fill=set_color[1]) 
 pB

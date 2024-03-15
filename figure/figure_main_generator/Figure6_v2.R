@@ -21,7 +21,8 @@ labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," SNPs nPO>PO",sep=""))
 
 
-pB = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
+pB = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")+ 
+  geom_text(data=data.frame(),label="CDS",aes(x=0.012,y=0.053), family="economica", size=12)
 
 pB = pB +
   geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="PO>nPO",linetype='CDS',alpha='CDS'),size=1) +
@@ -49,7 +50,7 @@ pB = pB + theme_bw() + theme(
   scale_x_log10(limits = c(0.01,1000),
                 breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
                 labels=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000)) +
-  ylab(paste("SNP rate within CDSs")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
+  ylab(paste("SNP rate")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
   scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
   annotation_logticks(sides="b")+
@@ -58,7 +59,7 @@ pB = pB + theme_bw() + theme(
         legend.background = element_rect(fill="NA"),
         legend.spacing.x = unit(0.5, 'cm'),
         legend.spacing.y = unit(0.5, 'cm')
-  ) + guides(fill= guide_legend(override.aes = list(size=7,pch=21), byrow = TRUE,order = 2))
+  ) + guides(fill= guide_legend(override.aes = list(size=7,pch=21), byrow = TRUE,order = 2)) 
 pB
 
 
@@ -73,7 +74,8 @@ dev.off()
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," SNPs PO>nPO",sep=""),
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," SNPs nPO>PO",sep=""))
 
-pC = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
+pC = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")+ 
+  geom_text(data=data.frame(),label="Intron",aes(x=0.015,y=0.053), family="economica", size=12)
 
 pC = pC +
   geom_line(aes(y=density_optimal_to_nonoptimal_intron,color="PO>nPO",linetype='intron',alpha='intron'),size=1) +
@@ -99,7 +101,7 @@ pC = pC + theme_bw() + theme(
   scale_x_log10(limits = c(0.01,1000),
                 breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
                 labels=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000)) +
-  ylab(paste("SNP rate within introns")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
+  ylab(paste("SNP rate")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
   scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
   annotation_logticks(sides="b")+
@@ -125,14 +127,15 @@ data_10 = read.delim("data/data10_supp.tab")
 dt_graph = data_10[ data_10$group == "POCs" ,]
 
 
-# Pannel E
+# Pannel D
 
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," substitutions PO>nPO",sep=""),
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," substitutions nPO>PO",sep=""))
 
-pE = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
+pD = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")+ 
+  geom_text(data=data.frame(),label="CDS",aes(x=0.012,y=0.048), family="economica", size=12)
 
-pE = pE +
+pD = pD +
   geom_line(aes(y=density_optimal_to_nonoptimal_codon,color="PO>nPO",linetype='CDS',alpha='CDS'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_codon,fill="PO>nPO",pch='CDS',alpha='CDS'),size=3)+
 
@@ -147,7 +150,7 @@ pE = pE +
                     ymax=confint_high_density_nonoptimal_to_optimal_codon,color="nPO>PO"),
                 width=0.03,show.legend=FALSE)
 
-pE = pE + theme_bw() + theme(
+pD = pD + theme_bw() + theme(
   axis.title.x = element_text(color="black", size=0,family="economica"),
   axis.title.y = element_text(color="black", size=30, family="economica"),
   axis.text.y =  element_text(color="black", size=30, family="economica"),
@@ -158,7 +161,7 @@ pE = pE + theme_bw() + theme(
   scale_x_log10(limits = c(0.01,1000),
                 breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
                 labels=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000)) +
-  ylab(paste("Substitution rate within CDSs")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
+  ylab(paste("Substitution rate")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
   scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
   annotation_logticks(sides="b")+
@@ -168,21 +171,22 @@ pE = pE + theme_bw() + theme(
         legend.spacing.x = unit(.5, 'cm'),
         legend.spacing.y = unit(.5, 'cm')
   ) +  guides(fill= guide_legend(override.aes = list(size=7,pch=21),byrow = TRUE,order = 2))
-pE
+pD
 
-jpeg(paste(path_pannel,"p6E.jpg",sep=""), width = 6000/1, height = 2800/1,res=600/1)
-print(pE)
+jpeg(paste(path_pannel,"p6D.jpg",sep=""), width = 6000/1, height = 2800/1,res=600/1)
+print(pD)
 dev.off()
 
 
-# Pannel F
+# Pannel E
 
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," substitutions PO>nPO",sep=""),
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," substitutions nPO>PO",sep=""))
 
-pF = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")
+pE = ggplot(dt_graph,aes(x=fpkm)) + ggtitle("POCs")+ 
+  geom_text(data=data.frame(),label="Intron",aes(x=0.015,y=0.048), family="economica", size=12)
 
-pF = pF +
+pE = pE +
   geom_line(aes(y=density_optimal_to_nonoptimal_intron,color="PO>nPO",linetype='intron',alpha='intron'),size=1) +
   geom_point(aes(y=density_optimal_to_nonoptimal_intron,fill="PO>nPO",pch='intron',alpha='intron'),size=3)+
   geom_errorbar(aes(ymin=confint_low_density_optimal_to_nonoptimal_intron,
@@ -195,7 +199,7 @@ pF = pF +
                     ymax=confint_high_density_nonoptimal_to_optimal_intron,color="nPO>PO"),
                 width=0.03,show.legend=FALSE)
 
-pF = pF + theme_bw() + theme(
+pE = pE + theme_bw() + theme(
   axis.title.x = element_text(color="black", size=30,family="economica"),
   axis.title.y = element_text(color="black", size=30, family="economica"),
   axis.text.y =  element_text(color="black", size=30, family="economica"),
@@ -206,7 +210,7 @@ pF = pF + theme_bw() + theme(
   scale_x_log10(limits = c(0.01,1000),
                 breaks=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000),
                 labels=c(0.005,0.01,0.1,0.5,1,5,10,50,100,1000,10000,50000)) +
-  ylab(paste("Substitution rate within introns")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
+  ylab(paste("Substitution rate")) + scale_fill_manual("",values=set_color_class,label=labels_name) + 
   scale_color_manual("",values=set_color_class) + scale_linetype_manual("",values=set_linetype_class) +
   scale_shape_manual("",values=set_shape_class) + scale_alpha_manual("",values=set_alpha_class) +
   annotation_logticks(sides="b")+
@@ -217,10 +221,10 @@ pF = pF + theme_bw() + theme(
         legend.spacing.y = unit(.5, 'cm')
   ) +  guides(fill= guide_legend(override.aes = list(size=7,pch=21),byrow = TRUE,order = 2))+
   theme(axis.title.x = element_text(margin = margin(t = 10, r = 0, b = 0, l = 0)))
-pF
+pE
 
-jpeg(paste(path_pannel,"p6F.jpg",sep=""), width = 6000/1, height = 3000/1,res=600/1)
-print(pF)
+jpeg(paste(path_pannel,"p6E.jpg",sep=""), width = 6000/1, height = 3000/1,res=600/1)
+print(pE)
 dev.off()
 
 
@@ -230,8 +234,8 @@ imgA = load.image(paste(path_require,"poly_subst.png",sep="") )
 imgB = load.image(paste(path_pannel,"p6B.jpg",sep="") )
 imgC = load.image(paste(path_pannel,"p6C.jpg",sep="") )
 # imgD = load.image(paste(path_require,"substitutions.png",sep="") )
+imgD = load.image(paste(path_pannel,"p6D.jpg",sep="") )
 imgE = load.image(paste(path_pannel,"p6E.jpg",sep="") )
-imgF = load.image(paste(path_pannel,"p6F.jpg",sep="") )
 fly<-readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
 
 {
@@ -264,10 +268,10 @@ fly<-readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
   mtext("C",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
   
   par(mar=c(0, 1, 1.5, 0))
-  plot(imgE, axes=FALSE)
+  plot(imgD, axes=FALSE)
   mtext("D",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
   par(mar=c(0.5, 1, 0, 0))
-  plot(imgF, axes=FALSE)
+  plot(imgE, axes=FALSE)
   mtext("E",at=-100,adj=-0, side=2, line=1, font=2, cex=1.6,las=2)
   
   dev.off()

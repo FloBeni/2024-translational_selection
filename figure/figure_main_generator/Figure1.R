@@ -80,7 +80,7 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
   ylab("GC3") +
   xlab("GCi")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     # caption = expression(lambda),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + theme(legend.position='none')
@@ -98,7 +98,11 @@ dev.off()
 data2 = read.delim("data/data2_supp.tab")
 dt_graph = data2[data2$species == "Homo_sapiens" ,]
 spearman_method_aa = cor.test( dt_graph$GCi, dt_graph$GC3,method="spearman",exact=F)
-
+if(spearman_method_aa$p.value < 1e-16){
+  spearman_method_aa$p.value = "< 1e-16"
+} else {
+  spearman_method_aa$p.value = paste("= ",spearman_method_aa$p.value,sep="")
+}
 
 pC = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
   geom_abline(linetype="dashed") +
@@ -117,7 +121,7 @@ pC = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
     plot.caption.position =  "plot"
   )  +labs(fill='Categories',color='Categories',shape='',linetype='')+ 
   labs(
-    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
+    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = spearman_method_aa$p.value))
   ) +
@@ -138,6 +142,12 @@ dev.off()
 
 dt_graph = data2[data2$species == "Caenorhabditis_elegans" ,]
 spearman_method_aa = cor.test( dt_graph$GCi, dt_graph$GC3,method="spearman",exact=F)
+if(spearman_method_aa$p.value < 1e-16){
+  spearman_method_aa$p.value = "< 1e-16"
+} else {
+  spearman_method_aa$p.value = paste("= ",spearman_method_aa$p.value,sep="")
+}
+
 
 
 pD = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
@@ -157,7 +167,7 @@ pD = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
     plot.caption.position =  "plot"
   )+ labs(fill='Categories',color='Categories',shape='',linetype='') + 
   labs(
-    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
+    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = formatC(spearman_method_aa$p.value, format = "e", digits = 0)))
   ) +

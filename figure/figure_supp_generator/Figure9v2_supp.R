@@ -22,11 +22,11 @@ pA = ggplot(dt_graph ,
   scale_color_manual(values=set_color[c(2,1,4,3)]) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
   scale_linetype_manual(values=c("solid","solid","solid","solid"))+
-  xlab("Gene expression level (FPKM, log scale)") + ylab("Codon set frequency (%)") + theme_bw() + theme(
+  xlab("Gene expression level (FPKM, log scale)") + ylab("Codon frequency (%)") + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=25,family="economica",vjust=0),
     axis.title.y = element_text(color="black", size=25, family="economica",vjust=2),
     axis.text.y =  element_text(color="black", size=23, family="economica"),
-    axis.text.x =  element_text(color="black", size=23, family="economica"),
+    axis.text.x =  element_text(color="black", size=20, family="economica"),
     title =  element_text(color="black", size=25, family="economica"),
     legend.text =  element_text(color="black", size=25, family="economica"),
     strip.text = element_text(size=15,face="italic")

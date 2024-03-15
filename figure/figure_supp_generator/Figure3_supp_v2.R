@@ -11,7 +11,7 @@ spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_tr
 
 pA=ggplot(dt_graph,aes(x = prop_transcriptome_count*100 , y = prop_abundance_average*100)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[3],size=2) +
   geom_point(pch=21,fill=set_color[4],size=4) + 
-  ylab("Proportion uniquely aligned reads (%)") + xlab("Frequency of amino acid weigthed by gene expression (%)") + 
+  ylab("tRNA abundance (%)") + xlab("Amino-acid frequency (%)") + 
   theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -20,7 +20,7 @@ pA=ggplot(dt_graph,aes(x = prop_transcriptome_count*100 , y = prop_abundance_ave
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.5, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   ) + 
   labs(
@@ -30,7 +30,7 @@ pA=ggplot(dt_graph,aes(x = prop_transcriptome_count*100 , y = prop_abundance_ave
   )
 pA
 
-jpeg(paste(path_pannel,"p2A_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=450/1)
+jpeg(paste(path_pannel,"p2A_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=550/1)
 print(pA)
 dev.off()
 
@@ -42,7 +42,7 @@ spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_tr
 
 pB=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=prop_abundance_average*100)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[1],size=2) +
   geom_point(pch=21,fill=set_color[2],size=4) + 
-  ylab("Proportion uniquely aligned reads (%)")+ xlab("Frequency of amino acid weigthed by gene expression (%)") + 
+  ylab("tRNA abundance (%)")+ xlab("Amino-acid frequency (%)") + 
   theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -51,7 +51,7 @@ pB=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=prop_abundance_average*1
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.5, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   ) + 
   labs(
@@ -61,7 +61,7 @@ pB=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=prop_abundance_average*1
   )
 pB
 
-jpeg(paste(path_pannel,"p2B_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=450/1)
+jpeg(paste(path_pannel,"p2B_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=550/1)
 print(pB)
 dev.off()
 
@@ -73,7 +73,7 @@ spearman_method_aa = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome
 
 pC=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[3],size=2) +
   geom_point(pch=21,fill=set_color[4],size=4) + 
-  xlab("Frequency of amino acid weigthed by gene expression (%)") + ylab("Gene copy number") + 
+  xlab("Amino-acid frequency (%)") + ylab("Gene copy number") + 
    theme_bw() + theme(
      axis.title.x = element_text(color="black", size=26,family="economica"),
      axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -82,7 +82,7 @@ pC=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smo
      title =  element_text(color="black", size=20, family="economica"),
      text =  element_text(color="black", size=31, family="economica"),
      legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-     plot.caption = element_text(hjust = 0.5, face= "italic", size=20, family="economica"),
+     plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
      plot.caption.position =  "plot"
    ) + 
   labs(
@@ -93,7 +93,7 @@ pC=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smo
 pC
 
 
-jpeg(paste(path_pannel,"p2C_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=450/1)
+jpeg(paste(path_pannel,"p2C_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=550/1)
 print(pC)
 dev.off()
 
@@ -105,7 +105,7 @@ spearman_method_aa = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome
 
 pD=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[1],size=2) +
   geom_point(pch=21,fill=set_color[2],size=4) + 
-  xlab("Frequency of amino acid weigthed by gene expression (%)") + ylab("Gene copy number") + 
+  xlab("Amino-acid frequency (%)") + ylab("Gene copy number") + 
   theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -114,7 +114,7 @@ pD=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smo
     title =  element_text(color="black", size=20, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = .5, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = .55, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   ) + 
   labs(
@@ -124,7 +124,7 @@ pD=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smo
   )
 pD
 
-jpeg(paste(path_pannel,"p2D_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=450/1)
+jpeg(paste(path_pannel,"p2D_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=550/1)
 print(pD)
 dev.off()
 
@@ -163,7 +163,7 @@ fly<-readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
   par(mar=c(0, 1, 1.5, 0))
   plot(imgB, axes=FALSE)
   mtext("B", adj=-.2, side=2,at=-40, line=1, font=2, cex=1.2,las=2)
-  xhuman=500
+  xhuman=530
   yhuman=-90
   rasterImage(human,xleft=0+xhuman, ybottom=450/1-yhuman, xright=190/1+xhuman, ytop=0-yhuman)
 

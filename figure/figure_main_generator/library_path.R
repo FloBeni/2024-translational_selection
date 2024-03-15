@@ -36,7 +36,7 @@ arbrePhylo = read.tree(paste("data/GTDrift_metazoa_phylogenetic_tree.nwk",sep=""
 
 life_history_traits = read.delim("data/GTDrift_life_history_traits.tab")
 rownames(life_history_traits) = paste(life_history_traits$species,life_history_traits$life_history_traits,sep="_")
-  
+
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
@@ -135,8 +135,12 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
   
   model = paste(dt_fit$model,sep="")
   R2 = paste(round(dt_fit$r.squared, 2),sep="")
-  pvalue = paste(formatC(dt_fit$p_val_slope, format = "e", digits = 0),sep="")
+  
+  if (dt_fit$p_val_slope < 1e-16){pvalue = "< 1e-16"} else {
+    pvalue = paste("= ",formatC(dt_fit$p_val_slope, format = "e", digits = 0),sep="")
+  }
   model_non_opti = ""
+  
   
   if ( length(tree) != 1 & display_other){
     AIC = paste(" AIC = ",round(dt_fit$aic),",",sep="")

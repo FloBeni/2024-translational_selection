@@ -22,7 +22,7 @@ for (species in c("Homo_sapiens","Drosophila_melanogaster")){print(species)
   
   dt$group = value_windows[as.character(dt$start)]
   
-  size_gene = tapply(dt$pos3_sites*3 + dt$posi_sites,dt$busco_id,sum)
+  size_gene = tapply(dt$pos3_sites*3 + dt$posi_sites,dt$busco_id,sum)/1000
   dt$length_gene = size_gene[dt$busco_id]
   
   quant = quantile(size_gene,seq(0,1,1/3))
@@ -30,6 +30,28 @@ for (species in c("Homo_sapiens","Drosophila_melanogaster")){print(species)
   names(cut) = names(size_gene)
   table(cut)
   dt$cut = cut[dt$busco_id]
+  
+  cut_values <- dt$cut
+  
+  if (species == "Homo_sapiens"){
+    cut_values <- as.character(dt$cut)
+    table(cut_values)
+    cut_values = gsub("(\\d+\\.\\d{0})\\d*", "\\1", as.character(cut_values))
+    cut_values = str_replace_all(cut_values,"\\.","")
+    
+    dt$cut = cut_values
+    
+  } else {
+    cut_values <- as.character(dt$cut)
+    table(cut_values)
+    cut_values = gsub("(\\d+\\.\\d{1})\\d*", "\\1", as.character(cut_values))
+    
+    dt$cut = cut_values
+    
+  }
+  
+  # Output
+  print(formatted_cut_values)
   
   
   dg = data.frame(

@@ -33,7 +33,7 @@ pA = ggplot(data3_supp[data3_supp$nb_genes >= 200,],aes(x = group,group=clade_gr
     strip.text = element_text(family = "economica", size = 14)
   ) + scale_fill_manual(values = Clade_color)+ scale_color_manual(values = Clade_color) + 
   scale_x_continuous(breaks=c(-1,-2,-3,-4,1,2,3,4),labels = c(0.01,0.1,1,10,0.01,0.1,1,10)) +
-  xlab("Distance from start codon or stop codon (kilobase, log scale)") + ylab ("GC introns")  + theme(legend.position='none') 
+  xlab("Distance from start codon or stop codon (kb, log scale)") + ylab ("GCi")  + theme(legend.position='none') 
 pA
 
 

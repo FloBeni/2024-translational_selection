@@ -13,6 +13,9 @@ data12$amino_acid = factor(data12$amino_acid,levels = unique(code[order(code$nb_
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
 vect_debut = str_replace_all(vect_debut,"T","U")
 data12$title = paste(data12$anticodon,"\n(",data12$codon,")",sep="")
+data12[data12$title == "CAU\n(AUG)",]$title = "anticodon     CAU   \n(codon)      (AUG)"
+
+
 data12$codon = factor(data12$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
 data12$title = factor(data12$title,levels= tapply(data12$title, as.integer(data12$codon),unique))
 

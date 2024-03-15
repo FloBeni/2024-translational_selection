@@ -16,7 +16,7 @@ pA = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",
   strip.text = element_text(size=15),
   plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
   plot.caption.position =  "plot"
-) + xlab("GC3 rate per gene") + ylab("Number of genes") + ggtitle(paste("All genes, N=",format(nrow(dt_graph),big.mark=",",scientific=T))) + xlim(0,1)
+) + xlab("GC3") + ylab("Number of genes") + ggtitle(paste("All genes, N=",format(nrow(dt_graph),big.mark=",",scientific=T))) + xlim(0,1)
 pA
 
 jpeg(paste(path_pannel,"p9A.jpg",sep=""),
@@ -54,7 +54,7 @@ pB = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",
   strip.text = element_text(size=15),
   plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
   plot.caption.position =  "plot"
-) + xlab("GC3 rate per gene") + ylab("Number of genes") +
+) + xlab("GC3") + ylab("Number of genes") +
   ggtitle(paste(format(nrow(dt_graph),big.mark=",",scientific=T),"housekeeping genes")) +
   xlim(0,1)
 pB
@@ -102,8 +102,8 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Population-scaled selection coefficient (S)") + 
-  xlab("Variance per gene GCi")
+  ylab("S") + 
+  xlab("GCi Variance")
 
 pC
 
@@ -133,8 +133,8 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel , x=xlabel))  +
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
     plot.caption.position =  "plot",
     legend.title =  element_text(color="black", size=23, family="economica")
-  )+ ylab("Population-scaled selection coefficient (S)") +
-  xlab("Variance per gene GCi") + 
+  )+ ylab("S") +
+  xlab("GCi Variance") + 
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
   ) + scale_fill_gradient2('Longevity\n(days, log scale)',mid = "white",  high = "red")
@@ -171,7 +171,7 @@ pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Population-scaled selection coefficient (S)") + 
+  ylab("S") + 
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") 
 
@@ -204,7 +204,7 @@ pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
     plot.caption.position =  "plot",
     legend.title =  element_text(color="black", size=23, family="economica")
-  )+ ylab("Population-scaled selection coefficient (S)") +
+  )+ ylab("S") +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
   )+ scale_fill_gradient2('Variance\nper gene GCi',mid = "white",  high = "red") +

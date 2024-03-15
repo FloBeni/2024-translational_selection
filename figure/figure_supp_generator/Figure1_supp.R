@@ -32,10 +32,10 @@ pA = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     plot.caption = element_text(hjust = 0.370, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   )  + scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Standard deviation per gene GC3") +
-  xlab("Standard deviation per gene GCi") +
+  ylab("GC3 standard deviation") +
+  xlab("GCi standard deviation") +
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) +
   guides(fill = guide_legend(override.aes = list(size=5)),
@@ -69,10 +69,10 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     plot.caption = element_text(hjust = 0.6, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   ) + scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Spearmann Rho GC3 GCi per species") +
-  xlab("Standard deviation per gene GCi")  +
+  ylab("Spearmann rho GC3 vs GCi") +
+  xlab("GCi standard deviation")  +
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value = ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) +
   guides(fill = guide_legend(override.aes = list(size=5)),
