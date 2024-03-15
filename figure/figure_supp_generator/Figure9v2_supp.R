@@ -17,7 +17,7 @@ dt_graph$species = paste(str_replace_all(dt_graph$species,"_"," "),sep="")
 pA = ggplot(dt_graph ,
             aes(x=fpkm ,y=freq*100,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2,aes(linetype=paste(set,categorie))) +
-  geom_point(data=dt_graph,pch=21,col="black",size=3)+
+  # geom_point(data=dt_graph,pch=21,col="black",size=2)+
   scale_fill_manual(values=set_color[c(2,1,4,3)]) +
   scale_color_manual(values=set_color[c(2,1,4,3)]) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+
@@ -28,7 +28,7 @@ pA = ggplot(dt_graph ,
     axis.text.y =  element_text(color="black", size=23, family="economica"),
     axis.text.x =  element_text(color="black", size=20, family="economica"),
     title =  element_text(color="black", size=25, family="economica"),
-    legend.text =  element_text(color="black", size=25, family="economica"),
+    legend.text =  element_text(color="black", size=25, family="economica",margin = margin(t = 5)),
     strip.text = element_text(size=15,face="italic")
   )+labs(fill='Categories',color='Categories',shape='',linetype='')+
   guides(fill = guide_legend(override.aes = list(pch=NA),order = 1),
