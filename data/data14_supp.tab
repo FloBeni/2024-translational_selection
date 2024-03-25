@@ -1,0 +1,1587 @@
+abundance	species	nb_syn	amino_acid	anticodon	codon	POC1	POC2	color	title	nb_species_0	y_axis_0
+0	Bombyx_mori	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	92 %	0
+1	Danaus_plexippus	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+9	Aedes_aegypti	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Culex_quinquefasciatus	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Anopheles_gambiae	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Drosophila_grimshawi	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Drosophila_pseudoobscura	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Drosophila_melanogaster	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Drosophila_suzukii	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Ceratitis_capitata	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Lucilia_cuprina	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Musca_domestica	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Glossina_fuscipes	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Zerene_cesonia	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Drosophila_subpulchrella	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Arctia_plantaginis	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Contarinia_nasturtii	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Hermetia_illucens	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Scaptodrosophila_lebanonensis	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Bactrocera_oleae	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Papilio_machaon	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Pieris_rapae	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Melitaea_cinxia	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Drosophila_mauritiana	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Drosophila_sechellia	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+0	Drosophila_erecta	2	Phenylalanine	AAA	UUU	FALSE	FALSE	T	AAA(UUU)	NA	0
+9	Bombyx_mori	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	0 %	13
+11	Danaus_plexippus	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+95	Aedes_aegypti	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+12	Culex_quinquefasciatus	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+6	Anopheles_gambiae	6	Serine	AGA	UCU	FALSE	FALSE	T	AGA(UCU)	NA	13
+6	Drosophila_grimshawi	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+11	Drosophila_pseudoobscura	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+8	Drosophila_melanogaster	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+8	Drosophila_suzukii	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+7	Ceratitis_capitata	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+13	Lucilia_cuprina	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+24	Musca_domestica	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+7	Glossina_fuscipes	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+10	Zerene_cesonia	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+9	Drosophila_subpulchrella	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+10	Arctia_plantaginis	6	Serine	AGA	UCU	FALSE	FALSE	T	AGA(UCU)	NA	13
+3	Contarinia_nasturtii	6	Serine	AGA	UCU	FALSE	FALSE	T	AGA(UCU)	NA	13
+8	Hermetia_illucens	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+7	Scaptodrosophila_lebanonensis	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+8	Bactrocera_oleae	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+13	Papilio_machaon	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+9	Pieris_rapae	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+10	Melitaea_cinxia	6	Serine	AGA	UCU	FALSE	FALSE	T	AGA(UCU)	NA	13
+8	Drosophila_mauritiana	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+7	Drosophila_sechellia	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+9	Drosophila_erecta	6	Serine	AGA	UCU	TRUE	FALSE	T	AGA(UCU)	NA	13
+0	Bombyx_mori	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	96 %	0
+0	Danaus_plexippus	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+2	Aedes_aegypti	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Culex_quinquefasciatus	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Anopheles_gambiae	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Drosophila_grimshawi	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Drosophila_pseudoobscura	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Drosophila_melanogaster	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Drosophila_suzukii	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Ceratitis_capitata	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Lucilia_cuprina	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Musca_domestica	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Glossina_fuscipes	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Zerene_cesonia	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Drosophila_subpulchrella	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Arctia_plantaginis	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Contarinia_nasturtii	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Hermetia_illucens	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Scaptodrosophila_lebanonensis	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Bactrocera_oleae	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Papilio_machaon	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Pieris_rapae	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Melitaea_cinxia	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Drosophila_mauritiana	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Drosophila_sechellia	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Drosophila_erecta	2	Tyrosine	AUA	UAU	FALSE	FALSE	T	AUA(UAU)	NA	0
+0	Bombyx_mori	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	88 %	0.5
+1	Danaus_plexippus	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+2	Aedes_aegypti	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Culex_quinquefasciatus	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Anopheles_gambiae	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Drosophila_grimshawi	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Drosophila_pseudoobscura	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Drosophila_melanogaster	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Drosophila_suzukii	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Ceratitis_capitata	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Lucilia_cuprina	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Musca_domestica	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Glossina_fuscipes	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Zerene_cesonia	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Drosophila_subpulchrella	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Arctia_plantaginis	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Contarinia_nasturtii	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Hermetia_illucens	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Scaptodrosophila_lebanonensis	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Bactrocera_oleae	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Papilio_machaon	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Pieris_rapae	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Melitaea_cinxia	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Drosophila_mauritiana	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+0	Drosophila_sechellia	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+1	Drosophila_erecta	2	Cysteine	ACA	UGU	FALSE	FALSE	T	ACA(UGU)	NA	0.5
+8	Bombyx_mori	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	0 %	17
+16	Danaus_plexippus	2	Phenylalanine	GAA	UUC	TRUE	FALSE	C	GAA(UUC)	NA	17
+18	Aedes_aegypti	2	Phenylalanine	GAA	UUC	TRUE	FALSE	C	GAA(UUC)	NA	17
+14	Culex_quinquefasciatus	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+9	Anopheles_gambiae	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+9	Drosophila_grimshawi	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+7	Drosophila_pseudoobscura	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+8	Drosophila_melanogaster	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+7	Drosophila_suzukii	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+11	Ceratitis_capitata	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+26	Lucilia_cuprina	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+26	Musca_domestica	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+7	Glossina_fuscipes	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+13	Zerene_cesonia	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+9	Drosophila_subpulchrella	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+14	Arctia_plantaginis	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+6	Contarinia_nasturtii	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+8	Hermetia_illucens	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+7	Scaptodrosophila_lebanonensis	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+10	Bactrocera_oleae	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+13	Papilio_machaon	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+10	Pieris_rapae	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+12	Melitaea_cinxia	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+9	Drosophila_mauritiana	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+9	Drosophila_sechellia	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+9	Drosophila_erecta	2	Phenylalanine	GAA	UUC	FALSE	TRUE	C	GAA(UUC)	NA	17
+0	Bombyx_mori	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	96 %	0
+0	Danaus_plexippus	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+6	Aedes_aegypti	6	Serine	GGA	UCC	FALSE	FALSE	C	GGA(UCC)	NA	0
+0	Culex_quinquefasciatus	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Anopheles_gambiae	6	Serine	GGA	UCC	FALSE	FALSE	C	GGA(UCC)	NA	0
+0	Drosophila_grimshawi	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Drosophila_pseudoobscura	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Drosophila_melanogaster	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Drosophila_suzukii	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Ceratitis_capitata	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Lucilia_cuprina	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Musca_domestica	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Glossina_fuscipes	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Zerene_cesonia	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Drosophila_subpulchrella	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Arctia_plantaginis	6	Serine	GGA	UCC	FALSE	FALSE	C	GGA(UCC)	NA	0
+0	Contarinia_nasturtii	6	Serine	GGA	UCC	FALSE	FALSE	C	GGA(UCC)	NA	0
+0	Hermetia_illucens	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Scaptodrosophila_lebanonensis	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Bactrocera_oleae	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Papilio_machaon	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Pieris_rapae	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Melitaea_cinxia	6	Serine	GGA	UCC	FALSE	FALSE	C	GGA(UCC)	NA	0
+0	Drosophila_mauritiana	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Drosophila_sechellia	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+0	Drosophila_erecta	6	Serine	GGA	UCC	TRUE	FALSE	C	GGA(UCC)	NA	0
+12	Bombyx_mori	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	0 %	30
+16	Danaus_plexippus	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+30	Aedes_aegypti	2	Tyrosine	GUA	UAC	TRUE	FALSE	C	GUA(UAC)	NA	30
+30	Culex_quinquefasciatus	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+23	Anopheles_gambiae	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+10	Drosophila_grimshawi	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+9	Drosophila_pseudoobscura	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+10	Drosophila_melanogaster	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+9	Drosophila_suzukii	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+15	Ceratitis_capitata	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+32	Lucilia_cuprina	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+38	Musca_domestica	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+8	Glossina_fuscipes	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+13	Zerene_cesonia	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+16	Drosophila_subpulchrella	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+14	Arctia_plantaginis	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+7	Contarinia_nasturtii	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+13	Hermetia_illucens	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+8	Scaptodrosophila_lebanonensis	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+20	Bactrocera_oleae	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+17	Papilio_machaon	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+11	Pieris_rapae	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+16	Melitaea_cinxia	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+9	Drosophila_mauritiana	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+8	Drosophila_sechellia	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+9	Drosophila_erecta	2	Tyrosine	GUA	UAC	FALSE	TRUE	C	GUA(UAC)	NA	30
+11	Bombyx_mori	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	0 %	13
+12	Danaus_plexippus	2	Cysteine	GCA	UGC	TRUE	FALSE	C	GCA(UGC)	NA	13
+10	Aedes_aegypti	2	Cysteine	GCA	UGC	TRUE	FALSE	C	GCA(UGC)	NA	13
+7	Culex_quinquefasciatus	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+5	Anopheles_gambiae	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+6	Drosophila_grimshawi	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+11	Drosophila_pseudoobscura	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+7	Drosophila_melanogaster	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+6	Drosophila_suzukii	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+8	Ceratitis_capitata	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+13	Lucilia_cuprina	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+15	Musca_domestica	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+4	Glossina_fuscipes	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+9	Zerene_cesonia	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+7	Drosophila_subpulchrella	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+13	Arctia_plantaginis	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+3	Contarinia_nasturtii	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+10	Hermetia_illucens	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+6	Scaptodrosophila_lebanonensis	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+7	Bactrocera_oleae	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+13	Papilio_machaon	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+8	Pieris_rapae	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+12	Melitaea_cinxia	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+7	Drosophila_mauritiana	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+7	Drosophila_sechellia	2	Cysteine	GCA	UGC	FALSE	TRUE	C	GCA(UGC)	NA	13
+6	Drosophila_erecta	2	Cysteine	GCA	UGC	TRUE	FALSE	C	GCA(UGC)	NA	13
+6	Bombyx_mori	6	Leucine	UAA	UUA	TRUE	FALSE	A	UAA(UUA)	0 %	7
+7	Danaus_plexippus	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+4	Aedes_aegypti	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+2	Culex_quinquefasciatus	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+2	Anopheles_gambiae	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+2	Drosophila_grimshawi	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+2	Drosophila_pseudoobscura	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+4	Drosophila_melanogaster	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+2	Drosophila_suzukii	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+5	Ceratitis_capitata	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+12	Lucilia_cuprina	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+9	Musca_domestica	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+4	Glossina_fuscipes	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+5	Zerene_cesonia	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+4	Drosophila_subpulchrella	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+5	Arctia_plantaginis	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+3	Contarinia_nasturtii	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+3	Hermetia_illucens	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+3	Scaptodrosophila_lebanonensis	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+5	Bactrocera_oleae	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+7	Papilio_machaon	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+5	Pieris_rapae	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+7	Melitaea_cinxia	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+4	Drosophila_mauritiana	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+4	Drosophila_sechellia	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+3	Drosophila_erecta	6	Leucine	UAA	UUA	FALSE	FALSE	A	UAA(UUA)	NA	7
+7	Bombyx_mori	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	0 %	7
+6	Danaus_plexippus	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+6	Aedes_aegypti	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+5	Culex_quinquefasciatus	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+2	Anopheles_gambiae	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+2	Drosophila_grimshawi	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+2	Drosophila_pseudoobscura	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+2	Drosophila_melanogaster	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+1	Drosophila_suzukii	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+6	Ceratitis_capitata	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+11	Lucilia_cuprina	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+9	Musca_domestica	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+7	Glossina_fuscipes	6	Serine	UGA	UCA	TRUE	FALSE	A	UGA(UCA)	NA	7
+6	Zerene_cesonia	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+2	Drosophila_subpulchrella	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+7	Arctia_plantaginis	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+5	Contarinia_nasturtii	6	Serine	UGA	UCA	TRUE	FALSE	A	UGA(UCA)	NA	7
+5	Hermetia_illucens	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+2	Scaptodrosophila_lebanonensis	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+4	Bactrocera_oleae	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+6	Papilio_machaon	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+4	Pieris_rapae	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+5	Melitaea_cinxia	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+2	Drosophila_mauritiana	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+2	Drosophila_sechellia	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+2	Drosophila_erecta	6	Serine	UGA	UCA	FALSE	FALSE	A	UGA(UCA)	NA	7
+6	Bombyx_mori	6	Leucine	CAA	UUG	TRUE	FALSE	G	CAA(UUG)	0 %	10.5
+7	Danaus_plexippus	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+7	Aedes_aegypti	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+5	Culex_quinquefasciatus	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+3	Anopheles_gambiae	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+4	Drosophila_grimshawi	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+4	Drosophila_pseudoobscura	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+4	Drosophila_melanogaster	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+3	Drosophila_suzukii	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+11	Ceratitis_capitata	6	Leucine	CAA	UUG	TRUE	FALSE	G	CAA(UUG)	NA	10.5
+21	Lucilia_cuprina	6	Leucine	CAA	UUG	TRUE	FALSE	G	CAA(UUG)	NA	10.5
+21	Musca_domestica	6	Leucine	CAA	UUG	TRUE	FALSE	G	CAA(UUG)	NA	10.5
+9	Glossina_fuscipes	6	Leucine	CAA	UUG	TRUE	FALSE	G	CAA(UUG)	NA	10.5
+6	Zerene_cesonia	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+4	Drosophila_subpulchrella	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+7	Arctia_plantaginis	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+5	Contarinia_nasturtii	6	Leucine	CAA	UUG	TRUE	FALSE	G	CAA(UUG)	NA	10.5
+8	Hermetia_illucens	6	Leucine	CAA	UUG	TRUE	FALSE	G	CAA(UUG)	NA	10.5
+5	Scaptodrosophila_lebanonensis	6	Leucine	CAA	UUG	TRUE	FALSE	G	CAA(UUG)	NA	10.5
+10	Bactrocera_oleae	6	Leucine	CAA	UUG	TRUE	FALSE	G	CAA(UUG)	NA	10.5
+6	Papilio_machaon	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+5	Pieris_rapae	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+8	Melitaea_cinxia	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+4	Drosophila_mauritiana	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+4	Drosophila_sechellia	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+4	Drosophila_erecta	6	Leucine	CAA	UUG	FALSE	FALSE	G	CAA(UUG)	NA	10.5
+4	Bombyx_mori	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	0 %	8
+5	Danaus_plexippus	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+8	Aedes_aegypti	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+9	Culex_quinquefasciatus	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+8	Anopheles_gambiae	6	Serine	CGA	UCG	TRUE	FALSE	G	CGA(UCG)	NA	8
+4	Drosophila_grimshawi	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+3	Drosophila_pseudoobscura	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Drosophila_melanogaster	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+5	Drosophila_suzukii	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Ceratitis_capitata	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Lucilia_cuprina	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+7	Musca_domestica	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Glossina_fuscipes	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Zerene_cesonia	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+5	Drosophila_subpulchrella	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Arctia_plantaginis	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+3	Contarinia_nasturtii	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+3	Hermetia_illucens	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+3	Scaptodrosophila_lebanonensis	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Bactrocera_oleae	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+8	Papilio_machaon	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Pieris_rapae	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+6	Melitaea_cinxia	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Drosophila_mauritiana	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Drosophila_sechellia	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+4	Drosophila_erecta	6	Serine	CGA	UCG	FALSE	FALSE	G	CGA(UCG)	NA	8
+9	Bombyx_mori	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	0 %	15
+9	Danaus_plexippus	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+11	Aedes_aegypti	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+16	Culex_quinquefasciatus	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+7	Anopheles_gambiae	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+6	Drosophila_grimshawi	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+8	Drosophila_pseudoobscura	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+8	Drosophila_melanogaster	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+10	Drosophila_suzukii	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+9	Ceratitis_capitata	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+18	Lucilia_cuprina	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+20	Musca_domestica	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+5	Glossina_fuscipes	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+8	Zerene_cesonia	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+7	Drosophila_subpulchrella	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+12	Arctia_plantaginis	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+7	Contarinia_nasturtii	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+8	Hermetia_illucens	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+6	Scaptodrosophila_lebanonensis	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+8	Bactrocera_oleae	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+14	Papilio_machaon	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+8	Pieris_rapae	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+14	Melitaea_cinxia	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+8	Drosophila_mauritiana	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+8	Drosophila_sechellia	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+8	Drosophila_erecta	1	Tryptophan	CCA	UGG	FALSE	FALSE	G	CCA(UGG)	NA	15
+6	Bombyx_mori	6	Leucine	AAG	CUU	TRUE	FALSE	T	AAG(CUU)	0 %	11
+15	Danaus_plexippus	6	Leucine	AAG	CUU	TRUE	FALSE	T	AAG(CUU)	NA	11
+7	Aedes_aegypti	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+9	Culex_quinquefasciatus	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+5	Anopheles_gambiae	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+4	Drosophila_grimshawi	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+5	Drosophila_pseudoobscura	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+4	Drosophila_melanogaster	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+5	Drosophila_suzukii	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+6	Ceratitis_capitata	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+9	Lucilia_cuprina	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+16	Musca_domestica	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+2	Glossina_fuscipes	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+8	Zerene_cesonia	6	Leucine	AAG	CUU	TRUE	FALSE	T	AAG(CUU)	NA	11
+5	Drosophila_subpulchrella	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+9	Arctia_plantaginis	6	Leucine	AAG	CUU	TRUE	FALSE	T	AAG(CUU)	NA	11
+5	Contarinia_nasturtii	6	Leucine	AAG	CUU	TRUE	FALSE	T	AAG(CUU)	NA	11
+8	Hermetia_illucens	6	Leucine	AAG	CUU	TRUE	FALSE	T	AAG(CUU)	NA	11
+4	Scaptodrosophila_lebanonensis	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+5	Bactrocera_oleae	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+11	Papilio_machaon	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+6	Pieris_rapae	6	Leucine	AAG	CUU	TRUE	FALSE	T	AAG(CUU)	NA	11
+11	Melitaea_cinxia	6	Leucine	AAG	CUU	TRUE	FALSE	T	AAG(CUU)	NA	11
+5	Drosophila_mauritiana	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+5	Drosophila_sechellia	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+5	Drosophila_erecta	6	Leucine	AAG	CUU	FALSE	FALSE	T	AAG(CUU)	NA	11
+9	Bombyx_mori	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	0 %	16
+14	Danaus_plexippus	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+14	Aedes_aegypti	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+14	Culex_quinquefasciatus	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+7	Anopheles_gambiae	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+4	Drosophila_grimshawi	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+5	Drosophila_pseudoobscura	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+7	Drosophila_melanogaster	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+20	Drosophila_suzukii	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+7	Ceratitis_capitata	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+18	Lucilia_cuprina	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+24	Musca_domestica	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+6	Glossina_fuscipes	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+12	Zerene_cesonia	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+7	Drosophila_subpulchrella	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+13	Arctia_plantaginis	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+2	Contarinia_nasturtii	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+5	Hermetia_illucens	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+5	Scaptodrosophila_lebanonensis	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+6	Bactrocera_oleae	4	Proline	AGG	CCU	FALSE	FALSE	T	AGG(CCU)	NA	16
+14	Papilio_machaon	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+9	Pieris_rapae	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+13	Melitaea_cinxia	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+7	Drosophila_mauritiana	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+7	Drosophila_sechellia	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+7	Drosophila_erecta	4	Proline	AGG	CCU	TRUE	FALSE	T	AGG(CCU)	NA	16
+0	Bombyx_mori	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	100 %	0
+0	Danaus_plexippus	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Aedes_aegypti	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Culex_quinquefasciatus	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Anopheles_gambiae	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Drosophila_grimshawi	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Drosophila_pseudoobscura	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Drosophila_melanogaster	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Drosophila_suzukii	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Ceratitis_capitata	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Lucilia_cuprina	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Musca_domestica	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Glossina_fuscipes	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Zerene_cesonia	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Drosophila_subpulchrella	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Arctia_plantaginis	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Contarinia_nasturtii	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Hermetia_illucens	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Scaptodrosophila_lebanonensis	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Bactrocera_oleae	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Papilio_machaon	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Pieris_rapae	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Melitaea_cinxia	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Drosophila_mauritiana	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Drosophila_sechellia	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+0	Drosophila_erecta	2	Histidine	AUG	CAU	FALSE	FALSE	T	AUG(CAU)	NA	0
+8	Bombyx_mori	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	0 %	20
+14	Danaus_plexippus	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+22	Aedes_aegypti	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+18	Culex_quinquefasciatus	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+11	Anopheles_gambiae	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+9	Drosophila_grimshawi	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+9	Drosophila_pseudoobscura	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+10	Drosophila_melanogaster	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+6	Drosophila_suzukii	6	Arginine	ACG	CGU	FALSE	FALSE	T	ACG(CGU)	NA	20
+14	Ceratitis_capitata	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+29	Lucilia_cuprina	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+41	Musca_domestica	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+12	Glossina_fuscipes	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+10	Zerene_cesonia	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+11	Drosophila_subpulchrella	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+10	Arctia_plantaginis	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+4	Contarinia_nasturtii	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+10	Hermetia_illucens	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+8	Scaptodrosophila_lebanonensis	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+17	Bactrocera_oleae	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+14	Papilio_machaon	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+9	Pieris_rapae	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+14	Melitaea_cinxia	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+10	Drosophila_mauritiana	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+9	Drosophila_sechellia	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+9	Drosophila_erecta	6	Arginine	ACG	CGU	TRUE	FALSE	T	ACG(CGU)	NA	20
+0	Bombyx_mori	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	96 %	0
+0	Danaus_plexippus	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	NA	0
+1	Aedes_aegypti	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Culex_quinquefasciatus	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Anopheles_gambiae	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Drosophila_grimshawi	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Drosophila_pseudoobscura	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Drosophila_melanogaster	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Drosophila_suzukii	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Ceratitis_capitata	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Lucilia_cuprina	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Musca_domestica	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Glossina_fuscipes	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Zerene_cesonia	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	NA	0
+0	Drosophila_subpulchrella	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Arctia_plantaginis	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	NA	0
+0	Contarinia_nasturtii	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	NA	0
+0	Hermetia_illucens	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	NA	0
+0	Scaptodrosophila_lebanonensis	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Bactrocera_oleae	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Papilio_machaon	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Pieris_rapae	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	NA	0
+0	Melitaea_cinxia	6	Leucine	GAG	CUC	TRUE	FALSE	C	GAG(CUC)	NA	0
+0	Drosophila_mauritiana	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Drosophila_sechellia	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Drosophila_erecta	6	Leucine	GAG	CUC	FALSE	FALSE	C	GAG(CUC)	NA	0
+0	Bombyx_mori	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	100 %	0
+0	Danaus_plexippus	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Aedes_aegypti	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Culex_quinquefasciatus	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Anopheles_gambiae	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Drosophila_grimshawi	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Drosophila_pseudoobscura	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Drosophila_melanogaster	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Drosophila_suzukii	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Ceratitis_capitata	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Lucilia_cuprina	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Musca_domestica	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Glossina_fuscipes	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Zerene_cesonia	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Drosophila_subpulchrella	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Arctia_plantaginis	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Contarinia_nasturtii	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Hermetia_illucens	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Scaptodrosophila_lebanonensis	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Bactrocera_oleae	4	Proline	GGG	CCC	FALSE	FALSE	C	GGG(CCC)	NA	0
+0	Papilio_machaon	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Pieris_rapae	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Melitaea_cinxia	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Drosophila_mauritiana	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Drosophila_sechellia	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+0	Drosophila_erecta	4	Proline	GGG	CCC	TRUE	FALSE	C	GGG(CCC)	NA	0
+14	Bombyx_mori	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	0 %	20
+16	Danaus_plexippus	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+30	Aedes_aegypti	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+29	Culex_quinquefasciatus	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+21	Anopheles_gambiae	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+5	Drosophila_grimshawi	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+5	Drosophila_pseudoobscura	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+5	Drosophila_melanogaster	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+7	Drosophila_suzukii	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+13	Ceratitis_capitata	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+18	Lucilia_cuprina	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+18	Musca_domestica	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+5	Glossina_fuscipes	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+14	Zerene_cesonia	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+6	Drosophila_subpulchrella	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+19	Arctia_plantaginis	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+5	Contarinia_nasturtii	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+9	Hermetia_illucens	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+5	Scaptodrosophila_lebanonensis	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+11	Bactrocera_oleae	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+13	Papilio_machaon	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+11	Pieris_rapae	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+14	Melitaea_cinxia	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+6	Drosophila_mauritiana	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+7	Drosophila_sechellia	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+6	Drosophila_erecta	2	Histidine	GUG	CAC	FALSE	TRUE	C	GUG(CAC)	NA	20
+0	Bombyx_mori	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	100 %	0
+0	Danaus_plexippus	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Aedes_aegypti	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Culex_quinquefasciatus	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Anopheles_gambiae	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Drosophila_grimshawi	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Drosophila_pseudoobscura	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Drosophila_melanogaster	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Drosophila_suzukii	6	Arginine	GCG	CGC	FALSE	FALSE	C	GCG(CGC)	NA	0
+0	Ceratitis_capitata	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Lucilia_cuprina	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Musca_domestica	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Glossina_fuscipes	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Zerene_cesonia	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Drosophila_subpulchrella	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Arctia_plantaginis	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Contarinia_nasturtii	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Hermetia_illucens	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Scaptodrosophila_lebanonensis	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Bactrocera_oleae	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Papilio_machaon	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Pieris_rapae	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Melitaea_cinxia	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Drosophila_mauritiana	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Drosophila_sechellia	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+0	Drosophila_erecta	6	Arginine	GCG	CGC	TRUE	FALSE	C	GCG(CGC)	NA	0
+3	Bombyx_mori	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	0 %	5
+5	Danaus_plexippus	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+6	Aedes_aegypti	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+3	Culex_quinquefasciatus	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+4	Anopheles_gambiae	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+2	Drosophila_grimshawi	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+2	Drosophila_pseudoobscura	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+2	Drosophila_melanogaster	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+2	Drosophila_suzukii	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+3	Ceratitis_capitata	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+5	Lucilia_cuprina	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+5	Musca_domestica	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+3	Glossina_fuscipes	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+4	Zerene_cesonia	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+2	Drosophila_subpulchrella	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+5	Arctia_plantaginis	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+3	Contarinia_nasturtii	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+3	Hermetia_illucens	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+2	Scaptodrosophila_lebanonensis	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+3	Bactrocera_oleae	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+7	Papilio_machaon	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+4	Pieris_rapae	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+5	Melitaea_cinxia	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+2	Drosophila_mauritiana	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+2	Drosophila_sechellia	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+2	Drosophila_erecta	6	Leucine	UAG	CUA	FALSE	FALSE	A	UAG(CUA)	NA	5
+5	Bombyx_mori	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	0 %	17
+10	Danaus_plexippus	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+24	Aedes_aegypti	4	Proline	UGG	CCA	TRUE	FALSE	A	UGG(CCA)	NA	17
+23	Culex_quinquefasciatus	4	Proline	UGG	CCA	TRUE	FALSE	A	UGG(CCA)	NA	17
+9	Anopheles_gambiae	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+4	Drosophila_grimshawi	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+6	Drosophila_pseudoobscura	4	Proline	UGG	CCA	TRUE	FALSE	A	UGG(CCA)	NA	17
+5	Drosophila_melanogaster	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+8	Drosophila_suzukii	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+11	Ceratitis_capitata	4	Proline	UGG	CCA	TRUE	FALSE	A	UGG(CCA)	NA	17
+17	Lucilia_cuprina	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+17	Musca_domestica	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+3	Glossina_fuscipes	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+8	Zerene_cesonia	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+6	Drosophila_subpulchrella	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+10	Arctia_plantaginis	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+6	Contarinia_nasturtii	4	Proline	UGG	CCA	TRUE	FALSE	A	UGG(CCA)	NA	17
+15	Hermetia_illucens	4	Proline	UGG	CCA	TRUE	FALSE	A	UGG(CCA)	NA	17
+6	Scaptodrosophila_lebanonensis	4	Proline	UGG	CCA	TRUE	FALSE	A	UGG(CCA)	NA	17
+9	Bactrocera_oleae	4	Proline	UGG	CCA	TRUE	FALSE	A	UGG(CCA)	NA	17
+8	Papilio_machaon	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+7	Pieris_rapae	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+8	Melitaea_cinxia	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+5	Drosophila_mauritiana	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+5	Drosophila_sechellia	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+5	Drosophila_erecta	4	Proline	UGG	CCA	FALSE	FALSE	A	UGG(CCA)	NA	17
+7	Bombyx_mori	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	0 %	12.5
+9	Danaus_plexippus	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+8	Aedes_aegypti	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+6	Culex_quinquefasciatus	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+4	Anopheles_gambiae	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+3	Drosophila_grimshawi	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+4	Drosophila_pseudoobscura	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+4	Drosophila_melanogaster	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+12	Drosophila_suzukii	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+11	Ceratitis_capitata	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+20	Lucilia_cuprina	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+18	Musca_domestica	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+6	Glossina_fuscipes	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+9	Zerene_cesonia	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+4	Drosophila_subpulchrella	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+7	Arctia_plantaginis	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+5	Contarinia_nasturtii	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+11	Hermetia_illucens	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+3	Scaptodrosophila_lebanonensis	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+13	Bactrocera_oleae	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+11	Papilio_machaon	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+6	Pieris_rapae	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+10	Melitaea_cinxia	2	Glutamine	UUG	CAA	TRUE	FALSE	A	UUG(CAA)	NA	12.5
+4	Drosophila_mauritiana	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+4	Drosophila_sechellia	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+4	Drosophila_erecta	2	Glutamine	UUG	CAA	FALSE	FALSE	A	UUG(CAA)	NA	12.5
+8	Bombyx_mori	6	Arginine	UCG	CGA	TRUE	FALSE	A	UCG(CGA)	0 %	11.5
+12	Danaus_plexippus	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+11	Aedes_aegypti	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+14	Culex_quinquefasciatus	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+8	Anopheles_gambiae	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+4	Drosophila_grimshawi	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+4	Drosophila_pseudoobscura	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+10	Drosophila_melanogaster	6	Arginine	UCG	CGA	TRUE	FALSE	A	UCG(CGA)	NA	11.5
+10	Drosophila_suzukii	6	Arginine	UCG	CGA	TRUE	FALSE	A	UCG(CGA)	NA	11.5
+6	Ceratitis_capitata	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+7	Lucilia_cuprina	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+11	Musca_domestica	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+4	Glossina_fuscipes	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+8	Zerene_cesonia	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+11	Drosophila_subpulchrella	6	Arginine	UCG	CGA	TRUE	FALSE	A	UCG(CGA)	NA	11.5
+8	Arctia_plantaginis	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+4	Contarinia_nasturtii	6	Arginine	UCG	CGA	TRUE	FALSE	A	UCG(CGA)	NA	11.5
+7	Hermetia_illucens	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+3	Scaptodrosophila_lebanonensis	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+5	Bactrocera_oleae	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+14	Papilio_machaon	6	Arginine	UCG	CGA	TRUE	FALSE	A	UCG(CGA)	NA	11.5
+7	Pieris_rapae	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+10	Melitaea_cinxia	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+7	Drosophila_mauritiana	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+7	Drosophila_sechellia	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+7	Drosophila_erecta	6	Arginine	UCG	CGA	FALSE	FALSE	A	UCG(CGA)	NA	11.5
+6	Bombyx_mori	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	0 %	12
+7	Danaus_plexippus	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+17	Aedes_aegypti	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+20	Culex_quinquefasciatus	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+12	Anopheles_gambiae	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+7	Drosophila_grimshawi	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+9	Drosophila_pseudoobscura	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+8	Drosophila_melanogaster	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+8	Drosophila_suzukii	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+4	Ceratitis_capitata	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+8	Lucilia_cuprina	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+6	Musca_domestica	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+2	Glossina_fuscipes	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+7	Zerene_cesonia	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+10	Drosophila_subpulchrella	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+8	Arctia_plantaginis	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+1	Contarinia_nasturtii	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+2	Hermetia_illucens	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+5	Scaptodrosophila_lebanonensis	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+7	Bactrocera_oleae	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+12	Papilio_machaon	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+5	Pieris_rapae	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+8	Melitaea_cinxia	6	Leucine	CAG	CUG	FALSE	FALSE	G	CAG(CUG)	NA	12
+8	Drosophila_mauritiana	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+8	Drosophila_sechellia	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+7	Drosophila_erecta	6	Leucine	CAG	CUG	TRUE	FALSE	G	CAG(CUG)	NA	12
+4	Bombyx_mori	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	0 %	7
+4	Danaus_plexippus	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+7	Aedes_aegypti	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+21	Culex_quinquefasciatus	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+15	Anopheles_gambiae	4	Proline	CGG	CCG	TRUE	FALSE	G	CGG(CCG)	NA	7
+5	Drosophila_grimshawi	4	Proline	CGG	CCG	TRUE	FALSE	G	CGG(CCG)	NA	7
+4	Drosophila_pseudoobscura	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+5	Drosophila_melanogaster	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+6	Drosophila_suzukii	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+2	Ceratitis_capitata	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+2	Lucilia_cuprina	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+3	Musca_domestica	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+3	Glossina_fuscipes	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+4	Zerene_cesonia	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+6	Drosophila_subpulchrella	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+4	Arctia_plantaginis	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+2	Contarinia_nasturtii	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+3	Hermetia_illucens	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+3	Scaptodrosophila_lebanonensis	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+2	Bactrocera_oleae	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+7	Papilio_machaon	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+3	Pieris_rapae	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+5	Melitaea_cinxia	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+5	Drosophila_mauritiana	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+5	Drosophila_sechellia	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+5	Drosophila_erecta	4	Proline	CGG	CCG	FALSE	FALSE	G	CGG(CCG)	NA	7
+8	Bombyx_mori	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	0 %	12
+12	Danaus_plexippus	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+15	Aedes_aegypti	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+14	Culex_quinquefasciatus	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+11	Anopheles_gambiae	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+12	Drosophila_grimshawi	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+7	Drosophila_pseudoobscura	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+8	Drosophila_melanogaster	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+8	Drosophila_suzukii	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+6	Ceratitis_capitata	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+8	Lucilia_cuprina	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+9	Musca_domestica	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+5	Glossina_fuscipes	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+7	Zerene_cesonia	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+8	Drosophila_subpulchrella	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+9	Arctia_plantaginis	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+2	Contarinia_nasturtii	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+4	Hermetia_illucens	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+5	Scaptodrosophila_lebanonensis	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+6	Bactrocera_oleae	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+11	Papilio_machaon	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+7	Pieris_rapae	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+9	Melitaea_cinxia	2	Glutamine	CUG	CAG	FALSE	FALSE	G	CUG(CAG)	NA	12
+8	Drosophila_mauritiana	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+8	Drosophila_sechellia	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+8	Drosophila_erecta	2	Glutamine	CUG	CAG	TRUE	FALSE	G	CUG(CAG)	NA	12
+0	Bombyx_mori	6	Arginine	CCG	CGG	TRUE	FALSE	G	CCG(CGG)	96 %	0
+0	Danaus_plexippus	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Aedes_aegypti	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Culex_quinquefasciatus	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Anopheles_gambiae	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Drosophila_grimshawi	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Drosophila_pseudoobscura	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Drosophila_melanogaster	6	Arginine	CCG	CGG	TRUE	FALSE	G	CCG(CGG)	NA	0
+0	Drosophila_suzukii	6	Arginine	CCG	CGG	TRUE	FALSE	G	CCG(CGG)	NA	0
+0	Ceratitis_capitata	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+1	Lucilia_cuprina	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Musca_domestica	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Glossina_fuscipes	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Zerene_cesonia	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Drosophila_subpulchrella	6	Arginine	CCG	CGG	TRUE	FALSE	G	CCG(CGG)	NA	0
+0	Arctia_plantaginis	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Contarinia_nasturtii	6	Arginine	CCG	CGG	TRUE	FALSE	G	CCG(CGG)	NA	0
+0	Hermetia_illucens	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Scaptodrosophila_lebanonensis	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Bactrocera_oleae	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Papilio_machaon	6	Arginine	CCG	CGG	TRUE	FALSE	G	CCG(CGG)	NA	0
+0	Pieris_rapae	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Melitaea_cinxia	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Drosophila_mauritiana	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Drosophila_sechellia	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+0	Drosophila_erecta	6	Arginine	CCG	CGG	FALSE	FALSE	G	CCG(CGG)	NA	0
+18	Bombyx_mori	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	0 %	23
+22	Danaus_plexippus	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+24	Aedes_aegypti	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+21	Culex_quinquefasciatus	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+13	Anopheles_gambiae	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+7	Drosophila_grimshawi	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+10	Drosophila_pseudoobscura	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+9	Drosophila_melanogaster	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+9	Drosophila_suzukii	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+13	Ceratitis_capitata	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+25	Lucilia_cuprina	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+39	Musca_domestica	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+4	Glossina_fuscipes	3	Isoleucine	AAU	AUU	FALSE	FALSE	T	AAU(AUU)	NA	23
+15	Zerene_cesonia	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+9	Drosophila_subpulchrella	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+13	Arctia_plantaginis	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+7	Contarinia_nasturtii	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+16	Hermetia_illucens	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+7	Scaptodrosophila_lebanonensis	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+15	Bactrocera_oleae	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+16	Papilio_machaon	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+12	Pieris_rapae	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+22	Melitaea_cinxia	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+10	Drosophila_mauritiana	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+10	Drosophila_sechellia	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+9	Drosophila_erecta	3	Isoleucine	AAU	AUU	TRUE	FALSE	T	AAU(AUU)	NA	23
+9	Bombyx_mori	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	0 %	20
+12	Danaus_plexippus	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+41	Aedes_aegypti	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+18	Culex_quinquefasciatus	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+8	Anopheles_gambiae	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+7	Drosophila_grimshawi	4	Threonine	AGU	ACU	FALSE	FALSE	T	AGU(ACU)	NA	20
+8	Drosophila_pseudoobscura	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+8	Drosophila_melanogaster	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+10	Drosophila_suzukii	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+10	Ceratitis_capitata	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+22	Lucilia_cuprina	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+33	Musca_domestica	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+8	Glossina_fuscipes	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+9	Zerene_cesonia	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+9	Drosophila_subpulchrella	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+13	Arctia_plantaginis	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+5	Contarinia_nasturtii	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+13	Hermetia_illucens	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+7	Scaptodrosophila_lebanonensis	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+9	Bactrocera_oleae	4	Threonine	AGU	ACU	FALSE	FALSE	T	AGU(ACU)	NA	20
+16	Papilio_machaon	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+6	Pieris_rapae	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+13	Melitaea_cinxia	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+8	Drosophila_mauritiana	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+8	Drosophila_sechellia	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+8	Drosophila_erecta	4	Threonine	AGU	ACU	TRUE	FALSE	T	AGU(ACU)	NA	20
+0	Bombyx_mori	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	100 %	0
+0	Danaus_plexippus	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Aedes_aegypti	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Culex_quinquefasciatus	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Anopheles_gambiae	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Drosophila_grimshawi	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Drosophila_pseudoobscura	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Drosophila_melanogaster	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Drosophila_suzukii	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Ceratitis_capitata	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Lucilia_cuprina	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Musca_domestica	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Glossina_fuscipes	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Zerene_cesonia	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Drosophila_subpulchrella	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Arctia_plantaginis	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Contarinia_nasturtii	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Hermetia_illucens	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Scaptodrosophila_lebanonensis	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Bactrocera_oleae	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Papilio_machaon	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Pieris_rapae	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Melitaea_cinxia	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Drosophila_mauritiana	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Drosophila_sechellia	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Drosophila_erecta	2	Asparagine	AUU	AAU	FALSE	FALSE	T	AUU(AAU)	NA	0
+0	Bombyx_mori	6	Serine	ACU	AGU	TRUE	FALSE	T	ACU(AGU)	92 %	0
+0	Danaus_plexippus	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+1	Aedes_aegypti	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Culex_quinquefasciatus	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Anopheles_gambiae	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Drosophila_grimshawi	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Drosophila_pseudoobscura	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Drosophila_melanogaster	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Drosophila_suzukii	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Ceratitis_capitata	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Lucilia_cuprina	6	Serine	ACU	AGU	TRUE	FALSE	T	ACU(AGU)	NA	0
+0	Musca_domestica	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Glossina_fuscipes	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Zerene_cesonia	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Drosophila_subpulchrella	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+1	Arctia_plantaginis	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Contarinia_nasturtii	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Hermetia_illucens	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Scaptodrosophila_lebanonensis	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Bactrocera_oleae	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Papilio_machaon	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Pieris_rapae	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Melitaea_cinxia	6	Serine	ACU	AGU	TRUE	FALSE	T	ACU(AGU)	NA	0
+0	Drosophila_mauritiana	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Drosophila_sechellia	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Drosophila_erecta	6	Serine	ACU	AGU	FALSE	FALSE	T	ACU(AGU)	NA	0
+0	Bombyx_mori	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	92 %	0
+0	Danaus_plexippus	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Aedes_aegypti	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Culex_quinquefasciatus	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Anopheles_gambiae	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Drosophila_grimshawi	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Drosophila_pseudoobscura	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Drosophila_melanogaster	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Drosophila_suzukii	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Ceratitis_capitata	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+2	Lucilia_cuprina	3	Isoleucine	GAU	AUC	FALSE	FALSE	C	GAU(AUC)	NA	0
+0	Musca_domestica	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Glossina_fuscipes	3	Isoleucine	GAU	AUC	FALSE	FALSE	C	GAU(AUC)	NA	0
+0	Zerene_cesonia	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Drosophila_subpulchrella	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+1	Arctia_plantaginis	3	Isoleucine	GAU	AUC	FALSE	FALSE	C	GAU(AUC)	NA	0
+0	Contarinia_nasturtii	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Hermetia_illucens	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Scaptodrosophila_lebanonensis	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Bactrocera_oleae	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Papilio_machaon	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Pieris_rapae	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Melitaea_cinxia	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Drosophila_mauritiana	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Drosophila_sechellia	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Drosophila_erecta	3	Isoleucine	GAU	AUC	TRUE	FALSE	C	GAU(AUC)	NA	0
+0	Bombyx_mori	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	88 %	0.5
+0	Danaus_plexippus	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+1	Aedes_aegypti	4	Threonine	GGU	ACC	FALSE	FALSE	C	GGU(ACC)	NA	0.5
+0	Culex_quinquefasciatus	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Anopheles_gambiae	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Drosophila_grimshawi	4	Threonine	GGU	ACC	FALSE	FALSE	C	GGU(ACC)	NA	0.5
+0	Drosophila_pseudoobscura	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Drosophila_melanogaster	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Drosophila_suzukii	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Ceratitis_capitata	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+1	Lucilia_cuprina	4	Threonine	GGU	ACC	FALSE	FALSE	C	GGU(ACC)	NA	0.5
+0	Musca_domestica	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Glossina_fuscipes	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Zerene_cesonia	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Drosophila_subpulchrella	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Arctia_plantaginis	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Contarinia_nasturtii	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Hermetia_illucens	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Scaptodrosophila_lebanonensis	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Bactrocera_oleae	4	Threonine	GGU	ACC	FALSE	FALSE	C	GGU(ACC)	NA	0.5
+0	Papilio_machaon	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Pieris_rapae	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+6	Melitaea_cinxia	4	Threonine	GGU	ACC	FALSE	FALSE	C	GGU(ACC)	NA	0.5
+0	Drosophila_mauritiana	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Drosophila_sechellia	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+0	Drosophila_erecta	4	Threonine	GGU	ACC	TRUE	FALSE	C	GGU(ACC)	NA	0.5
+23	Bombyx_mori	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	0 %	23
+23	Danaus_plexippus	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+19	Aedes_aegypti	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+22	Culex_quinquefasciatus	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+12	Anopheles_gambiae	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+7	Drosophila_grimshawi	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+10	Drosophila_pseudoobscura	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+10	Drosophila_melanogaster	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+8	Drosophila_suzukii	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+13	Ceratitis_capitata	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+28	Lucilia_cuprina	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+37	Musca_domestica	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+8	Glossina_fuscipes	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+15	Zerene_cesonia	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+10	Drosophila_subpulchrella	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+16	Arctia_plantaginis	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+5	Contarinia_nasturtii	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+15	Hermetia_illucens	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+7	Scaptodrosophila_lebanonensis	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+15	Bactrocera_oleae	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+23	Papilio_machaon	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+11	Pieris_rapae	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+19	Melitaea_cinxia	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+10	Drosophila_mauritiana	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+10	Drosophila_sechellia	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+9	Drosophila_erecta	2	Asparagine	GUU	AAC	FALSE	TRUE	C	GUU(AAC)	NA	23
+9	Bombyx_mori	6	Serine	GCU	AGC	TRUE	FALSE	C	GCU(AGC)	0 %	12
+6	Danaus_plexippus	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+9	Aedes_aegypti	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+10	Culex_quinquefasciatus	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+6	Anopheles_gambiae	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+3	Drosophila_grimshawi	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+5	Drosophila_pseudoobscura	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+6	Drosophila_melanogaster	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+7	Drosophila_suzukii	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+6	Ceratitis_capitata	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+13	Lucilia_cuprina	6	Serine	GCU	AGC	TRUE	FALSE	C	GCU(AGC)	NA	12
+13	Musca_domestica	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+5	Glossina_fuscipes	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+7	Zerene_cesonia	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+6	Drosophila_subpulchrella	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+74	Arctia_plantaginis	6	Serine	GCU	AGC	TRUE	FALSE	C	GCU(AGC)	NA	12
+4	Contarinia_nasturtii	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+6	Hermetia_illucens	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+5	Scaptodrosophila_lebanonensis	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+5	Bactrocera_oleae	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+11	Papilio_machaon	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+7	Pieris_rapae	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+11	Melitaea_cinxia	6	Serine	GCU	AGC	TRUE	FALSE	C	GCU(AGC)	NA	12
+6	Drosophila_mauritiana	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+6	Drosophila_sechellia	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+6	Drosophila_erecta	6	Serine	GCU	AGC	FALSE	FALSE	C	GCU(AGC)	NA	12
+4	Bombyx_mori	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	0 %	7
+5	Danaus_plexippus	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+1	Aedes_aegypti	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Culex_quinquefasciatus	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Anopheles_gambiae	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Drosophila_grimshawi	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Drosophila_pseudoobscura	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Drosophila_melanogaster	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Drosophila_suzukii	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+4	Ceratitis_capitata	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+8	Lucilia_cuprina	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+8	Musca_domestica	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+4	Glossina_fuscipes	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+6	Zerene_cesonia	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Drosophila_subpulchrella	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+4	Arctia_plantaginis	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+3	Contarinia_nasturtii	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+3	Hermetia_illucens	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Scaptodrosophila_lebanonensis	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+5	Bactrocera_oleae	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+8	Papilio_machaon	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+4	Pieris_rapae	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+6	Melitaea_cinxia	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Drosophila_mauritiana	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Drosophila_sechellia	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+2	Drosophila_erecta	3	Isoleucine	UAU	AUA	FALSE	FALSE	A	UAU(AUA)	NA	7
+4	Bombyx_mori	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	0 %	9.5
+7	Danaus_plexippus	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+7	Aedes_aegypti	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+8	Culex_quinquefasciatus	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+2	Anopheles_gambiae	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+8	Drosophila_grimshawi	4	Threonine	UGU	ACA	TRUE	FALSE	A	UGU(ACA)	NA	9.5
+8	Drosophila_pseudoobscura	4	Threonine	UGU	ACA	TRUE	FALSE	A	UGU(ACA)	NA	9.5
+6	Drosophila_melanogaster	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+7	Drosophila_suzukii	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+9	Ceratitis_capitata	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+18	Lucilia_cuprina	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+18	Musca_domestica	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+3	Glossina_fuscipes	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+5	Zerene_cesonia	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+6	Drosophila_subpulchrella	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+6	Arctia_plantaginis	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+4	Contarinia_nasturtii	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+7	Hermetia_illucens	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+4	Scaptodrosophila_lebanonensis	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+10	Bactrocera_oleae	4	Threonine	UGU	ACA	TRUE	FALSE	A	UGU(ACA)	NA	9.5
+9	Papilio_machaon	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+5	Pieris_rapae	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+7	Melitaea_cinxia	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+6	Drosophila_mauritiana	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+6	Drosophila_sechellia	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+6	Drosophila_erecta	4	Threonine	UGU	ACA	FALSE	FALSE	A	UGU(ACA)	NA	9.5
+10	Bombyx_mori	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	0 %	13
+12	Danaus_plexippus	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+13	Aedes_aegypti	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+8	Culex_quinquefasciatus	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+7	Anopheles_gambiae	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+7	Drosophila_grimshawi	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+5	Drosophila_pseudoobscura	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+6	Drosophila_melanogaster	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+11	Drosophila_suzukii	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+13	Ceratitis_capitata	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+31	Lucilia_cuprina	2	Lysine	UUU	AAA	TRUE	FALSE	A	UUU(AAA)	NA	13
+39	Musca_domestica	2	Lysine	UUU	AAA	TRUE	FALSE	A	UUU(AAA)	NA	13
+2	Glossina_fuscipes	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+12	Zerene_cesonia	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+6	Drosophila_subpulchrella	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+12	Arctia_plantaginis	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+7	Contarinia_nasturtii	2	Lysine	UUU	AAA	TRUE	FALSE	A	UUU(AAA)	NA	13
+12	Hermetia_illucens	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+4	Scaptodrosophila_lebanonensis	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+12	Bactrocera_oleae	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+13	Papilio_machaon	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+9	Pieris_rapae	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+11	Melitaea_cinxia	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+7	Drosophila_mauritiana	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+6	Drosophila_sechellia	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+5	Drosophila_erecta	2	Lysine	UUU	AAA	FALSE	FALSE	A	UUU(AAA)	NA	13
+3	Bombyx_mori	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	0 %	8.5
+7	Danaus_plexippus	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+4	Aedes_aegypti	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+4	Culex_quinquefasciatus	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+2	Anopheles_gambiae	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+3	Drosophila_grimshawi	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+3	Drosophila_pseudoobscura	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+3	Drosophila_melanogaster	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+2	Drosophila_suzukii	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+9	Ceratitis_capitata	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+9	Lucilia_cuprina	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+6	Musca_domestica	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+4	Glossina_fuscipes	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+4	Zerene_cesonia	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+2	Drosophila_subpulchrella	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+5	Arctia_plantaginis	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+3	Contarinia_nasturtii	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+2	Hermetia_illucens	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+3	Scaptodrosophila_lebanonensis	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+11	Bactrocera_oleae	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+6	Papilio_machaon	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+4	Pieris_rapae	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+8	Melitaea_cinxia	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+2	Drosophila_mauritiana	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+2	Drosophila_sechellia	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+3	Drosophila_erecta	6	Arginine	UCU	AGA	FALSE	FALSE	A	UCU(AGA)	NA	8.5
+24	Bombyx_mori	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	0 %	28
+26	Danaus_plexippus	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+28	Aedes_aegypti	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+26	Culex_quinquefasciatus	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+19	Anopheles_gambiae	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+9	Drosophila_grimshawi	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+10	Drosophila_pseudoobscura	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+12	Drosophila_melanogaster	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+14	Drosophila_suzukii	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+18	Ceratitis_capitata	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+32	Lucilia_cuprina	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+43	Musca_domestica	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+12	Glossina_fuscipes	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+20	Zerene_cesonia	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+14	Drosophila_subpulchrella	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+24	Arctia_plantaginis	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+8	Contarinia_nasturtii	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+18	Hermetia_illucens	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+10	Scaptodrosophila_lebanonensis	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+16	Bactrocera_oleae	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+28	Papilio_machaon	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+22	Pieris_rapae	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+26	Melitaea_cinxia	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+13	Drosophila_mauritiana	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+14	Drosophila_sechellia	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+12	Drosophila_erecta	1	Methionine	CAU	AUG	FALSE	FALSE	G	CAU(AUG)	NA	28
+3	Bombyx_mori	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	0 %	7
+7	Danaus_plexippus	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+6	Aedes_aegypti	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+7	Culex_quinquefasciatus	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+5	Anopheles_gambiae	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+4	Drosophila_grimshawi	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+4	Drosophila_pseudoobscura	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+3	Drosophila_melanogaster	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+4	Drosophila_suzukii	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+2	Ceratitis_capitata	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+4	Lucilia_cuprina	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+7	Musca_domestica	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+3	Glossina_fuscipes	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+5	Zerene_cesonia	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+3	Drosophila_subpulchrella	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+5	Arctia_plantaginis	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+1	Contarinia_nasturtii	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+2	Hermetia_illucens	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+3	Scaptodrosophila_lebanonensis	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+4	Bactrocera_oleae	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+7	Papilio_machaon	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+4	Pieris_rapae	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+6	Melitaea_cinxia	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+3	Drosophila_mauritiana	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+3	Drosophila_sechellia	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+3	Drosophila_erecta	4	Threonine	CGU	ACG	FALSE	FALSE	G	CGU(ACG)	NA	7
+10	Bombyx_mori	2	Lysine	CUU	AAG	FALSE	FALSE	G	CUU(AAG)	0 %	28.5
+13	Danaus_plexippus	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+51	Aedes_aegypti	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+30	Culex_quinquefasciatus	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+17	Anopheles_gambiae	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+11	Drosophila_grimshawi	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+12	Drosophila_pseudoobscura	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+13	Drosophila_melanogaster	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+14	Drosophila_suzukii	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+13	Ceratitis_capitata	2	Lysine	CUU	AAG	FALSE	FALSE	G	CUU(AAG)	NA	28.5
+27	Lucilia_cuprina	2	Lysine	CUU	AAG	FALSE	FALSE	G	CUU(AAG)	NA	28.5
+35	Musca_domestica	2	Lysine	CUU	AAG	FALSE	FALSE	G	CUU(AAG)	NA	28.5
+5	Glossina_fuscipes	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+13	Zerene_cesonia	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+17	Drosophila_subpulchrella	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+13	Arctia_plantaginis	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+3	Contarinia_nasturtii	2	Lysine	CUU	AAG	FALSE	FALSE	G	CUU(AAG)	NA	28.5
+20	Hermetia_illucens	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+10	Scaptodrosophila_lebanonensis	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+13	Bactrocera_oleae	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+16	Papilio_machaon	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+11	Pieris_rapae	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+20	Melitaea_cinxia	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+13	Drosophila_mauritiana	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+12	Drosophila_sechellia	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+11	Drosophila_erecta	2	Lysine	CUU	AAG	TRUE	FALSE	G	CUU(AAG)	NA	28.5
+6	Bombyx_mori	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	0 %	8
+8	Danaus_plexippus	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+4	Aedes_aegypti	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+2	Culex_quinquefasciatus	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+2	Anopheles_gambiae	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+2	Drosophila_grimshawi	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+5	Drosophila_pseudoobscura	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+3	Drosophila_melanogaster	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+3	Drosophila_suzukii	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+5	Ceratitis_capitata	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+6	Lucilia_cuprina	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+10	Musca_domestica	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+2	Glossina_fuscipes	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+7	Zerene_cesonia	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+5	Drosophila_subpulchrella	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+7	Arctia_plantaginis	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+1	Contarinia_nasturtii	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+3	Hermetia_illucens	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+2	Scaptodrosophila_lebanonensis	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+4	Bactrocera_oleae	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+9	Papilio_machaon	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+4	Pieris_rapae	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+8	Melitaea_cinxia	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+4	Drosophila_mauritiana	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+5	Drosophila_sechellia	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+4	Drosophila_erecta	6	Arginine	CCU	AGG	FALSE	FALSE	G	CCU(AGG)	NA	8
+9	Bombyx_mori	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	0 %	36.5
+13	Danaus_plexippus	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+43	Aedes_aegypti	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+41	Culex_quinquefasciatus	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+32	Anopheles_gambiae	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+6	Drosophila_grimshawi	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+7	Drosophila_pseudoobscura	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+6	Drosophila_melanogaster	4	Valine	AAC	GUU	FALSE	FALSE	T	AAC(GUU)	NA	36.5
+4	Drosophila_suzukii	4	Valine	AAC	GUU	FALSE	FALSE	T	AAC(GUU)	NA	36.5
+10	Ceratitis_capitata	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+20	Lucilia_cuprina	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+41	Musca_domestica	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+8	Glossina_fuscipes	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+10	Zerene_cesonia	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+8	Drosophila_subpulchrella	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+12	Arctia_plantaginis	4	Valine	AAC	GUU	FALSE	FALSE	T	AAC(GUU)	NA	36.5
+4	Contarinia_nasturtii	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+15	Hermetia_illucens	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+7	Scaptodrosophila_lebanonensis	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+9	Bactrocera_oleae	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+15	Papilio_machaon	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+10	Pieris_rapae	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+14	Melitaea_cinxia	4	Valine	AAC	GUU	FALSE	FALSE	T	AAC(GUU)	NA	36.5
+7	Drosophila_mauritiana	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+8	Drosophila_sechellia	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+7	Drosophila_erecta	4	Valine	AAC	GUU	TRUE	FALSE	T	AAC(GUU)	NA	36.5
+24	Bombyx_mori	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	0 %	36.5
+22	Danaus_plexippus	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+95	Aedes_aegypti	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+41	Culex_quinquefasciatus	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+17	Anopheles_gambiae	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+7	Drosophila_grimshawi	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+12	Drosophila_pseudoobscura	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+12	Drosophila_melanogaster	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+18	Drosophila_suzukii	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+18	Ceratitis_capitata	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+32	Lucilia_cuprina	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+43	Musca_domestica	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+6	Glossina_fuscipes	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+8	Zerene_cesonia	4	Alanine	AGC	GCU	FALSE	FALSE	T	AGC(GCU)	NA	36.5
+13	Drosophila_subpulchrella	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+22	Arctia_plantaginis	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+8	Contarinia_nasturtii	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+20	Hermetia_illucens	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+10	Scaptodrosophila_lebanonensis	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+20	Bactrocera_oleae	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+29	Papilio_machaon	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+17	Pieris_rapae	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+22	Melitaea_cinxia	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+12	Drosophila_mauritiana	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+12	Drosophila_sechellia	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+11	Drosophila_erecta	4	Alanine	AGC	GCU	TRUE	FALSE	T	AGC(GCU)	NA	36.5
+0	Bombyx_mori	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	92 %	0
+0	Danaus_plexippus	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+8	Aedes_aegypti	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+1	Culex_quinquefasciatus	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Anopheles_gambiae	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Drosophila_grimshawi	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Drosophila_pseudoobscura	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Drosophila_melanogaster	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Drosophila_suzukii	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Ceratitis_capitata	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Lucilia_cuprina	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Musca_domestica	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Glossina_fuscipes	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Zerene_cesonia	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Drosophila_subpulchrella	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Arctia_plantaginis	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Contarinia_nasturtii	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Hermetia_illucens	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Scaptodrosophila_lebanonensis	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Bactrocera_oleae	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Papilio_machaon	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Pieris_rapae	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Melitaea_cinxia	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Drosophila_mauritiana	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Drosophila_sechellia	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Drosophila_erecta	2	Aspartic Acid	AUC	GAU	FALSE	FALSE	T	AUC(GAU)	NA	0
+0	Bombyx_mori	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	96 %	0
+0	Danaus_plexippus	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+4	Aedes_aegypti	4	Glycine	ACC	GGU	FALSE	FALSE	T	ACC(GGU)	NA	0
+0	Culex_quinquefasciatus	4	Glycine	ACC	GGU	FALSE	FALSE	T	ACC(GGU)	NA	0
+0	Anopheles_gambiae	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Drosophila_grimshawi	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Drosophila_pseudoobscura	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Drosophila_melanogaster	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Drosophila_suzukii	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Ceratitis_capitata	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Lucilia_cuprina	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Musca_domestica	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Glossina_fuscipes	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Zerene_cesonia	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Drosophila_subpulchrella	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Arctia_plantaginis	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Contarinia_nasturtii	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Hermetia_illucens	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Scaptodrosophila_lebanonensis	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Bactrocera_oleae	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Papilio_machaon	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Pieris_rapae	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Melitaea_cinxia	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Drosophila_mauritiana	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Drosophila_sechellia	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+0	Drosophila_erecta	4	Glycine	ACC	GGU	TRUE	FALSE	T	ACC(GGU)	NA	0
+1	Bombyx_mori	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	92 %	0
+0	Danaus_plexippus	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Aedes_aegypti	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Culex_quinquefasciatus	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Anopheles_gambiae	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Drosophila_grimshawi	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Drosophila_pseudoobscura	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Drosophila_melanogaster	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	0
+0	Drosophila_suzukii	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	0
+0	Ceratitis_capitata	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+4	Lucilia_cuprina	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	0
+0	Musca_domestica	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Glossina_fuscipes	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Zerene_cesonia	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Drosophila_subpulchrella	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Arctia_plantaginis	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	0
+0	Contarinia_nasturtii	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Hermetia_illucens	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Scaptodrosophila_lebanonensis	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Bactrocera_oleae	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Papilio_machaon	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Pieris_rapae	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Melitaea_cinxia	4	Valine	GAC	GUC	FALSE	FALSE	C	GAC(GUC)	NA	0
+0	Drosophila_mauritiana	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Drosophila_sechellia	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+0	Drosophila_erecta	4	Valine	GAC	GUC	TRUE	FALSE	C	GAC(GUC)	NA	0
+1	Bombyx_mori	4	Alanine	GGC	GCC	FALSE	FALSE	C	GGC(GCC)	85 %	1.5
+0	Danaus_plexippus	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+21	Aedes_aegypti	4	Alanine	GGC	GCC	FALSE	FALSE	C	GGC(GCC)	NA	1.5
+0	Culex_quinquefasciatus	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Anopheles_gambiae	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Drosophila_grimshawi	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Drosophila_pseudoobscura	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Drosophila_melanogaster	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Drosophila_suzukii	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Ceratitis_capitata	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+2	Lucilia_cuprina	4	Alanine	GGC	GCC	FALSE	FALSE	C	GGC(GCC)	NA	1.5
+0	Musca_domestica	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Glossina_fuscipes	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Zerene_cesonia	4	Alanine	GGC	GCC	FALSE	FALSE	C	GGC(GCC)	NA	1.5
+0	Drosophila_subpulchrella	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Arctia_plantaginis	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Contarinia_nasturtii	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Hermetia_illucens	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Scaptodrosophila_lebanonensis	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Bactrocera_oleae	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Papilio_machaon	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Pieris_rapae	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+5	Melitaea_cinxia	4	Alanine	GGC	GCC	FALSE	FALSE	C	GGC(GCC)	NA	1.5
+0	Drosophila_mauritiana	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Drosophila_sechellia	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+0	Drosophila_erecta	4	Alanine	GGC	GCC	TRUE	FALSE	C	GGC(GCC)	NA	1.5
+24	Bombyx_mori	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	0 %	31
+29	Danaus_plexippus	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+41	Aedes_aegypti	2	Aspartic Acid	GUC	GAC	TRUE	FALSE	C	GUC(GAC)	NA	31
+30	Culex_quinquefasciatus	2	Aspartic Acid	GUC	GAC	TRUE	FALSE	C	GUC(GAC)	NA	31
+25	Anopheles_gambiae	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+12	Drosophila_grimshawi	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+14	Drosophila_pseudoobscura	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+14	Drosophila_melanogaster	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+17	Drosophila_suzukii	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+22	Ceratitis_capitata	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+32	Lucilia_cuprina	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+42	Musca_domestica	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+10	Glossina_fuscipes	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+19	Zerene_cesonia	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+19	Drosophila_subpulchrella	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+24	Arctia_plantaginis	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+7	Contarinia_nasturtii	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+20	Hermetia_illucens	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+12	Scaptodrosophila_lebanonensis	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+21	Bactrocera_oleae	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+26	Papilio_machaon	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+20	Pieris_rapae	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+26	Melitaea_cinxia	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+14	Drosophila_mauritiana	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+14	Drosophila_sechellia	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+14	Drosophila_erecta	2	Aspartic Acid	GUC	GAC	FALSE	TRUE	C	GUC(GAC)	NA	31
+24	Bombyx_mori	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	0 %	24
+17	Danaus_plexippus	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+24	Aedes_aegypti	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+17	Culex_quinquefasciatus	4	Glycine	GCC	GGC	FALSE	FALSE	C	GCC(GGC)	NA	24
+16	Anopheles_gambiae	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+18	Drosophila_grimshawi	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+14	Drosophila_pseudoobscura	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+14	Drosophila_melanogaster	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+17	Drosophila_suzukii	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+19	Ceratitis_capitata	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+32	Lucilia_cuprina	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+43	Musca_domestica	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+8	Glossina_fuscipes	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+17	Zerene_cesonia	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+14	Drosophila_subpulchrella	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+22	Arctia_plantaginis	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+8	Contarinia_nasturtii	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+16	Hermetia_illucens	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+13	Scaptodrosophila_lebanonensis	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+20	Bactrocera_oleae	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+18	Papilio_machaon	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+13	Pieris_rapae	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+18	Melitaea_cinxia	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+15	Drosophila_mauritiana	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+15	Drosophila_sechellia	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+14	Drosophila_erecta	4	Glycine	GCC	GGC	TRUE	FALSE	C	GCC(GGC)	NA	24
+6	Bombyx_mori	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	0 %	13.5
+12	Danaus_plexippus	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+6	Aedes_aegypti	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+6	Culex_quinquefasciatus	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+3	Anopheles_gambiae	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+2	Drosophila_grimshawi	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+2	Drosophila_pseudoobscura	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+2	Drosophila_melanogaster	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+2	Drosophila_suzukii	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+6	Ceratitis_capitata	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+15	Lucilia_cuprina	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+18	Musca_domestica	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+8	Glossina_fuscipes	4	Valine	UAC	GUA	TRUE	FALSE	A	UAC(GUA)	NA	13.5
+6	Zerene_cesonia	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+2	Drosophila_subpulchrella	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+5	Arctia_plantaginis	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+2	Contarinia_nasturtii	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+6	Hermetia_illucens	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+3	Scaptodrosophila_lebanonensis	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+7	Bactrocera_oleae	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+6	Papilio_machaon	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+5	Pieris_rapae	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+15	Melitaea_cinxia	4	Valine	UAC	GUA	TRUE	FALSE	A	UAC(GUA)	NA	13.5
+2	Drosophila_mauritiana	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+2	Drosophila_sechellia	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+2	Drosophila_erecta	4	Valine	UAC	GUA	FALSE	FALSE	A	UAC(GUA)	NA	13.5
+10	Bombyx_mori	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	0 %	10.5
+9	Danaus_plexippus	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+14	Aedes_aegypti	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+11	Culex_quinquefasciatus	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+3	Anopheles_gambiae	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+3	Drosophila_grimshawi	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+3	Drosophila_pseudoobscura	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+2	Drosophila_melanogaster	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+5	Drosophila_suzukii	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+7	Ceratitis_capitata	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+10	Lucilia_cuprina	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+10	Musca_domestica	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+3	Glossina_fuscipes	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+7	Zerene_cesonia	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+5	Drosophila_subpulchrella	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+17	Arctia_plantaginis	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+4	Contarinia_nasturtii	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+6	Hermetia_illucens	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+3	Scaptodrosophila_lebanonensis	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+8	Bactrocera_oleae	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+10	Papilio_machaon	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+7	Pieris_rapae	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+9	Melitaea_cinxia	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+2	Drosophila_mauritiana	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+2	Drosophila_sechellia	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+2	Drosophila_erecta	4	Alanine	UGC	GCA	FALSE	FALSE	A	UGC(GCA)	NA	10.5
+14	Bombyx_mori	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	0 %	23
+24	Danaus_plexippus	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+22	Aedes_aegypti	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+19	Culex_quinquefasciatus	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+11	Anopheles_gambiae	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+6	Drosophila_grimshawi	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+6	Drosophila_pseudoobscura	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+6	Drosophila_melanogaster	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+6	Drosophila_suzukii	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+17	Ceratitis_capitata	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+32	Lucilia_cuprina	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+33	Musca_domestica	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+11	Glossina_fuscipes	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+17	Zerene_cesonia	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+6	Drosophila_subpulchrella	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+18	Arctia_plantaginis	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+11	Contarinia_nasturtii	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+15	Hermetia_illucens	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+5	Scaptodrosophila_lebanonensis	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+16	Bactrocera_oleae	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+14	Papilio_machaon	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+12	Pieris_rapae	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+21	Melitaea_cinxia	2	Glutamic Acid	UUC	GAA	TRUE	FALSE	A	UUC(GAA)	NA	23
+6	Drosophila_mauritiana	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+6	Drosophila_sechellia	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+6	Drosophila_erecta	2	Glutamic Acid	UUC	GAA	FALSE	FALSE	A	UUC(GAA)	NA	23
+14	Bombyx_mori	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	0 %	15
+16	Danaus_plexippus	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+14	Aedes_aegypti	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+17	Culex_quinquefasciatus	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+9	Anopheles_gambiae	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+4	Drosophila_grimshawi	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+6	Drosophila_pseudoobscura	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+6	Drosophila_melanogaster	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+6	Drosophila_suzukii	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+8	Ceratitis_capitata	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+12	Lucilia_cuprina	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+13	Musca_domestica	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+5	Glossina_fuscipes	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+10	Zerene_cesonia	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+8	Drosophila_subpulchrella	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+12	Arctia_plantaginis	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+5	Contarinia_nasturtii	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+12	Hermetia_illucens	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+5	Scaptodrosophila_lebanonensis	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+9	Bactrocera_oleae	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+14	Papilio_machaon	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+10	Pieris_rapae	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+16	Melitaea_cinxia	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+6	Drosophila_mauritiana	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+6	Drosophila_sechellia	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+6	Drosophila_erecta	4	Glycine	UCC	GGA	FALSE	FALSE	A	UCC(GGA)	NA	15
+7	Bombyx_mori	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	0 %	14.5
+11	Danaus_plexippus	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+12	Aedes_aegypti	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+22	Culex_quinquefasciatus	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+29	Anopheles_gambiae	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+6	Drosophila_grimshawi	4	Valine	CAC	GUG	TRUE	FALSE	G	CAC(GUG)	NA	14.5
+6	Drosophila_pseudoobscura	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+7	Drosophila_melanogaster	4	Valine	CAC	GUG	TRUE	FALSE	G	CAC(GUG)	NA	14.5
+14	Drosophila_suzukii	4	Valine	CAC	GUG	TRUE	FALSE	G	CAC(GUG)	NA	14.5
+7	Ceratitis_capitata	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+7	Lucilia_cuprina	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+13	Musca_domestica	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+3	Glossina_fuscipes	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+9	Zerene_cesonia	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+8	Drosophila_subpulchrella	4	Valine	CAC	GUG	TRUE	FALSE	G	CAC(GUG)	NA	14.5
+13	Arctia_plantaginis	4	Valine	CAC	GUG	TRUE	FALSE	G	CAC(GUG)	NA	14.5
+2	Contarinia_nasturtii	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+4	Hermetia_illucens	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+5	Scaptodrosophila_lebanonensis	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+7	Bactrocera_oleae	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+15	Papilio_machaon	4	Valine	CAC	GUG	TRUE	FALSE	G	CAC(GUG)	NA	14.5
+8	Pieris_rapae	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+9	Melitaea_cinxia	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+7	Drosophila_mauritiana	4	Valine	CAC	GUG	TRUE	FALSE	G	CAC(GUG)	NA	14.5
+7	Drosophila_sechellia	4	Valine	CAC	GUG	FALSE	FALSE	G	CAC(GUG)	NA	14.5
+7	Drosophila_erecta	4	Valine	CAC	GUG	TRUE	FALSE	G	CAC(GUG)	NA	14.5
+6	Bombyx_mori	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	0 %	9
+7	Danaus_plexippus	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+6	Aedes_aegypti	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+8	Culex_quinquefasciatus	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+8	Anopheles_gambiae	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+3	Drosophila_grimshawi	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+3	Drosophila_pseudoobscura	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+3	Drosophila_melanogaster	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+9	Drosophila_suzukii	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+5	Ceratitis_capitata	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+4	Lucilia_cuprina	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+4	Musca_domestica	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+2	Glossina_fuscipes	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+9	Zerene_cesonia	4	Alanine	CGC	GCG	TRUE	FALSE	G	CGC(GCG)	NA	9
+7	Drosophila_subpulchrella	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+9	Arctia_plantaginis	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+1	Contarinia_nasturtii	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+2	Hermetia_illucens	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+3	Scaptodrosophila_lebanonensis	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+6	Bactrocera_oleae	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+12	Papilio_machaon	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+6	Pieris_rapae	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+10	Melitaea_cinxia	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+3	Drosophila_mauritiana	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+3	Drosophila_sechellia	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+3	Drosophila_erecta	4	Alanine	CGC	GCG	FALSE	FALSE	G	CGC(GCG)	NA	9
+12	Bombyx_mori	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	0 %	20
+18	Danaus_plexippus	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+21	Aedes_aegypti	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+23	Culex_quinquefasciatus	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+15	Anopheles_gambiae	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+10	Drosophila_grimshawi	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+17	Drosophila_pseudoobscura	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+13	Drosophila_melanogaster	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+14	Drosophila_suzukii	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+11	Ceratitis_capitata	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+10	Lucilia_cuprina	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+21	Musca_domestica	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+4	Glossina_fuscipes	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+15	Zerene_cesonia	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+15	Drosophila_subpulchrella	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+19	Arctia_plantaginis	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+4	Contarinia_nasturtii	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+9	Hermetia_illucens	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+12	Scaptodrosophila_lebanonensis	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+8	Bactrocera_oleae	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+18	Papilio_machaon	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+13	Pieris_rapae	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+14	Melitaea_cinxia	2	Glutamic Acid	CUC	GAG	FALSE	FALSE	G	CUC(GAG)	NA	20
+13	Drosophila_mauritiana	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+12	Drosophila_sechellia	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+12	Drosophila_erecta	2	Glutamic Acid	CUC	GAG	TRUE	FALSE	G	CUC(GAG)	NA	20
+3	Bombyx_mori	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	38 %	4
+3	Danaus_plexippus	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Aedes_aegypti	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Culex_quinquefasciatus	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Anopheles_gambiae	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Drosophila_grimshawi	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+3	Drosophila_pseudoobscura	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Drosophila_melanogaster	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+4	Drosophila_suzukii	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Ceratitis_capitata	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+1	Lucilia_cuprina	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+2	Musca_domestica	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+1	Glossina_fuscipes	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+3	Zerene_cesonia	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+4	Drosophila_subpulchrella	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+4	Arctia_plantaginis	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Contarinia_nasturtii	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+2	Hermetia_illucens	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Scaptodrosophila_lebanonensis	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+1	Bactrocera_oleae	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+4	Papilio_machaon	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+2	Pieris_rapae	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+3	Melitaea_cinxia	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Drosophila_mauritiana	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+0	Drosophila_sechellia	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4
+1	Drosophila_erecta	4	Glycine	CCC	GGG	FALSE	FALSE	G	CCC(GGG)	NA	4

@@ -1,27 +1,27 @@
 # Generate Figure 3
-source("figure/figure_main_generator/library_path.R")
+source("figure/figure_supp_generator/library_path.R")
 
 # Pannel 3 B
 
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 
-data12 = read.delim("data/data12_supp.tab")
-data12[data12$nb_species_0 == "0 %" & !is.na(data12$nb_species_0) ,]$nb_species_0 = NA
+data14 = read.delim("data/data14_supp.tab")
+data14[data14$nb_species_0 == "0 %" & !is.na(data14$nb_species_0) ,]$nb_species_0 = NA
 
-data12$amino_acid = factor(data12$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
+data14$amino_acid = factor(data14$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
 vect_debut = str_replace_all(vect_debut,"T","U")
-data12$title = paste(data12$anticodon,"\n(",data12$codon,")",sep="")
-data12[data12$title == "CAU\n(AUG)",]$title = "anticodon     CAU   \n(codon)      (AUG)"
+data14$title = paste(data14$anticodon,"\n(",data14$codon,")",sep="")
+data14[data14$title == "CAU\n(AUG)",]$title = "anticodon     CAU   \n(codon)      (AUG)"
 
 
-data12$codon = factor(data12$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
-data12$title = factor(data12$title,levels= tapply(data12$title, as.integer(data12$codon),unique))
+data14$codon = factor(data14$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
+data14$title = factor(data14$title,levels= tapply(data14$title, as.integer(data14$codon),unique))
 
 set_color = c(A="#B2DF8A",T="#33A02C",C="#1F78B4",G="#A6CEE3")
 
-pA = ggplot(data12,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
+pA = ggplot(data14,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
   scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid,scales = "free")+ geom_text(family="economica",size=7,aes(y = y_axis_0 + 3 ),vjust=0.1) + 
   theme_bw() + theme(
     title =  element_text(size=30, family="economica"),
@@ -64,7 +64,7 @@ pA = ggplot(data12,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(a
 pA
 
 
-jpeg(paste(path_pannel,"p3A.jpg",sep=""), width = 2000/1,  1200/1,res=100/1)
+jpeg(paste(path_pannel,"pS12A.jpg",sep=""), width = 2000/1,  1200/1,res=100/1)
 print(pA)
 dev.off()
 
@@ -72,10 +72,10 @@ dev.off()
 
 # Figure 3
 imgA = load.image(paste(path_require,"wobble_pairing.png",sep="") )
-imgB = load.image(paste(path_pannel,"p3A.jpg",sep="") )
+imgB = load.image(paste(path_pannel,"pS12A.jpg",sep="") )
 
 {
-  pdf(file= paste(path_figure,"Figure3.pdf",sep=""), width=7, height=4.8)
+  pdf(file= paste(path_figure,"Figure12_supp.pdf",sep=""), width=7, height=4.8)
   
   m=matrix(rep(NA,10*10), nrow=10)
   

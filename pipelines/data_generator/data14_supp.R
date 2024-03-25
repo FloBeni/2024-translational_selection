@@ -24,7 +24,8 @@ tRNA_abundance <- data.frame(sapply( tRNA_abundance, as.numeric ))
 rownames(tRNA_abundance) = GTDrift_list_species$species
 
 data1 = read.delim("data/data1_supp.tab")
-data1 = data1[data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 & data1$nb_codon_not_decoded == 0,]
+data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
+data1 = data1[data1$clade_group %in% c("Diptera","Lepidoptera") & data1$species != "Eumeta_japonica" & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 & data1$nb_codon_not_decoded == 0,]
 
 tRNA_abundance = tRNA_abundance[rownames(tRNA_abundance) %in% data1$species,]
 
@@ -35,7 +36,7 @@ code = code[!code$aa_name %in% c("Ter"),]
 
 rownames(code) = code$anticodon
 
-data12 = data.frame()
+data14 = data.frame()
 for (anticodon in code$anticodon){
   dt = data.frame(abundance = tRNA_abundance[,anticodon])
   dt$species = rownames(tRNA_abundance)
@@ -43,7 +44,7 @@ for (anticodon in code$anticodon){
   dt$amino_acid = code[anticodon,]$aa
   dt$anticodon = anticodon
   dt$codon = code[anticodon,]$codon
-  data12 = rbind(data12,dt)
+  data14 = rbind(data14,dt)
 }
 
 for (species in GTDrift_list_species$species){
@@ -52,32 +53,31 @@ for (species in GTDrift_list_species$species){
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
   tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
   rownames(tRNA_optimal) = tRNA_optimal$codon
-  data12[data12$species == species,c("POC1","POC2")] = tRNA_optimal[ data12[data12$species == species,]$codon,c("POC1","POC2")]
+  data14[data14$species == species,c("POC1","POC2")] = tRNA_optimal[ data14[data14$species == species,]$codon,c("POC1","POC2")]
 }  
 
 
 
-data12$color = sapply(data12$codon,function(x)substr(x,3,3))
+data14$color = sapply(data14$codon,function(x)substr(x,3,3))
 
-data12$amino_acid = factor(data12$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
-data12$anticodon = str_replace_all(data12$anticodon,'T','U')
-data12$codon = str_replace_all(data12$codon,'T','U')
+data14$amino_acid = factor(data14$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
+data14$anticodon = str_replace_all(data14$anticodon,'T','U')
+data14$codon = str_replace_all(data14$codon,'T','U')
 
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
 vect_debut = str_replace_all(vect_debut,"T","U")
-data12$title = paste(data12$anticodon,"(",data12$codon,")",sep="")
-data12$codon = factor(data12$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
-data12$title = factor(data12$title,levels= tapply(data12$title, as.integer(data12$codon),unique))
+data14$title = paste(data14$anticodon,"(",data14$codon,")",sep="")
+data14$codon = factor(data14$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
+data14$title = factor(data14$title,levels= tapply(data14$title, as.integer(data14$codon),unique))
 
-nb_sp = length(unique(data12$species))
-data12$nb_species_0 = tapply(data12$abundance == 0,data12$codon,sum)[data12$codon]
-data12$nb_species_0 = round(data12$nb_species_0 / nb_sp*100)
-data12$y_axis_0 = tapply(data12$abundance ,data12$codon,function(x) quantile(x,0.9))[data12$codon]
-# data12[duplicated(data12$codon) | data12$nb_species_0 < 50,]$nb_species_0 = NA
-data12[duplicated(data12$codon) ,]$nb_species_0 = NA
-data12[!is.na(data12$nb_species_0),]$nb_species_0 = paste(data12[!is.na(data12$nb_species_0),]$nb_species_0 ,"%")
+nb_sp = length(unique(data14$species))
+data14$nb_species_0 = tapply(data14$abundance == 0,data14$codon,sum)[data14$codon]
+data14$nb_species_0 = round(data14$nb_species_0 / nb_sp*100)
+data14$y_axis_0 = tapply(data14$abundance ,data14$codon,function(x) quantile(x,0.9))[data14$codon]
+data14[duplicated(data14$codon) ,]$nb_species_0 = NA
+data14[!is.na(data14$nb_species_0),]$nb_species_0 = paste(data14[!is.na(data14$nb_species_0),]$nb_species_0 ,"%")
 
 
-write.table(data12,"data/data12_supp.tab",quote=F,row.names = F,sep="\t")
+write.table(data14,"data/data14_supp.tab",quote=F,row.names = F,sep="\t")
 
 

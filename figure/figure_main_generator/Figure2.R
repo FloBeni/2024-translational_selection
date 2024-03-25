@@ -9,7 +9,7 @@ dt_graph = data3[data3$species == "Caenorhabditis_elegans", ]
 
 spearman_method_aa = cor.test( dt_graph$tRNASE_copies, dt_graph$obs_codon,method="spearman",exact=F)
 
-pA = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon)*100,y=tRNASE_copies,label=amino_acid)) +
+pA = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon) * 100,y=tRNASE_copies,label=amino_acid)) +
   # geom_smooth(formula = y ~ x, method="lm", size=1 , col=set_color[1],se=F,linetype='dashed') +
   geom_point(pch=21,size=4,fill=set_color[2]) +
   geom_text(nudge_x = .35,size=5,family="economica") + theme_bw() +  theme(
@@ -83,9 +83,9 @@ Caenorhabditis_elegans = readPNG(paste(path_require,"Caenorhabditis_elegans.png"
   par(mar=c(0, 2, 2, 1))
   plot(imgA, axes=FALSE)
   mtext("A", adj=0, side=2,at=-200, line=1, font=2, cex=2.2,las=2)
-  # xcel=540
-  # ycel=-140
-  # rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/1.5-ycel, xright=1000/1.4+xcel, ytop=0-ycel)
+  xcel=630
+  ycel=-140
+  rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/1.5-ycel, xright=1000/1.4+xcel, ytop=0-ycel)
   
   par(mar=c(0, 0, 0, 0))
   plot(imgB, axes=FALSE)
