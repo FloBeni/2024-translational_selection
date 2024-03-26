@@ -64,7 +64,7 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  + scal
     caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) +
-  ylab("S") +  
+  ylab(substitute(paste("S"^hx))) +  
   scale_x_log10(labels=label_log(digits = 2)) + xlab(expression(paste(italic("N"[e]))))+ annotation_logticks(sides="b") +
   guides(fill = "none",
          shape = guide_legend(byrow = TRUE,override.aes = list(fill="black")))   +
@@ -96,19 +96,19 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     title =  element_text(color="black", size=25, family="economica"),
     text =  element_text(color="black", size=31, family="economica"),
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.35, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.37, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
     caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("S") + 
+   ylab(substitute(paste("S"^hx))) +  
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") + 
   guides(fill = guide_legend(byrow = TRUE,override.aes = list(size=5)),
          shape = guide_legend(byrow = TRUE))  +
-  theme(legend.spacing.y = unit(-.1, 'cm'))   
+  theme(legend.spacing.y = unit(0, 'cm'))   
 
 pB
 
@@ -144,7 +144,7 @@ pC = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
-  ylab("S") +
+  ylab(substitute(paste("S"^hx))) +
   scale_x_log10(breaks=c(0.01,0.1,1,10,100,1000,5000),labels=c(0.01,0.1,1,10,100,1000,5000)) + xlab("Body length (cm, log scale)")+ annotation_logticks(sides="b") 
 pC
 
@@ -181,7 +181,7 @@ pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
-  ylab("S") + xlab("dN/dS (log scale)") + scale_x_log10()+ annotation_logticks(sides="b") 
+   ylab(substitute(paste("S"^hx))) +  xlab("dN/dS (log scale)") + scale_x_log10()+ annotation_logticks(sides="b") 
 pD
 
 jpeg(paste(path_pannel,"p7D.jpg",sep=""),width = 4200/2, height = 4000/2,res=700/2)
@@ -197,7 +197,7 @@ imgC = load.image(paste(path_pannel,"p7C.jpg",sep="") )
 imgD = load.image(paste(path_pannel,"p7D.jpg",sep="") )
 
 {
-  pdf(file= paste(path_figure,"Figure7.pdf",sep=""), width=10, height=8)
+  pdf(file= paste(path_figure,"Figure7.pdf",sep=""), width=10, height=7)
   
   m = matrix(rep(NA,2*100), nrow=2)
   
@@ -205,19 +205,21 @@ imgD = load.image(paste(path_pannel,"p7D.jpg",sep="") )
   m[2,]=c(rep(3,50),rep(4,50))
   layout(m)
   
-  par(mar=c(2.1, 2, 2.4, 1))
+  par(mar=c(0.5, 0, 0.5, 0))
   plot(imgA, axes=FALSE)
-  mtext("A",at=0,adj=-0, side=2, line=1, font=2, cex=2,las=2)
+  mtext("A",at=50,adj=-1, side=2, line=1, font=2, cex=2,las=2)
   
   par(mar=c(0,0, 0, 0))
   plot(imgB, axes=FALSE)
-  mtext("B",at=0,adj=1, side=2, line=1, font=2, cex=2,las=2)
+  mtext("B",at=50,adj=.5, side=2, line=1, font=2, cex=2,las=2)
 
-  par(mar=c(1,0, 2, 0))
+  par(mar=c(0,0, 0, 7))
   plot(imgC, axes=FALSE)
-  mtext("C",at=0,adj=-1, side=2, line=1, font=2, cex=2,las=2)
+  mtext("C",at=50,adj=-1, side=2, line=1, font=2, cex=2,las=2)
 
+  par(mar=c(0,0, 0, 10))
   plot(imgD, axes=FALSE)
-  mtext("D",at=0,adj=-1, side=2, line=1, font=2, cex=2,las=2)
+  mtext("D",at=50,adj=.5, side=2, line=1, font=2, cex=2,las=2)
   dev.off()
 }
+# c(bottom, left, top, right)

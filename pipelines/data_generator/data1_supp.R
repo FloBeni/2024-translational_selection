@@ -89,10 +89,12 @@ for (species in GTDrift_list_species$species){
   abond_AG = tRNA_optimal[!tRNA_optimal$aa_name %in% c("Met","Trp","Ile"),]
   abond_AG = abond_AG[substr(abond_AG$codon,3,3) %in% c("A","G"),]
   abond_AG = abond_AG[order(abond_AG$nb_tRNA_copies,decreasing = T),]
-  abond_AG = abond_AG[ !abond_AG$aa_name_scu %in% abond_AG[abond_AG$nb_tRNA_copies == 0,]$aa_name_scu,]
+  # abond_AG = abond_AG[ !abond_AG$aa_name_scu %in% abond_AG[abond_AG$nb_tRNA_copies == 0,]$aa_name_scu,]
+  abond_AG = abond_AG[ abond_AG$aa_name_scu %in% c("Lys","Glu","Leu_4" ,"Gln","Val","Thr","Pro","Leu_2" ,"Ser_4", "Arg_2", "Ala" ),]
   vector = (tapply(abond_AG$nb_tRNA_copies , abond_AG$aa_name_scu,function(x) sum(x == max(x))))
   abond_AG = abond_AG[abond_AG$aa_name_scu %in% names(vector[vector != 2]),]
   abond_AG = abond_AG[!duplicated(paste(abond_AG$aa_name_scu)),]$codon
+  print(length(abond_AG))
   
   GCi_obs = rowSums(codon_usage[c("Ci","Gi")],na.rm = T)
   ATGCi_obs = rowSums(codon_usage[c("Ai","Ti","Ci","Gi")],na.rm = T)
@@ -110,7 +112,7 @@ for (species in GTDrift_list_species$species){
   proportion = 2/100
   quantile = unique( quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T ))
   intervalle_FPKM = cut(xaxis, quantile,include.lowest = T,include.higher=T)
-  print(mean(table(intervalle_FPKM)))
+  # print(mean(table(intervalle_FPKM)))
   FPKM_bins = tapply(xaxis, intervalle_FPKM, median)
   
   ## Translational selection signal
@@ -147,7 +149,6 @@ for (species in GTDrift_list_species$species){
   data_codons = rbind(data_codons,data_optiplus)
   DUC_IC = data_optiplus[substr(data_optiplus$codon,3,3) %in% c("C","T"),]
   DUC_IC = DUC_IC[ DUC_IC$aa_name_scu %in% DUC_IC[DUC_IC$nb_tRNA_copies == 0,]$aa_name_scu,]
-  print(DUC_IC$aa_name_scu)
   DUC_IC = DUC_IC[!duplicated(DUC_IC$aa_name_scu),]$codon
   table(substr(DUC_IC,3,3))
   
@@ -196,8 +197,6 @@ for (species in GTDrift_list_species$species){
       list_aa = unique(subset_selected$aa_name)
       list_codon = tRNA_optimal[tRNA_optimal$aa_name %in% list_aa,]$codon
     }
-    # print(list_POC)
-    # print(list_codon)
     
     
     if ( length(list_POC) != 0 ){

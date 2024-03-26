@@ -9,19 +9,19 @@ logit <- function(x){log(x/(1-x))}
 S =  seq(0.001,10,0.001)
 lambda = 1
 dt = data.frame(S ,
-                Fop = lambda/(lambda - (1-exp(-S))/(1-exp(S))),
+                FOP = lambda/(lambda - (1-exp(-S))/(1-exp(S))),
                 lambda ,
-                Fop0 =  lambda/(lambda +1))
+                FOP0 =  lambda/(lambda +1))
 
 lambda = 1/2
 dt = rbind(dt, data.frame(S ,
-                          Fop = lambda/(lambda - (1-exp(-S))/(1-exp(S))),
+                          FOP = lambda/(lambda - (1-exp(-S))/(1-exp(S))),
                           lambda ,
-                          Fop0 =  lambda/(lambda +1))
+                          FOP0 =  lambda/(lambda +1))
 )
 
 
-ggplot(dt,aes(x=S,y=logit( Fop ),col=as.character(lambda)))  + geom_line(size=2)+
+ggplot(dt,aes(x=S,y=logit( FOP ),col=as.character(lambda)))  + geom_line(size=2)+
   theme_bw() + theme(
     axis.title.x = element_text(color="black", size=28,family="economica"),
     axis.title.y = element_text(color="black", size=28, family="economica"),
@@ -32,9 +32,9 @@ ggplot(dt,aes(x=S,y=logit( Fop ),col=as.character(lambda)))  + geom_line(size=2)
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
     plot.caption = element_text(hjust = 0.35, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  )+ scale_color_manual("Lambda",values=c("#1F78B4","#33A02C")) 
+  )+ scale_color_manual(substitute(paste(lambda)),values=c("#1F78B4","#33A02C")) 
 
-ggplot(dt,aes(x=S,y=Fop,col=as.character(lambda)))  + geom_hline(aes(yintercept=Fop0,col=as.character(lambda)),size=1.1,linetype='dashed') +
+ggplot(dt,aes(x=S,y=FOP,col=as.character(lambda)))  + geom_hline(aes(yintercept=FOP0,col=as.character(lambda)),size=1.1,linetype='dashed') +
   geom_hline(aes(yintercept=1),linetype='dashed') + geom_line(size=2)+
   theme_bw() + theme(
     axis.title.x = element_text(color="black", size=28,family="economica"),
@@ -46,16 +46,16 @@ ggplot(dt,aes(x=S,y=Fop,col=as.character(lambda)))  + geom_hline(aes(yintercept=
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
     plot.caption = element_text(hjust = 0.35, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  )+ scale_color_manual("Lambda",values=c("#1F78B4","#33A02C")) +
+  )+ scale_color_manual(substitute(paste(lambda)),values=c("#1F78B4","#33A02C")) +
   scale_x_log10(breaks=c(0.001,0.01,0.1,1,10,100,1000,10000),labels=c(0.001,0.01,0.1,1,10,100,1000,10000)) + 
   annotation_logticks(sides="b") + xlab("S (log scale)") + geom_text(data=data.frame(a=1),label="Optimum",x=-1,y=0.96,color="black",
                                                                      fontface= "italic", size=7, family="economica")+
-  geom_text(data=dt[!duplicated(dt$lambda),],aes(label="No selection",y=Fop0,col=as.character(lambda)),vjust=-.5 ,x=-2.8,
+  geom_text(data=dt[!duplicated(dt$lambda),],aes(label="No selection",y=FOP0,col=as.character(lambda)),vjust=-.5 ,x=-2.8,
             fontface= "italic", size=7, family="economica")
 
 
-ggplot(dt,aes(x=S,y=logit(Fop),col=as.character(lambda)))  +
-  geom_hline(aes(yintercept=logit(Fop0),col=as.character(lambda)),size=1.1,linetype='dashed') +geom_line(size=2)+
+ggplot(dt,aes(x=S,y=logit(FOP),col=as.character(lambda)))  +
+  geom_hline(aes(yintercept=logit(FOP0),col=as.character(lambda)),size=1.1,linetype='dashed') +geom_line(size=2)+
   theme_bw() + theme(
     axis.title.x = element_text(color="black", size=28,family="economica"),
     axis.title.y = element_text(color="black", size=28, family="economica"),
@@ -66,6 +66,6 @@ ggplot(dt,aes(x=S,y=logit(Fop),col=as.character(lambda)))  +
     legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
     plot.caption = element_text(hjust = 0.35, face= "italic", size=20, family="economica"),
     plot.caption.position =  "plot"
-  )+ scale_color_manual("Lambda",values=c("#1F78B4","#33A02C")) +
+  )+ scale_color_manual(substitute(paste(lambda)),values=c("#1F78B4","#33A02C")) +
   scale_x_log10(breaks=c(0.001,0.01,0.1,1,10,100,1000,10000),labels=c(0.001,0.01,0.1,1,10,100,1000,10000)) + 
   annotation_logticks(sides="b") + xlab("S (log scale)") 

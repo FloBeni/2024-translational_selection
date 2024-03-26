@@ -102,7 +102,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("S") + 
+   ylab(substitute(paste("S"^hx))) +  
   xlab("GCi Variance")
 
 pC
@@ -133,7 +133,7 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel , x=xlabel))  +
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
     plot.caption.position =  "plot",
     legend.title =  element_text(color="black", size=23, family="economica")
-  )+ ylab("S") +
+  )+  ylab(substitute(paste("S"^hx))) + 
   xlab("GCi Variance") + 
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
@@ -171,7 +171,7 @@ pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-  ylab("S") + 
+   ylab(substitute(paste("S"^hx))) +  
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") 
 
@@ -188,7 +188,7 @@ dt_graph = data1
 ylabel = "S_POCs"
 xlabel = "lifespan_days"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
-dt_graph = dt_graph[dt_graph$var_gci<0.015,]
+# dt_graph = dt_graph[dt_graph$var_gci<0.015,]
 
 dt_graph = dt_graph[order(dt_graph$var_gci,decreasing = T),]
 
@@ -204,7 +204,7 @@ pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="economica"),
     plot.caption.position =  "plot",
     legend.title =  element_text(color="black", size=23, family="economica")
-  )+ ylab("S") +
+  )+  ylab(substitute(paste("S"^hx))) + 
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="") 
   )+ scale_fill_gradient2('Variance\nper gene GCi',mid = "white",  high = "red") +

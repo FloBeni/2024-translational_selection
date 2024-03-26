@@ -36,7 +36,7 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )  + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
-  ylab("Average GC of most abundant tRNAs set\n(Unn/Cnn)") + 
+  ylab("Average CNN of preferred isodecoder tRNAs\n(UNN/CNN)") + 
   xlab("GCi") 
 
 pA
@@ -90,7 +90,7 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + theme(legend.position='none') + scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Average GC of most selected codons set\n(nnC/nnU)") + 
+  ylab("Average NNC of preferred codons\n(NNT/NNC)") + 
   xlab("GCi") +   theme(legend.position = c(0.87, 0.15),
                                          legend.background = element_rect(fill="NA"),
                                          legend.spacing.x = unit(0.1, 'cm'),
