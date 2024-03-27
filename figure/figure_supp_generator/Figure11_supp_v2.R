@@ -3,6 +3,7 @@ source("figure/figure_supp_generator/library_path.R")
 
 
 data1 = read.delim("data/data1_supp.tab")
+rownames(data1) = data1$species
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
@@ -12,10 +13,10 @@ data1$species = paste(str_replace_all(data1$species,"_"," "),sep="")
 
 
 data13 = read.delim("data/data13_supp.tab")
-data13$species = paste(str_replace_all(data13$species,"_"," "),sep="")
+data13$species = paste(str_replace_all(data13$species,"_"," "),", GCi=",round(data1[data13$species,]$gci,2),sep="")
 
 # Pannel 4 A
-data13$species = factor(data13$species,levels=data1[order(data1$gci),]$species)
+data13$species = factor(data13$species,levels=paste(data1[order(data1$gci),]$species,", GCi=",round(data1[order(data1$gci),]$gci,2),sep=""))
 dt_graph = data13[data13$aa_name == "Val",]
 
 count_dinucl = table(dt_graph$trinucl2)
