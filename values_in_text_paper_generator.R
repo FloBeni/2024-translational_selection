@@ -298,9 +298,9 @@ data1[is.na(data1$Ne),]$Ne = Ne_genus[sapply(data1[is.na(data1$Ne),]$species ,fu
 data1[is.na(data1$Ne),]$Ne_estimate = ""
 
 
-print(paste("This list included ",sum(lynch_dt$species %in% data1$species),
+print(paste("This list included ",sum(data1$Ne_estimate == "from species"),
             " species of our data set, and in addition allowed us to get a proxy of Ne for ",
-            sum(!is.na(data1$Ne))," species",sep=""))
+            sum(data1$Ne_estimate == "from genus")," species",sep=""))
 
 
 print(paste("Among the ",nrow(data1)," species analyzed",sep=""))
