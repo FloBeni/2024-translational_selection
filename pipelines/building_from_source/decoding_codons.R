@@ -13,10 +13,10 @@ code$aa_name_scu = code$aa_name
 code[code$nb_syn == 6,]$aa_name_scu =  paste(code[code$nb_syn == 6,]$aa_name ,code[code$nb_syn == 6,]$nb_syn_scu  ,sep="_")
 
 
-wobble_rule = list("T"=c("A","G"),
-                   "A"=c("T","A"),
-                   "G"=c("C","T"),
-                   "C"=c("G","A"))
+wobble_rule = list("G"=c("C","T"),
+                   "A"=c("C","T","A"),
+                   "T"=c("A","G"),
+                   "C"=c("G"))
 
 
 list_species = read.delim("data/GTDrift_list_species.tab")
@@ -29,6 +29,7 @@ for( species in list_species$species ){
   taxID = list_species[species,]$NCBI.taxid
   
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
+  code_table = code
   
   if (
     file.exists(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) &
@@ -50,123 +51,43 @@ for( species in list_species$species ){
     tRNA_GFF = F
   } 
   
-  
-  codon_data = data.frame()
-  for (codon in unique(code$codon)){
-    codon_data = rbind(codon_data,
-                       data.frame(
-                         codon = codon,
-                         anticodon = chartr("TUACG","AATGC", stri_reverse(codon)),
-                         tRNA_WC_copies= sum(tRNASE_copies_table[codon],na.rm = T)
-                       ))
-  }
-  codon_data$amino_acid = code[codon_data$codon,]$aa_name
-  
-  codon_data$letter_aa = code[codon_data$codon,]$aa
-  codon_data = codon_data[order(codon_data$tRNA_WC_copies,decreasing = T),]
-  
-  # Identify abundant tRNA
-  aa_data = data.frame()
-  for ( amino_acid in unique(code$aa_name)){
-    codon_selected = codon_data[codon_data$amino_acid == amino_acid, ]
-    tRNA_available_nb = nrow(codon_selected)
-    antic_abondant = codon_selected[codon_selected$tRNA_WC_copies == max(codon_selected$tRNA_WC_copies) & 
-                                      codon_selected$tRNA_WC_copies != 0  , ]
-    
-    if ( nrow(antic_abondant) == 0 | nrow(antic_abondant) == tRNA_available_nb ){ 
-      # print("pas de tRNA plus abondant que les autres")
-      # print(amino_acid)
-    } else {
-      aa_data = rbind(aa_data,
-                      data.frame(
-                        amino_acid ,
-                        letter_aa = unique(code[code$aa_name == amino_acid,]$aa) ,
-                        tRNA_copies= antic_abondant$tRNA_WC_copies,
-                        codon =  antic_abondant$codon,
-                        anticodon =  antic_abondant$anticodon
-                      ))
-    }
-  }
-  list_OExp_WC = aa_data$codon
-  code_table = code
-  code_table$WC_abond = F
-  code_table[list_OExp_WC,]$WC_abond = T
-  
-  
-  # Identify codon wobble decoded by an abundant tRNA
-  list_OExp_Wobble = c()
-  for ( amino_acid in aa_data$amino_acid){
-    codon_used = rownames(code[code$aa_name == amino_acid,])
-    antic_abondant = aa_data[aa_data$amino_acid  == amino_acid,]$anticodon
-    for ( codon in codon_used ){
-      anticodon = paste(unlist(wobble_rule[substr(codon,3,3)]),
-                        chartr( "TUACG" , "AATGC" , stri_reverse(substr(codon,1,2))),sep = "")
-      if ( codon_data[codon_data$codon == codon ,]$tRNA_WC_copies == 0 &
-           any( anticodon %in% antic_abondant ) ){
-        list_OExp_Wobble = append(list_OExp_Wobble,codon)
-      }
-    }
-  }
-  
-  code_table$Wobble_abond = F
-  if (length(list_OExp_Wobble) != 0){
-    code_table[list_OExp_Wobble,]$Wobble_abond = T
-  }
-  
-  # Identify codon decoded by any tRNA
-  list_Exp = c()
-  for ( amino_acid in unique(code$aa_name)){
-    codon_used = rownames(code[code$aa_name == amino_acid,])
-    antic_abondant = codon_data[codon_data$amino_acid  == amino_acid & codon_data$tRNA_WC_copies != 0,]$anticodon
-    for ( codon in codon_used ){
-      anticodon = paste(unlist(wobble_rule[substr(codon,3,3)]),
-                        chartr( "TUACG" , "AATGC" , stri_reverse(substr(codon,1,2))),sep = "")
-      if ( codon_data[codon_data$codon == codon ,]$tRNA_WC_copies == 0 &
-           any( anticodon %in% antic_abondant ) ){
-        list_Exp = append(list_Exp,codon)
-      } else if ( codon_data[codon_data$codon == codon ,]$tRNA_WC_copies != 0 ){
-        list_Exp = append(list_Exp,codon)
-      }
-    }
-  }
+  code_table$nb_tRNA_copies = tRNASE_copies_table[code_table$codon]
+  code_table[is.na(code_table$nb_tRNA_copies),]$nb_tRNA_copies = 0
   
   code_table$decoded = F
-  if (length(list_Exp) != 0){
-    code_table[list_Exp,]$decoded = T
-  }
+  code_table$POC1 = F
+  code_table$POC2 = F
   
+  for (aa in unique(code_table$aa_name)){
+    if (length(code_table[code_table$aa_name == aa & code_table$nb_tRNA_copies != 0,]$nb_tRNA_copies) != 0){
+      tRNA_present = code_table[code_table$aa_name == aa & code_table$nb_tRNA_copies != 0,]$nb_tRNA_copies
+      names(tRNA_present) = code_table[code_table$aa_name == aa & code_table$nb_tRNA_copies != 0,]$anticodon
+      
+      decoded_codon = unique(unlist(sapply(names(tRNA_present),function(x) paste(chartr( "TUACG" , "AATGC" , stri_reverse(substr(x,2,3))),unlist(wobble_rule[substr(x,1,1)]),sep=""))))
+      code_table[code_table$codon %in% decoded_codon,]$decoded = T
+      
+      if ( all(codon_data[codon_data$aa_name == aa ,]$decoded)){
+        if ( !aa %in% c("Ter","Met","Trp")){
+          if (length(tRNA_present) > 1 & any(tRNA_present != max(tRNA_present))){
+            abundant = names(tRNA_present[ tRNA_present == max(tRNA_present)])
+            code_table[code_table$anticodon %in% abundant,]$POC1 = T
+            decoded_codon = unique(unlist(sapply(abundant,function(x) paste(chartr( "TUACG" , "AATGC" , stri_reverse(substr(x,2,3))),unlist(wobble_rule[substr(x,1,1)]),sep=""))))
+            if (any(code_table$codon %in% decoded_codon & code_table$nb_tRNA_copies == 0)){
+              code_table[code_table$codon %in% decoded_codon & code_table$nb_tRNA_copies == 0,]$POC1 = T}
+          } else if (length(tRNA_present) == 1){
+            abundant = names(tRNA_present[ tRNA_present == max(tRNA_present)])
+            code_table[code_table$anticodon %in% abundant,]$POC2 = T
+          }
+        }
+      }
+    }}
+  print(table(code_table$decoded))
   
   code_table$nb_tRNA_copies = sapply(code_table$codon,function(codon) sum(tRNASE_copies_table[codon],na.rm = T))
-  code_table$nb_tRNA_copies_aa = sapply(code_table$aa_name,function(aa) sum(codon_data[codon_data$amino_acid == aa,]$tRNA_WC_copies,na.rm = T))
+  code_table$nb_tRNA_copies_aa = sapply(code_table$aa_name,function(aa) sum(code_table[code_table$aa_name == aa,]$nb_tRNA_copies,na.rm = T))
   code_table$RTF = code_table$nb_tRNA_copies / (code_table$nb_tRNA_copies_aa / code_table$nb_syn)
-  rownames(code_table) = code_table$anticodon
-  
-  ## POC1 : Codons decoded in Watson-Crick or Wobble of the most abundant tRNA(s).
-  nb_decoded_most_abundant = table(code_table[(code_table$WC_abond | code_table$Wobble_abond), ]$aa_name)
-  aa_POC1 = names(nb_decoded_most_abundant[nb_decoded_most_abundant != table(code_table$aa_name)[names(nb_decoded_most_abundant)]])
-  code_table$POC1 = (code_table$WC_abond | code_table$Wobble_abond) & code_table$aa_name %in% aa_POC1
-  
-  ## POC2 : Codons decoded in Watson-Crick of the unique tRNA available.
-  nb_trna_0 = table(code_table[code_table$nb_tRNA_copies != 0, ]$aa_name)
-  aa_POC2 = names(nb_trna_0)[nb_trna_0 == 1]
-  code_table$POC2 = code_table$WC_abond & code_table$aa_name %in% aa_POC2
-  
-  print(table(code_table$POC1 & code_table$POC2))
   
   write.table(code_table,paste(path,"/decoding_table.tab",sep=""),sep="\t",quote=F,row.names=F)
   bash_command <- paste("gzip -f ",path,"/decoding_table.tab",sep="")
   system(bash_command)
 }
-
-
-
-# unique(data_by_species[!data_by_species$decoded & data_by_species$aa_name != "Ter",]$species)
-# 
-# data_by_species_decoded = data_by_species[!data_by_species$species %in% data_by_species[!data_by_species$decoded & data_by_species$aa_name != "Ter",]$species,]
-# 
-# mean(table(data_by_species_decoded[data_by_species_decoded$POC1,]$species))
-# mean(table(data_by_species_decoded[data_by_species_decoded$POC2,]$species))
-# table(data_by_species_decoded[data_by_species_decoded$POC2,]$codon)
-# 
-# table(data_by_species_decoded$POC1 & data_by_species_decoded$POC2 & !data_by_species_decoded$aa_name=="Ter")
-
