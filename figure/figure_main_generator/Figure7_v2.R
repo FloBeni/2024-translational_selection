@@ -48,7 +48,7 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
-  # geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
+  geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=4,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -87,6 +87,7 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3.5,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=28,family="economica"),
@@ -128,7 +129,7 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pC = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
-  # geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
+  geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -165,6 +166,7 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),

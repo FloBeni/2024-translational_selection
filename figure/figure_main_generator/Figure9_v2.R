@@ -87,6 +87,7 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=T,pagels_obliged=F)
 
 pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -102,7 +103,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-   ylab(substitute(paste("S"^hx))) +  
+  ylab(substitute(paste("S"^hx))) +  
   xlab("GCi Variance")
 
 pC
@@ -122,6 +123,7 @@ dt_graph = dt_graph[!is.na(dt_graph$lifespan_days),]
 dt_graph = dt_graph[order(dt_graph$lifespan_days,decreasing = T),]
 
 pD =  ggplot(dt_graph,aes_string(y=ylabel , x=xlabel))  +
+  geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(size=4,pch=21,alpha=1,aes(fill=log10(lifespan_days))) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -156,6 +158,7 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=T,pagels_obliged=F)
 
 pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),
@@ -171,7 +174,7 @@ pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) +
-   ylab(substitute(paste("S"^hx))) +  
+  ylab(substitute(paste("S"^hx))) +  
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") 
 
@@ -193,6 +196,7 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 dt_graph = dt_graph[order(dt_graph$var_gci,decreasing = T),]
 
 pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
+  geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(size=4,pch=21,alpha=1,aes(fill=var_gci)) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=26,family="economica"),
     axis.title.y = element_text(color="black", size=26, family="economica"),

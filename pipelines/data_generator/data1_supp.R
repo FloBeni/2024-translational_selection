@@ -223,16 +223,29 @@ for (species in GTDrift_list_species$species){
         table_constrain[,paste("POC_codon",constrain,sep="")] = rowSums(data_conservation_sub[paste(list_codon,constrain,sep = "")],na.rm = T)
       }
       
-      Fpoc_expressed = round(tapply( POC_obs / POC_codons_obs , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5)
-      Fpoc_noexpressed = round( mean( (POC_obs / POC_codons_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T) , 5)
+      poc_exp_genes = (POC_obs / POC_codons_obs)[intervalle_FPKM == names(FPKM_bins)[length(FPKM_bins)]]
+      poc_noexp_genes = (POC_obs / POC_codons_obs)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )]
+      
+      Fpoc_expressed = round(mean(poc_exp_genes,na.rm = T),5)
+      Fpoc_noexpressed = round(mean(poc_noexp_genes,na.rm = T),5)
+      
+      dt_inter_err = data.frame()
+      for (i in 1:1000){
+        dt_inter_err = rbind(dt_inter_err,data.frame(
+          S = log( mean( sample(poc_exp_genes, replace = T),na.rm=T)/(1 - mean( sample(poc_exp_genes, replace = T),na.rm=T))) - log(mean( sample(poc_noexp_genes, replace = T),na.rm=T)/(1 - mean( sample(poc_noexp_genes, replace = T),na.rm=T)))
+        ))
+      }
+      
       
       dt_translational_selection = data.frame(
         nb_aa = length(list_aa),
         nb_genes_per_bins = mean(table(intervalle_FPKM)),
         nb_busco = nrow(table_constrain),
         S = log(Fpoc_expressed/(1-Fpoc_expressed)) - log(Fpoc_noexpressed/(1-Fpoc_noexpressed)),
+        S_int_025 = quantile(dt_inter_err$S,c(0.025)),
+        S_int_975 = quantile(dt_inter_err$S,c(0.975)),
         expressed_overused = 100 * (Fpoc_expressed - Fpoc_noexpressed) ,
-        expressed_overused_background = 100*((Fpoc_expressed - Fpoc_noexpressed) - (
+        expressed_overused_background = 100 * ((Fpoc_expressed - Fpoc_noexpressed) - (
           round(tapply( POC_obs_intronic / POC_codons_obs_intronic   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
             round( mean( (POC_obs_intronic / POC_codons_obs_intronic)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T),5)
         )),
@@ -245,6 +258,8 @@ for (species in GTDrift_list_species$species){
         nb_genes_per_bins = NA,
         nb_busco = NA,
         S = NA,
+        S_int_025 = NA,
+        S_int_975 = NA,
         expressed_overused = NA,
         expressed_overused_background = NA,
         constraint_overused = NA
