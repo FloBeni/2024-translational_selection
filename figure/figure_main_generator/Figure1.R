@@ -192,7 +192,7 @@ imgB = load.image(paste(path_pannel,"p1B.jpg",sep="") )
 imgC = load.image(paste(path_pannel,"p1C.jpg",sep="") )
 imgD = load.image(paste(path_pannel,"p1D.jpg",sep="") )
 clade_png<-readPNG(paste(path_require,"clade.png",sep=""))
-human<-readPNG(paste(path_require,"human.png",sep=""))
+human<-readPNG(paste(path_require,"human_f.png",sep=""))
 Caenorhabditis_elegans = readPNG(paste(path_require,"Caenorhabditis_elegans.png",sep=""))
 
 
@@ -271,7 +271,7 @@ lepidoptera<-readPNG(paste(path_require,"lepidoptera.png",sep=""))
   plot(imgC, axes=FALSE)
   xhuman=300
   yhuman=-60
-  rasterImage(human,xleft=0+xhuman, ybottom=450/1.9-yhuman, xright=190/1.9+xhuman, ytop=0-yhuman)
+  rasterImage(human,xleft=0+xhuman, ybottom=500/1.9-yhuman, xright=190/1.9+xhuman, ytop=0-yhuman)
   mtext("C", adj=0.1,side=2,at=0, line=1, font=2, cex=1.4,las=2)
   par(mar=c(0, 0, 0, 2.5))
   plot(imgD, axes=FALSE)
