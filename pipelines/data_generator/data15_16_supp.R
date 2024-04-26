@@ -4,18 +4,18 @@ library(stringi)
 
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
+code = code[code$aa_name != "Ter",]
 
-
-dt = data.frame(nb_copy=tapply(code$anticodon,code$aa_name,function(x) sum(tRNA_abundance[species,x])))
 
 
 tRNA_abundance = read.delim("/home/fbenitiere/2024-translational_selection/data/tRNA_abundance.tab")
 
-# species="Blattella germanica"
-# code$nb_copy = unlist(tRNA_abundance[species,code$anticodon])
-# code[code$anticodon == "AGA",]
-# min(code[code$anticodon != "AGA" & code$nb_copy!=0,]$nb_copy)
-# max(code[code$anticodon != "AGA" & code$nb_copy!=0,]$nb_copy)
+species="Blattella_germanica"
+dt = data.frame(nb_copy=tapply(code$anticodon,code$aa_name,function(x) sum(tRNA_abundance[species,x])))
+code$nb_copy = unlist(tRNA_abundance[species,code$anticodon])
+code[code$anticodon == "AGA",]
+min(code[code$anticodon != "AGA" & code$nb_copy!=0,]$nb_copy)
+max(code[code$anticodon != "AGA" & code$nb_copy!=0,]$nb_copy)
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
