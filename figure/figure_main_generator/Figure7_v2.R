@@ -65,7 +65,7 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  + scal
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) +
   ylab(substitute(paste("S"^hx))) +  
-  scale_x_log10(labels=label_log(digits = 2)) + xlab(expression(paste(italic("N"[e]))))+ annotation_logticks(sides="b") +
+  scale_x_log10(labels=label_log(digits = 2)) + xlab(expression(paste(italic("N"[e]^pi*''^mu)))) +  annotation_logticks(sides="b") +
   guides(fill = "none",
          shape = guide_legend(byrow = TRUE,override.aes = list(fill="black")))   +
   theme(legend.spacing.y = unit(-.1, 'cm'))   
