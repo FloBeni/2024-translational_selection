@@ -104,6 +104,7 @@ for (species in GTDrift_list_species$species){
   
   gc3 = (GC3_obs / ATGC3_obs)
   gci = (GCi_obs / ATGCi_obs)
+  gci_expressed_10percent = (gci)[codon_usage$median_fpkm >= quantile(codon_usage$median_fpkm , probs = 0.9)]
   model_lm = lm( gc3 ~  gci)
   
   spearman_method_gc3gci = cor.test( gc3, gci,method = "spearman",exact=F)
@@ -170,11 +171,12 @@ for (species in GTDrift_list_species$species){
     g_abond_ag = sum(substr(abond_AG,3,3) %in% c("G")) / length(abond_AG),
     c_duc_ic = sum(substr(DUC_IC,3,3) %in% c("C")) / length(DUC_IC),
     
-    gc3 = mean(GC3_obs / ATGC3_obs,na.rm=T),
-    var_gc3 = var(GC3_obs / ATGC3_obs,na.rm=T),
-    gci = mean(GCi_obs / ATGCi_obs,na.rm=T),
-    std_gci = stderror(GCi_obs / ATGCi_obs),
-    var_gci = var(GCi_obs / ATGCi_obs,na.rm=T)
+    gc3 = mean(gc3,na.rm=T),
+    var_gc3 = var(gc3,na.rm=T),
+    gci = mean(gci,na.rm=T),
+    std_gci = stderror(gci),
+    var_gci = var(gci,na.rm=T),
+    var_gci_exp = var(gci_expressed_10percent,na.rm=T)
     
   ) )
   
