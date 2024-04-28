@@ -42,7 +42,8 @@ pA = ggtree(arbrePhylotips) %>% flip(264, 375)
 pA <- pA %<+% node_metadata  + aes(color=color) + 
   scale_color_manual("Clade",values=Clade_color[unique(edge_clade)]) + theme(
     panel.background = element_rect(fill = "white", linetype = "dashed")
-  )  + theme(legend.position = "none")+ geom_tiplab(align=TRUE, linetype='dashed', linesize=.3,size=0)
+  )  + theme(legend.position = "none") 
+# + geom_tiplab(align=TRUE, linetype='dashed', linesize=.3,size=0)
 
 pA
  
@@ -91,10 +92,11 @@ b <- ggplot(tRNA_long[!tRNA_long$aa_name %in% c("Ter"),], aes(x=title, y=sp,colo
       legend.text =  element_text(size=20, family="economica"),
       strip.text = element_text(size=15, family="economica",face="bold"),
       axis.text.x =  element_text( size=5,vjust = 0.5, family="economica"),
+      axis.title.x =  element_text( size=7),
       axis.text.y =  element_text( size=3, family="economica",face="italic"),
       plot.title = element_text(hjust = 0.5,margin = margin(0,0,20,0))
     ) +
-  xlab(NULL) + ylab(NULL)+scale_color_manual("Decoded codons",values = set_color) + facet_wrap(~amino_acid,ncol=length(unique(tRNA_long$amino_acid)),scales="free_x")+ 
+  xlab("Anticodons") + ylab(NULL)+scale_color_manual("Decoded codons",values = set_color) + facet_wrap(~amino_acid,ncol=length(unique(tRNA_long$amino_acid)),scales="free_x")+ 
   guides(colour = guide_legend(override.aes = list(size=5)))
 b
 
