@@ -45,19 +45,20 @@ ylabel = "S_POCs"
 xlabel = "Ne"
 dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
 
-model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
+model_to_use = fitted_model(x=(dt_graph[,xlabel]),y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
 pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=4,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=26,family="economica"),
-    axis.title.y = element_text(color="black", size=26, family="economica"),
-    axis.text.y =  element_text(color="black", size=24, family="economica"),
-    axis.text.x =  element_text(color="black", size=24, family="economica"),
-    title =  element_text(color="black", size=25, family="economica"),
-    text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=20, family="economica",vjust = 1.5 , margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.45, face= "italic", size=20, family="economica"),
+    axis.title.x = element_text(color="black", size=26,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=26, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    text =  element_text(color="black", size=31, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=20, family="ubuntu condensed",vjust = 1.5 , margin = margin(t = 10)),
+    legend.title = element_text(color="black", size=23, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = 0.4, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
@@ -90,14 +91,15 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3.5,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=28,family="economica"),
-    axis.title.y = element_text(color="black", size=28, family="economica"),
-    axis.text.y =  element_text(color="black", size=26, family="economica"),
-    axis.text.x =  element_text(color="black", size=26, family="economica"),
-    title =  element_text(color="black", size=25, family="economica"),
-    text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.37, face= "italic", size=20, family="economica"),
+    axis.title.x = element_text(color="black", size=22,vjust=1,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=26, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    text =  element_text(color="black", size=31, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=20, family="ubuntu condensed",vjust = 1.5,margin = margin(t = 10)),
+    legend.title = element_text(color="black", size=23, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = 0.35, face= "italic", size=19, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
@@ -113,7 +115,7 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
 
 pB
 
-jpeg(paste(path_pannel,"p7B.jpg",sep=""), width = 9000/resolution, height = 6000/resolution,res=1000/resolution)
+jpeg(paste(path_pannel,"p7B.jpg",sep=""), width = 9000/resolution, height = 6000/resolution,res=1100/resolution)
 print(pB)
 dev.off()
 
@@ -131,14 +133,14 @@ model_to_use = fitted_model(x=log10(dt_graph[,xlabel]),y=dt_graph[,ylabel],label
 pC = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=26,family="economica"),
-    axis.title.y = element_text(color="black", size=26, family="economica"),
-    axis.text.y =  element_text(color="black", size=24, family="economica"),
-    axis.text.x =  element_text(color="black", size=24, family="economica"),
-    title =  element_text(color="black", size=20, family="economica"),
-    text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.65, face= "italic", size=20, family="economica"),
+    axis.title.x = element_text(color="black", size=26,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=25, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    text =  element_text(color="black", size=31, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=24, family="ubuntu condensed",vjust = 1.5,margin = margin(t = 10)),
+    plot.caption = element_text(hjust = .7, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
@@ -169,14 +171,14 @@ pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=26,family="economica"),
-    axis.title.y = element_text(color="black", size=26, family="economica"),
-    axis.text.y =  element_text(color="black", size=24, family="economica"),
-    axis.text.x =  element_text(color="black", size=24, family="economica"),
-    title =  element_text(color="black", size=20, family="economica"),
-    text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.6, face= "italic", size=20, family="economica"),
+    axis.title.x = element_text(color="black", size=26,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=25, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    text =  element_text(color="black", size=31, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=24, family="ubuntu condensed",vjust = 1.5,margin = margin(t = 10)),
+    plot.caption = element_text(hjust = 0.69, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
@@ -211,9 +213,9 @@ imgD = load.image(paste(path_pannel,"p7D.jpg",sep="") )
   plot(imgA, axes=FALSE)
   mtext("A",at=50,adj=-1, side=2, line=1, font=2, cex=2,las=2)
   
-  par(mar=c(0,0, 0, 0))
+  par(mar=c(1,0, 0, 0))
   plot(imgB, axes=FALSE)
-  mtext("B",at=50,adj=.5, side=2, line=1, font=2, cex=2,las=2)
+  mtext("B",at=110,adj=.5, side=2, line=1, font=2, cex=2,las=2)
 
   par(mar=c(0,0, 0, 7))
   plot(imgC, axes=FALSE)

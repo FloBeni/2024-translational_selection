@@ -212,7 +212,7 @@ for (species in GTDrift_list_species$species){
       
       ## Over-used of POC in constraint sites
       
-      if (GTDrift_list_species[species,]$clade_group %in% c("Mammalia","Aves","Other Tetrapods")){
+      if (GTDrift_list_species[species,]$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Teleostei")){
         data_conservation_sub = data_conservation_rmfirst1000bp[data_conservation_rmfirst1000bp$species == species & data_conservation_rmfirst1000bp$protein %in% codon_usage$protein_id,]
       } else {
         data_conservation_sub = data_conservation[data_conservation$species == species ,]
@@ -275,7 +275,6 @@ for (species in GTDrift_list_species$species){
   data1 = rbind(data1,dt_species)
 }
 write.table(data1,"data/data1_supp.tab",quote=F,row.names = F,sep="\t")
-
 
 data_codons = data_codons[data_codons$species %in% GTDrift_list_species[GTDrift_list_species$clade_group %in% c("Diptera","Lepidoptera"),]$species,]
 write.table(data_codons,"data/data_codons.tab",quote=F,row.names = F,sep="\t")

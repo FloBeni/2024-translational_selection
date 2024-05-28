@@ -9,22 +9,22 @@ dt_graph = dataX
 
 spearman_method_aa = cor.test( dt_graph$nb_copy_Caenorhabditis_elegans, dt_graph$nb_copy_Hydra_vulgaris,method="spearman",exact=F)
 
-pA = ggplot(dt_graph,aes(x=nb_copy_Caenorhabditis_elegans ,y=nb_copy_Hydra_vulgaris,label=aa_name_Caenorhabditis_elegans)) +
+pA = ggplot(dt_graph,aes(x=nb_copy_Hydra_vulgaris ,y=nb_copy_Caenorhabditis_elegans,label=aa_name_Caenorhabditis_elegans)) +
   # geom_smooth(formula = y ~ x, method="lm", size=1 , col=set_color[1],se=F,linetype='dashed') +
   geom_point(pch=21,size=4,fill=set_color[2]) +
-  geom_text(nudge_x = 1.7,size=5,family="economica") + theme_bw() +  theme(
-    axis.title.x = element_text(color="black", size=22,family="economica"),
-    axis.title.y = element_text(color="black", size=22, family="economica"),
-    axis.text.y =  element_text(color="black", size=22, family="economica"),
-    axis.text.x =  element_text(color="black", size=22, family="economica"),
-    title =  element_text(color="black", size=18, family="economica"),
-    legend.text =  element_text(color="black", size=16, family="economica"),
+  geom_text(nudge_x = 1.7,size=5,family="ubuntu condensed") + theme_bw() +  theme(
+    axis.title.x = element_text(color="black", size=22,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=22,hjust=1, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=22, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=22, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=16, family="ubuntu condensed"),
     strip.text = element_text(size=15),
-    plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   ) +  
-  ylab(expression(paste("tRNA gene copy number (",italic("Hydra vulgaris"),")"))) +
-  xlab(expression(paste("tRNA gene copy number (",italic("Caenorhabditis elegans"),")"))) +
+  xlab(expression(paste("tRNA gene copy number (",italic("Hydra vulgaris"),")"))) +
+  ylab(expression(paste("tRNA gene copy number (",italic("Caenorhabditis elegans"),")"))) +
   labs(
     caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
@@ -52,14 +52,14 @@ dt_graph = data15[data15$species2 %in% data1$species,]
 
 pB = ggplot(dt_graph,aes(y=rho,fill=clade_group,x=clade_group))  +
   geom_hline(size=1,linetype="dashed",col="red", yintercept = min(dt_graph[dt_graph$rho & dt_graph$pval < 0.05,]$rho) ) +
-  geom_text (label="p-value < 0.05", y=.4,x="Lepido Diptera",size=5,family="economica",col="red") + geom_boxplot(alpha=.1) + 
+  geom_text (label="p-value < 0.05", y=.4,x="Lepido Diptera",size=5,family="ubuntu condensed",col="red") + geom_boxplot(alpha=.1) + 
   geom_point(aes(fill=clade_group,pch=pval_aa_fpkm),size=3,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black",angle = 50, size=25,family="economica"),
-    axis.title.y = element_text(color="black", size=22, family="economica"),
-    axis.text.y =  element_text(color="black", size=20, family="economica"),
-    axis.text.x =  element_text(color="black",vjust=1,hjust=1, size=22,angle = 30, family="economica"),
-    title =  element_text(color="black", size=0, family="economica"),
-    legend.text =  element_text(color="black", size=20, family="economica")
+    axis.title.x = element_text(color="black",angle = 50, size=25,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=22, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=20, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black",vjust=1,hjust=1, size=22,angle = 30, family="ubuntu condensed"),
+    title =  element_text(color="black", size=0, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=20, family="ubuntu condensed")
   ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + scale_shape_manual(values=c(24,21)) + ylab("Spearmann rho")  + xlab("") + ylim(0,1)
 
 pB = ggMarginal(pB, type="histogram",fill=set_color[1]) 
