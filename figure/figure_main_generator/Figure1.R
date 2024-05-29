@@ -62,28 +62,26 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 
 model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
 
-
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   geom_abline(linetype="dashed") +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=28,family="economica"),
-    axis.title.y = element_text(color="black", size=28, family="economica"),
-    axis.text.y =  element_text(color="black", size=24, family="economica"),
-    axis.text.x =  element_text(color="black", size=24, family="economica"),
-    title =  element_text(color="black", size=20, family="economica"),
-    text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="economica"),
+    axis.title.x = element_text(color="black", size=28,vjust=0.5,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=28,vjust=1.5, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
+    title =  element_text(color="black", size=20, family="ubuntu condensed"),
+    text =  element_text(color="black", size=31, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=24, family="ubuntu condensed",vjust = 1.5,margin = margin(t = 10)),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )  + scale_fill_manual("Clades",values=Clade_color,labels=labels) +
   ylab("GC3") +
-  xlab("GCi")+
+  xlab("GCi") +
   labs(
     caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
-    # caption = expression(lambda),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
-  ) + theme(legend.position='none')
+  )+ theme(legend.position='none')
 pB
 
 
@@ -110,14 +108,14 @@ pC = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
   scale_shape_manual(values=c(24,22,21,23,25,20))+ xlab("log10( FPKM+1 )") + ylab("Frequency optimal codons") + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=30,family="economica"),
-    axis.title.y = element_text(color="black", size=30, family="economica"),
-    axis.text.y =  element_text(color="black", size=25, family="economica"),
-    axis.text.x =  element_text(color="black", size=25, family="economica"),
-    title =  element_text(color="black", size=18, family="economica"),
-    legend.text =  element_text(color="black", size=16, family="economica"),
+    axis.title.x = element_text(color="black",vjust=0.5, size=30,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=30,vjust=1.5, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=25, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=25, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=16, family="ubuntu condensed"),
     strip.text = element_text(size=15),
-    plot.caption = element_text(hjust = 0.65, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.7, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )  +labs(fill='Categories',color='Categories',shape='',linetype='')+ 
   labs(
@@ -156,14 +154,14 @@ pD = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
   scale_fill_manual(values=set_color) +
   scale_color_manual(values=set_color) +
   scale_shape_manual(values=c(24,22,21,23,25,20)) + xlab("log10( FPKM+1 )") + ylab("Frequency optimal codons") + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=30,family="economica"),
-    axis.title.y = element_text(color="black", size=0, family="economica"),
-    axis.text.y =  element_text(color="black", size=0, family="economica"),
-    axis.text.x =  element_text(color="black", size=25, family="economica"),
-    title =  element_text(color="black", size=18, family="economica"),
-    legend.text =  element_text(color="black", size=16, family="economica"),
+    axis.title.x = element_text(color="black",vjust=0.5, size=30,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=0, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=0, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=25, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=16, family="ubuntu condensed"),
     strip.text = element_text(size=15),
-    plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )+ labs(fill='Categories',color='Categories',shape='',linetype='') + 
   labs(
@@ -205,32 +203,35 @@ coleoptera<-readPNG(paste(path_require,"coleoptera.png",sep=""))
 lepidoptera<-readPNG(paste(path_require,"lepidoptera.png",sep=""))
 
 
+
 {
-  pdf(file= paste(path_figure,"Figure1.pdf",sep=""), width=6.5, height=5)
+  pdf(file= paste(path_figure,"Figure1.pdf",sep=""), width=7, height=5)
   
-  m=matrix(rep(NA,10*10), nrow=10)
+  m=matrix(rep(NA,10*100), nrow=10)
   
-  for(i in 1:10){
+  for(i in 1:100){
     m[,i]=rep(1)
   }
   
-  for(i in 5:10){
+  for(i in 50:100){
     m[,i]=c(rep(2,5),rep(3,5))
   }
   
   for(i in 6:10){
-    m[i,]=c(rep(1,4),rep(3,3),rep(4,3))
+    m[i,]=c(rep(1,42),rep(3,29),rep(4,29))
   }
-  layout(m)
   
-  par(mar=c(0, 1, 0, 1))
+  
+  layout(m)
+  m
+  par(mar=c(0, 1, 0, 4))
   plot(imgA, axes=FALSE)
-  mtext("A",at=49.4,adj=-1, side=2, line=1, font=2, cex=1.4,las=2)
+  mtext("A",at=100,adj=-1, side=2, line=1, font=2, cex=1.4,las=2)
   
   xclade=900
-  yclade=2000
-  rasterImage(clade_png,xleft=0+xclade, ybottom=850/0.85+yclade, xright=520/.85+xclade, ytop=yclade)
-  
+  yclade=1700
+  rasterImage(clade_png,xleft=0+xclade, ybottom=850/.75+yclade, xright=520/.75+xclade, ytop=yclade)
+
   xaxis=700
   yaxis=2800
   rasterImage(teleostei,xleft=0+xaxis, ybottom=0+yaxis, xright=1100/6+xaxis, ytop=-500/6+yaxis)

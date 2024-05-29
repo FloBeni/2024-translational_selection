@@ -12,15 +12,15 @@ spearman_method_aa = cor.test( dt_graph$tRNASE_copies, dt_graph$obs_codon,method
 pA = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon) * 100,y=tRNASE_copies,label=amino_acid)) +
   # geom_smooth(formula = y ~ x, method="lm", size=1 , col=set_color[1],se=F,linetype='dashed') +
   geom_point(pch=21,size=4,fill=set_color[2]) +
-  geom_text(nudge_x = .35,size=5,family="economica") + theme_bw() +  theme(
-    axis.title.x = element_text(color="black", size=26,family="economica"),
-    axis.title.y = element_text(color="black", size=25, family="economica"),
-    axis.text.y =  element_text(color="black", size=22, family="economica"),
-    axis.text.x =  element_text(color="black", size=22, family="economica"),
-    title =  element_text(color="black", size=18, family="economica"),
-    legend.text =  element_text(color="black", size=16, family="economica"),
+  geom_text(nudge_x = .35,size=5,family="ubuntu condensed") + theme_bw() +  theme(
+    axis.title.x = element_text(color="black",vjust=0, size=26,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=25, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=22, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=22, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=16, family="ubuntu condensed"),
     strip.text = element_text(size=15),
-    plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="economica"),
+    plot.caption = element_text(hjust = 0.55,vjust=-1, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   ) + xlab(paste("Amino-acid frequency (%)")) + ylab("tRNA gene copy number") + 
   labs(
@@ -46,14 +46,14 @@ dt_graph = data1
 
 pB = ggplot(dt_graph,aes(y=rho_aa_fpkm,fill=clade_group,x=clade_group))  +
   geom_hline(size=1,linetype="dashed",col="red", yintercept = min(dt_graph[dt_graph$rho_aa_fpkm & dt_graph$pval_aa_fpkm < 0.05,]$rho_aa_fpkm) ) +
-  geom_text (label="p-value < 0.05", y=.4,x="Lepido Diptera",size=5,family="economica",col="red") + geom_boxplot(alpha=.1) + 
+  geom_text (label="p-value < 0.05", y=.4,x="Lepido Diptera",size=5,family="ubuntu condensed",col="red") + geom_boxplot(alpha=.1) + 
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black",angle = 50, size=25,family="economica"),
-    axis.title.y = element_text(color="black", size=22, family="economica"),
-    axis.text.y =  element_text(color="black", size=20, family="economica"),
-    axis.text.x =  element_text(color="black",vjust=1,hjust=1, size=22,angle = 30, family="economica"),
-    title =  element_text(color="black", size=0, family="economica"),
-    legend.text =  element_text(color="black", size=20, family="economica")
+    axis.title.x = element_text(color="black",angle = 50, size=25,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=22, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=20, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black",vjust=1,hjust=1, size=18,angle = 30, family="ubuntu condensed"),
+    title =  element_text(color="black", size=0, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=20, family="ubuntu condensed")
   ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + ylab("Spearmann rho")  + xlab("") + ylim(0,1)
 
 pB = ggMarginal(pB, type="histogram",fill=set_color[1]) 
