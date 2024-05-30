@@ -81,30 +81,7 @@ gene_data = gene_data[gene_data$filter_treshold,]
 codon_usage = codon_usage[ codon_usage$gene_id %in% gene_data$gene_id ,]
 #####
 
-
-std <- function(x) sd(x)/sqrt(length(x))
-
-simulator_rate_rbinom <- function(vect_cds,true_rate,rep=100){
-  dg = data.frame()
-  for (i in c(1:rep)){
-    vect_length = sample(vect_cds , replace = T)
-    dg = rbind(dg,data.frame(
-      i,
-      mean = mean(rbinom(n=vect_length , size=vect_length , prob=true_rate) / vect_length)
-    ))
-  }
-  
-  da = data.frame(
-    mean = mean(dg$mean),
-    confint_low = quantile(dg$mean, c(0.025,0.975))[1],
-    confint_high = quantile(dg$mean, c(0.025,0.975))[2],
-    std = std(dg$mean)
-  )
-  return(da)
-}
-
-
-collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon){
+collect_subst_rate <- function(xaxis,intervalle_list,list_aa,list_codon){
   dt = data.frame(fpkm = tapply(xaxis, intervalle_list, median))
   for (region in c("codon","intron")){
     if(region == "codon"){
@@ -142,35 +119,23 @@ collect_subst_rate <- function(xaxis,intervalle_list,method_to_calculate,list_aa
       name_col = str_replace(paste("density",categorie,region,sep="_"),"->","_to_")
       
       dt[,paste("sum_cible",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  sum(x,na.rm=T))
-      dt[,paste("median_cible",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  median(x,na.rm=T))
       dt[,paste("sum_subst",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  sum(x,na.rm=T))
-      dt[,paste("median_subst_per_gene",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  median(x,na.rm=T))
-      dt[,paste("average_subst_per_gene",name_col,sep="_")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  mean(x,na.rm=T))
+      
+      dt[,name_col] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] / count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  mean(x,na.rm=T))
       
       
-      if (method_to_calculate == "concatenate"){
-        succes_count = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] , intervalle_list,function(x)  sum(x,na.rm=T))
-        trial_count = tapply(count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")], intervalle_list,function(x)  sum(x,na.rm=T))
-        dt[,name_col] = succes_count / trial_count
-        
-        dt[,paste("confint",c(1,2),"_",name_col,sep="")] = data.frame(t(sapply(c(1:length(succes_count)),function(x) prop.test(succes_count[x], n = trial_count[x])$conf.int )))
-        
-      } else if (method_to_calculate == "per_gene"){
-        dt[,name_col] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] / count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  mean(x,na.rm=T))
-        dt[,paste("allsites_",name_col,sep="")] = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] / rowSums(count_codon_trinucl[,paste(str_split(categorie,"->")[[1]],region,sep="_")]) , intervalle_list,function(x)  mean(x,na.rm=T))
-        dt[,paste("confint",c(1,2),"_",name_col,sep="")] = NA
+      dt_inter_err = data.frame()
+      for (i in 1:100){ # bootstrapping
+        avg_list = tapply( count_codon_trinucl[,paste(categorie,region,sep="_")] / count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list,function(x)  mean(sample(x,replace=T),na.rm=T))
+        dt_inter_err = rbind(dt_inter_err,data.frame(
+          average = avg_list,
+          intervalle = names(avg_list)
+        ))
       }
       
       
-      vect_site_per_intervalle = tapply( count_codon_trinucl[,paste(str_split(categorie,"->")[[1]][1],region,sep="_")] , intervalle_list, 
-                                         function(x) x[!is.na(x) & x != 0])
-      
-      simulation_tab = mapply( function(x,y) simulator_rate_rbinom( vect_cds = unlist(x) , true_rate = y , rep=1000), vect_site_per_intervalle, dt[,name_col])
-      
-      dt[,paste("simulation_",name_col,sep="")] = unlist(simulation_tab["mean",])
-      dt[,paste("std_",name_col,sep="")] = unlist(simulation_tab["std",])
-      dt[,paste("confint_low_",name_col,sep="")] = unlist(simulation_tab["confint_low",])
-      dt[,paste("confint_high_",name_col,sep="")] = unlist(simulation_tab["confint_high",])
+      dt[,paste("confint_low_",name_col,sep="")] = tapply(dt_inter_err$average,dt_inter_err$intervalle,function(x) quantile(x,c(0.025)))[rownames(dt)]
+      dt[,paste("confint_high_",name_col,sep="")] = tapply(dt_inter_err$average,dt_inter_err$intervalle,function(x) quantile(x,c(0.975))) [rownames(dt)]
     }
   }
   return(dt)
@@ -209,6 +174,7 @@ count_codon_trinucl = count_codon_trinucl[count_codon_trinucl$protein_id %in% co
 
 list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",sep="") , 
                        pattern=paste(count_file,"_cds",sep=""))
+
 substitution_codon = data.frame()
 for (file in list_file){
   data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""))
@@ -307,9 +273,6 @@ rownames(codon_usage) = codon_usage$gene_id
 count_codon_trinucl$median_fpkm =  codon_usage[count_codon_trinucl$gene_id,]$median_fpkm
 
 
-method_to_calculate = "per_gene"
-
-data11 = data.frame()
 species = "Drosophila_melanogaster"
 print(species)
 genome_assembly = GTDrift_list_species[species,]$assembly_accession
@@ -317,7 +280,6 @@ taxID = GTDrift_list_species[species,]$NCBI.taxid
 
 path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
 
-###### gu
 tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
 rownames(tRNA_optimal) = tRNA_optimal$codon
 tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
@@ -339,23 +301,6 @@ xaxis = count_codon_trinucl$median_fpkm
 quantile = unique(quantile(xaxis, probs = seq(0, 1,proportion),na.rm=T))
 intervalle_list = cut(xaxis, quantile,include.lowest = T,include.higher=T)
 
-dt = collect_subst_rate(xaxis,intervalle_list,method_to_calculate,list_aa,list_codon)
-
-cible = colnames(dt)[grepl("cible",colnames(dt))]
-
-dt$group = "POCs"
-dt$method_to_calculate = method_to_calculate
-data11 = rbind(data11,dt)
-
+data11 = collect_subst_rate(xaxis,intervalle_list,list_aa,list_codon)
 
 write.table(data11,"data/data11_supp.tab",quote=F,row.names = F,sep="\t")
-
-
-sum(data11$sum_subst_density_nonoptimal_to_optimal_codon)
-sum(data11$sum_subst_density_optimal_to_optimal_codon)
-sum(data11$sum_subst_density_optimal_to_nonoptimal_codon)
-sum(data11$sum_subst_density_nonoptimal_to_nonoptimal_codon)
-sum(data11$sum_subst_density_nonoptimal_to_optimal_intron)
-sum(data11$sum_subst_density_optimal_to_nonoptimal_intron)
-
-table(substitution_codon$aa_ancestral == substitution_codon$aa_subst, substitution_codon$aa_ancestral %in% list_aa)

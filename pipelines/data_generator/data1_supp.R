@@ -233,8 +233,11 @@ for (species in GTDrift_list_species$species){
       
       dt_inter_err = data.frame()
       for (i in 1:1000){
+        boot_poc_exp_genes =  sample(poc_exp_genes, replace = T)
+        boot_poc_noexp_genes =  sample(poc_noexp_genes, replace = T)
+        
         dt_inter_err = rbind(dt_inter_err,data.frame(
-          S = log( mean( sample(poc_exp_genes, replace = T),na.rm=T)/(1 - mean( sample(poc_exp_genes, replace = T),na.rm=T))) - log(mean( sample(poc_noexp_genes, replace = T),na.rm=T)/(1 - mean( sample(poc_noexp_genes, replace = T),na.rm=T)))
+          S = log( mean( sample(boot_poc_exp_genes, replace = T),na.rm=T)/(1 - mean( sample(boot_poc_exp_genes, replace = T),na.rm=T))) - log(mean( sample(boot_poc_noexp_genes, replace = T),na.rm=T)/(1 - mean( sample(boot_poc_noexp_genes, replace = T),na.rm=T)))
         ))
       }
       

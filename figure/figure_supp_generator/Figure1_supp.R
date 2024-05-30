@@ -2,7 +2,7 @@
 source("figure/figure_supp_generator/library_path.R")
 
 
-# Supplementary Pannel 1 A
+# Pannel A
 
 data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
@@ -16,21 +16,23 @@ dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_g
 
 dt_graph[,c(ylabel,xlabel)] = sqrt(dt_graph[,c(ylabel,xlabel)])
 
-model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
+model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree = arbrePhylo,display_other=F,pagels_obliged=T)
 
 pA = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=26,family="economica"),
-    axis.title.y = element_text(color="black", size=26, family="economica"),
-    axis.text.y =  element_text(color="black", size=20, family="economica"),
-    axis.text.x =  element_text(color="black", size=20, family="economica"),
-    title =  element_text(color="black", size=20, family="economica"),
-    text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 5)),
-    legend.title =  element_text(color="black", size=25, family="economica"),
-    plot.caption = element_text(hjust = 0.370, face= "italic", size=20, family="economica"),
-    plot.caption.position =  "plot"
+    axis.title.x = element_text(color="black",vjust=-1, size=26,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    text =  element_text(color="black", size=31, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = 0.370,vjust=-1, face= "italic", size=20, family="ubuntu condensed"),
+    plot.caption.position =  "plot",
+    legend.text =  element_text(color="black", size=20, family="ubuntu condensed",vjust = 1.5,margin = margin(l = .4,unit="cm",t=.2)),
+    legend.title = element_text(color="black", size=23, family="ubuntu condensed",margin = margin(l = 0,unit="cm",t=1, b=.5)),
+    legend.box.spacing =  unit(1, 'cm'),
+    legend.margin =  margin(l = 0,unit="cm",t=.3)
   )  + scale_fill_manual("Clades",values=Clade_color) +
   ylab("GC3 standard deviation") +
   xlab("GCi standard deviation") +
@@ -47,7 +49,7 @@ print(pA)
 dev.off()
 
 
-# Supplementary Pannel 1 B
+# Pannel B
 
 ylabel = "rho_gc3_gci"
 xlabel = "var_gci"
@@ -59,15 +61,18 @@ model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_gra
 pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="species")) +
   # geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=26,family="economica"),
-    axis.title.y = element_text(color="black", size=26, family="economica"),
-    axis.text.y =  element_text(color="black", size=20, family="economica"),
-    axis.text.x =  element_text(color="black", size=20, family="economica"),
-    title =  element_text(color="black", size=20, family="economica"),
-    text =  element_text(color="black", size=31, family="economica"),
-    legend.text =  element_text(color="black", size=24, family="economica",vjust = 1.5,margin = margin(t = 7)),
-    plot.caption = element_text(hjust = 0.6, face= "italic", size=20, family="economica"),
-    plot.caption.position =  "plot"
+    axis.title.x = element_text(color="black",vjust=-1, size=26,family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
+    axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
+    axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
+    title =  element_text(color="black", size=18, family="ubuntu condensed"),
+    text =  element_text(color="black", size=31, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = .65,vjust=-1, face= "italic", size=20, family="ubuntu condensed"),
+    plot.caption.position =  "plot",
+    legend.text =  element_text(color="black", size=20, family="ubuntu condensed",vjust = 1.5,margin = margin(l = .4,unit="cm",t=.2)),
+    legend.title = element_text(color="black", size=23, family="ubuntu condensed",margin = margin(l = 0,unit="cm",t=1, b=.5)),
+    legend.box.spacing =  unit(1, 'cm'),
+    legend.margin =  margin(l = 0,unit="cm",t=.3)
   ) + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Spearmann rho GC3 vs GCi") +
   xlab("GCi standard deviation")  +
