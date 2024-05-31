@@ -1,7 +1,7 @@
 # Generate Figure 3
 source("figure/figure_main_generator/library_path.R")
 
-# Pannel 3 B
+# Pannel B
 
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon

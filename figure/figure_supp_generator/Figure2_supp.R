@@ -1,6 +1,8 @@
 # Generate Supplementary Figure 2
 source("figure/figure_supp_generator/library_path.R")
 
+resolution = 3
+
 tRNA <- read.table("data/tRNA_abundance.tab")
 rownames(tRNA) = str_replace_all(rownames(tRNA) , "_"," ")
 newick <- readLines('data/GTDrift_metazoa_phylogenetic_tree.nwk')
@@ -126,7 +128,7 @@ h
 pB = b %>% insert_left(pA, width=0.7) %>% insert_right(h, width=0.4 )
 pB
 
-jpeg(paste(path_pannel,"p2A_supp.jpg",sep=""), width = 2000/.2,  1200/.2,res=100/.2)
+jpeg(paste(path_pannel,"p2A_supp.jpg",sep=""), width = 2000/.2/resolution,  1200/.2/resolution,res=100/.2/resolution)
 print(pB)
 dev.off()
 

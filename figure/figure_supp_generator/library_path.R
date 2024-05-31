@@ -120,7 +120,7 @@ fitted_model <- function(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$
   dt_fit = dt_fit[dt_fit$aic == min(dt_fit$aic),]
   
   model = paste(dt_fit$model,sep="")
-  R2 = paste(round(dt_fit$r.squared, 2),sep="")
+  R2 = paste(round(dt_fit$r.squared, 3),sep="")
   if (dt_fit$p_val_slope < 1e-16){pvalue = "< 1e-16"} else {
     pvalue = paste("= ",formatC(dt_fit$p_val_slope, format = "e", digits = 0),sep="")
   }

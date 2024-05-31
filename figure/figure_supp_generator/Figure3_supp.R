@@ -1,6 +1,6 @@
 # Generate Supplementary Figure 3
 source("figure/figure_supp_generator/library_path.R")
-
+resolution = 2
 
 # Pannel A
 
@@ -32,7 +32,7 @@ pA = ggplot(dt_graph,aes(x=nb_copy_Hydra_vulgaris ,y=nb_copy_Caenorhabditis_eleg
   ) 
 pA
 
-jpeg(paste(path_pannel,"p3A_supp.jpg",sep=""), width = 4000/1, height = 4000/1,res=700/1)
+jpeg(paste(path_pannel,"p3A_supp.jpg",sep=""), width = 4000/resolution, height = 4000/resolution,res=700/resolution)
 print(pA)
 dev.off()
 
@@ -47,7 +47,7 @@ rownames(data1) = data1$species
 data1 = data1[ data1$nb_genes_filtered >= 5000 ,]
 data15$pval_aa_fpkm = data1[data15$species2,]$pval_aa_fpkm < 0.05
 
-dt_graph = data15[data15$species2 %in% data1$species,]
+dt_graph = data15[data15$species2 %in% data1$species& data15$species2 != "Hydra_vulgaris" ,]
 
 pB = ggplot(dt_graph,aes(y=rho,fill=clade_group,x=clade_group))  +
   geom_hline(size=1,linetype="dashed",col="red", yintercept = min(dt_graph[dt_graph$rho & dt_graph$pval < 0.05,]$rho) ) +
@@ -64,7 +64,7 @@ pB = ggplot(dt_graph,aes(y=rho,fill=clade_group,x=clade_group))  +
 pB = ggMarginal(pB, type="histogram",fill=set_color[1]) 
 pB
 
-jpeg(paste(path_pannel,"p3B_supp.jpg",sep=""), width = 4000/1, height = 2500/1,res=400/1)
+jpeg(paste(path_pannel,"p3B_supp.jpg",sep=""), width = 4000/resolution, height = 2500/resolution,res=400/resolution)
 print(pB)
 dev.off()
 
@@ -86,11 +86,11 @@ imgB = load.image(paste(path_pannel,"p3B_supp.jpg",sep="") )
   
   par(mar=c(0, 2, 2, 1))
   plot(imgA, axes=FALSE)
-  mtext("A", adj=0, side=2,at=-200, line=1, font=2, cex=2.2,las=2)
+  mtext("A", adj=0, side=2,at=-200/2, line=1, font=2, cex=2.2,las=2)
   
   par(mar=c(0, 0, 0, 0))
   plot(imgB, axes=FALSE)
-  mtext("B",adj=-1, side=2,at=150, line=1, font=2, cex=2.2,las=2)
+  mtext("B",adj=-1, side=2,at=150/2, line=1, font=2, cex=2.2,las=2)
   dev.off()
 }
 

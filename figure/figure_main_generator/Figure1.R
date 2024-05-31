@@ -1,7 +1,7 @@
 # Generate Figure 1
 source("figure/figure_main_generator/library_path.R")
 
-# Pannel 1 A
+# Pannel A
 
 arbrePhylotips = arbrePhylo
 arbrePhylotips$tip.label <- str_replace_all(arbrePhylotips$tip.label,"_"," ")
@@ -45,7 +45,7 @@ print(pA)
 dev.off()
 
 
-# Pannel 1 B
+# Pannel B
 
 data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
@@ -86,12 +86,12 @@ pB
 
 
 
-jpeg(paste(path_pannel,"p1B.jpg",sep=""), width = 4000/1, height = 3500/1,res=600/1)
+jpeg(paste(path_pannel,"p1B.jpg",sep=""), width = 4000/3, height = 3500/3,res=600/3)
 print(pB)
 dev.off()
 
 
-# Pannel 1 C
+# Pannel C
 
 data2 = read.delim("data/data2_supp.tab")
 dt_graph = data2[data2$species == "Homo_sapiens" ,]
@@ -136,7 +136,7 @@ print(pC)
 dev.off()
 
 
-# Pannel 1 D
+# Pannel D
 
 dt_graph = data2[data2$species == "Caenorhabditis_elegans" ,]
 spearman_method_aa = cor.test( dt_graph$GCi, dt_graph$GC3,method="spearman",exact=F)

@@ -1,8 +1,8 @@
 # Generate Figure 4
 source("figure/figure_main_generator/library_path.R")
 
-
-# Pannel 4 A
+resolution=3
+# Pannel A
 
 data5 = read.delim("data/data5_supp.tab")
 data5$gene_set = str_replace_all(data5$gene_set,"all,","genes,")
@@ -43,12 +43,12 @@ pA = ggplot(dt_graph ,
   ggtitle(paste(unique(dt_graph$gene_set)," genes",sep="")) + annotation_logticks(sides = "b")+   guides(fill="none",color="none",linetype="none",shape="none")
 pA
 
-jpeg(paste(path_pannel,"p4A.jpg",sep=""),  width = 8500/2,  5400/2,res=1000/1.8)
+jpeg(paste(path_pannel,"p4A.jpg",sep=""),  width = 8500/2/resolution,  5400/2/resolution,res=1000/1.8/resolution)
 print(pA)
 dev.off()
 
 
-# Pannel 4 B
+# Pannel B
 
 dt_graph = data5[ data5$species == "Caenorhabditis_elegans" & data5$set != "POCs",]
 
@@ -93,12 +93,12 @@ pB = ggplot(dt_graph ,
 #           aes(x=fpkm ,y=100*Fop_estimate,fill="simulation",col="simulation"),size=2) 
 pB
 
-jpeg(paste(path_pannel,"p4B.jpg",sep=""),  width = 11000/2,  5500/2,res=1000/1.8)
+jpeg(paste(path_pannel,"p4B.jpg",sep=""),  width = 11000/2/resolution,  5500/2/resolution,res=1000/1.8/resolution)
 print(pB)
 dev.off()
 
 
-# Pannel 4 C
+# Pannel C
 
 dt_graph = data1
 ylabel = "expressed_overused_background_POC2"
@@ -131,12 +131,12 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spe
 # + theme(legend.position='none')
 pC
 
-jpeg(paste(path_pannel,"p4C.jpg",sep=""),width = 5200/2, height = 4000/2,res=600/2)
+jpeg(paste(path_pannel,"p4C.jpg",sep=""),width = 5200/2/resolution, height = 4000/2/resolution,res=600/2/resolution)
 print(pC)
 dev.off()
 
 
-# Pannel 4 D
+# Pannel D
 dt_graph = data.frame(
   species = c(data1$species,data1$species),
   clade_group = c(data1$clade_group,data1$clade_group),
@@ -164,7 +164,7 @@ pD = ggplot(dt_graph,aes(y=value,x=category,label=species,fill=clade_group))  +
 pD
 
 # Difference in proportion of POC between\nthe top 5% and bottom 50% expressed (%)
-jpeg(paste(path_pannel,"p4D.jpg",sep=""), width = 5500/1, height = 3000/1,res=460/1)
+jpeg(paste(path_pannel,"p4D.jpg",sep=""), width = 5500/1/resolution, height = 3000/1/resolution,res=460/1/resolution)
 print(pD)
 dev.off()
 
@@ -199,22 +199,22 @@ Caenorhabditis_elegans = readPNG(paste(path_require,"Caenorhabditis_elegans.png"
   m
   par(mar=c(1, 1, 2, 0))
   plot(imgA, axes=FALSE)
-  mtext("A",at=50,adj=-0.2, side=2, line=1, font=2, cex=1.7,las=2)
-  xhuman = 470
-  yhuman = -350
-  rasterImage(human,xleft=0+xhuman, ybottom=450/.9-yhuman, xright=190/.9+xhuman, ytop=0-yhuman)
+  mtext("A",at=0,adj=-0.2, side=2, line=1, font=2, cex=1.7,las=2)
+  xhuman = 470/resolution
+  yhuman = -350/resolution
+  rasterImage(human,xleft=0+xhuman, ybottom=450/.9/resolution-yhuman, xright=190/.9/resolution+xhuman, ytop=0-yhuman)
   par(mar=c(0, 0, 1, 0))
   plot(imgB, axes=FALSE)
-  mtext("B",at=0,adj=0.5, side=2, line=1, font=2, cex=1.7,las=2)
-  xcel=500
-  ycel=-350
-  rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/1.5-ycel, xright=1000/1.5+xcel, ytop=0-ycel)
+  mtext("B",at=0,adj=0.5/resolution, side=2, line=1, font=2, cex=1.7,las=2)
+  xcel=500/resolution
+  ycel=-350/resolution
+  rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/1.5/resolution-ycel, xright=1000/1.5/resolution+xcel, ytop=0-ycel)
   par(mar=c(0,0, 1, 0))
   plot(imgC, axes=FALSE)
-  mtext("C",at=-0,adj=-1, side=2, line=1, font=2, cex=1.7,las=2)
+  mtext("C",at=0,adj=-2.5/resolution, side=2, line=1, font=2, cex=1.7,las=2)
   par(mar=c(0,1, 1, 0))
   plot(imgD, axes=FALSE)
-  mtext("D",at=100,adj=0, side=2, line=1, font=2, cex=1.7,las=2)
+  mtext("D",at=0,adj=0, side=2, line=1, font=2, cex=1.7,las=2)
   dev.off()
 }
 

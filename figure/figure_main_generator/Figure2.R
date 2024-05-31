@@ -2,7 +2,7 @@
 source("figure/figure_main_generator/library_path.R")
 
 
-# Pannel 2 A
+# Pannel A
 
 data3 = read.delim("data/data3_supp.tab")
 dt_graph = data3[data3$species == "Caenorhabditis_elegans", ]
@@ -30,12 +30,12 @@ pA = ggplot(dt_graph,aes(x= obs_codon / sum(obs_codon) * 100,y=tRNASE_copies,lab
   ) 
 pA
 
-jpeg(paste(path_pannel,"p2A.jpg",sep=""), width = 4000/1, height = 4000/1,res=700/1)
+jpeg(paste(path_pannel,"p2A.jpg",sep=""), width = 4000/2, height = 4000/2,res=700/2)
 print(pA)
 dev.off()
 
 
-# Pannel 2 B
+# Pannel B
 
 data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
@@ -59,7 +59,7 @@ pB = ggplot(dt_graph,aes(y=rho_aa_fpkm,fill=clade_group,x=clade_group))  +
 pB = ggMarginal(pB, type="histogram",fill=set_color[1]) 
 pB
 
-jpeg(paste(path_pannel,"p2B.jpg",sep=""), width = 4000/1, height = 2500/1,res=400/1)
+jpeg(paste(path_pannel,"p2B.jpg",sep=""), width = 4000/2, height = 2500/2,res=400/2)
 print(pB)
 dev.off()
 
@@ -82,14 +82,14 @@ Caenorhabditis_elegans = readPNG(paste(path_require,"Caenorhabditis_elegans.png"
   
   par(mar=c(0, 2, 2, 1))
   plot(imgA, axes=FALSE)
-  mtext("A", adj=0, side=2,at=-200, line=1, font=2, cex=2.2,las=2)
-  xcel=630
+  mtext("A", adj=0, side=2,at=-200/2, line=1, font=2, cex=2.2,las=2)
+  xcel=630/2
   ycel=-140
-  rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/1.5-ycel, xright=1000/1.4+xcel, ytop=0-ycel)
+  rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=350/1.5/2-ycel, xright=1000/1.4/2+xcel, ytop=0-ycel)
   
   par(mar=c(0, 0, 0, 0))
   plot(imgB, axes=FALSE)
-  mtext("B",adj=-1, side=2,at=150, line=1, font=2, cex=2.2,las=2)
+  mtext("B",adj=-1, side=2,at=150/2, line=1, font=2, cex=2.2,las=2)
   dev.off()
 }
 
