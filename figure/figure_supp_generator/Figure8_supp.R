@@ -90,11 +90,11 @@ imgB = load.image(paste(path_pannel,"p8A_supp.jpg",sep="") )
   
   par(mar=c(0, 0, 0, 0))
   plot(imgA, axes=FALSE)
-  mtext("A",at=60,adj=-6, side=2, line=1, font=2, cex=1.4,las=2)
+  mtext("A",at=60,adj=-4, side=2, line=1, font=2, cex=1.7,las=2)
   
   par(mar=c(0, 0, 0.2, 0))
   plot(imgB, axes=FALSE)
   par(mar=c(0, 1, 1, 0))
-  mtext("B",at=30,adj=-1, side=2, line=1, font=2, cex=1.4,las=2)
+  mtext("B",at=30,adj=-.5, side=2, line=1, font=2, cex=1.7,las=2)
   dev.off()
 }

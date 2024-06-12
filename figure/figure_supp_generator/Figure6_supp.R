@@ -10,7 +10,7 @@ data5[data5$categorie == "POC-matching triplets (POCMT)",]$categorie = "control"
 data5[data5$categorie == "Putative optimal codons (POC)",]$categorie = ""
 
 # dt_graph = data5[ data5$species "Musca_domestica" & data5$set != "POCs",]
-dt_graph = data5[  data5$set != "POCs",]
+dt_graph = data5[  data5$set != "POCs" & data5$species %in%  c( "Caenorhabditis_elegans" , "Drosophila_melanogaster" , "Homo_sapiens" , "Musca_domestica" ,"Anopheles_gambiae","Pieris_rapae"),]
 dt_graph$species = paste(str_replace_all(dt_graph$species,"_"," "),sep="")
 
 

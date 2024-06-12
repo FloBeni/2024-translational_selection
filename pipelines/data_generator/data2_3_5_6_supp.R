@@ -11,7 +11,8 @@ GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 
-species_list = c( "Caenorhabditis_elegans" , "Drosophila_melanogaster" , "Homo_sapiens" , "Musca_domestica" ,"Anopheles_gambiae","Pieris_rapae" )
+species_list = c( "Caenorhabditis_elegans" , "Drosophila_melanogaster" , "Homo_sapiens" , "Musca_domestica" ,"Anopheles_gambiae","Pieris_rapae",
+                  "Bactrocera_oleae","Ceratitis_capitata","Bombus_terrestris","Ignelater_luminosus" )
 
 data2 = data.frame()
 data3 = data.frame()

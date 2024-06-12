@@ -119,3 +119,83 @@ Pieris_rapae	Ala	Alanine	30	8775330.41005548
 Pieris_rapae	Asp	Aspartic Acid	20	6069380.4307327
 Pieris_rapae	Gly	Glycine	25	7855552.44634338
 Pieris_rapae	Glu	Glutamic Acid	25	6932567.67074961
+Bactrocera_oleae	Phe	Phenylalanine	10	2195996.34161576
+Bactrocera_oleae	Ser	Serine	21	3832307.3032382
+Bactrocera_oleae	Tyr	Tyrosine	20	1802199.61723556
+Bactrocera_oleae	Cys	Cysteine	7	943167.137762651
+Bactrocera_oleae	Leu	Leucine	30	4918084.99059691
+Bactrocera_oleae	Trp	Tryptophan	8	531600.775486101
+Bactrocera_oleae	Pro	Proline	17	2577084.42531705
+Bactrocera_oleae	His	Histidine	11	1304200.91331772
+Bactrocera_oleae	Arg	Arginine	37	3282501.56675393
+Bactrocera_oleae	Gln	Glutamine	19	2403296.43649987
+Bactrocera_oleae	Ile	Isoleucine	20	3388520.06703772
+Bactrocera_oleae	Thr	Threonine	23	3210780.95790991
+Bactrocera_oleae	Asn	Asparagine	15	2848389.93819111
+Bactrocera_oleae	Lys	Lysine	25	4464030.40792856
+Bactrocera_oleae	Met	Methionine	16	1359160.9908159
+Bactrocera_oleae	Val	Valine	23	3765034.97498802
+Bactrocera_oleae	Ala	Alanine	34	4264196.93786978
+Bactrocera_oleae	Asp	Aspartic Acid	21	3037434.17480616
+Bactrocera_oleae	Gly	Glycine	30	3635957.83565718
+Bactrocera_oleae	Glu	Glutamic Acid	24	3717864.55253472
+Ceratitis_capitata	Phe	Phenylalanine	11	3457056.43547249
+Ceratitis_capitata	Ser	Serine	23	6175723.77755537
+Ceratitis_capitata	Tyr	Tyrosine	15	2801288.66820348
+Ceratitis_capitata	Cys	Cysteine	8	1499257.5358546
+Ceratitis_capitata	Leu	Leucine	29	7649468.32338521
+Ceratitis_capitata	Trp	Tryptophan	9	853046.606132014
+Ceratitis_capitata	Pro	Proline	20	4103915.00500973
+Ceratitis_capitata	His	Histidine	13	2019445.46406724
+Ceratitis_capitata	Arg	Arginine	34	4787412.64290425
+Ceratitis_capitata	Gln	Glutamine	17	3805285.93799368
+Ceratitis_capitata	Ile	Isoleucine	17	5201655.98184404
+Ceratitis_capitata	Thr	Threonine	21	5063343.20950585
+Ceratitis_capitata	Asn	Asparagine	13	4452766.75016544
+Ceratitis_capitata	Lys	Lysine	26	6535396.2383893
+Ceratitis_capitata	Met	Methionine	18	2114426.59083825
+Ceratitis_capitata	Val	Valine	23	5802498.41961594
+Ceratitis_capitata	Ala	Alanine	30	6782683.14399476
+Ceratitis_capitata	Asp	Aspartic Acid	22	4709399.78891584
+Ceratitis_capitata	Gly	Glycine	27	5661764.04406913
+Ceratitis_capitata	Glu	Glutamic Acid	28	5789801.33340048
+Bombus_terrestris	Phe	Phenylalanine	5	6053628.97678138
+Bombus_terrestris	Ser	Serine	14	11914036.4170787
+Bombus_terrestris	Tyr	Tyrosine	6	5211860.36212768
+Bombus_terrestris	Cys	Cysteine	4	2915660.65587059
+Bombus_terrestris	Leu	Leucine	13	14723705.0934784
+Bombus_terrestris	Trp	Tryptophan	4	1788890.87836415
+Bombus_terrestris	Pro	Proline	11	7778908.32348771
+Bombus_terrestris	His	Histidine	6	3677078.17279305
+Bombus_terrestris	Arg	Arginine	14	8573627.00973487
+Bombus_terrestris	Gln	Glutamine	12	6720058.60887089
+Bombus_terrestris	Ile	Isoleucine	8	9993433.49731753
+Bombus_terrestris	Thr	Threonine	10	9695914.52958368
+Bombus_terrestris	Asn	Asparagine	6	8189267.5194249
+Bombus_terrestris	Lys	Lysine	10	11688647.8876146
+Bombus_terrestris	Met	Methionine	10	3747748.67869012
+Bombus_terrestris	Val	Valine	12	10324537.3707933
+Bombus_terrestris	Ala	Alanine	16	10444374.2458998
+Bombus_terrestris	Asp	Aspartic Acid	8	9010712.10755413
+Bombus_terrestris	Gly	Glycine	12	9601723.35268899
+Bombus_terrestris	Glu	Glutamic Acid	10	11626451.4941135
+Ignelater_luminosus	Phe	Phenylalanine	13	5810805.16606293
+Ignelater_luminosus	Ser	Serine	48	10144783.399645
+Ignelater_luminosus	Tyr	Tyrosine	32	4860402.63408341
+Ignelater_luminosus	Cys	Cysteine	13	2768104.42680865
+Ignelater_luminosus	Leu	Leucine	47	12815127.1743979
+Ignelater_luminosus	Trp	Tryptophan	16	1511286.17217098
+Ignelater_luminosus	Pro	Proline	46	7478158.40400355
+Ignelater_luminosus	His	Histidine	32	3326247.49929461
+Ignelater_luminosus	Arg	Arginine	48	7756066.65466739
+Ignelater_luminosus	Gln	Glutamine	35	6055475.96853933
+Ignelater_luminosus	Ile	Isoleucine	27	9108611.43039478
+Ignelater_luminosus	Thr	Threonine	40	8315120.93631194
+Ignelater_luminosus	Asn	Asparagine	24	7251548.42415016
+Ignelater_luminosus	Lys	Lysine	35	11695955.8339142
+Ignelater_luminosus	Met	Methionine	25	3301931.98268573
+Ignelater_luminosus	Val	Valine	49	9680928.26106268
+Ignelater_luminosus	Ala	Alanine	46	10028907.351498
+Ignelater_luminosus	Asp	Aspartic Acid	31	8166676.07345125
+Ignelater_luminosus	Gly	Glycine	73	9582451.63846427
+Ignelater_luminosus	Glu	Glutamic Acid	30	10468215.3616533
