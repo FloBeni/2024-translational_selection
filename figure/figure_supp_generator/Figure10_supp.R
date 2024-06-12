@@ -37,7 +37,7 @@ pA = ggplot(dt_graph ,
          shape = guide_legend(order = 2),
   ) + scale_x_log10(
     breaks=c(0.01,0.1,1,10,100,1000,10000,50000),
-    labels=c(0.01,0.1,1,10,100,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.8*100) +
+    labels=c(0.01,0.1,1,10,100,1000,10000,50000),limits=c(0.005,1000))+ ylim(0.2*100,0.65*100) +
   annotation_logticks(sides = "b")+  
   guides(fill="none",linetype="none",shape="none") +
   facet_wrap(~species)
