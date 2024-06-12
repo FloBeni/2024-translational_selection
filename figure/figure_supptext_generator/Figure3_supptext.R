@@ -1,4 +1,4 @@
-# Generate Supplementary Texts Figure 5
+# Generate Supplementary Texts Figure 3
 source("figure/figure_supptext_generator/library_path.R")
 resolution = 3
 
@@ -33,7 +33,7 @@ pA
 
 
 
-jpeg(paste(path_pannel,"p5A_supptext.jpg",sep=""),  width = 6200/2/resolution,  8000/2/resolution,res=900/resolution)
+jpeg(paste(path_pannel,"p3A_supptext.jpg",sep=""),  width = 6200/2/resolution,  8000/2/resolution,res=900/resolution)
 print(pA)
 dev.off()
 
@@ -71,7 +71,7 @@ pB = ggplot( dt_graph , aes(y=freq,fill=categorie))  +
   guides(fill = guide_legend(byrow = TRUE)) +ylab("")
 pB
 
-jpeg(paste(path_pannel,"p5B_supptext.jpg",sep=""),  width = 11500/2/resolution,  8000/2/resolution,res=900/resolution)
+jpeg(paste(path_pannel,"p3B_supptext.jpg",sep=""),  width = 11500/2/resolution,  8000/2/resolution,res=900/resolution)
 print(pB)
 dev.off()
 
@@ -99,21 +99,21 @@ pC = ggplot(data1,aes(y=constraint_overused_POCs,x=clade_group,fill=clade_group)
 pC
 
 
-jpeg(paste(path_pannel,"p5C_supptext.jpg",sep=""), width = 5500/1/resolution, height = 3000/1/resolution,res=560/1/resolution)
+jpeg(paste(path_pannel,"p3C_supptext.jpg",sep=""), width = 5500/1/resolution, height = 3000/1/resolution,res=560/1/resolution)
 print(pC)
 dev.off()
 
 
-# Supplementary Texts Figure 5
+# Supplementary Texts Figure 3
 
-imgA = load.image(paste(path_pannel,"p5A_supptext.jpg",sep="") )
-imgB = load.image(paste(path_pannel,"p5B_supptext.jpg",sep="") )
-imgC = load.image(paste(path_pannel,"p5C_supptext.jpg",sep="") )
+imgA = load.image(paste(path_pannel,"p3A_supptext.jpg",sep="") )
+imgB = load.image(paste(path_pannel,"p3B_supptext.jpg",sep="") )
+imgC = load.image(paste(path_pannel,"p3C_supptext.jpg",sep="") )
 human<-readPNG(paste(path_require,"human.png",sep=""))
 Caenorhabditis_elegans<-readPNG(paste(path_require,"Caenorhabditis_elegans.png",sep=""))
 
 {
-  pdf(file= paste(path_figure,"Figure5_supptext.pdf",sep=""), width=5.7, height=5)
+  pdf(file= paste(path_figure,"Figure3_supptext.pdf",sep=""), width=5.7, height=5)
   
   m = matrix(rep(NA,100*100), nrow=100)
   

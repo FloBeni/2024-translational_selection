@@ -22,16 +22,16 @@ data14$title = factor(data14$title,levels= tapply(data14$title, as.integer(data1
 set_color = c(A="#B2DF8A",T="#33A02C",C="#1F78B4",G="#A6CEE3")
 
 pA = ggplot(data14,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
-  scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid,scales = "free")+ geom_text(family="ubuntu condensed",size=7,aes(y = y_axis_0 + 3 ),vjust=0.1) + 
+  scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid, ncol = 4,scales = "free")+ geom_text(family="ubuntu condensed",size=9,aes(y = y_axis_0 + 3 ),vjust=0.1) + 
   theme_bw() + theme(
     title =  element_text(size=30, family="ubuntu condensed"),
-    legend.text =  element_text(size=10, family="ubuntu condensed"),
+    legend.text =  element_text(size=20, family="ubuntu condensed"),
     strip.text = element_text(size=25, family="ubuntu condensed",face="bold"),
     legend.spacing.x = unit(1, 'cm'),
     legend.position="top",
     legend.box.spacing = unit(2, "cm"),
     axis.title.y = element_text(color="black",vjust=1.5),
-    axis.text.x =  element_text( size=18,vjust=0.5, family="ubuntu condensed"),
+    axis.text.x =  element_text( size=21,vjust=0.5, family="ubuntu condensed"),
     axis.text.y =  element_text( size=25, family="ubuntu condensed"),
     plot.title = element_text(hjust = 0.5,margin = margin(0,0,20,0))
   ) + theme(legend.position='none') + ylab("tRNA gene copy number") + xlab("")+
@@ -65,7 +65,7 @@ pA = ggplot(data14,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(a
 pA
 
 
-jpeg(paste(path_pannel,"p8A_supp.jpg",sep=""), width = 2000/1,  1200/1,res=100/1)
+jpeg(paste(path_pannel,"p8A_supp.jpg",sep=""), width = 2000/1,  1800/1,res=110/1)
 print(pA)
 dev.off()
 
@@ -77,12 +77,12 @@ imgA = load.image(paste(path_require,"wobble_pairing.png",sep="") )
 imgB = load.image(paste(path_pannel,"p8A_supp.jpg",sep="") )
 
 {
-  pdf(file= paste(path_figure,"Figure8_supp.pdf",sep=""), width=7, height=4.8)
+  pdf(file= paste(path_figure,"Figure8_supp.pdf",sep=""),width=7, height=7)
   
-  m=matrix(rep(NA,10*10), nrow=10)
+  m=matrix(rep(NA,10*100), nrow=100)
   
   for(i in 1:10){
-    m[,i]=c(rep(1,2),rep(2,8))
+    m[,i]=c(rep(1,15),rep(2,85))
   }
   
   layout(m)
