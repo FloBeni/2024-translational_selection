@@ -3,9 +3,8 @@ source("figure/figure_supp_generator/library_path.R")
 
 resolution = 3
 
-tRNA <- read.table("data/tRNA_abundance.tab")
-rownames(tRNA) = str_replace_all(rownames(tRNA) , "_"," ")
-newick <- readLines('data/GTDrift_metazoa_phylogenetic_tree.nwk')
+data7 <- read.table("data/data7_supp.tab",header=T)
+rownames(data7) = str_replace_all(rownames(data7) , "_"," ")
 
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$anticodon
@@ -51,7 +50,7 @@ pA
  
 # tidy the data
 tRNA_long <- 
-  tRNA %>% rownames_to_column(var='sp') %>%
+  data7 %>% rownames_to_column(var='sp') %>%
   pivot_longer(cols=!sp,
                names_to = 'tRNA',
                values_to = "count") 

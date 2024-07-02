@@ -1,93 +1,83 @@
 # Generate Data 4
-
+options(stringsAsFactors = F, scipen = 999)
+library(stringr)
 library(stringi)
-library(ape)
-
-
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
-rownames(code) = code$codon
-code$nb_syn = table(code$aa_name)[code$aa_name]
-code$anticodon = sapply(code$codon,function(x) chartr("TUACG","AATGC",stri_reverse(x))  )
-
-wobble_type = c("T"="G-U","C"="I-C","A"="I-A","G"="U-G")
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
-
-data1 = read.delim("data/data1.tab")
-data1 = data1[ data1$pval_aa_fpkm < 0.05 ,]
-
-
-all_dt_about_codon = data.frame()
-for (species in unique(data1$species)){
-  print(species)
+### tRNA abundance
+tRNA_abundance = data.frame()
+for (species in GTDrift_list_species$species){
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
   taxID = GTDrift_list_species[species,]$NCBI.taxid
-  
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
-  
   tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
-  rownames(tRNA_optimal) = tRNA_optimal$codon
-  
-  tRNA_optimal[tRNA_optimal$nb_tRNA_copies != 0,"categorie"] = "WCp"
-  tRNA_optimal[tRNA_optimal$nb_tRNA_copies == 0,"categorie"] = "WBp"
-  tRNA_optimal[tRNA_optimal$WC_abond,"categorie"] = "WCp + abond"
-  tRNA_optimal[tRNA_optimal$Wobble_abond,"categorie"] = "WBp + abond"
-  tRNA_optimal[!tRNA_optimal$decoded,"categorie"] = "not decoded"
-  
-  tRNA_optimal = tRNA_optimal[,c("codon","aa_name","anticodon","categorie")]
-  tRNA_optimal$species = species
-  
-  all_dt_about_codon = rbind(all_dt_about_codon,tRNA_optimal)
-}
+  dt = t(tRNA_optimal[,c("anticodon","nb_tRNA_copies")])
+  dt = data.frame(dt)
+  colnames(dt) = dt[1,]  
+  dt = dt[2,]
+  rownames(dt) = species
+  tRNA_abundance = rbind(tRNA_abundance,dt)
+}  
+tRNA_abundance <- data.frame(sapply( tRNA_abundance, as.numeric ))
+rownames(tRNA_abundance) = GTDrift_list_species$species
 
+data1 = read.delim("data/data1_supp.tab")
+data1 = data1[data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 & data1$nb_codon_not_decoded == 0,]
+
+tRNA_abundance = tRNA_abundance[rownames(tRNA_abundance) %in% data1$species,]
+
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+rownames(code) = code$codon
+
+code = code[!code$aa_name %in% c("Ter"),]
+
+rownames(code) = code$anticodon
 
 data4 = data.frame()
-for ( codon in unique(code$codon)){
-  total = nrow(all_dt_about_codon[all_dt_about_codon$codon == codon,])
-  dc = data.frame(table(all_dt_about_codon[all_dt_about_codon$codon == codon,"categorie"]))
-  dc$Prop = dc$Freq / total
-  dc$total = total
-  dc$amino_acid = paste(code[codon,]$aa_name , " (",code[codon,]$nb_syn,")",sep="")
-  dc$codon = codon
-  dc$WB_type =  wobble_type[substr(codon,3,3)]
-  dc$species = "metazoa"
-  
-  data4 = rbind(data4,dc)
+for (anticodon in code$anticodon){
+  dt = data.frame(abundance = tRNA_abundance[,anticodon])
+  dt$species = rownames(tRNA_abundance)
+  dt$nb_syn = code[anticodon,]$nb_syn
+  dt$amino_acid = code[anticodon,]$aa
+  dt$anticodon = anticodon
+  dt$codon = code[anticodon,]$codon
+  data4 = rbind(data4,dt)
 }
 
+for (species in GTDrift_list_species$species){
+  genome_assembly = GTDrift_list_species[species,]$assembly_accession
+  taxID = GTDrift_list_species[species,]$NCBI.taxid
+  path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  rownames(tRNA_optimal) = tRNA_optimal$codon
+  data4[data4$species == species,c("POC1","POC2")] = tRNA_optimal[ data4[data4$species == species,]$codon,c("POC1","POC2")]
+}  
 
-for (species in c("Homo_sapiens","Caenorhabditis_elegans","Drosophila_melanogaster")){
-  all_dt_about_codon_sub = all_dt_about_codon[all_dt_about_codon$species == species  ,]
-  
-  for ( codon in unique(code$codon)){
-    total = nrow(all_dt_about_codon_sub[all_dt_about_codon_sub$codon == codon,])
-    dc = data.frame(table(all_dt_about_codon_sub[all_dt_about_codon_sub$codon == codon,"categorie"]))
-    dc$Prop = dc$Freq / total
-    dc$total = total
-    dc$amino_acid = paste(code[codon,]$aa_name , " (",code[codon,]$nb_syn,")",sep="")
-    dc$codon = codon
-    dc$WB_type =  wobble_type[substr(codon,3,3)]
-    dc$species = species
-    
-    data4 = rbind(data4,dc)
-  }
-}
+
+
+data4$color = sapply(data4$codon,function(x)substr(x,3,3))
+
+data4$amino_acid = factor(data4$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
+data4$anticodon = str_replace_all(data4$anticodon,'T','U')
+data4$codon = str_replace_all(data4$codon,'T','U')
 
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
-data4$codon = factor(data4$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","T","A","G"),sep=""))) )
+vect_debut = str_replace_all(vect_debut,"T","U")
+data4$title = paste(data4$anticodon,"(",data4$codon,")",sep="")
+data4$codon = factor(data4$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
+data4$title = factor(data4$title,levels= tapply(data4$title, as.integer(data4$codon),unique))
 
-data4$title = factor(paste(data4$codon," (",data4$WB_type,")",sep=""),
-                     sapply(levels(data4$codon),function(x) paste(x," (",wobble_type[substr(x,3,3)],")",sep="")) )
+nb_sp = length(unique(data4$species))
+data4$nb_species_0 = tapply(data4$abundance == 0,data4$codon,sum)[data4$codon]
+data4$nb_species_0 = round(data4$nb_species_0 / nb_sp*100)
+data4$y_axis_0 = tapply(data4$abundance ,data4$codon,function(x) quantile(x,0.9))[data4$codon]
+# data4[duplicated(data4$codon) | data4$nb_species_0 < 50,]$nb_species_0 = NA
+data4[duplicated(data4$codon) ,]$nb_species_0 = NA
+data4[!is.na(data4$nb_species_0),]$nb_species_0 = paste(data4[!is.na(data4$nb_species_0),]$nb_species_0 ,"%")
 
-set_color = c("WCp + abond" = "#33A02C" ,"WCp" = "#B2DF8A","WBp + abond" = "#E31A1C","WBp" = "#FB9A99","not decoded" = "#e2cc1a")
-data4$Var1 = factor(data4$Var1,levels =  names(set_color))
 
 write.table(data4,"data/data4_supp.tab",quote=F,row.names = F,sep="\t")
-
-
-
-
 
 

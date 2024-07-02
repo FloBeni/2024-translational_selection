@@ -4,8 +4,8 @@ resolution = 3
 
 # Pannel A
 
-data1_supp = read.delim("data/data7_supp.tab")
-dt_graph = data1_supp[data1_supp$species == "Drosophila_melanogaster",]
+data10_supp = read.delim("data/data10_supp.tab")
+dt_graph = data10_supp[data10_supp$species == "Drosophila_melanogaster",]
 
 spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
 
@@ -37,7 +37,7 @@ dev.off()
 
 # Pannel B
 
-dt_graph = data1_supp[data1_supp$species == "Homo_sapiens",]
+dt_graph = data10_supp[data10_supp$species == "Homo_sapiens",]
 spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
 
 pB=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=prop_abundance_average*100)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[1],size=2) +
@@ -68,7 +68,7 @@ dev.off()
 
 # Pannel C
 
-dt_graph = data1_supp[data1_supp$species == "Drosophila_melanogaster",]
+dt_graph = data10_supp[data10_supp$species == "Drosophila_melanogaster",]
 spearman_method_aa = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
 
 pC=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[3],size=2) +
@@ -100,7 +100,7 @@ dev.off()
 
 # Pannel D
 
-dt_graph = data1_supp[data1_supp$species == "Homo_sapiens",]
+dt_graph = data10_supp[data10_supp$species == "Homo_sapiens",]
 spearman_method_aa = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
 
 pD=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[1],size=2) +
@@ -163,7 +163,7 @@ fly<-readPNG(paste(path_require,"Drosophila_melanogaster.png",sep=""))
   par(mar=c(0, 1, 1.5, 0))
   plot(imgB, axes=FALSE)
   mtext("B", adj=-.2, side=2,at=-40, line=1, font=2, cex=1.2,las=2)
-  xhuman=530/resolution
+  xhuman=570/resolution
   yhuman=-90/resolution
   rasterImage(human,xleft=0+xhuman, ybottom=450/1/resolution-yhuman, xright=190/1/resolution+xhuman, ytop=0-yhuman)
 

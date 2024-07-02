@@ -10,8 +10,8 @@ resolution = 4
 
 # Pannel B
 
-data_11 = read.delim("data/data11_supp.tab")
-dt_graph = data_11
+data13 = read.delim("data/data13_supp.tab")
+dt_graph = data13
 
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," SNPs PO>nPO",sep=""),
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," SNPs nPO>PO",sep=""))
@@ -67,8 +67,8 @@ dev.off()
 
 # Pannel C
 
-data_10 = read.delim("data/data10_supp.tab")
-dt_graph = data_10
+data14 = read.delim("data/data14_supp.tab")
+dt_graph = data14
 
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," substitutions PO>nPO",sep=""),
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T)," substitutions nPO>PO",sep=""))
@@ -122,8 +122,8 @@ dev.off()
 
 # Pannel D
 
-data_11 = read.delim("data/data11_supp.tab")
-dt_graph = data_11
+data13 = read.delim("data/data13_supp.tab")
+dt_graph = data13
 
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," SNPs PO>nPO",sep=""),
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," SNPs nPO>PO",sep=""))
@@ -176,8 +176,8 @@ dev.off()
 
 # Pannel E
 
-data_10 = read.delim("data/data10_supp.tab")
-dt_graph = data_10
+data14 = read.delim("data/data14_supp.tab")
+dt_graph = data14
 
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," substitutions PO>nPO",sep=""),
                  "nPO>PO"=paste( format(sum(dt_graph$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," substitutions nPO>PO",sep=""))

@@ -12,13 +12,13 @@ data1 = data1[data1$species != "Eumeta_japonica",]
 data1$species = paste(str_replace_all(data1$species,"_"," "),sep="")
 
 
-data13 = read.delim("data/data13_supp.tab")
-data13$species = paste(str_replace_all(data13$species,"_"," "),", GCi=",round(data1[data13$species,]$gci,2),sep="")
+data12 = read.delim("data/data12_supp.tab")
+data12$species = paste(str_replace_all(data12$species,"_"," "),", GCi=",round(data1[data12$species,]$gci,2),sep="")
 
 # Pannel A
 
-data13$species = factor(data13$species,levels=paste(data1[order(data1$gci),]$species,", GCi=",round(data1[order(data1$gci),]$gci,2),sep=""))
-dt_graph = data13[data13$aa_name == "Val",]
+data12$species = factor(data12$species,levels=paste(data1[order(data1$gci),]$species,", GCi=",round(data1[order(data1$gci),]$gci,2),sep=""))
+dt_graph = data12[data12$aa_name == "Val",]
 
 count_dinucl = table(dt_graph$trinucl2)
 count_dinucl = count_dinucl[order(count_dinucl,decreasing = T)]

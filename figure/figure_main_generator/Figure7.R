@@ -9,9 +9,9 @@ resolution = 2
 # Pannel A
 
 # Load data on gene features + meiotic expression from Pouyet et al. 2017
-D=read.table(file="data/human_genes_summary", header = TRUE)
+D=read.table(file="data/Pouyet2017_human_genes_summary", header = TRUE)
 # Load data on somatic expression from Pouyet et al. 2017
-EF=read.table(file="data/human_genes_expression_in_tissues", header = TRUE)
+EF=read.table(file="data/Pouyet2017_human_genes_expression_in_tissues", header = TRUE)
 merge_dt = merge.data.frame(x=D,y=EF,by="Ensembl.Gene.ID")
 top_quantile = 0.8
 ltissue = names(merge_dt)[39:65]
@@ -72,7 +72,7 @@ data1 = read.delim("data/data1_supp.tab")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
-data1[,c("lifespan_days","length_cm","weight_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","weight_kg")]
+data1[,c("lifespan_days","length_cm","mass_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","mass_kg")]
 
 dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
 rownames(dnds) = dnds$species

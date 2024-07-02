@@ -2,6 +2,8 @@
 source("figure/figure_supp_generator/library_path.R")
 resolution = 4
 
+# Load data from Lynch et al. 2023
+# from https://www.embopress.org/doi/suppl/10.15252/embr.202357561/suppl_file/embr202357561-sup-0002-datasetev1.xlsx to which was added C.nigoni Ne
 lynch_dt = read.table("data/Lynch2023_embr202357561-sup-0002-metazoa.csv",header=T,sep="\t",dec=",")
 lynch_dt$species = str_replace_all(lynch_dt$Species," ","_")
 lynch_dt$species = sapply(lynch_dt$species ,function(x) paste(str_split_1(x,"_")[1],str_split_1(x,"_")[2],sep="_"))
@@ -10,6 +12,7 @@ rownames(lynch_dt) = lynch_dt$species
 lynch_dt$mass = as.numeric(lynch_dt$Dry.Mass.at.Maturity...kg.)
 Ne_genus = tapply(lynch_dt$Ne,lynch_dt$genus,mean)
 mass_genus = tapply(lynch_dt$mass,lynch_dt$genus,function(x) mean(x,na.rm=T))
+
 
 data1 = read.delim("data/data1_supp.tab")
 data1$Ne = lynch_dt[data1$species,]$Ne
@@ -25,10 +28,7 @@ data1[is.na(data1$Mass_Lynch),]$Mass_Lynch = mass_genus[sapply(data1[is.na(data1
 data1[is.na(data1$Mass_Lynch),]$Mass_Lynch_estimate = ""
 
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
-
-# data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
-data1[,c("lifespan_days","length_cm","weight_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","weight_kg")]
-
+data1[,c("lifespan_days","length_cm","mass_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","mass_kg")]
 
 dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
 rownames(dnds) = dnds$species

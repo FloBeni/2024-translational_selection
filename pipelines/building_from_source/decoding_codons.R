@@ -1,8 +1,6 @@
+# Determine for each codon if is POC1 or POC2
 options( stringsAsFactors = F, scipen = 999 )
 library(stringi)
-
-path = "/home/fbenitiere/data/"
-# path = "/beegfs/data/fbenitiere/"
 
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
@@ -32,17 +30,17 @@ for( species in list_species$species ){
   code_table = code
   
   if (
-    file.exists(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) &
-    file.size(paste(path,"/tRNA_from_GFF.tab.gz",sep="")) != 38 ){
-    tRNASE_gff = read.delim( paste(path,"/tRNA_from_GFF.tab.gz",sep="") )
+    file.exists(paste(path,"/trna_from_gff.txt.gz",sep="")) &
+    file.size(paste(path,"/trna_from_gff.txt.gz",sep="")) != 38 ){
+    tRNASE_gff = read.delim( paste(path,"/trna_from_gff.txt.gz",sep="") )
     tRNASE_gff$codon = sapply(tRNASE_gff$anticodon,function(x) chartr("TUACG","AATGC",stri_reverse(x))  )
     tRNASE_gff_table = table(tRNASE_gff$codon)
     tRNASE_copies_table = tRNASE_gff_table
     tRNA_GFF = T
   } else if (
-    file.exists(paste(path,"/tRNAscan_SE.tab.gz",sep="")) &
-    file.size(paste(path,"/tRNAscan_SE.tab.gz",sep="")) != 36  ){
-    tRNASE_copies = read.delim(paste(path,"/tRNAscan_SE.tab.gz",sep=""), header = T)
+    file.exists(paste(path,"/trna_from_trnascanse.txt.gz",sep="")) &
+    file.size(paste(path,"/trna_from_trnascanse.txt.gz",sep="")) != 36  ){
+    tRNASE_copies = read.delim(paste(path,"/trna_from_trnascanse.txt.gz",sep=""), header = T)
     tRNASE_copies = tRNASE_copies[as.numeric(tRNASE_copies$Score) > 55,]
     tRNASE_copies = tRNASE_copies[tRNASE_copies$Note != "pseudo" | is.na(tRNASE_copies$Note),]
     tRNASE_copies$anticodon = sapply(tRNASE_copies$Codon,function(x) chartr("TUACG","TTACG",x)  )
@@ -58,25 +56,25 @@ for( species in list_species$species ){
   code_table$POC1 = F
   code_table$POC2 = F
   
-  for (aa in unique(code_table$aa_name)){
-    if (length(code_table[code_table$aa_name == aa & code_table$nb_tRNA_copies != 0,]$nb_tRNA_copies) != 0){
+  for (aa in unique(code_table$aa_name)){ # for a given amino acid
+    if (length(code_table[code_table$aa_name == aa & code_table$nb_tRNA_copies != 0,]$nb_tRNA_copies) != 0){ # If at least one tRNA is present
       tRNA_present = code_table[code_table$aa_name == aa & code_table$nb_tRNA_copies != 0,]$nb_tRNA_copies
-      names(tRNA_present) = code_table[code_table$aa_name == aa & code_table$nb_tRNA_copies != 0,]$anticodon
+      names(tRNA_present) = code_table[code_table$aa_name == aa & code_table$nb_tRNA_copies != 0,]$anticodon # Number of tRNA
       
       decoded_codon = unique(unlist(sapply(names(tRNA_present),function(x) paste(chartr( "TUACG" , "AATGC" , stri_reverse(substr(x,2,3))),unlist(wobble_rule[substr(x,1,1)]),sep=""))))
-      code_table[code_table$codon %in% decoded_codon,]$decoded = T
+      code_table[code_table$codon %in% decoded_codon,]$decoded = T # Codon decoded by the tRNA-pool Watson Crick or Wobble pairing
       
-      if ( all(codon_data[codon_data$aa_name == aa ,]$decoded)){
+      if ( all(code_table[code_table$aa_name == aa ,]$decoded)){ # If all codon are decoded
         if ( !aa %in% c("Ter","Met","Trp")){
-          if (length(tRNA_present) > 1 & any(tRNA_present != max(tRNA_present))){
+          if (length(tRNA_present) > 1 & any(tRNA_present != max(tRNA_present))){ # If at least two tRNA are present with one more abundant than the other
             abundant = names(tRNA_present[ tRNA_present == max(tRNA_present)])
-            code_table[code_table$anticodon %in% abundant,]$POC1 = T
+            code_table[code_table$anticodon %in% abundant,]$POC1 = T #  Watson Crick decoded are POC1
             decoded_codon = unique(unlist(sapply(abundant,function(x) paste(chartr( "TUACG" , "AATGC" , stri_reverse(substr(x,2,3))),unlist(wobble_rule[substr(x,1,1)]),sep=""))))
             if (any(code_table$codon %in% decoded_codon & code_table$nb_tRNA_copies == 0)){
-              code_table[code_table$codon %in% decoded_codon & code_table$nb_tRNA_copies == 0,]$POC1 = T}
-          } else if (length(tRNA_present) == 1){
+              code_table[code_table$codon %in% decoded_codon & code_table$nb_tRNA_copies == 0,]$POC1 = T}  # Wobble decoded are POC1
+          } else if (length(tRNA_present) == 1){  # If an unique tRNA decode all codons
             abundant = names(tRNA_present[ tRNA_present == max(tRNA_present)])
-            code_table[code_table$anticodon %in% abundant,]$POC2 = T
+            code_table[code_table$anticodon %in% abundant,]$POC2 = T #  Watson Crick decoded are POC2
           }
         }
       }

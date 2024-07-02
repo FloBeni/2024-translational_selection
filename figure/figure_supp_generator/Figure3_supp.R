@@ -4,8 +4,8 @@ resolution = 2
 
 # Pannel A
 
-dataX = read.delim("data/data_16.tab")
-dt_graph = dataX
+data9 = read.delim("data/data9_supp.tab")
+dt_graph = data9
 
 spearman_method_aa = cor.test( dt_graph$nb_copy_Caenorhabditis_elegans, dt_graph$nb_copy_Hydra_vulgaris,method="spearman",exact=F)
 
@@ -39,15 +39,15 @@ dev.off()
 
 # Pannel B
 
-data15 = read.delim("data/data_15.tab")
-data15$clade_group = GTDrift_list_species[data15$species2,]$clade_group
+data8 = read.delim("data/data8_supp.tab")
+data8$clade_group = GTDrift_list_species[data8$species2,]$clade_group
 
 data1 = read.delim("data/data1_supp.tab")
 rownames(data1) = data1$species
 data1 = data1[ data1$nb_genes_filtered >= 5000 ,]
-data15$pval_aa_fpkm = data1[data15$species2,]$pval_aa_fpkm < 0.05
+data8$pval_aa_fpkm = data1[data8$species2,]$pval_aa_fpkm < 0.05
 
-dt_graph = data15[data15$species2 %in% data1$species& data15$species2 != "Hydra_vulgaris" ,]
+dt_graph = data8[data8$species2 %in% data1$species& data8$species2 != "Hydra_vulgaris" ,]
 
 pB = ggplot(dt_graph,aes(y=rho,fill=clade_group,x=clade_group))  +
   geom_hline(size=1,linetype="dashed",col="red", yintercept = min(dt_graph[dt_graph$rho & dt_graph$pval < 0.05,]$rho) ) +

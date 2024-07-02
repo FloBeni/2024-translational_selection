@@ -4,23 +4,23 @@ source("figure/figure_supptext_generator/library_path.R")
 
 # Pannel A
 
-data3_supp = read.delim(paste("data/data9_supp.tab",sep="") , header=T )
+data15_supp = read.delim(paste("data/data15_supp.tab",sep="") , header=T )
 
-data3_supp$clade_group = GTDrift_list_species[data3_supp$species,]$clade_group
-data3_supp$from = str_replace_all(data3_supp$from , "from_5prime","From start codons")
-data3_supp$from = str_replace_all(data3_supp$from , "from_3prime","From stop codons")
-data3_supp$from = factor(data3_supp$from,levels = c("From start codons" , "From stop codons"))
+data15_supp$clade_group = GTDrift_list_species[data15_supp$species,]$clade_group
+data15_supp$from = str_replace_all(data15_supp$from , "from_5prime","From start codons")
+data15_supp$from = str_replace_all(data15_supp$from , "from_3prime","From stop codons")
+data15_supp$from = factor(data15_supp$from,levels = c("From start codons" , "From stop codons"))
 
-data3_supp$label_facet = paste(data3_supp$clade_group, ", N=",  table(data3_supp[!duplicated(data3_supp$species),]$clade_group)[data3_supp$clade_group])
-vector_label = unique(data3_supp$label_facet)
-names(vector_label) = unique(data3_supp$clade_group)
+data15_supp$label_facet = paste(data15_supp$clade_group, ", N=",  table(data15_supp[!duplicated(data15_supp$species),]$clade_group)[data15_supp$clade_group])
+vector_label = unique(data15_supp$label_facet)
+names(vector_label) = unique(data15_supp$clade_group)
 
-data3_supp$label_facet = factor(data3_supp$label_facet , levels = vector_label[levels(data3_supp$clade_group)] )
+data15_supp$label_facet = factor(data15_supp$label_facet , levels = vector_label[levels(data15_supp$clade_group)] )
 
-data3_supp[data3_supp$from == "From start codons",]$group = log10(data3_supp[data3_supp$from == "From start codons",]$group)
-data3_supp[data3_supp$from == "From stop codons",]$group = -log10(data3_supp[data3_supp$from == "From stop codons",]$group)
+data15_supp[data15_supp$from == "From start codons",]$group = log10(data15_supp[data15_supp$from == "From start codons",]$group)
+data15_supp[data15_supp$from == "From stop codons",]$group = -log10(data15_supp[data15_supp$from == "From stop codons",]$group)
 
-pA = ggplot(data3_supp[data3_supp$nb_genes >= 200,],aes(x = group,group=clade_group,y= gci_count/posi_sites  , label=nb_genes,fill=clade_group,col=clade_group)) +
+pA = ggplot(data15_supp[data15_supp$nb_genes >= 200,],aes(x = group,group=clade_group,y= gci_count/posi_sites  , label=nb_genes,fill=clade_group,col=clade_group)) +
   geom_line(lwd = 0.5,aes(group=species), alpha=0.7) + 
   facet_wrap(~label_facet + from , ncol=6 ,scale="free_x") +
   theme_bw() + theme(

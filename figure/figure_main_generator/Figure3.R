@@ -6,22 +6,22 @@ source("figure/figure_main_generator/library_path.R")
 code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
 rownames(code) = code$codon
 
-data12 = read.delim("data/data12_supp.tab")
-data12[data12$nb_species_0 == "0 %" & !is.na(data12$nb_species_0) ,]$nb_species_0 = NA
+data4 = read.delim("data/data4_supp.tab")
+data4[data4$nb_species_0 == "0 %" & !is.na(data4$nb_species_0) ,]$nb_species_0 = NA
 
-data12$amino_acid = factor(data12$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
+data4$amino_acid = factor(data4$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))
 vect_debut = c("AT","GT","AC","GC","GG","CC","TC","AG","CG","CT","TT","AA","GA","CA","TG","TA")
 vect_debut = str_replace_all(vect_debut,"T","U")
-data12$title = paste(data12$anticodon,"\n(",data12$codon,")",sep="")
-data12[data12$title == "CAU\n(AUG)",]$title = "anticodon     CAU   \n(codon)      (AUG)"
+data4$title = paste(data4$anticodon,"\n(",data4$codon,")",sep="")
+data4[data4$title == "CAU\n(AUG)",]$title = "anticodon     CAU   \n(codon)      (AUG)"
 
 
-data12$codon = factor(data12$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
-data12$title = factor(data12$title,levels= tapply(data12$title, as.integer(data12$codon),unique))
+data4$codon = factor(data4$codon,levels =  unlist(lapply(vect_debut,function(x) paste(x,c("C","U","A","G"),sep=""))) ) 
+data4$title = factor(data4$title,levels= tapply(data4$title, as.integer(data4$codon),unique))
 
 set_color = c(A="#B2DF8A",T="#33A02C",C="#1F78B4",G="#A6CEE3")
 
-pB = ggplot(data12,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
+pB = ggplot(data4,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
   scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid, ncol = 4,scales = "free")+ geom_text(family="ubuntu condensed",size=9,aes(y = y_axis_0 + 3 ),vjust=0.1) + 
   theme_bw() + theme(
     title =  element_text(size=30, family="ubuntu condensed"),

@@ -32,28 +32,23 @@ Clade_color = c(Diptera="red",Lepidoptera="#FB9A99",Coleoptera="#e2cc1a",Hymenop
 
 
 
-arbrePhylo = read.tree(paste("data/GTDrift_metazoa_phylogenetic_tree.nwk",sep=""))
+arbrePhylo = read.tree(paste("data/GTDrift_Metazoa_phylogenetic_tree.nwk",sep=""))
 
-life_history_traits = read.delim("data/GTDrift_life_history_traits.tab")
-rownames(life_history_traits) = paste(life_history_traits$species,life_history_traits$life_history_traits,sep="_")
+life_history_traits = read.delim("data/GTDrift_life_history_traits_and_polymorphism_derived_Ne.tab")
+rownames(life_history_traits) = life_history_traits$species
 
 GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
-# Check if other Vertebrates are Tetrapoda
-# taxonomy = read.delim("data/GTDrift_Metazoa_taxonomy.tab")
-# taxonomy = taxonomy[taxonomy$species %in% GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates",]$species,]
-# table(taxonomy[taxonomy$rank_no == 16,]$name)
 
 GTDrift_list_species[GTDrift_list_species$clade_group == "Other Vertebrates",]$clade_group = "Other Tetrapods"
 
 
 GTDrift_list_species$clade_group = factor(GTDrift_list_species$clade_group, levels = names(Clade_color))
 
-GTDrift_list_species$length_cm = life_history_traits[paste(GTDrift_list_species$species,"length_cm",sep="_"),]$value
-GTDrift_list_species$lifespan_days = life_history_traits[paste(GTDrift_list_species$species,"lifespan_days",sep="_"),]$value
-GTDrift_list_species$weight_kg = life_history_traits[paste(GTDrift_list_species$species,"weight_kg",sep="_"),]$value
-
+GTDrift_list_species$length_cm = life_history_traits[GTDrift_list_species$species,"length_cm"]
+GTDrift_list_species$lifespan_days = life_history_traits[GTDrift_list_species$species,"lifespan_days"]
+GTDrift_list_species$mass_kg = life_history_traits[GTDrift_list_species$species,"mass_kg"]
 
 listNomSpecies = tapply(GTDrift_list_species$species,GTDrift_list_species$clade_group,function(x)  str_replace_all(x,"_"," "))
 

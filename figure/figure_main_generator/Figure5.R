@@ -1,15 +1,17 @@
 # Generate Figure 5
 source("figure/figure_main_generator/library_path.R")
-resolution=4
+resolution = 4
 
+
+# Load data from Lynch et al. 2023
+# from https://www.embopress.org/doi/suppl/10.15252/embr.202357561/suppl_file/embr202357561-sup-0002-datasetev1.xlsx to which was added C.nigoni Ne
 lynch_dt = read.table("data/Lynch2023_embr202357561-sup-0002-metazoa.csv",header=T,sep="\t",dec=",")
 lynch_dt$species = str_replace_all(lynch_dt$Species," ","_")
 lynch_dt$species = sapply(lynch_dt$species ,function(x) paste(str_split_1(x,"_")[1],str_split_1(x,"_")[2],sep="_"))
 lynch_dt$genus = sapply(lynch_dt$species ,function(x) str_split_1(x,"_")[1])
 rownames(lynch_dt) = lynch_dt$species
-lynch_dt$mass = as.numeric(lynch_dt$Dry.Mass.at.Maturity...µg.)/1e9
 Ne_genus = tapply(lynch_dt$Ne,lynch_dt$genus,mean)
-mass_genus = tapply(lynch_dt$mass,lynch_dt$genus,function(x) mean(x,na.rm=T))
+
 
 data1 = read.delim("data/data1_supp.tab")
 data1$Ne = lynch_dt[data1$species,]$Ne
@@ -18,17 +20,9 @@ data1[!is.na(data1$Ne),]$Ne_estimate = "from species"
 data1[is.na(data1$Ne),]$Ne = Ne_genus[sapply(data1[is.na(data1$Ne),]$species ,function(x) str_split_1(x,"_")[1])]
 data1[is.na(data1$Ne),]$Ne_estimate = ""
 
-data1$Mass_Lynch = lynch_dt[data1$species,]$mass
-data1$Mass_Lynch_estimate = "from genus"
-data1[!is.na(data1$Mass_Lynch),]$Mass_Lynch_estimate = "from species"
-data1[is.na(data1$Mass_Lynch),]$Mass_Lynch = mass_genus[sapply(data1[is.na(data1$Mass_Lynch),]$species ,function(x) str_split_1(x,"_")[1])]
-data1[is.na(data1$Mass_Lynch),]$Mass_Lynch_estimate = ""
-
-
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
-
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
-data1[,c("lifespan_days","length_cm","weight_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","weight_kg")]
+data1[,c("lifespan_days","length_cm","mass_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","mass_kg")]
 
 
 dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
@@ -63,11 +57,11 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     legend.title = element_text(color="black", size=23, family="ubuntu condensed"),
     legend.box.spacing =  unit(1, 'cm'),
     legend.margin =  margin(l = 0,unit="cm",t=1)
-  )+ guides(fill = guide_legend(override.aes = list(size=5))) +
+  ) + guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
     caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
-  )+ scale_fill_manual("Clades",values=Clade_color) +
+  ) + scale_fill_manual("Clades",values=Clade_color) +
   ylab(substitute(paste("S"^hx))) +  
   scale_x_log10(breaks=c(0.05,0.1,0.5,1,5,10,100,1000,10000),labels=c(0.05,0.1,0.5,1,5,10,100,1000,10000)) + 
   xlab("Longevity (days, log scale)")+ annotation_logticks(sides="b") + 

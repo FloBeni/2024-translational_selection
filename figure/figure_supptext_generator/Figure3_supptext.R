@@ -7,7 +7,6 @@ resolution = 3
 data6 = read.delim("data/data6_supp.tab")
 data6$categorie = factor(data6$categorie,levels = rev( unique(data6$categorie))) 
 dt_graph = data6[data6$species == "Homo_sapiens" & data6$type_aa == "POCs",]
-# dt_graph = data6[data6$species == "Drosophila_melanogaster",]
 
 pA = ggplot( dt_graph , aes(y=freq,fill=categorie))  +
   geom_boxplot(outlier.shape = NA) +

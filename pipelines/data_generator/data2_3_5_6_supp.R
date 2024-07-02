@@ -18,14 +18,14 @@ data2 = data.frame()
 data3 = data.frame()
 data5 = data.frame()
 data6 = data.frame()
-for (species in species_list){
+for (species in species_list){w
   print(species)
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
   taxID = GTDrift_list_species[species,]$NCBI.taxid
   
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
   
-  codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.tab.gz",sep="") )
+  codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep="") )
   
   codon_usage$intern_stop_codon = rowSums(codon_usage[,stop_codon]) - grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon)
   
