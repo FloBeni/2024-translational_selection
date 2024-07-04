@@ -4,7 +4,7 @@ resolution = 3
 
 # Pannel A
 
-data6 = read.delim("data/data6_supp.tab")
+data6 = read.delim("data/data6_supp.tab",comment.char = "#")
 data6$categorie = factor(data6$categorie,levels = rev( unique(data6$categorie))) 
 dt_graph = data6[data6$species == "Homo_sapiens" & data6$type_aa == "POCs",]
 
@@ -77,7 +77,7 @@ dev.off()
 
 # Pannel C
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]

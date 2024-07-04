@@ -47,7 +47,7 @@ dev.off()
 
 # Pannel B
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 labels = paste(names(tapply(data1$species,data1$clade_group,length))," N=",tapply(data1$species,data1$clade_group,length),sep="")
@@ -93,7 +93,7 @@ dev.off()
 
 # Pannel C
 
-data2 = read.delim("data/data2_supp.tab")
+data2 = read.delim("data/data2_supp.tab",comment.char = "#")
 dt_graph = data2[data2$species == "Homo_sapiens" ,]
 spearman_method_aa = cor.test( dt_graph$GCi, dt_graph$GC3,method="spearman",exact=F)
 if(spearman_method_aa$p.value < 1e-16){

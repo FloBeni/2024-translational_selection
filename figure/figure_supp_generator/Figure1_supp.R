@@ -4,7 +4,7 @@ resolution = 4
 
 # Pannel A
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 data1 = data1[ data1$nb_genes_filtered >= 5000,]
 

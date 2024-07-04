@@ -4,7 +4,7 @@ resolution = 4
 
 # Pannel A
 
-data5 = read.delim("data/data5_supp.tab")
+data5 = read.delim("data/data5_supp.tab",comment.char = "#")
 data5$gene_set = str_replace_all(data5$gene_set,"all,","genes,")
 data5[data5$categorie == "POC-matching triplets (POCMT)",]$categorie = "control"
 data5[data5$categorie == "Putative optimal codons (POC)",]$categorie = ""

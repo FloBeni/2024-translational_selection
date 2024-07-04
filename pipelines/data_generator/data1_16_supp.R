@@ -81,7 +81,6 @@ for (species in GTDrift_list_species$species){
   abond_AG = tRNA_optimal[!tRNA_optimal$aa_name %in% c("Met","Trp","Ile"),]
   abond_AG = abond_AG[substr(abond_AG$codon,3,3) %in% c("A","G"),]
   abond_AG = abond_AG[order(abond_AG$nb_tRNA_copies,decreasing = T),]
-  # abond_AG = abond_AG[ !abond_AG$aa_name_scu %in% abond_AG[abond_AG$nb_tRNA_copies == 0,]$aa_name_scu,]
   abond_AG = abond_AG[ abond_AG$aa_name_scu %in% c("Lys","Glu","Leu_4" ,"Gln","Val","Thr","Pro","Leu_2" ,"Ser_4", "Arg_2", "Ala" ),]
   vector = (tapply(abond_AG$nb_tRNA_copies , abond_AG$aa_name_scu,function(x) sum(x == max(x))))
   abond_AG = abond_AG[abond_AG$aa_name_scu %in% names(vector[vector != 2]),]
@@ -223,6 +222,7 @@ for (species in GTDrift_list_species$species){
       Fpoc_expressed = round(mean(poc_exp_genes,na.rm = T),5)
       Fpoc_noexpressed = round(mean(poc_noexp_genes,na.rm = T),5)
       
+      # bootstrap
       dt_inter_err = data.frame()
       for (i in 1:1000){
         boot_poc_exp_genes =  sample(poc_exp_genes, replace = T)
@@ -246,7 +246,6 @@ for (species in GTDrift_list_species$species){
           round(tapply( POC_obs_intronic / POC_codons_obs_intronic   , intervalle_FPKM , function(x) mean(x,na.rm=T))[length(FPKM_bins)],5) -
             round( mean( (POC_obs_intronic / POC_codons_obs_intronic)[codon_usage$median_fpkm <= median(codon_usage$median_fpkm )] , na.rm=T),5)
         )),
-        # constraint_overused = 100*(mean(table_constrain$POC_highconst/table_constrain$POC_codon_highconst ,na.rm = T) - mean(table_constrain$POC_unconst/table_constrain$POC_codon_unconst,na.rm = T))
         constraint_overused = 100 * mean(table_constrain$POC_highconst/table_constrain$POC_codon_highconst - table_constrain$POC_unconst/table_constrain$POC_codon_unconst,na.rm = T)
       )
     } else {

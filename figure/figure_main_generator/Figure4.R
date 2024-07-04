@@ -4,7 +4,7 @@ source("figure/figure_main_generator/library_path.R")
 resolution=3
 # Pannel A
 
-data5 = read.delim("data/data5_supp.tab")
+data5 = read.delim("data/data5_supp.tab",comment.char = "#")
 data5$gene_set = str_replace_all(data5$gene_set,"all,","genes,")
 data5[data5$categorie == "POC-matching triplets (POCMT)",]$categorie = "control"
 data5[data5$categorie == "Putative optimal codons (POC)",]$categorie = ""
@@ -52,7 +52,7 @@ dev.off()
 
 dt_graph = data5[ data5$species == "Caenorhabditis_elegans" & data5$set != "POCs",]
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]

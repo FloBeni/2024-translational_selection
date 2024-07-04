@@ -1,3 +1,30 @@
+# species : Scientific name of the species studied
+# tRNA_GFF : Indicates if the tRNA annotation is from the .gff file or trnascan-SE
+# prop_cds_expressed : Fraction of coding genes expressed
+# nb_genes : Number of coding genes
+# nb_genes_filtered : Number of coding genes kept in the study
+# nb_codon_not_decoded : Number of codons without decoding tRNA
+# rho_aa_fpkm : Spearman correlation coefficient between amino acid usage and tRNA gene copy number
+# pval_aa_fpkm : P-value of the Spearman correlation coefficient between amino acid usage and tRNA gene copy number
+# rho_gc3_gci : Spearman correlation coefficient between gene GC3 and GCi
+# pval_gc3_gci : P-value of the Spearman correlation coefficient between gene GC3 and GCi
+# g_abond_ag : Fraction of tRNA-CNN among the most abundant tRNA in CNN and UNN pairs
+# c_duc_ic : Fraction of codon NNC among NNC and NNT codons that increase the most with expression level
+# gc3 : Average GC3 among genes
+# var_gc3 : Variance of GC3 among genes
+# gci : Average GCi among genes
+# std_gci : Standard error of GCi among genes
+# var_gci : Variance of GCi among genes
+# var_gci_exp : Variance of GCi among the most expressed genes (top 10%)
+# nb_aa_POCX : Number of amino acids with a POCX (1, 2, or both)
+# nb_genes_per_bins_POCX : Number of genes per 2% bin of expression
+# nb_busco_POCX : Number of BUSCO genes used for the study on site constraint
+# S_POCX : Population-scaled selection coefficient measured on POCX (1, 2, or both)
+# S_int_025_POCX : 2.5% quantile determined by 1000 bootstrap samples
+# S_int_975_POCX : 97.5% quantile determined by 1000 bootstrap samples
+# expressed_overused_POCX : Fraction of POC in the top 5% expressed genes minus in the bottom 50% expressed genes
+# expressed_overused_background_POCX : Fraction of POC in the top 5% expressed genes minus in the bottom 50% expressed genes, removing intron variation
+# constraint_overused_POCX : Average difference in genes between the fraction of POC in the top 25% constrained sites minus the bottom 25% constrained sites
 species	tRNA_GFF	prop_cds_expressed	nb_genes	nb_genes_filtered	nb_codon_not_decoded	rho_aa_fpkm	pval_aa_fpkm	rho_gc3_gci	pval_gc3_gci	g_abond_ag	c_duc_ic	gc3	var_gc3	gci	std_gci	var_gci	var_gci_exp	nb_aa_POC1	nb_genes_per_bins_POC1	nb_busco_POC1	S_POC1	S_int_025_POC1	S_int_975_POC1	expressed_overused_POC1	expressed_overused_background_POC1	constraint_overused_POC1	nb_aa_POC2	nb_genes_per_bins_POC2	nb_busco_POC2	S_POC2	S_int_025_POC2	S_int_975_POC2	expressed_overused_POC2	expressed_overused_background_POC2	constraint_overused_POC2	nb_aa_POCs	nb_genes_per_bins_POCs	nb_busco_POCs	S_POCs	S_int_025_POCs	S_int_975_POCs	expressed_overused_POCs	expressed_overused_background_POCs	constraint_overused_POCs
 Acanthocheilonema_viteae	FALSE	0.941592261904762	10138	7593	0	0.690204486596956	0.000756792378209657	0.53876003925216	0	0.2	0.75	0.315560312414351	0.00209873359737561	0.272712761433461	0.000412563412747624	0.0012920532513627	0.00122393626727509	8	151.86	794	-0.0394812423117859	-0.0947324731110269	0.00628621849386486	-0.983999999999996	-0.00700000000000145	2.69234191574507	6	151.86	794	0.2545160790703	0.170805466603792	0.330682253035325	5.09	4.948	0.149412735697926	14	151.86	794	0.0791880504770694	0.0391146637083248	0.121790936557678	1.958	2.018	1.83859071475631
 Acanthochromis_polyacanthus	TRUE	0.909168886280529	24580	20139	0	0.481203007518797	0.0317110446244624	0.192154333578694	3.85345539667345e-158	0.363636363636364	0.909090909090909	0.635778848934507	0.00877648018904839	0.379625150215271	0.000212111458543269	0.000858613412812712	0.000728989821148985	15	402.78	837	-0.0494627852976186	-0.0757635833091902	-0.0240524136604463	-1.199	-0.76	-1.41320515771925	3	402.78	837	0.127354367610501	0.0447196123280786	0.209596961185639	2.79	2.582	0.566014330417061	18	402.78	837	-0.0328119946174514	-0.0567414258085122	-0.00804441976930847	-0.808999999999999	-0.408000000000003	-0.680599333024348

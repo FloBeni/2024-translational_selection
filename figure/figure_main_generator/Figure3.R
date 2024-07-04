@@ -3,10 +3,10 @@ source("figure/figure_main_generator/library_path.R")
 
 # Pannel B
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 
-data4 = read.delim("data/data4_supp.tab")
+data4 = read.delim("data/data4_supp.tab",comment.char = "#")
 data4[data4$nb_species_0 == "0 %" & !is.na(data4$nb_species_0) ,]$nb_species_0 = NA
 
 data4$amino_acid = factor(data4$amino_acid,levels = unique(code[order(code$nb_syn,code$anticodon),]$aa))

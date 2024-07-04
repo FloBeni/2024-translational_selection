@@ -4,7 +4,7 @@ resolution = 3
 
 # Pannel A
 
-data10_supp = read.delim("data/data10_supp.tab")
+data10_supp = read.delim("data/data10_supp.tab",comment.char = "#")
 dt_graph = data10_supp[data10_supp$species == "Drosophila_melanogaster",]
 
 spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_transcriptome_count,method="spearman",exact=F)

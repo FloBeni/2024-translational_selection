@@ -14,7 +14,7 @@ Ne_genus = tapply(lynch_dt$Ne,lynch_dt$genus,mean)
 mass_genus = tapply(lynch_dt$mass,lynch_dt$genus,function(x) mean(x,na.rm=T))
 
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 data1$Ne = lynch_dt[data1$species,]$Ne
 data1$Ne_estimate = "from genus"
 data1[!is.na(data1$Ne),]$Ne_estimate = "from species"
@@ -30,7 +30,7 @@ data1[is.na(data1$Mass_Lynch),]$Mass_Lynch_estimate = ""
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 data1[,c("lifespan_days","length_cm","mass_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","mass_kg")]
 
-dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
+dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab",comment.char = "#")
 rownames(dnds) = dnds$species
 data1[,c("dNdS")] = dnds[data1$species,c("dNdS")]
 

@@ -2,7 +2,7 @@
 source("figure/figure_supp_generator/library_path.R")
 
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 rownames(data1) = data1$species
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
@@ -12,7 +12,7 @@ data1 = data1[data1$species != "Eumeta_japonica",]
 data1$species = paste(str_replace_all(data1$species,"_"," "),sep="")
 
 
-data12 = read.delim("data/data12_supp.tab")
+data12 = read.delim("data/data12_supp.tab",comment.char = "#")
 data12$species = paste(str_replace_all(data12$species,"_"," "),", GCi=",round(data1[data12$species,]$gci,2),sep="")
 
 # Pannel A

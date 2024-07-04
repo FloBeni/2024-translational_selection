@@ -3,10 +3,10 @@ source("figure/figure_supp_generator/library_path.R")
 
 resolution = 3
 
-data7 <- read.table("data/data7_supp.tab",header=T)
+data7 <- read.delim("data/data7_supp.tab",header=T,comment.char = "#")
 rownames(data7) = str_replace_all(rownames(data7) , "_"," ")
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$anticodon
 
 arbrePhylotips = arbrePhylo

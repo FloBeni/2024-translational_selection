@@ -34,10 +34,10 @@ Clade_color = c(Diptera="red",Lepidoptera="#FB9A99",Coleoptera="#e2cc1a",Hymenop
 
 arbrePhylo = read.tree(paste("data/GTDrift_Metazoa_phylogenetic_tree.nwk",sep=""))
 
-life_history_traits = read.delim("data/GTDrift_life_history_traits_and_polymorphism_derived_Ne.tab")
+life_history_traits = read.delim("data/GTDrift_life_history_traits_and_polymorphism_derived_Ne.tab",comment.char = "#")
 rownames(life_history_traits) = life_history_traits$species
 
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 

@@ -1,7 +1,7 @@
 # Generate Figure 7
 source("figure/figure_main_generator/library_path.R")
 
-data2 = read.delim("data/data2_supp.tab")
+data2 = read.delim("data/data2_supp.tab",comment.char = "#")
 dt_graph = data2[data2$species == "Homo_sapiens" ,]
 
 resolution = 2
@@ -68,13 +68,13 @@ dev.off()
 
 # Pannel C
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 
 data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 ,]
 data1[,c("lifespan_days","length_cm","mass_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","mass_kg")]
 
-dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
+dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab",comment.char = "#")
 rownames(dnds) = dnds$species
 data1[,c("dNdS")] = dnds[data1$species,c("dNdS")]
 

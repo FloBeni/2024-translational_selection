@@ -122,7 +122,7 @@ dev.off()
 
 # Pannel D
 
-data13 = read.delim("data/data13_supp.tab")
+data13 = read.delim("data/data13_supp.tab",comment.char = "#")
 dt_graph = data13
 
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," SNPs PO>nPO",sep=""),
@@ -176,7 +176,7 @@ dev.off()
 
 # Pannel E
 
-data14 = read.delim("data/data14_supp.tab")
+data14 = read.delim("data/data14_supp.tab",comment.char = "#")
 dt_graph = data14
 
 labels_name = c( "PO>nPO" = paste( format(sum(dt_graph$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," substitutions PO>nPO",sep=""),

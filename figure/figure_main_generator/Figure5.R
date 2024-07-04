@@ -13,7 +13,7 @@ rownames(lynch_dt) = lynch_dt$species
 Ne_genus = tapply(lynch_dt$Ne,lynch_dt$genus,mean)
 
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 data1$Ne = lynch_dt[data1$species,]$Ne
 data1$Ne_estimate = "from genus"
 data1[!is.na(data1$Ne),]$Ne_estimate = "from species"
@@ -25,7 +25,7 @@ data1 = data1[ data1$nb_codon_not_decoded == 0  & data1$pval_aa_fpkm < 0.05 & da
 data1[,c("lifespan_days","length_cm","mass_kg")] = GTDrift_list_species[data1$species,c("lifespan_days","length_cm","mass_kg")]
 
 
-dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab")
+dnds = read.delim("data/GTDrift_Metazoa_dNdS.tab",comment.char = "#")
 rownames(dnds) = dnds$species
 data1[,c("dNdS")] = dnds[data1$species,c("dNdS")]
 

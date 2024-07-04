@@ -4,7 +4,7 @@ resolution = 2
 
 # Pannel A
 
-data9 = read.delim("data/data9_supp.tab")
+data9 = read.delim("data/data9_supp.tab",comment.char = "#")
 dt_graph = data9
 
 spearman_method_aa = cor.test( dt_graph$nb_copy_Caenorhabditis_elegans, dt_graph$nb_copy_Hydra_vulgaris,method="spearman",exact=F)
@@ -39,10 +39,10 @@ dev.off()
 
 # Pannel B
 
-data8 = read.delim("data/data8_supp.tab")
+data8 = read.delim("data/data8_supp.tab",comment.char = "#")
 data8$clade_group = GTDrift_list_species[data8$species2,]$clade_group
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 rownames(data1) = data1$species
 data1 = data1[ data1$nb_genes_filtered >= 5000 ,]
 data8$pval_aa_fpkm = data1[data8$species2,]$pval_aa_fpkm < 0.05
