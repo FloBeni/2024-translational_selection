@@ -44,7 +44,7 @@ df = data.frame(
 )
 
 
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 #### Compare with codon usage
@@ -54,12 +54,12 @@ taxID = GTDrift_list_species[species,]$NCBI.taxid
 path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
 
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 stop_codon = rownames(code[code$aa_name == "Ter",])
 code$nb_syn = table(code$aa_name)[code$aa_name]
 
-codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep="") )
+codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep="") ,comment.char = "#")
 
 codon_usage$length = rowSums(codon_usage[ , 3:66]) * 3
 codon_usage$intern_stop_codon = rowSums(codon_usage[,stop_codon]) - grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon)
@@ -71,7 +71,7 @@ codon_usage = codon_usage[!duplicated(codon_usage$gene_id),]
 codon_usage = codon_usage[!is.na(codon_usage$median_fpkm) ,]
 codon_usage = codon_usage[codon_usage$median_fpkm != 0 ,]
 
-tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""),comment.char = "#")
 rownames(tRNA_optimal) = tRNA_optimal$codon
 tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
 
@@ -148,12 +148,12 @@ taxID = GTDrift_list_species[species,]$NCBI.taxid
 path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
 
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 stop_codon = rownames(code[code$aa_name == "Ter",])
 code$nb_syn = table(code$aa_name)[code$aa_name]
 
-codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep="") )
+codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep="") ,comment.char = "#")
 
 codon_usage$length = rowSums(codon_usage[ , 3:66]) * 3
 codon_usage$intern_stop_codon = rowSums(codon_usage[,stop_codon]) - grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon)
@@ -165,7 +165,7 @@ codon_usage = codon_usage[!duplicated(codon_usage$gene_id),]
 codon_usage = codon_usage[!is.na(codon_usage$median_fpkm) ,]
 codon_usage = codon_usage[codon_usage$median_fpkm != 0 ,]
 
-tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""),comment.char = "#")
 rownames(tRNA_optimal) = tRNA_optimal$codon
 tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
 

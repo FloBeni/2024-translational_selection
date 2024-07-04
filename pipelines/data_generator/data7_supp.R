@@ -1,10 +1,10 @@
 # Generate Data 7
 library(stringi)
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 
@@ -14,7 +14,7 @@ for (species in GTDrift_list_species$species){
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
   taxID = GTDrift_list_species[species,]$NCBI.taxid
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""),comment.char = "#")
   dt = t(tRNA_optimal[,c("anticodon","nb_tRNA_copies")])
   dt = data.frame(dt)
   colnames(dt) = dt[1,]  

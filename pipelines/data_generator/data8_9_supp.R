@@ -1,13 +1,13 @@
 # Generate Data 8 and 9
 library(stringi)
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 code = code[code$aa_name != "Ter",]
 
 data7 <- read.table("data/data7_supp.tab",header=T)
 
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 all_data = data.frame()

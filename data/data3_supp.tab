@@ -1,4 +1,4 @@
-species	amino_acid	letter_aa	tRNASE_copies	obs_codon
+species	amino_acid	letter_aa	tRNA_gene_copy	obs_aminoacid
 Caenorhabditis_elegans	Phe	Phenylalanine	14	10020171.6617385
 Caenorhabditis_elegans	Ser	Serine	38	18023325.376923
 Caenorhabditis_elegans	Tyr	Tyrosine	18	7401115.24894275

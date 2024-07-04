@@ -3,7 +3,7 @@ options(stringsAsFactors = F, scipen = 999)
 library(stringr)
 library(stringi)
 
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 ### tRNA abundance
@@ -12,7 +12,7 @@ for (species in GTDrift_list_species$species){
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
   taxID = GTDrift_list_species[species,]$NCBI.taxid
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""),comment.char = "#")
   dt = t(tRNA_optimal[,c("anticodon","nb_tRNA_copies")])
   dt = data.frame(dt)
   colnames(dt) = dt[1,]  
@@ -23,12 +23,12 @@ for (species in GTDrift_list_species$species){
 tRNA_abundance <- data.frame(sapply( tRNA_abundance, as.numeric ))
 rownames(tRNA_abundance) = GTDrift_list_species$species
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 data1 = data1[data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 & data1$nb_codon_not_decoded == 0,]
 
 tRNA_abundance = tRNA_abundance[rownames(tRNA_abundance) %in% data1$species,]
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 
 code = code[!code$aa_name %in% c("Ter"),]
@@ -37,12 +37,12 @@ rownames(code) = code$anticodon
 
 data4 = data.frame()
 for (anticodon in code$anticodon){
-  dt = data.frame(abundance = tRNA_abundance[,anticodon])
-  dt$species = rownames(tRNA_abundance)
-  dt$nb_syn = code[anticodon,]$nb_syn
+  dt = data.frame(species = rownames(tRNA_abundance))
   dt$amino_acid = code[anticodon,]$aa
+  dt$nb_syn = code[anticodon,]$nb_syn
   dt$anticodon = anticodon
   dt$codon = code[anticodon,]$codon
+  dt$tRNA_gene_copy = tRNA_abundance[,anticodon]
   data4 = rbind(data4,dt)
 }
 
@@ -50,7 +50,7 @@ for (species in GTDrift_list_species$species){
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
   taxID = GTDrift_list_species[species,]$NCBI.taxid
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""),comment.char = "#")
   rownames(tRNA_optimal) = tRNA_optimal$codon
   data4[data4$species == species,c("POC1","POC2")] = tRNA_optimal[ data4[data4$species == species,]$codon,c("POC1","POC2")]
 }  
@@ -70,10 +70,9 @@ data4$codon = factor(data4$codon,levels =  unlist(lapply(vect_debut,function(x) 
 data4$title = factor(data4$title,levels= tapply(data4$title, as.integer(data4$codon),unique))
 
 nb_sp = length(unique(data4$species))
-data4$nb_species_0 = tapply(data4$abundance == 0,data4$codon,sum)[data4$codon]
+data4$nb_species_0 = tapply(data4$tRNA_gene_copy == 0,data4$codon,sum)[data4$codon]
 data4$nb_species_0 = round(data4$nb_species_0 / nb_sp*100)
-data4$y_axis_0 = tapply(data4$abundance ,data4$codon,function(x) quantile(x,0.9))[data4$codon]
-# data4[duplicated(data4$codon) | data4$nb_species_0 < 50,]$nb_species_0 = NA
+data4$y_axis_0 = tapply(data4$tRNA_gene_copy ,data4$codon,function(x) quantile(x,0.9))[data4$codon]
 data4[duplicated(data4$codon) ,]$nb_species_0 = NA
 data4[!is.na(data4$nb_species_0),]$nb_species_0 = paste(data4[!is.na(data4$nb_species_0),]$nb_species_0 ,"%")
 

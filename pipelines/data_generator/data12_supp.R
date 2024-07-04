@@ -1,10 +1,10 @@
 # Generate Data 12
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 stop_codon = rownames(code[code$aa_name == "Ter",])
 
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 
@@ -18,7 +18,7 @@ for (species in species_list){
   
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
   
-  codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep="") )
+  codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep=""),comment.char = "#")
   
   codon_usage$intern_stop_codon = rowSums(codon_usage[,stop_codon]) - grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon)
   

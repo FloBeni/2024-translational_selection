@@ -1,3 +1,14 @@
+# species : Scientific name of the studied species
+# set : Set of codons (POC1, POC2, or both)
+# nb_genes : Number of genes per 2% bin interval of gene expression level
+# freq : POC frequency
+# fpkm : Median gene expression level per bin
+# categorie : Category label
+# type_aa : Set of codons, number of amino acids
+# gene_set : Number of genes for which POC frequency can be estimated
+# nb_poc : Number of POC codons
+# nb_aa : Number of amino acids with a POC codon
+# list : List of the codons in the set
 species	set	nb_genes	freq	fpkm	categorie	type_aa	gene_set	nb_poc	nb_aa	list
 Caenorhabditis_elegans	POC1	333	0.477753354435709	0.00885005	Putative optimal codons (POC)	POC1 codons, Nb aa = 19	N = 16,605	19	19	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG
 Caenorhabditis_elegans	POC1	332	0.467072053443293	0.037769175	Putative optimal codons (POC)	POC1 codons, Nb aa = 19	N = 16,605	19	19	TCT;TCC;CTT;CGT;CTC;CGC;CCA;CAA;ATT;ACT;ATC;ACC;AAG;GTT;GCT;GTC;GCC;GGA;GAG

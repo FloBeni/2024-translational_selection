@@ -3,7 +3,7 @@ options(stringsAsFactors = F, scipen = 999)
 library(stringr)
 library(stringi)
 
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 ### tRNA abundance
@@ -12,7 +12,7 @@ for (species in GTDrift_list_species$species){
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
   taxID = GTDrift_list_species[species,]$NCBI.taxid
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""),comment.char = "#")
   dt = t(tRNA_optimal[,c("anticodon","nb_tRNA_copies")])
   dt = data.frame(dt)
   colnames(dt) = dt[1,]  
@@ -23,13 +23,13 @@ for (species in GTDrift_list_species$species){
 tRNA_abundance <- data.frame(sapply( tRNA_abundance, as.numeric ))
 rownames(tRNA_abundance) = GTDrift_list_species$species
 
-data1 = read.delim("data/data1_supp.tab")
+data1 = read.delim("data/data1_supp.tab",comment.char = "#")
 data1$clade_group = GTDrift_list_species[data1$species,]$clade_group
 data1 = data1[data1$clade_group %in% c("Diptera","Lepidoptera") & data1$species != "Eumeta_japonica" & data1$pval_aa_fpkm < 0.05 & data1$nb_genes_filtered >= 5000 & data1$nb_codon_not_decoded == 0,]
 
 tRNA_abundance = tRNA_abundance[rownames(tRNA_abundance) %in% data1$species,]
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 
 code = code[!code$aa_name %in% c("Ter"),]
@@ -51,7 +51,7 @@ for (species in GTDrift_list_species$species){
   genome_assembly = GTDrift_list_species[species,]$assembly_accession
   taxID = GTDrift_list_species[species,]$NCBI.taxid
   path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""),comment.char = "#")
   rownames(tRNA_optimal) = tRNA_optimal$codon
   data11[data11$species == species,c("POC1","POC2")] = tRNA_optimal[ data11[data11$species == species,]$codon,c("POC1","POC2")]
 }  

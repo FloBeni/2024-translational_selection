@@ -5,7 +5,7 @@ library(stringi)
 library(tidyr)
 library(dplyr)
 
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 subst_or_snp = "substitutions"
@@ -15,12 +15,12 @@ proportion = 0.02
 
 path_data = "/home/fbenitiere/data/"
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 stop_codon = rownames(code[code$aa_name == "Ter",])
 
 ## Gene to study
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 species = "Drosophila_melanogaster"
 print(species)
@@ -28,7 +28,7 @@ genome_assembly = GTDrift_list_species[species,]$assembly_accession
 taxID = GTDrift_list_species[species,]$NCBI.taxid
 path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
 
-codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep="") )
+codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep=""),comment.char = "#")
 
 codon_usage$length = rowSums(codon_usage[ , 3:66]) * 3
 codon_usage$intern_stop_codon = rowSums(codon_usage[,stop_codon]) - grepl(paste(stop_codon,collapse = "|"),codon_usage$end_codon)
@@ -58,7 +58,7 @@ treshold_data$orientation =  sapply(treshold_list,function(x) str_split(x,'_')[[
 rownames(treshold_data) = chrList[treshold_data$chromosome ] 
 
 
-gene_data = read.delim("/home/fbenitiere/data/Projet-SplicedVariants/Annotations/Drosophila_melanogaster/formatted_data/gene.tab")
+gene_data = read.delim("/home/fbenitiere/data/Projet-SplicedVariants/Annotations/Drosophila_melanogaster/formatted_data/gene.tab",comment.char = "#")
 chrList = c("NC_004354.4"="chrX",
             "NT_033779.5" = "chr2L","NT_033778.4" = "chr2R",
             "NT_037436.4" = "chr3L","NT_033777.3" = "chr3R",
@@ -148,7 +148,7 @@ list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_
                        pattern=paste("count",count_file,"_codon",sep=""))
 analyzable_codon_count = data.frame()
 for (file in list_file){
-  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/" , file , sep=""))
+  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/" , file , sep=""),comment.char = "#")
   analyzable_codon_count = rbind(analyzable_codon_count,data_per_chr)
 }
 
@@ -156,7 +156,7 @@ list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_
                        pattern=paste("count",count_file,"_trinucl",sep=""))
 analyzable_trinucl_count = data.frame()
 for (file in list_file){
-  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""))
+  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""),comment.char = "#")
   analyzable_trinucl_count = rbind(analyzable_trinucl_count,data_per_chr)
 }
 
@@ -176,7 +176,7 @@ list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_
 
 substitution_codon = data.frame()
 for (file in list_file){
-  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""))
+  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""),comment.char = "#")
   substitution_codon = rbind(substitution_codon,data_per_chr)
 }
 substitution_codon = substitution_codon[substitution_codon$protein_id %in% codon_usage$protein_id,]
@@ -197,7 +197,7 @@ list_file = list.files(paste(path_data,"Projet-NeGA/translational_selection/daf_
                        pattern=paste(count_file,"_intron",sep=""))
 substitution_trinucl = data.frame()
 for (file in list_file){
-  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""))
+  data_per_chr = read.delim(paste(path_data,"Projet-NeGA/translational_selection/daf_drosophila_melanogaster/processed/",subst_or_snp,"/",file,sep=""),comment.char = "#")
   substitution_trinucl = rbind(substitution_trinucl,data_per_chr)
 }
 substitution_trinucl = substitution_trinucl %>%
@@ -238,7 +238,7 @@ taxID = GTDrift_list_species[species,]$NCBI.taxid
 
 path = paste("data/per_species/",species,"_NCBI.taxid",taxID,"/",genome_assembly,sep="")
 
-tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""),comment.char = "#")
 rownames(tRNA_optimal) = tRNA_optimal$codon
 tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
 

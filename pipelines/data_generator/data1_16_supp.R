@@ -2,12 +2,12 @@
 library(stringi)
 
 
-data_conservation = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75.tab.gz",sep=""))
-data_conservation_rmfirst1000bp = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab.gz",sep=""))
+data_conservation = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75.tab.gz",sep=""),comment.char = "#")
+data_conservation_rmfirst1000bp = read.delim(paste("data/compilation_prop_gap_pergene_25_50_75_rmfirst1000bp.tab.gz",sep=""),comment.char = "#")
 
 stderror <- function(x) sd(x , na.rm = T)/sqrt(length(x[!is.na(x)] ))
 
-code = read.delim(paste("data/standard_genetic_code.tab",sep=""))
+code = read.delim(paste("data/standard_genetic_code.tab",sep=""),comment.char = "#")
 rownames(code) = code$codon
 stop_codon = rownames(code[code$aa_name == "Ter",])
 
@@ -16,7 +16,7 @@ wobble_pairing = c("C"="IC","T"="GU","G"="UG","A"="IA")
 wobble_associat_wc = list("T"="C", "A"="A", "G"="A", "C"="T")
 
 
-GTDrift_list_species = read.delim("data/GTDrift_list_species.tab")
+GTDrift_list_species = read.delim("data/GTDrift_list_species.tab",comment.char = "#")
 rownames(GTDrift_list_species) = GTDrift_list_species$species
 
 data1 = data.frame()
@@ -38,7 +38,7 @@ for (species in GTDrift_list_species$species){
     tRNA_GFF = F
   } 
   
-  codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep="") )
+  codon_usage = read.delim( paste(path,"/codon_usage_gene_fpkm.txt.gz",sep=""),comment.char = "#")
   nb_genes = length(unique(codon_usage$gene_id))
   
   codon_usage$length = rowSums(codon_usage[ , 3:66]) * 3
@@ -57,7 +57,7 @@ for (species in GTDrift_list_species$species){
   
   observation = colSums( codon_usage[3:70] * codon_usage$median_fpkm , na.rm = T )
   
-  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""))
+  tRNA_optimal = read.delim(paste(path,"/decoding_table.tab.gz",sep=""),comment.char = "#")
   rownames(tRNA_optimal) = tRNA_optimal$codon
   tRNA_optimal = tRNA_optimal[tRNA_optimal$aa_name != "Ter",]
   nb_codon_not_decoded = sum(!tRNA_optimal$decoded)
