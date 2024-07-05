@@ -14,26 +14,28 @@ data1$species = paste(str_replace_all(data1$species,"_"," "),sep="")
 
 data12 = read.delim("data/data12_supp.tab",comment.char = "#")
 data12$species = paste(str_replace_all(data12$species,"_"," "),", GCi=",round(data1[data12$species,]$gci,2),sep="")
+data12$third_nucl = substr(data12$codon,3,3)
+data12$second_nucl = substr(codon,1,2)
 
 # Pannel A
 
 data12$species = factor(data12$species,levels=paste(data1[order(data1$gci),]$species,", GCi=",round(data1[order(data1$gci),]$gci,2),sep=""))
 dt_graph = data12[data12$aa_name == "Val",]
 
-count_dinucl = table(dt_graph$trinucl2)
+count_dinucl = table(dt_graph$second_nucl)
 count_dinucl = count_dinucl[order(count_dinucl,decreasing = T)]
-dt_graph[dt_graph$trinucl2 == names(count_dinucl[1]),]$trinucl = paste(dt_graph[dt_graph$trinucl2 == names(count_dinucl[1]),]$trinucl,"1",sep="")
+dt_graph[dt_graph$second_nucl == names(count_dinucl[1]),]$third_nucl = paste(dt_graph[dt_graph$second_nucl == names(count_dinucl[1]),]$third_nucl,"1",sep="")
 
 
 vector = unique(paste(dt_graph$codon))
-names( vector ) = unique(paste(dt_graph$trinucl))
+names( vector ) = unique(paste(dt_graph$third_nucl))
 
 names(set_color) = c("G1","C1","A1","T1","G","C","A","T")
 
-dt_graph$trinucl = factor(dt_graph$trinucl,levels = c("G1","A1","T1","C1"))
+dt_graph$third_nucl = factor(dt_graph$third_nucl,levels = c("G1","A1","T1","C1"))
 
 
-pA = ggplot(dt_graph,aes(x=fpkm,y=rscu,fill=trinucl,col=trinucl)) +geom_line(size=1.5) +
+pA = ggplot(dt_graph,aes(x=fpkm,y=rscu,fill=third_nucl,col=third_nucl)) +geom_line(size=1.5) +
   theme_bw() + theme(
     axis.title.x = element_text(color="black", size=30,family="ubuntu condensed",vjust=0),
     axis.title.y = element_text(color="black", size=30, family="ubuntu condensed",vjust=1.7),

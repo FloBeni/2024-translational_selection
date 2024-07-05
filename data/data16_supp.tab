@@ -1,3 +1,10 @@
+# species : Scientific name of the species studied
+# amino_acid : Amino acid 3-letter code
+# codon : Codon under study
+# aa_name_scu : Amino acid 3-letter code and codon degeneracy
+# expressed_overused_background : Fraction of POC in the top 5% expressed genes minus in the bottom 50% expressed genes, removing intron variation
+# rank : Order with the codon with the strongest variation
+# nb_tRNA_copies : Number of tRNA gene copies
 species	amino_acid	codon	aa_name_scu	expressed_overused_background	rank	nb_tRNA_copies
 Bombyx_mori	Ala	GCC	Ala	0.08161	1	1
 Bombyx_mori	Ala	GCT	Ala	0.08041	2	24

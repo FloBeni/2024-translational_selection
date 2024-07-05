@@ -40,22 +40,19 @@ for (species in species_list){
   
   FPKM_bins = tapply(xaxis, intervalle_FPKM, median)
   
-  for (aa_name in unique(code$aa_name)){
-    POC_codon = rowSums(codon_usage[ code[code$aa_name == aa_name,]$codon ],na.rm = T)
-    for (codon in code[code$aa_name == aa_name,]$codon ){
-      POC_obs = rowSums(codon_usage[ codon ],na.rm = T)
-      
-      data12 = rbind(data12,data.frame(
-        species,
-        aa_name,
-        trinucl = substr(codon,3,3),
-        trinucl2 = substr(codon,1,2),
-        codon = codon,
-        nb_genes = as.numeric(table(intervalle_FPKM)),
-        rscu =  tapply( POC_obs / POC_codon*length(code[code$aa_name=="Val",]$codon)  , intervalle_FPKM , function(x) mean(x,na.rm=T)),
-        fpkm = FPKM_bins
-      ))
-    }
+  aa_name = "Val"
+  aa_count = rowSums(codon_usage[ code[code$aa_name == aa_name,]$codon ],na.rm = T)
+  for (codon in code[code$aa_name == aa_name,]$codon ){
+    codon_count = rowSums(codon_usage[ codon ],na.rm = T)
+    
+    data12 = rbind(data12,data.frame(
+      species,
+      aa_name,
+      codon = codon,
+      nb_genes = as.numeric(table(intervalle_FPKM)),
+      rscu =  tapply( codon_count / aa_count * length(code[code$aa_name=="Val",]$codon)  , intervalle_FPKM , function(x) mean(x,na.rm=T)),
+      fpkm = FPKM_bins
+    ))
   }
 }
 

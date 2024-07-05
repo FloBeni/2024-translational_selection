@@ -6,6 +6,11 @@ source("figure/figure_supptext_generator/library_path.R")
 
 data15_supp = read.delim(paste("data/data15_supp.tab",sep="") , header=T ,comment.char = "#")
 
+data15_supp$from = sapply(data15_supp$per_windows,function(x) strsplit(x," ")[[1]][1])
+data15_supp$group = as.numeric(sapply(data15_supp$per_windows,function(x) strsplit(x," ")[[1]][2]))
+
+data15_supp$from = factor(data15_supp$from,levels = c("from_5prime" , "from_3prime"))
+
 data15_supp$clade_group = GTDrift_list_species[data15_supp$species,]$clade_group
 data15_supp$from = str_replace_all(data15_supp$from , "from_5prime","From start codons")
 data15_supp$from = str_replace_all(data15_supp$from , "from_3prime","From stop codons")

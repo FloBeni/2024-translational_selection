@@ -2,7 +2,7 @@
 # set : Set of codons (POC1, POC2, or both)
 # nb_genes : Number of genes per 2% bin interval of gene expression level
 # freq : POC frequency
-# fpkm : Median gene expression level per bin
+# fpkm : Median gene expression level per 2% bin
 # categorie : Category label
 # type_aa : Set of codons, number of amino acids
 # gene_set : Number of genes for which POC frequency can be estimated

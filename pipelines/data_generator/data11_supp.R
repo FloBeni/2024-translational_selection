@@ -38,12 +38,12 @@ rownames(code) = code$anticodon
 
 data11 = data.frame()
 for (anticodon in code$anticodon){
-  dt = data.frame(abundance = tRNA_abundance[,anticodon])
-  dt$species = rownames(tRNA_abundance)
-  dt$nb_syn = code[anticodon,]$nb_syn
+  dt = data.frame(species = rownames(tRNA_abundance))
   dt$amino_acid = code[anticodon,]$aa
+  dt$nb_syn = code[anticodon,]$nb_syn
   dt$anticodon = anticodon
   dt$codon = code[anticodon,]$codon
+  dt$tRNA_gene_copy = tRNA_abundance[,anticodon]
   data11 = rbind(data11,dt)
 }
 
@@ -71,9 +71,9 @@ data11$codon = factor(data11$codon,levels =  unlist(lapply(vect_debut,function(x
 data11$title = factor(data11$title,levels= tapply(data11$title, as.integer(data11$codon),unique))
 
 nb_sp = length(unique(data11$species))
-data11$nb_species_0 = tapply(data11$abundance == 0,data11$codon,sum)[data11$codon]
+data11$nb_species_0 = tapply(data11$tRNA_gene_copy == 0,data11$codon,sum)[data11$codon]
 data11$nb_species_0 = round(data11$nb_species_0 / nb_sp*100)
-data11$y_axis_0 = tapply(data11$abundance ,data11$codon,function(x) quantile(x,0.9))[data11$codon]
+data11$y_axis_0 = tapply(data11$tRNA_gene_copy ,data11$codon,function(x) quantile(x,0.9))[data11$codon]
 data11[duplicated(data11$codon) ,]$nb_species_0 = NA
 data11[!is.na(data11$nb_species_0),]$nb_species_0 = paste(data11[!is.na(data11$nb_species_0),]$nb_species_0 ,"%")
 
