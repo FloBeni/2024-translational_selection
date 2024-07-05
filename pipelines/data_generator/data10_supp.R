@@ -17,7 +17,7 @@ set_color = append(set_color,c("#fdfd99","#e2cc1a"))
 
 ########## 
 
-# Load data from Behrens et al. 2023 https://www.sciencedirect.com/science/article/pii/S1097276521000484#app2
+# Load data from Behrens et al. 2021 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8062790/bin/mmc2.xlsx
 mysheets <- read_excel_allsheets("data/Behrens2021_mmc2.xlsx")
 names(mysheets)
 data = mysheets[["Unique tRNA DE analysis"]]
@@ -107,7 +107,8 @@ data10 = df
 
 ##########
 
-dt_droso = read.table("/home/fbenitiere/data/Projet-NeGA/translational_selection/behrens_et_al/bg3-normCounts.csv",sep=",",header=T)
+# Data about Behrens et al. 2021, given by behrens himself after contacting
+dt_droso = read.table("data/Behrens2021_bg3-normCounts",sep=",",header=T)
 dt_droso$Anticodon = str_replace(dt_droso$Gene,"Drosophila_melanogaster_tRNA-","")
 dt_droso$amino_acid = sapply(dt_droso$Anticodon,function(x) str_split(x,'-')[[1]][1])
 

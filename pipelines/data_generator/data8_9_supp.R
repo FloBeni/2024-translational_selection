@@ -22,8 +22,8 @@ for (species in GTDrift_list_species$species){
 }
 
 data9 = cbind(all_data[all_data$species == "Caenorhabditis_elegans", ],all_data[all_data$species == "Hydra_vulgaris", ])
-colnames(data9) = c("nb_copy_Caenorhabditis_elegans" ,"aa_name_Caenorhabditis_elegans", "species", "nb_copy_Hydra_vulgaris" ,"aa_name_Hydra_vulgaris" ,"species")
-
+colnames(data9) = c("nb_copy_Caenorhabditis_elegans" ,"aa_name_Caenorhabditis_elegans", "species", "nb_copy_Hydra_vulgaris" ,"aa_name" ,"species")
+data9 = data9[,c("aa_name","nb_copy_Caenorhabditis_elegans" , "nb_copy_Hydra_vulgaris" )]
 write.table(data9,"data/data9_supp.tab",quote=F,row.names = F,sep="\t")
 
 data8 = data.frame()

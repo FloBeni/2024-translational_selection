@@ -1,8 +1,8 @@
-# species: Scientific name of the species studied
-# amino_acid: Amino acid 3-letter code
-# letter_aa: Amino acid 1-letter code
-# tRNA_gene_copy: Number of tRNA gene copies
-# obs_aminoacid: Sum of amino acid usage times gene expression across all genes
+# species : Scientific name of the species studied
+# amino_acid : Amino acid 3-letter code
+# letter_aa : Amino acid 1-letter code
+# tRNA_gene_copy : Number of tRNA gene copies
+# obs_aminoacid : Sum of amino acid usage times gene expression across all genes
 species	amino_acid	letter_aa	tRNA_gene_copy	obs_aminoacid
 Caenorhabditis_elegans	Phe	Phenylalanine	14	10020171.6617385
 Caenorhabditis_elegans	Ser	Serine	38	18023325.376923

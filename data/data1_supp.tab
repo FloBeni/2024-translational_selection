@@ -4,8 +4,8 @@
 # nb_genes : Number of coding genes
 # nb_genes_filtered : Number of coding genes kept in the study
 # nb_codon_not_decoded : Number of codons without decoding tRNA
-# rho_aa_fpkm : Spearman correlation coefficient between amino acid usage and tRNA gene copy number
-# pval_aa_fpkm : P-value of the Spearman correlation coefficient between amino acid usage and tRNA gene copy number
+# rho_aa_fpkm : Spearman correlation coefficient for the relation between amino acid usage and tRNA gene copy number
+# pval_aa_fpkm : P-value of the Spearman correlation coefficient for the relation between amino acid usage and tRNA gene copy number
 # rho_gc3_gci : Spearman correlation coefficient between gene GC3 and GCi
 # pval_gc3_gci : P-value of the Spearman correlation coefficient between gene GC3 and GCi
 # g_abond_ag : Fraction of tRNA-CNN among the most abundant tRNA in CNN and UNN pairs

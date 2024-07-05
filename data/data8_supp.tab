@@ -1,3 +1,7 @@
+# species1 : Scientific name of the first species studied (Hydra vulgaris)
+# species2 : Scientific name of the second species studied
+# rho : Spearman correlation coefficient for the relationship between species1 and species2 tRNA gene copy number per amino acid
+# pval : P-value of the Spearman correlation coefficient for the relationship between species1 and species2 tRNA gene copy number per amino acid
 species1	species2	rho	pval
 Hydra_vulgaris	Acanthocheilonema_viteae	0.81658031893056	0.0000112274320813678
 Hydra_vulgaris	Acanthochromis_polyacanthus	0.531627108918441	0.0158472190890994

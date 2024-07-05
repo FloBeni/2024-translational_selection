@@ -1,3 +1,12 @@
+# species : Scientific name of the species studied
+# amino_acid : Amino acid 3-letter code
+# gene_copies : tRNA gene copy number from Behrens et al. 2021
+# abundance_rep_1 : tRNA abundance in replicate 1 from Behrens et al. 2021
+# abundance_rep_2 : tRNA abundance in replicate 2 from Behrens et al. 2021
+# transcriptome_count : Sum of amino acid usage times gene expression across all genes
+# prop_gene_copies : Fraction of tRNA gene copy number for the specific amino acid, among all tRNA gene copy number
+# prop_abundance_average : Fraction of tRNA abundance in replicate 1 + replicate 2 for the specific amino acid, among all tRNA
+# prop_transcriptome_count : Fraction of amino acid usage for the specific amino acid, among all amino acid
 species	amino_acid	gene_copies	abundance_rep_1	abundance_rep_2	transcriptome_count	prop_gene_copies	prop_abundance_average	prop_transcriptome_count
 Homo_sapiens	Ala	43	176820.123886234	198122.675124717	7967394.9873456	0.0841487279843444	0.0809253587459006	0.0751728682526223
 Homo_sapiens	Arg	27	231779.634307923	223937.437984371	6427665.43834275	0.0528375733855186	0.0984588076525619	0.0606454239981707
