@@ -14,57 +14,46 @@
   ##  Non-adaptive processes are the primary drivers of codon usage variations among metazoans
   print("Non-adaptive processes are the primary drivers of codon usage variations among metazoans")
   
-  print(paste("position between ",nrow(data1)," metazoan species",sep=""))
+  print(paste("initially selected ",nrow(data1)," metazoan species available",sep=""))
   
   
-  print(paste("gene expression data (N=",sum(data1$nb_genes_filtered<5000)," species with less than 5,000 genes",sep=""))
+  print(paste("but we excluded ",sum(data1$nb_genes_filtered<5000)," species for which there were not enough transcriptomic data",sep=""))
   
   
-  print(paste("CU across ",sum(data1$nb_genes_filtered>=5000)," metazoan species",sep=""))
+  print(paste("base composition in the ",sum(data1$nb_genes_filtered>=5000)," remaining species",sep=""))
   
   data1 = data1[data1$nb_genes_filtered>=5000,]
   
   print(paste(sum(data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Teleostei"))," vertebrates, ",
               sum(data1$clade_group %in% c("Diptera","Lepidoptera","Coleoptera","Hymenoptera","Other Insects")),
-              " insects and ",sum(data1$clade_group %in%c("Other Metazoans","Nematoda"))," other metazoan clades",sep=""))
-  
-  print(paste("constrained and spans from ",round(min(data1$gc3),2)," to ",round(max(data1$gc3),2),sep=""))
-  
-  print(paste(" dipterans (N=",sum(data1$clade_group %in% c("Diptera")),") exhibit",sep=""))
-  
-  print(paste("GC3 variations (from ",round(min(data1[data1$clade_group %in% c("Diptera"),]$gc3),2)," to ",round(max(data1[data1$clade_group %in% c("Diptera"),]$gc3),2),")",sep=""))
+              " insects and ",sum(data1$clade_group %in%c("Other Metazoans","Nematoda"))," other metazoan species",sep=""))
   
   
-  print(paste("GC3 and GCi are highly correlated (rho=",round(data1["Homo_sapiens",]$rho_gc3_gci,2),")",sep=""))
+  print(paste("Spearman's correlation coefficient, rho=",round(data1["Homo_sapiens",]$rho_gc3_gci,2),", p",sep=""))
   
-  print(paste("pronounced in Caenorhabditis elegans (rho=",round(data1["Caenorhabditis_elegans",]$rho_gc3_gci,2),",",sep=""))
-  
-  dt_graph = data1
-  ylabel = "var_gc3"
-  xlabel = "var_gci"
-  dt_graph = dt_graph[!is.na(dt_graph[,xlabel]) & !is.na(dt_graph[,ylabel]) & dt_graph$species %in% arbrePhylo$tip.label,] 
-  dt_graph[,c(ylabel,xlabel)] = sqrt(dt_graph[,c(ylabel,xlabel)])
-  
-  model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_graph$species,tree=arbrePhylo,display_other=F,pagels_obliged=T)
-  
-  print(paste("were higly correlated (R^2=",model_to_use$r2,")",sep=""))
+  print(paste("less pronounced in Caenorhabditis elegans (rho=",round(data1["Caenorhabditis_elegans",]$rho_gc3_gci,2),",",sep=""))
   
   
-  print(paste(" gene GCi and GC3 (SD_{GCi} > ",
-              round(min(sqrt(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Hymenoptera"),]$var_gci)),3),
-              ", SD_{GC3} > ",
-              round(min(sqrt(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Hymenoptera"),]$var_gc3)),3),sep=""))
+  print(paste("in tetrapods (",sum(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods"),]$rho_gc3_gci > 0.7),"/",
+              nrow(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods"),])," species with rho>0.7",
+              sep=""))
   
   
+  print(paste("in hymenopterans (",sum(data1[data1$clade_group %in% c("Hymenoptera"),]$rho_gc3_gci > 0.7),"/",
+              nrow(data1[data1$clade_group %in% c("Hymenoptera"),])," species with rho>0.7",
+              sep=""))
+  
+  
+  print(paste("But overall, ",sum(data1$pval_gc3_gci < 0.05),"/",
+              nrow(data1)," species (",sum(data1$pval_gc3_gci < 0.05)/nrow(data1)*100,
+              "%", sep=""))
   
   ##  tRNA abundance matches proteome requirements
   print("tRNA abundance matches proteome requirements")
   
-  
   data7 = read.delim("data/data7_supp.tab",comment.char = "#")
   data7 = data7[,code$anticodon]
   data7$clade_group = GTDrift_list_species[rownames(data7),]$clade_group
-  
   
   print(paste("ranging from an average of ",
               round(mean(rowSums(data7[data7$clade_group == 'Hymenoptera',code$anticodon])),0),
@@ -72,7 +61,11 @@
               format(round(mean(rowSums(data7[data7$clade_group == 'Teleostei',code$anticodon])),0),big.mark=",",scientific=F)
               ," copies in teleost fish",sep=""))
   
-  
+  data7 = data7[,-which(colnames(data7)=="clade_group")]
+  print(paste("Blattella germanica} contains ",data7[ "Blattella_germanica","AGA"]," copies of the AGA Ser-tRNA, vs. ",min(data7[ "Blattella_germanica",][data7[ "Blattella_germanica",] != 0 & data7[ "Blattella_germanica",] != max(data7[ "Blattella_germanica",])]),
+              " to ",
+              max(data7[ "Blattella_germanica",][data7[ "Blattella_germanica",] != 0 & data7[ "Blattella_germanica",] != max(data7[ "Blattella_germanica",])]),
+              " copies for the other tRNAs",sep=""))
   
   
   data10 = read.delim("data/data10_supp.tab",comment.char = "#")
@@ -85,10 +78,6 @@
   dt_graph = data10[data10$species == "Drosophila_melanogaster",]
   spearman_method_aa_droso = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome_count,method="spearman",exact=F)
   print(paste(" with their tRNA gene copy numbers (rho=",round(spearman_method_aa_droso$estimate,2)," and ",round(spearman_method_aa_human$estimate,2)," respectively",sep=""))
-  
-  
-  print(paste(" tRNA gene copy number also correlates with the amino acid demand in Caenorhabditis elegans (rho=",
-              round(data1['Caenorhabditis_elegans',]$rho_aa_fpkm,2),sep=""))
   
   
   print(paste(" same analysis conducted across ",nrow(data1)," animal species ",sep=""))
@@ -159,11 +148,6 @@
   }
   
   print(paste(length(list_exaequo)," ex æquo cases in total, in ",length(list_species)," species",sep=""))
-  
-  print(paste("In the case of human we are able to identify POC1 for ",length(unique(data4[data4$species == "Homo_sapiens" & data4$POC1,]$amino_acid)),
-              " amino acid and POC2 for ",length(unique(data4[data4$species == "Homo_sapiens" & data4$POC2,]$amino_acid))," codons.",sep=""))
-  
-  
   
   print(paste("For the human genome, POC1 have been defined for ",length(unique(data4[data4$species == "Homo_sapiens" & data4$POC1,]$amino_acid)),
               " amino acids and POC2 for ",length(unique(data4[data4$species == "Homo_sapiens" & data4$POC2,]$amino_acid)),
@@ -238,48 +222,15 @@
               round(sum(data1$expressed_overused_background_POC1 >=0,na.rm = T )/nrow(data1),2)*100,"%),",sep=""))
   
   
+  print(paste(" For ",sum(data1$expressed_overused_background_POC2 >=0,na.rm = T )," species (",
+              round(sum(data1$expressed_overused_background_POC2 >=0,na.rm = T )/nrow(data1),2)*100,"%;",sep=""))
+  
   print(paste("are around +",round(mean(data1[data1$clade_group == "Diptera",]$expressed_overused_background_POCs)),
               "% in Diptera compared to +",
               round(mean(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Teleostei"),]$expressed_overused_background_POCs)),
               "% in vertebrates",sep=""))
   
   
-  
-  ##  Highly constrained amino acids are enriched in optimals codons
-  print("Highly constrained amino acids are enriched in optimals codons")
-  
-  data6 = read.delim("data/data6_supp.tab",comment.char = "#")
-  dt_analysis = data6[data6$species == "Caenorhabditis_elegans",]
-  
-  print(paste("most constrained sites within proteins (from ",
-              round(mean(dt_analysis[dt_analysis$set == "POCs" & dt_analysis$categorie == "Unconstrained",]$freq,na.rm=T)*100,1),"% on average to average ",
-              round(mean(dt_analysis[dt_analysis$set == "POCs" & dt_analysis$categorie == "Highly constrained",]$freq,na.rm=T)*100,1),"%),",sep=""))
-  
-  
-  print(paste("Overall, Delta POCcons is positive in ",round(sum(data1$constraint_overused_POCs>0)/nrow(data1)*100,),
-              "% of species ",sep=""))
-  
-  
-  ##  Selection favors optimal codons in highly expressed genes of Drosophila melanogaster
-  print("Selection favors optimal codons in highly expressed genes of Drosophila melanogaster")
-  
-  
-  data13 = read.delim("data/data13_supp.tab",comment.char = "#")
-  print(paste(format(sum(data13$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T),
-              " nPO$>$PO synonymous SNPs and ",
-              format(sum(data13$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," PO$>$nPO synonymous SNPs",sep=""))
-  
-  
-  data14 = read.delim("data/data14_supp.tab",comment.char = "#")
-  print(paste(format(sum(data14$sum_subst_density_nonoptimal_to_optimal_codon),big.mark=",",scientific=T),
-              " nPO$>$PO synonymous substitutions and ",
-              format(sum(data14$sum_subst_density_optimal_to_nonoptimal_codon),big.mark=",",scientific=T)," PO$>$nPO synonymous substitutions",sep=""))
-  
-  print(paste("In introns, we observed ",
-              format(sum(data13$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," nPO$>$PO SNPs and ",
-              format(sum(data13$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," PO$>$nPO SNPs, ",
-              format(sum(data14$sum_subst_density_nonoptimal_to_optimal_intron),big.mark=",",scientific=T)," nPO$>$PO substitutions and ",
-              format(sum(data14$sum_subst_density_optimal_to_nonoptimal_intron),big.mark=",",scientific=T)," PO$>$nPO substitutions. ",sep=""))
   
   
   ##  Weak relationship between the strength of translational selection and the effective population size
@@ -335,41 +286,47 @@
   print(paste("(Student's t-Test, p-value<",format(ttest$p.value,scientific = T),sep=""))
   
   
-  ##  The tRNA pool evolves in response to changes in genomic substitution patterns
-  print("The tRNA pool evolves in response to changes in genomic substitution patterns")
+  ##  In species subject to translational selection, the tRNA pool evolves in response to changes in neutral substitution patterns
+  print("In species subject to translational selection, the tRNA pool evolves in response to changes in neutral substitution patterns")
   
-  print(paste("Diptera and Lepidoptera, that show a strong translational selection compared to other metazoans (N=",
-              nrow(data1[data1$clade_group %in% c("Diptera","Lepidoptera") & data1$species !="Eumeta_japonica",]),
-              " species; we excluded",sep=""))
   
   print(paste("range of variation in GC-content (GCi ranging from ",round(min(data1[data1$clade_group %in% c("Diptera","Lepidoptera") & data1$species !="Eumeta_japonica",]$gci),2),
               " to ",round(max(data1[data1$clade_group %in% c("Diptera","Lepidoptera") & data1$species !="Eumeta_japonica",]$gci),2),",",sep=""))
   
   
+  print(paste("that strongly correlates with their average GC3 (from ",round(min(data1[data1$clade_group %in% c("Diptera","Lepidoptera") & data1$species !="Eumeta_japonica",]$gc3),2),
+              " to ",round(max(data1[data1$clade_group %in% c("Diptera","Lepidoptera") & data1$species !="Eumeta_japonica",]$gc3),2),",",sep=""))
+  
+  
+  print(paste("we focused our analyses on the ",
+              nrow(data1[data1$clade_group %in% c("Diptera","Lepidoptera") & data1$species !="Eumeta_japonica",]),
+              " Diptera and Lepidoptera",sep=""))
+  
   data16 = read.delim("data/data16_supp.tab",comment.char = "#")
   data16 = data16[data16$species %in% data1[data1$clade_group %in% c("Diptera","Lepidoptera") & data1$species !="Eumeta_japonica",]$species,]
-  nna_nng_code = data16[substr(data16$codon,3,3) %in% c("A","G") & !data16$aa_name %in% c('Ter','Trp','Met','Ile'),]
+  nna_nng_code = data16[substr(data16$codon,3,3) %in% c("A","G") & !data16$amino_acid %in% c('Ter','Trp','Met','Ile'),]
   
-  tapply(nna_nng_code$nb_tRNA_copies == 0,nna_nng_code$codon,sum)
+  print(paste("we observed that the decoding of ",sum(tapply(nna_nng_code$nb_tRNA_copies == 0,nna_nng_code$aa_name_scu,sum) ==0) , " NNA/NNG synonymous codon pairs",sep=""))
   
-  print(paste("NNA/NNG synonymous codon pairs (N=",length(table(substr(nna_nng_code$codon,1,2))) , " pairs)",sep=""))
+  
+  ##  Variation in optimality between wobble and Watson-Crick pairing
+  print("Variation in optimality between wobble and Watson-Crick pairing")
+  
   
   duc_nna_nng = nna_nng_code[order(nna_nng_code$rank),]
   duc_nna_nng = duc_nna_nng[paste(duc_nna_nng$species,duc_nna_nng$aa_name_scu) %in% 
                               paste(duc_nna_nng[duc_nna_nng$nb_tRNA_copies == 0,]$species,duc_nna_nng[duc_nna_nng$nb_tRNA_copies == 0,]$aa_name_scu) ,]
   duc_nna_nng = duc_nna_nng[!duplicated(paste(duc_nna_nng$species,duc_nna_nng$aa_name_scu)),]
-  table(duc_nna_nng$codon)
-  
-  
   
   nnt_nnc_code = code[substr(code$codon,3,3) %in% c("T","C"),]
-  print(paste("For NNT/NNC synonymous codon pairs (N=" , nrow(nnt_nnc_code)/2 , "),",sep=""))
+  print(paste("NNT/NNC synonymous codon pairs (N=" , nrow(nnt_nnc_code)/2 , "),",sep=""))
   
   data_nnc_nnu = data16[substr(data16$codon,3,3) %in% c("C","T"),]
   
-  print(paste("Indeed, among the ",nrow(data_nnc_nnu)/2," NNT/NNC synonymous codons pairs analyzed (" , nrow(nnt_nnc_code)/2 , " pairs $\times$ ",
-              length(unique(data_nnc_nnu$species))," species) ",
-              round(nrow(data_nnc_nnu[data_nnc_nnu$nb_tRNA_copies == 0,])/(nrow(data_nnc_nnu)/2),2)*100,"% are decoded by a ",sep=""))
+  print(paste("for ",
+              round(nrow(data_nnc_nnu[data_nnc_nnu$nb_tRNA_copies == 0,])/(nrow(data_nnc_nnu)/2),2)*100,"% of the ",nrow(data_nnc_nnu)/2,
+              " NNT/NNC synonymous codons pairs analyzed (" , nrow(nnt_nnc_code)/2 , " pairs $\times$ ",
+              length(unique(data_nnc_nnu$species))," species) ",sep=""))
   
   
   print(paste("the ",length(c("Phe", "Tyr", "Cys", "His", "Asn", "Asp","Ser_2")),
@@ -392,8 +349,6 @@
   
   table(substr(duet_nnc_nnu[duet_nnc_nnu$nb_tRNA_copies == 0,]$codon,3,3)) # 'it is always the GNN-tRNA'
   
-  
-  
   other_pairs = data_nnc_nnu[!data_nnc_nnu$aa_name_scu %in% c("Phe", "Tyr", "Cys", "His", "Asn", "Asp","Ser_2"),]
   duc_other = other_pairs[order(other_pairs$rank),]
   duc_other = duc_other[paste(duc_other$species,duc_other$aa_name_scu) %in% 
@@ -413,4 +368,74 @@
   print(paste("For the other pairs (decoded by ANN-tRNA) there is more variability: the NNC codon (wobble pairing) is preferred in ",
               round(table(substr(duc_other[duc_other$aa_name_scu != "Gly",]$codon,3,3))["C"] / nrow(duc_other[duc_other$aa_name_scu != "Gly",]),2)*100,
               "% of species, whereas the NNT codon (watson-crick pairing) is preferred in the others.",sep=""))
+  
+  
+  
+  ##  Discussion
+  print("Discussion")
+  ##  Predicting translationally optimal codons
+  print("Predicting translationally optimal codons")
+
+  
+  print(paste("higher than ours (respectively ",round(data1[data1$species == "Homo_sapiens",]$S_POCs,2)," and ",
+              round(data1[data1$species == "Mus_musculus",]$S_POCs,2),")",sep=""))
+  
+  
+  ##  Variation in the intensity of selection in favor of translationally optimal codons across metazoans
+  print("Variation in the intensity of selection in favor of translationally optimal codons across metazoans")
+
+  
+  print(paste("Across the ",nrow(data1)," species, the highest values of $S$ are observed in \textit{Caenorhabditis} nematodes ($S=",round(data1[data1$species == "Caenorhabditis_elegans",]$S_POCs,2),"$ ",sep=""))
+  
+  
+  print(paste(" and $S=",round(data1[data1$species == "Caenorhabditis_nigoni",]$S_POCs,2),"$ in \textit{C. nigoni}",sep=""))
+  
+  
+  print(paste("We also found a clear signal of translational selection in diptera (mean $S=",
+              round(mean(data1[data1$clade_group == "Diptera",]$S_POCs),2),"$, N=",nrow(data1[data1$clade_group == "Diptera",])," species)",sep=""))
+  
+  
+  print(paste("lesser extent in lepidoptera (mean $S=",
+              round(mean(data1[data1$clade_group == "Lepidoptera",]$S_POCs),2),"$, N=",nrow(data1[data1$clade_group == "Lepidoptera",])," species)",sep=""))
+  
+  
+  print(paste("The weakness of translational selection in vertebrates (mean $S=",
+              round(mean(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Teleostei"),]$S_POCs),2),
+              "$, N=",nrow(data1[data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Teleostei"),])," species)",sep=""))
+  
+  
+  
+  print(paste("our dataset included ",nrow(data1[!data1$clade_group %in% c("Mammalia","Aves","Other Tetrapods","Teleostei","Diptera") &
+                                                   !grepl("Caenorhabditis",data1$species),])," invertebrate species",sep=""))
+  
+  
+  
+  ##  Materials & Methods
+  print("Materials & Methods")
+  ##  tRNA gene annotation
+  print("tRNA gene annotation")
+  
+  data1 = read.delim("data/data1_supp.tab",comment.char = "#")
+  print(paste("annotation file (N=",sum(!data1$tRNA_GFF)," species). For species in which tRNA annotations were not available (N=",sum(data1$tRNA_GFF)," species)",sep=""))
+  
+  
+  
+  # Supplementary Text
+  print("Supplementary Text")
+  
+  ##  Highly constrained amino acids are enriched in optimals codons
+  print("Highly constrained amino acids are enriched in optimals codons")
+  
+  data6 = read.delim("data/data6_supp.tab",comment.char = "#")
+  dt_analysis = data6[data6$species == "Caenorhabditis_elegans",]
+  
+  print(paste("most constrained sites within proteins (from ",
+              round(mean(dt_analysis[dt_analysis$set == "POCs" & dt_analysis$categorie == "Unconstrained",]$freq,na.rm=T)*100,1),"% on average to average ",
+              round(mean(dt_analysis[dt_analysis$set == "POCs" & dt_analysis$categorie == "Highly constrained",]$freq,na.rm=T)*100,1),"%),",sep=""))
+  
+  
+  print(paste("Overall, Delta POCcons is positive in ",round(sum(data1$constraint_overused_POCs>0)/nrow(data1)*100,),
+              "% of species ",sep=""))
+  
+  
 }
