@@ -1,6 +1,3 @@
----
-bibliography: references.bib
----
 
 [![DOI](https://zenodo.org/)](https://zenodo.org/)
 
