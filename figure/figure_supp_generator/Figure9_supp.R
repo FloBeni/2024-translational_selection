@@ -15,7 +15,7 @@ data1$species = paste(str_replace_all(data1$species,"_"," "),sep="")
 data12 = read.delim("data/data12_supp.tab",comment.char = "#")
 data12$species = paste(str_replace_all(data12$species,"_"," "),", GCi=",round(data1[data12$species,]$gci,2),sep="")
 data12$third_nucl = substr(data12$codon,3,3)
-data12$second_nucl = substr(codon,1,2)
+data12$second_nucl = substr(data12$codon,1,2)
 
 # Pannel A
 

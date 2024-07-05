@@ -9,7 +9,6 @@ data5$gene_set = str_replace_all(data5$gene_set,"all,","genes,")
 data5[data5$categorie == "POC-matching triplets (POCMT)",]$categorie = "control"
 data5[data5$categorie == "Putative optimal codons (POC)",]$categorie = ""
 
-# dt_graph = data5[ data5$species "Musca_domestica" & data5$set != "POCs",]
 dt_graph = data5[  data5$set != "POCs" & data5$species %in%  c( "Caenorhabditis_elegans" , "Drosophila_melanogaster" , "Homo_sapiens" , "Musca_domestica" ,"Anopheles_gambiae","Pieris_rapae"),]
 dt_graph$species = paste(str_replace_all(dt_graph$species,"_"," "),sep="")
 
@@ -17,7 +16,6 @@ dt_graph$species = paste(str_replace_all(dt_graph$species,"_"," "),sep="")
 pA = ggplot(dt_graph ,
             aes(x=fpkm ,y=freq*100,fill=paste(set,categorie),col=paste(set,categorie)))  + geom_point(alpha=0)+
   geom_line(data=dt_graph,size=2,aes(linetype=paste(set,categorie))) +
-  # geom_point(data=dt_graph,pch=21,col="black",size=2)+
   scale_fill_manual(values=set_color[c(2,1,4,3)]) +
   scale_color_manual(values=set_color[c(2,1,4,3)]) +
   scale_shape_manual(values=c(21,22,24,23,25,20))+

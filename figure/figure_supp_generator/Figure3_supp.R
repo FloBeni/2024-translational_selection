@@ -9,8 +9,7 @@ dt_graph = data9
 
 spearman_method_aa = cor.test( dt_graph$nb_copy_Caenorhabditis_elegans, dt_graph$nb_copy_Hydra_vulgaris,method="spearman",exact=F)
 
-pA = ggplot(dt_graph,aes(x=nb_copy_Hydra_vulgaris ,y=nb_copy_Caenorhabditis_elegans,label=aa_name_Caenorhabditis_elegans)) +
-  # geom_smooth(formula = y ~ x, method="lm", size=1 , col=set_color[1],se=F,linetype='dashed') +
+pA = ggplot(dt_graph,aes(x=nb_copy_Hydra_vulgaris ,y=nb_copy_Caenorhabditis_elegans,label=aa_name)) +
   geom_point(pch=21,size=4,fill=set_color[2]) +
   geom_text(nudge_x = 1.7,size=5,family="ubuntu condensed") + theme_bw() +  theme(
     axis.title.x = element_text(color="black", size=22,family="ubuntu condensed"),

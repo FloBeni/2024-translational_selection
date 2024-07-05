@@ -3,10 +3,9 @@ source("figure/figure_supptext_generator/library_path.R")
 resolution = 3
 
 # Pannel A
-
 data6 = read.delim("data/data6_supp.tab",comment.char = "#")
 data6$categorie = factor(data6$categorie,levels = rev( unique(data6$categorie))) 
-dt_graph = data6[data6$species == "Homo_sapiens" & data6$type_aa == "POCs",]
+dt_graph = data6[data6$species == "Homo_sapiens" & data6$set == "POCs",]
 
 pA = ggplot( dt_graph , aes(y=freq,fill=categorie))  +
   geom_boxplot(outlier.shape = NA) +
@@ -39,7 +38,7 @@ dev.off()
 
 # Pannel B
 
-dt_graph = data6[data6$species == "Caenorhabditis_elegans" & data6$type_aa == "POCs",]
+dt_graph = data6[data6$species == "Caenorhabditis_elegans" & data6$set == "POCs",]
 
 
 pB = ggplot( dt_graph , aes(y=freq,fill=categorie))  +

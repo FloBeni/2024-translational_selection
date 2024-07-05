@@ -21,7 +21,7 @@ data11$title = factor(data11$title,levels= tapply(data11$title, as.integer(data1
 
 set_color = c(A="#B2DF8A",T="#33A02C",C="#1F78B4",G="#A6CEE3")
 
-pA = ggplot(data11,aes(x=title,y=abundance,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
+pA = ggplot(data11,aes(x=title,y=tRNA_gene_copy,label=nb_species_0)) + geom_boxplot(aes(fill=color),outlier.shape=NA) +
   scale_fill_manual("",values = set_color) + facet_wrap(~amino_acid, ncol = 4,scales = "free")+ geom_text(family="ubuntu condensed",size=9,aes(y = y_axis_0 + 3 ),vjust=0.1) + 
   theme_bw() + theme(
     title =  element_text(size=30, family="ubuntu condensed"),

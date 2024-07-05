@@ -1,9 +1,6 @@
 # Generate Figure 7
 source("figure/figure_main_generator/library_path.R")
 
-data2 = read.delim("data/data2_supp.tab",comment.char = "#")
-dt_graph = data2[data2$species == "Homo_sapiens" ,]
-
 resolution = 2
 
 # Pannel A

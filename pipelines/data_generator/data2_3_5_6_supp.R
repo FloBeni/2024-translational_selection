@@ -54,8 +54,7 @@ for (species in species_list){
     species,
     gene_id = codon_usage$gene_id,
     GCi,
-    GC3,
-    gene_expression = codon_usage$median_fpkm
+    GC3
   ))
   
   
