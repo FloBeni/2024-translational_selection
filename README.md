@@ -36,17 +36,43 @@ Developed by Florian Bénitière, Tristan Lefébure and Laurent Duret. Laboratoi
             tRNAscan-SE -E -o trna_from_trnascanse.txt -S off genome.fna
             ```
 
-    -   'Data1_supp.tab' encompasses per species data on life history traits, number of identified genes among the eukaryota BUSCO gene set, and the number of genes that have been associated to one annotated protein-coding gene only (Fig. 1,2,3,5,6,7,8).
+    -   '`data1_supp.tab`' Contains multiple codon usage metrics for various species, utilized in Figures 1, 2, 4, 5, 6, 7, and Supplementary Figures 1, 3, 4, 5, 7, 8, 9.
 
--   The '**pipelines**' folder contains the bionformatics pipelines for three different purposes: to download data from repository; to analyze various characteristics as part of our study ('**codon_usage_pipeline**'); to generate data table located in the '**data**' directory ('**data_generator**').
+    -   '`data2_supp.tab`' Includes per-gene GCi and GC3 data for selected species, used in Figure 1.
 
-### 
+    -   '`data3_supp.tab`' Provides per-amino acid data on tRNA gene copy number and amino acid usage for selected species, used in Figure 2.
 
-Some packages that you may encounter in these R scripts should be install: - stringr - kableExtra - cowplot - ggplot2 - imager - RColorBrewer ...
+    -   '`data4_supp.tab`' Contains per-species data on tRNA gene copy number, used in Figure 3.
 
-### 
+    -   '`data5_supp.tab`' Details the frequency of putative-optimal codons by 2% bins of gene expression level for selected species, used in Figure 4 and Supplementary Figures 6, 10.
+
+    -   '`data6_supp.tab`' Contains data on sites constraint per gene for selected species, used in Supplementary text Figure 3.
+
+    -   '`data7_supp.tab`' Provides per-species data on tRNA gene copy number, used in Supplementary Figure 2.
+
+    -   '`data8_supp.tab`' Includes per-species data on correlation with the tRNA gene copy number of *Hydra vulgaris*, used in Supplementary Figure 3.
+
+    -   '`data9_supp.tab`' Contains data on tRNA gene copy number per amino acid for *Caenorhabditis elegans* and *Hydra vulgaris*, used in Supplementary Figure 3.
+
+    -   '`data10_supp.tab`' Provides data from Behrens et al. 2021 on tRNA abundance, gene copy number, and amino acid usage, used in Supplementary Figure 4.
+
+    -   '`data11_supp.tab`' Contains data on tRNA gene copy number for dipters and lepidopters, similar to '`data4_supp.tab`', used in Supplementary Figure 8.
+
+    -   '`data12_supp.tab`' Details Valine synonymous codon usage with gene expression level for selected species, used in Supplementary Figure 9.
+
+    -   '`data13_supp.tab`' Includes data on single nucleotide polymorphisms of putative-optimal codons and non-putative-optimal codons alleles, used in Supplementary text Figure 1.
+
+    -   '`data14_supp.tab`' Contains data on substitutions of putative-optimal codons and non-putative-optimal codons alleles, used in Supplementary text Figure 1.
+
+    -   '`data15_supp.tab`' Provides per-species data on GCi and GC3 along the genes, used in Supplementary text Figure 2.
+
+    -   '`data16_supp.tab`' Contains data on codon usage between highly expressed genes and lowly expressed genes for dipters and lepidopters, used in the text to measure values, refer to '`values_in_text_paper_generator.R`').
+
+-   The '**pipelines**' folder contains the bionformatics pipelines for three different purposes: to download data from repository ('**building_from_source**'); to analyze various characteristics as part of our study ('**workflow**'); to generate data table located in the '**data**' directory ('**data_generator**').
 
 The script '`values_in_text_paper_generator.R`' retrieves the values found in the main text of the paper from the data.
+
+Some packages that you may encounter in these R scripts should be install: - stringr - kableExtra - cowplot - ggplot2 - imager - RColorBrewer ...
 
 #### References
 

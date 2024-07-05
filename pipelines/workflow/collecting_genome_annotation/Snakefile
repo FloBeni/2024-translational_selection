@@ -1,0 +1,63 @@
+import pandas as pd
+import os
+
+pathBanque = "/beegfs/banque/gtdrift/data/"
+pathScript = "/beegfs/banque/gtdrift/pipeline/"
+
+localrules: download_NCBI_genome, download_NCBI_protein, download_NCBI_cds, download_NCBI_annotation
+
+if "assembly_list" in config.keys():
+    assembly_list = config["assembly_list"]
+
+rule collect_everything:
+     input:
+         expand( pathBanque + "genome_assembly/{genome_assembly}/genome_seq/genomic.fna",genome_assembly=assembly_list),
+         expand( pathBanque + "genome_assembly/{genome_assembly}/annotation/protein.faa",genome_assembly=assembly_list),
+         expand( pathBanque + "genome_assembly/{genome_assembly}/annotation/cds_from_genomic.fna",genome_assembly=assembly_list),
+         expand( pathBanque + "genome_assembly/{genome_assembly}/annotation/genomic.gff",genome_assembly=assembly_list)
+
+
+
+# Ne se lance que sur un noeud (-j = 1) sinon bug
+rule download_NCBI_genome:
+    # Telecharge le genome du NCBI
+    params:
+        symlink_directory = pathBanque + "genome_assembly/{genome_assembly}/genome_seq/"
+    output:
+        genome_path = pathBanque + "genome_assembly/{genome_assembly}/genome_seq/genomic.fna"
+    shell:
+        "{pathScript}scripts/analyses/collecting_genome_annotation/download_genome.sh {wildcards.genome_assembly} {output.genome_path} {params.symlink_directory}"
+
+
+# Ne se lance que sur un noeud (-j = 1) sinon bug
+rule download_NCBI_protein:
+    # Telecharge le fichier de sequence proteique du NCBI
+    params:
+        symlink_directory = pathBanque + "genome_assembly/{genome_assembly}/annotation/"
+    output:
+        prot_path =  pathBanque + "genome_assembly/{genome_assembly}/annotation/protein.faa"
+    shell:
+        "{pathScript}scripts/analyses/collecting_genome_annotation/download_protein.sh {wildcards.genome_assembly} {output.prot_path} {params.symlink_directory}"
+
+
+# Ne se lance que sur un noeud (-j = 1) sinon bug
+rule download_NCBI_cds:
+    # Telecharge le fichier de sequence CDS du NCBI
+    params:
+        symlink_directory = pathBanque + "genome_assembly/{genome_assembly}/annotation/"
+    output:
+        cds_path =  pathBanque + "genome_assembly/{genome_assembly}/annotation/cds_from_genomic.fna"
+    shell:
+        "{pathScript}scripts/analyses/collecting_genome_annotation/download_cds.sh {wildcards.genome_assembly} {output.cds_path} {params.symlink_directory}"
+
+
+# Ne se lance que sur un noeud (-j = 1) sinon bug
+rule download_NCBI_annotation:
+    # Telecharge les annotations du NCBI
+    params:
+        symlink_directory = pathBanque + "genome_assembly/{genome_assembly}/annotation/"
+    output:
+        gff_path = pathBanque + "genome_assembly/{genome_assembly}/annotation/genomic.gff",
+        gtf_path = pathBanque + "genome_assembly/{genome_assembly}/annotation/genomic.gtf"
+    shell:
+        "{pathScript}scripts/analyses/collecting_genome_annotation/download_annotation.sh {wildcards.genome_assembly} {output.gff_path} {output.gtf_path} {params.symlink_directory}"

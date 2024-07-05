@@ -1,0 +1,131 @@
+import pandas as pd
+import os
+
+rnaseq_list = config["rnaseq_list"]
+
+combinations = [
+    (ga, sra)
+    for ga, sras in rnaseq_list.items()
+    for sra in (sras if isinstance(sras, list) else [sras])
+]
+
+assembly_list = rnaseq_list.keys()
+
+include: "../collecting_genome_annotation/Snakefile"
+
+pathBanque = "/beegfs/banque/gtdrift/data/"
+pathScript = "/beegfs/banque/gtdrift/pipeline/"
+pathLog = "/beegfs/banque/gtdrift/temp/log/"
+pathTMP = "/beegfs/banque/gtdrift/temp/"
+sif_directory = pathScript + "singularity_sif/sif/"
+
+localrules: intron_Coords
+
+rule codon_usage_analysis:
+    input:
+        expand( pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/codon_usage_gene_fpkm.txt",genome_assembly=rnaseq_list.keys()),
+        expand( pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/trna_pool/trna_from_gff.txt",genome_assembly=rnaseq_list.keys()),
+        expand( pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/trna_pool/trna_from_trnascanse.txt",genome_assembly=rnaseq_list.keys())
+
+
+rule tRNAscan_table:
+    params: time="00-05:00:00",mem=10000,partition="normal",ntasks=1,name="tRNAscan_{genome_assembly}",
+        out= pathLog + "codon_usage/tRNAscan_{genome_assembly}_out",
+        err= pathLog + "codon_usage/tRNAscan_{genome_assembly}_err"
+    input:
+        gff_path= pathBanque + "genome_assembly/{genome_assembly}/annotation/genomic.gff"
+    output:
+        tRNAscan_path= pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/trna_pool/trna_from_gff.txt"
+    shell:
+        """
+        python3 -u {pathScript}scripts/analyses/codon_usage/tRNA_copies_number.py {input.gff_path} {output.tRNAscan_path}
+        """
+
+rule tRNAscan_SE:
+    params: time="5-00:00:00",mem=20000,partition="normal",ntasks=16,name="tRNAscanse_{genome_assembly}",
+        out= pathLog + "codon_usage/tRNAscanse_{genome_assembly}_out",
+        err= pathLog + "codon_usage/tRNAscanse_{genome_assembly}_err"
+    input:
+        genome_path= pathBanque + "genome_assembly/{genome_assembly}/genome_seq/genomic.fna"
+    output:
+        tRNAscan_path= pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/trna_pool/trna_from_trnascanse.txt"
+    singularity:
+        sif_directory + "trnascan-se.sif"
+    shell:
+        """
+        mkdir -p {pathLog}codon_usage/trnascanse/{wildcards.genome_assembly}/trnascan_se/
+        export TMPDIR={pathLog}codon_usage/trnascanse/{wildcards.genome_assembly}/trnascan_se/
+
+        rm -r -f {pathLog}codon_usage/trnascanse/{wildcards.genome_assembly}/trnascan_se_split/
+        mkdir -p {pathLog}codon_usage/trnascanse/{wildcards.genome_assembly}/trnascan_se_split/
+
+        chmod +x {pathLog}codon_usage/trnascanse/{wildcards.genome_assembly}/trnascan_se_split/
+
+        {pathScript}scripts/analyses/codon_usage/tRNAscan_SE_detection.sh {pathLog}codon_usage/trnascanse/{wildcards.genome_assembly}/trnascan_se_split/ {input.genome_path} {output.tRNAscan_path} {params.ntasks}
+
+        rm -r {pathLog}codon_usage/trnascanse/{wildcards.genome_assembly}/trnascan_se_split/
+        rm -r {pathLog}codon_usage/trnascanse/{wildcards.genome_assembly}/trnascan_se/
+        """
+
+
+rule codon_usage:
+    # Faire une table qui reprend tout par projet
+    params: time="24:00:00", mem=10000, partition="normal",ntasks=1, name="codon_usage_{genome_assembly}",
+        out= pathLog + "codon_usage/codon_usage_{genome_assembly}_out",
+        err= pathLog + "codon_usage/codon_usage_{genome_assembly}_err"
+    input:
+        cds_from_genomic_path =  pathBanque + "genome_assembly/{genome_assembly}/annotation/cds_from_genomic.fna",
+        gff_path = pathBanque + "genome_assembly/{genome_assembly}/annotation/genomic.gff"
+    output:
+        codon_usage_path = pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/cds_intron_content/protein_codon_content.txt"
+    shell:
+        """
+        python3 -u {pathScript}scripts/analyses/codon_usage/codon_usage.py {input.cds_from_genomic_path} {input.gff_path} {output.codon_usage_path}
+        """
+
+rule intron_Coords:
+    # Extrait les coordonnées des introns à partir du .gtf et leur site d'epissage
+    input:
+        gtf_path = pathBanque + "genome_assembly/{genome_assembly}/annotation/genomic.gtf",
+        genome_path = pathBanque + "genome_assembly/{genome_assembly}/genome_seq/genomic.fna"
+    output:
+        introncoord_path = pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/intermediate_files/introncoords.txt"
+    shell:
+        """
+        perl {pathScript}scripts/analyses/codon_usage/extract.introns.annotations.pl --pathGTF={input.gtf_path} --pathGenomeSequence={input.genome_path} --pathOutput={output.introncoord_path}
+        """
+
+
+rule intronic_triplet_content:
+    # Faire une table qui reprend tout par projet
+    params: time="7-00:30:00", mem=10000, partition="long",ntasks=1, name="intronic_triplet_{genome_assembly}",
+        out= pathLog + "codon_usage/intronic_triplet_content_{genome_assembly}_out",
+        err= pathLog + "codon_usage/intronic_triplet_content_{genome_assembly}_err"
+    input:
+        genome_path = pathBanque + "genome_assembly/{genome_assembly}/genome_seq/genomic.fna",
+        IntronCoord_path= pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/intermediate_files/introncoords.txt",
+        gff_path = pathBanque + "genome_assembly/{genome_assembly}/annotation/genomic.gff"
+    output:
+        trinucl_intronic_path = pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/cds_intron_content/intron_triplet_content.txt"
+    shell:
+        """
+        python3 -u {pathScript}scripts/analyses/codon_usage/trinucleotid_intronic.py {input.genome_path} {input.IntronCoord_path} {input.gff_path} {output.trinucl_intronic_path}
+        """
+
+
+rule codon_usage_intron:
+    params: time="00-05:00:00", mem=1000, partition="normal",ntasks=1, name="CU_intron_{genome_assembly}",
+        out= pathLog + "codon_usage/CU_intron_{genome_assembly}_out",
+        err= pathLog + "codon_usage/CU_intron_{genome_assembly}_err"
+    input:
+        codon_usage_path= pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/cds_intron_content/protein_codon_content.txt",
+       # by_gene_path= pathBanque + "genome_assembly/{genome_assembly}/analyses/gene_expression/by_gene_analysis.txt", # from GTDrift benitiere et al. 2024
+        intron_content_path= pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/cds_intron_content/intron_triplet_content.txt"
+    output:
+        intronic_UC_path = pathBanque + "genome_assembly/{genome_assembly}/analyses/codon_usage/codon_usage_gene_fpkm.txt"
+    singularity:
+        sif_directory + "R_4.2.1.sif"
+    shell:
+        """
+        Rscript --vanilla {pathScript}scripts/analyses/codon_usage/codon_usage_intron.R {input.codon_usage_path} {input.by_gene_path} {input.intron_content_path} {output.intronic_UC_path}
+        """
