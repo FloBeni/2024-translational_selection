@@ -1,5 +1,4 @@
-
-[![DOI](https://zenodo.org/10.5281/zenodo.12669922)](https://zenodo.org/10.5281/zenodo.12669922)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12669922.svg)](https://doi.org/10.5281/zenodo.12669922)
 
 This archive includes all processed data that have been generated and used in the paper 'Variation in the intensity of selection for translationally optimal codons among animals', as well as the scripts used to analyze the data and to generate the figures.
 
