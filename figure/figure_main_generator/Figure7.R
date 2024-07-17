@@ -43,6 +43,7 @@ dev.off()
 
 # Pannel B
 
+dt_graph=merge_dt
 pB = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=80,size=0.2)+ theme_bw() + theme(
   axis.title.x = element_text(color="black",vjust=-.5, size=25,family="ubuntu condensed"),
   axis.title.y = element_text(color="black",vjust=1.5, size=25, family="ubuntu condensed"),

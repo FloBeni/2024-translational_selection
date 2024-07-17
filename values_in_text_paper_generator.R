@@ -138,16 +138,18 @@
   
   list_species = c()
   list_exaequo = c()
+  list_aa_present = c()
   for(species in unique(data4$species)){
     aa_present = table(data4[data4$species == species & data4$nb_syn != 1 & data4$tRNA_gene_copy != 0 ,]$amino_acid)
     aa_present = names(aa_present[aa_present >= 2 ])
     if (any(!(aa_present %in% unique(data4[data4$species == species & data4$amino_acid %in% aa_present & data4$POC1, ]$amino_acid)))){
       list_species=append(list_species,species)
+      list_aa_present=append(list_aa_present,aa_present)
       list_exaequo=append(list_exaequo,aa_present[!(aa_present %in% unique(data4[data4$species == species & data4$amino_acid %in% aa_present & data4$POC1, ]$amino_acid))])
     }
   }
   
-  print(paste(length(list_exaequo)," ex æquo cases in total, in ",length(list_species)," species",sep=""))
+  print(paste("(",length(list_exaequo)," ex æquo among ",length(list_aa_present)," cases in total, in ",length(list_species)," species)",sep=""))
   
   print(paste("For the human genome, POC1 have been defined for ",length(unique(data4[data4$species == "Homo_sapiens" & data4$POC1,]$amino_acid)),
               " amino acids and POC2 for ",length(unique(data4[data4$species == "Homo_sapiens" & data4$POC2,]$amino_acid)),
