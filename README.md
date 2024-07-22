@@ -1,6 +1,6 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12669922.svg)](https://doi.org/10.5281/zenodo.12669922)
 
-This archive includes all processed data that have been generated and used in the paper 'Variation in the intensity of selection for translationally optimal codons among animals', as well as the scripts used to analyze the data and to generate the figures.
+This archive includes all processed data that have been generated and used in the paper 'Variation in the fitness impact of translationally optimal codons among animals', as well as the scripts used to analyze the data and to generate the figures.
 
 Developed by Florian Bénitière, Tristan Lefébure and Laurent Duret. Laboratoire de Biométrie et Biologie Évolutive, Université Lyon 1, UMR CNRS 5558, Villeurbanne, France. Laboratoire d'Ecologie des Hydrosystèmes Naturels et Anthropisés, Université Lyon 1, UMR CNRS 5023, Villeurbanne, France.
 
