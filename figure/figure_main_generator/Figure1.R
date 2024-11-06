@@ -244,9 +244,9 @@ lepidoptera<-readPNG(paste(path_require,"lepidoptera.png",sep=""))
   yaxis=1750
   rasterImage(monkey,xleft=0+xaxis, ybottom=0+yaxis, xright=900/5+xaxis, ytop=-900/5+yaxis)
 
-  xcel=1310
+  xcel=1280
   ycel=1120
-  rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=0+ycel, xright=1000/5+xcel, ytop=-350/5+ycel)
+  rasterImage(Caenorhabditis_elegans,xleft=0+xcel, ybottom=0+ycel, xright=1000/3.5+xcel, ytop=-350/3.5+ycel)
 
   xaxis=1100
   yaxis=800
