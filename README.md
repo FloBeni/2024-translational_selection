@@ -64,6 +64,13 @@ Developed by Florian Bénitière, Tristan Lefébure and Laurent Duret. Laboratoi
 
     -   '`data16_supp.tab`' Contains data on codon usage between highly expressed genes and lowly expressed genes for dipters and lepidopters, used in the text to measure values, refer to '`values_in_text_paper_generator.R`').
 
+    -   '`ultrametric_tree.tree`' is an ultrametric tree generated to address the reviewers' request for a time-calibrated phylogenetic tree:
+
+            ```         
+            require(ape)
+            chrono <- chronos(arbrePhylo, model = "relaxed")
+            ```
+
 -   The '**pipelines**' folder contains the bionformatics pipelines for three different purposes: to download data from repository ('**building_from_source**'); to analyze various characteristics as part of our study ('**workflow**'); to generate data table located in the '**data**' directory ('**data_generator**').
 
 The script '`values_in_text_paper_generator.R`' retrieves the values found in the main text of the paper from the data.
