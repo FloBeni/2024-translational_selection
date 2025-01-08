@@ -88,7 +88,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=-1, size=26,family="ubuntu condensed"),
-    axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=35, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
     title =  element_text(color="black", size=22, family="ubuntu condensed"),
@@ -126,7 +126,7 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel , x=xlabel))  +
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(size=4,pch=21,alpha=1,aes(fill=log10(lifespan_days))) + theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=-1, size=26,family="ubuntu condensed"),
-    axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=35, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
     title =  element_text(color="black", size=22, family="ubuntu condensed"),
@@ -162,7 +162,7 @@ pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=0, size=26,family="ubuntu condensed"),
-    axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=35, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
     title =  element_text(color="black", size=22, family="ubuntu condensed"),
@@ -200,7 +200,7 @@ pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(size=4,pch=21,alpha=1,aes(fill=var_gci)) + theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=0, size=26,family="ubuntu condensed"),
-    axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=35, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
     title =  element_text(color="black", size=22, family="ubuntu condensed"),

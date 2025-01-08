@@ -123,7 +123,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spe
     legend.title =  element_text(color="black", size=25, family="ubuntu condensed"),
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )  + scale_fill_manual("Clades",values=Clade_color) +
   xlab(substitute(paste(Delta," POC"[1]^"exp")))  +

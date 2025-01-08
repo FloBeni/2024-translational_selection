@@ -11,7 +11,7 @@ spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_tr
 
 pA=ggplot(dt_graph,aes(x = prop_transcriptome_count*100 , y = prop_abundance_average*100)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[3],size=2) +
   geom_point(pch=21,fill=set_color[4],size=4) + 
-  ylab("tRNA abundance (%)") + xlab("Amino-acid frequency (%)") + 
+  ylab("tRNA abundance (%)") + xlab("Amino acid frequency (%)") + 
   theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=0, size=25,family="ubuntu condensed"),
     axis.title.y = element_text(color="black", size=25, family="ubuntu condensed"),
@@ -42,7 +42,7 @@ spearman_method_aa = cor.test( dt_graph$prop_abundance_average, dt_graph$prop_tr
 
 pB=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=prop_abundance_average*100)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[1],size=2) +
   geom_point(pch=21,fill=set_color[2],size=4) + 
-  ylab("tRNA abundance (%)")+ xlab("Amino-acid frequency (%)") + 
+  ylab("tRNA abundance (%)")+ xlab("Amino acid frequency (%)") + 
   theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=0, size=25,family="ubuntu condensed"),
     axis.title.y = element_text(color="black", size=25, family="ubuntu condensed"),
@@ -73,7 +73,7 @@ spearman_method_aa = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome
 
 pC=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[3],size=2) +
   geom_point(pch=21,fill=set_color[4],size=4) + 
-  xlab("Amino-acid frequency (%)") + ylab("Gene copy number") + 
+  xlab("Amino acid frequency (%)") + ylab("Gene copy number") + 
    theme_bw() + theme(
      axis.title.x = element_text(color="black",vjust=0, size=25,family="ubuntu condensed"),
      axis.title.y = element_text(color="black", size=25, family="ubuntu condensed"),
@@ -105,7 +105,7 @@ spearman_method_aa = cor.test( dt_graph$gene_copies, dt_graph$prop_transcriptome
 
 pD=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smooth(method='lm',linetype='dashed',se=F, formula= y~x,col=set_color[1],size=2) +
   geom_point(pch=21,fill=set_color[2],size=4) + 
-  xlab("Amino-acid frequency (%)") + ylab("Gene copy number") + 
+  xlab("Amino acid frequency (%)") + ylab("Gene copy number") + 
   theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=0, size=25,family="ubuntu condensed"),
     axis.title.y = element_text(color="black", size=25, family="ubuntu condensed"),
