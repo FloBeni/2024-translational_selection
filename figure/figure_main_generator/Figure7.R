@@ -24,9 +24,9 @@ dt_graph=merge_dt[which(merge_dt$NbTissueTopExp>20),]
 pA = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=50,size=0.2)+ theme_bw() + theme(
   axis.title.x = element_text(color="black",vjust=-.5, size=25,family="ubuntu condensed"),
   axis.title.y = element_text(color="black",vjust=1.5, size=25, family="ubuntu condensed"),
-  axis.text.y =  element_text(color="black", size=20, family="ubuntu condensed"),
-  axis.text.x =  element_text(color="black", size=20, family="ubuntu condensed"),
-  title =  element_text(color="black", size=16, family="ubuntu condensed"),
+  axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
+  axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
+  title =  element_text(color="black", size=20, family="ubuntu condensed"),
   legend.text =  element_text(color="black", size=16, family="ubuntu condensed"),
   strip.text = element_text(size=15),
   plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="ubuntu condensed"),
@@ -47,9 +47,9 @@ dt_graph=merge_dt
 pB = ggplot(dt_graph , aes(x=GC3))  + geom_histogram(fill="#FF7F00",col="black",bins=80,size=0.2)+ theme_bw() + theme(
   axis.title.x = element_text(color="black",vjust=-.5, size=25,family="ubuntu condensed"),
   axis.title.y = element_text(color="black",vjust=1.5, size=25, family="ubuntu condensed"),
-  axis.text.y =  element_text(color="black", size=20, family="ubuntu condensed"),
-  axis.text.x =  element_text(color="black", size=20, family="ubuntu condensed"),
-  title =  element_text(color="black", size=16, family="ubuntu condensed"),
+  axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
+  axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
+  title =  element_text(color="black", size=20, family="ubuntu condensed"),
   legend.text =  element_text(color="black", size=16, family="ubuntu condensed"),
   strip.text = element_text(size=15),
   plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="ubuntu condensed"),
@@ -91,12 +91,12 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
-    title =  element_text(color="black", size=20, family="ubuntu condensed"),
+    title =  element_text(color="black", size=22, family="ubuntu condensed"),
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
     plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot",
-    legend.text =  element_text(color="black", size=20, family="ubuntu condensed",vjust = 1.5,margin = margin(l = .4,unit="cm",t=.2)),
-    legend.title = element_text(color="black", size=23, family="ubuntu condensed",margin = margin(l = 0,unit="cm",t=1, b=.5)),
+    legend.text =  element_text(color="black", size=21, family="ubuntu condensed",vjust = 1.5,margin = margin(l = .4,unit="cm",t=.2)),
+    legend.title = element_text(color="black", size=25, family="ubuntu condensed",margin = margin(l = 0,unit="cm",t=1, b=.5)),
     legend.box.spacing =  unit(1, 'cm'),
     legend.margin =  margin(l = 0,unit="cm",t=.3)
   )+ guides(fill = guide_legend(override.aes = list(size=5)))+
@@ -129,12 +129,13 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel , x=xlabel))  +
     axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
-    title =  element_text(color="black", size=20, family="ubuntu condensed"),
+    title =  element_text(color="black", size=22, family="ubuntu condensed"),
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
-    legend.text =  element_text(color="black", size=20, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=27, family="ubuntu condensed"),
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="ubuntu condensed"),
     plot.caption.position =  "plot",
-    legend.title = element_text(color="black", size=23, family="ubuntu condensed",margin = margin(l = 0,unit="cm",t=1, b=.5))
+    legend.key.height = unit(1, "cm"),  # Increase vertical spacing
+    legend.title = element_text(color="black", size=25, family="ubuntu condensed",margin = margin(l = 0,unit="cm",t=1, b=.5))
   )+  ylab(substitute(paste("S"^hx))) + 
   xlab("GCi Variance") + 
   labs(
@@ -164,12 +165,12 @@ pE =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
-    title =  element_text(color="black", size=20, family="ubuntu condensed"),
+    title =  element_text(color="black", size=22, family="ubuntu condensed"),
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
     legend.text =  element_text(color="black", size=24, family="ubuntu condensed",vjust = 1.5,margin = margin(t = 1)),
     plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="ubuntu condensed"),
     plot.caption.position =  "plot",
-    legend.title = element_text(color="black", size=23, family="ubuntu condensed",margin = margin(l = 0,unit="cm",t=1, b=1))
+    legend.title = element_text(color="black", size=25, family="ubuntu condensed",margin = margin(l = 0,unit="cm",t=1, b=1))
   )+ guides(fill = guide_legend(override.aes = list(size=5)))+
   labs(
     title = paste("N = ",nrow(dt_graph)," species",sep="")
@@ -202,11 +203,12 @@ pF =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     axis.title.y = element_text(color="black",vjust=1.5, size=26, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
-    title =  element_text(color="black", size=20, family="ubuntu condensed"),
+    title =  element_text(color="black", size=22, family="ubuntu condensed"),
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
-    legend.text =  element_text(color="black", size=20, family="ubuntu condensed"),
+    legend.text =  element_text(color="black", size=24, family="ubuntu condensed"),
     plot.caption = element_text(hjust = 0.59, face= "italic", size=15, family="ubuntu condensed"),
     plot.caption.position =  "plot",
+    legend.key.height = unit(1, "cm"),  # Increase vertical spacing
     legend.title = element_text(color="black", size=23, family="ubuntu condensed",margin = margin(l = 0,unit="cm",t=1, b=1))
   )+  ylab(substitute(paste("S"^hx))) + 
   labs(

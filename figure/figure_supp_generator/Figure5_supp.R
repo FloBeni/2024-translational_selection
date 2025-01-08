@@ -35,7 +35,7 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5)))+
   labs(
-    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) + xlab(substitute(paste(Delta," POC"^"exp",", not accounting for intron control")))  + ylab(substitute(paste(Delta," POC"^"exp")))
 

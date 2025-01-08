@@ -60,7 +60,7 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  +
     legend.spacing = unit(200, "pt")
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ scale_fill_manual("Clades",values=Clade_color) + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   ylab(expression(paste(italic("N"[e]^pi*''^mu)))) + 
@@ -101,7 +101,7 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))    +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   ylab(expression(paste(italic("N"[e]^pi*''^mu)))) + 
@@ -141,7 +141,7 @@ pC =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Mass_Lynch_estimate"))
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
   ylab(expression(paste(italic("N"[e]^pi*''^mu)))) +   theme(legend.position="none")+ xlab("Body mass (kg, log scale)")+
@@ -180,10 +180,11 @@ pD = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))   +
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) + scale_shape_manual(expression(paste(italic("N"[e])," estimates")),values=c(24,21)) +
-  ylab(expression(paste(italic("N"[e]^pi*''^mu)))) +  xlab("dN/dS (log scale)") + scale_x_log10()+ annotation_logticks(sides="lb")  + 
+  ylab(expression(paste(italic("N"[e]^pi*''^mu)))) + xlab(expression(italic(d)[N]/italic(d)[S] ~ "(log scale)")) +
+  scale_x_log10()+ annotation_logticks(sides="lb")  + 
   scale_y_log10() + guides(fill = guide_legend(override.aes = list(size=5,pch=21)),
                            shape = guide_legend(override.aes = list(fill="black"))) +
   scale_y_log10(labels=label_log(digits = 2)) 

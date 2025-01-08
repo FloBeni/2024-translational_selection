@@ -37,7 +37,7 @@ pA = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
   ylab("GC3 standard deviation") +
   xlab("GCi standard deviation") +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) +
   guides(fill = guide_legend(override.aes = list(size=5)),
@@ -74,10 +74,10 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     legend.box.spacing =  unit(1, 'cm'),
     legend.margin =  margin(l = 0,unit="cm",t=.3)
   ) + scale_fill_manual("Clades",values=Clade_color) +
-  ylab("Spearmann rho GC3 vs GCi") +
+  ylab("Spearman's rho GC3 vs GCi") +
   xlab("GCi standard deviation")  +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) +
   guides(fill = guide_legend(override.aes = list(size=5)),

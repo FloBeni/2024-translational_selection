@@ -25,7 +25,7 @@ pA = ggplot(dt_graph,aes(x=nb_copy_Hydra_vulgaris ,y=nb_copy_Caenorhabditis_eleg
   xlab(expression(paste("tRNA gene copy number (",italic("Hydra vulgaris"),")"))) +
   ylab(expression(paste("tRNA gene copy number (",italic("Caenorhabditis elegans"),")"))) +
   labs(
-    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
+    caption = substitute(paste("rho = ",rho_aa_fpkm,", ", italic("P"), "-value = ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = formatC(spearman_method_aa$p.value, format = "e", digits = 0)))
   ) 
@@ -50,7 +50,7 @@ dt_graph = data8[data8$species2 %in% data1$species& data8$species2 != "Hydra_vul
 
 pB = ggplot(dt_graph,aes(y=rho,fill=clade_group,x=clade_group))  +
   geom_hline(size=1,linetype="dashed",col="red", yintercept = min(dt_graph[dt_graph$rho & dt_graph$pval < 0.05,]$rho) ) +
-  geom_text (label="p-value < 0.05", y=.4,x="Lepido Diptera",size=5,family="ubuntu condensed",col="red") + geom_boxplot(alpha=.1) + 
+  geom_boxplot(alpha=.1) + 
   geom_point(aes(fill=clade_group,pch=pval_aa_fpkm),size=3,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black",angle = 50, size=25,family="ubuntu condensed"),
     axis.title.y = element_text(color="black",vjust=2, size=22, family="ubuntu condensed"),
@@ -58,7 +58,7 @@ pB = ggplot(dt_graph,aes(y=rho,fill=clade_group,x=clade_group))  +
     axis.text.x =  element_text(color="black",vjust=1,hjust=1, size=18,angle = 30, family="ubuntu condensed"),
     title =  element_text(color="black", size=0, family="ubuntu condensed"),
     legend.text =  element_text(color="black", size=20, family="ubuntu condensed")
-  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + scale_shape_manual(values=c(24,21)) + ylab("Spearmann rho")  + xlab("") + ylim(0,1)
+  ) + theme(legend.position='none') + scale_fill_manual(values=Clade_color) + scale_shape_manual(values=c(24,21)) + ylab("Spearman's rho")  + xlab("") + ylim(0,1)
 
 pB = ggMarginal(pB, type="histogram",fill=set_color[1]) 
 pB

@@ -24,7 +24,7 @@ pA=ggplot(dt_graph,aes(x = prop_transcriptome_count*100 , y = prop_abundance_ave
     plot.caption.position =  "plot"
   ) + 
   labs(
-    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
+    caption = substitute(paste("rho = ",rho_aa_fpkm,", ", italic("P"), "-value = ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = formatC(spearman_method_aa$p.value, format = "e", digits = 0)))
   )
@@ -55,7 +55,7 @@ pB=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=prop_abundance_average*1
     plot.caption.position =  "plot"
   ) + 
   labs(
-    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
+    caption = substitute(paste("rho = ",rho_aa_fpkm,", ", italic("P"), "-value = ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = formatC(spearman_method_aa$p.value, format = "e", digits = 0)))
   )
@@ -86,7 +86,7 @@ pC=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smo
      plot.caption.position =  "plot"
    ) + 
   labs(
-    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
+    caption = substitute(paste("rho = ",rho_aa_fpkm,", ", italic("P"), "-value = ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = formatC(spearman_method_aa$p.value, format = "e", digits = 0)))
   )
@@ -118,7 +118,7 @@ pD=ggplot(dt_graph,aes(x=prop_transcriptome_count*100,y=gene_copies)) + geom_smo
     plot.caption.position =  "plot"
   ) + 
   labs(
-    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value = ",pval_aa_fpkm), list(
+    caption = substitute(paste("rho = ",rho_aa_fpkm,", ", italic("P"), "-value = ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = formatC(spearman_method_aa$p.value, format = "e", digits = 0)))
   )

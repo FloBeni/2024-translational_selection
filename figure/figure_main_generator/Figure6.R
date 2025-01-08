@@ -21,7 +21,7 @@ model_to_use = fitted_model(x=dt_graph[,xlabel],y=dt_graph[,ylabel],label=dt_gra
 pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() +  theme(
-    axis.title.x = element_text(color="black", size=25,vjust=0,family="ubuntu condensed"),
+    axis.title.x = element_text(color="black", size=27,vjust=0,family="ubuntu condensed"),
     axis.title.y = element_text(color="black", size=25,vjust=1.5, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
@@ -29,11 +29,11 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
     legend.text =  element_text(color="black", size=20, family="ubuntu condensed",vjust = 1,margin = margin(t = 5)),
     legend.title = element_text(color="black", size=20, family="ubuntu condensed"),
-    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=22, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )  + theme(legend.position='none') + scale_fill_manual(values=Clade_color) +
   ylab("Average CNN of preferred\nisodecoder tRNAs (UNN/CNN)") + 
@@ -72,7 +72,7 @@ t.test(x, y, var.equal = FALSE)
 
 pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_point(aes(fill=clade_group),size=4,pch=21,alpha=.8) + theme_bw() + theme(
-    axis.title.x = element_text(color="black", size=25,vjust=0,family="ubuntu condensed"),
+    axis.title.x = element_text(color="black", size=27,vjust=0,family="ubuntu condensed"),
     axis.title.y = element_text(color="black", size=25,vjust=1.5, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
@@ -80,11 +80,11 @@ pB =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
     legend.text =  element_text(color="black", size=20, family="ubuntu condensed",vjust = 1,margin = margin(t = 5)),
     legend.title = element_text(color="black", size=20, family="ubuntu condensed"),
-    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=22, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + 
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + theme(legend.position='none') + scale_fill_manual("Clades",values=Clade_color) +
   ylab("Average NNC of\npreferred codons (NNT/NNC)") + 

@@ -73,13 +73,13 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,fill="clade_group",label="spec
     title =  element_text(color="black", size=20, family="ubuntu condensed"),
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
     legend.text =  element_text(color="black", size=24, family="ubuntu condensed",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.59, face= "italic", size=20, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = 0.59, face= "italic", size=22, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )  + scale_fill_manual("Clades",values=Clade_color,labels=labels) +
   ylab("GC3") +
   xlab("GCi") +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   )+ theme(legend.position='none')
 pB
@@ -115,11 +115,11 @@ pC = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
     title =  element_text(color="black", size=18, family="ubuntu condensed"),
     legend.text =  element_text(color="black", size=16, family="ubuntu condensed"),
     strip.text = element_text(size=15),
-    plot.caption = element_text(hjust = 0.7, face= "italic", size=20, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = 0.7, face= "italic", size=22, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )  +labs(fill='Categories',color='Categories',shape='',linetype='')+ 
   labs(
-    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value ",pval_aa_fpkm), list(
+    caption = substitute(paste("rho = ",rho_aa_fpkm,", ", italic("P"), "-value ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = spearman_method_aa$p.value))
   ) +
@@ -161,11 +161,11 @@ pD = ggplot(dt_graph , aes(x=GCi ,y=GC3))  +
     title =  element_text(color="black", size=18, family="ubuntu condensed"),
     legend.text =  element_text(color="black", size=16, family="ubuntu condensed"),
     strip.text = element_text(size=15),
-    plot.caption = element_text(hjust = 0.55, face= "italic", size=20, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = 0.55, face= "italic", size=22, family="ubuntu condensed"),
     plot.caption.position =  "plot"
   )+ labs(fill='Categories',color='Categories',shape='',linetype='') + 
   labs(
-    caption = substitute(paste("rho = ",rho_aa_fpkm,", p-value ",pval_aa_fpkm), list(
+    caption = substitute(paste("rho = ",rho_aa_fpkm,", ", italic("P"), "-value ",pval_aa_fpkm), list(
       rho_aa_fpkm = round(spearman_method_aa$estimate, 2),
       pval_aa_fpkm = formatC(spearman_method_aa$p.value, format = "e", digits = 0)))
   ) +

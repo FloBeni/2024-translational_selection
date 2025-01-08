@@ -46,12 +46,12 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3.5,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black", size=22,vjust=-.5,family="ubuntu condensed"),
-    axis.title.y = element_text(color="black", size=26,vjust=1.5, family="ubuntu condensed"),
+    axis.title.y = element_text(color="black", size=28,vjust=1.5, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
     title =  element_text(color="black", size=17, family="ubuntu condensed"),
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
-    plot.caption = element_text(hjust = 0.33, face= "italic", size=18, family="ubuntu condensed",vjust=-1),
+    plot.caption = element_text(hjust = 0.33, face= "italic", size=22, family="ubuntu condensed",vjust=-1),
     plot.caption.position =  "plot",
     legend.text =  element_text(color="black", size=20, family="ubuntu condensed",vjust = 1.5,margin = margin(l = .4,unit="cm",t=.2)),
     legend.title = element_text(color="black", size=23, family="ubuntu condensed"),
@@ -59,7 +59,7 @@ pA =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
     legend.margin =  margin(l = 0,unit="cm",t=1)
   ) + guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) +
   ylab(substitute(paste("S"^hx))) +  
@@ -91,17 +91,17 @@ pB = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=-.5, size=26,family="ubuntu condensed"),
-    axis.title.y = element_text(color="black",vjust=1.5, size=25, family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=28, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
     title =  element_text(color="black", size=18, family="ubuntu condensed"),
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
     legend.text =  element_text(color="black", size=24, family="ubuntu condensed",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = .71, face= "italic", size=20, family="ubuntu condensed",vjust=-1),
+    plot.caption = element_text(hjust = .73, face= "italic", size=22, family="ubuntu condensed",vjust=-1),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
   ylab(substitute(paste("S"^hx))) +
@@ -128,20 +128,20 @@ pC = ggplot(dt_graph,aes_string(y=ylabel,x=xlabel))  +
   geom_abline(lwd=1,slope = model_to_use$slope, intercept = model_to_use$intercept)+
   geom_point(aes(fill=clade_group),size=3,pch=21,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=-.5, size=26,family="ubuntu condensed"),
-    axis.title.y = element_text(color="black",vjust=1.5, size=25, family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1.5, size=28, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=23, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=23, family="ubuntu condensed"),
     title =  element_text(color="black", size=18, family="ubuntu condensed"),
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
     legend.text =  element_text(color="black", size=24, family="ubuntu condensed",vjust = 1.5,margin = margin(t = 10)),
-    plot.caption = element_text(hjust = 0.69, face= "italic", size=20, family="ubuntu condensed",vjust=-1),
+    plot.caption = element_text(hjust = 0.69, face= "italic", size=22, family="ubuntu condensed",vjust=-1),
     plot.caption.position =  "plot"
   )+ guides(fill = guide_legend(override.aes = list(size=5))) + theme(legend.position="none")+
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual(values=Clade_color) +
-  ylab(substitute(paste("S"^hx))) +  xlab("dN/dS (log scale)") + scale_x_log10()+ annotation_logticks(sides="b") 
+  ylab(substitute(paste("S"^hx))) + xlab(expression(italic(d)[N]/italic(d)[S] ~ "(log scale)")) + scale_x_log10()+ annotation_logticks(sides="b") 
 pC
 
 jpeg(paste(path_pannel,"p5C.jpg",sep=""),width = 4200/2/resolution, height = 4000/2/resolution,res=700/2/resolution)
@@ -162,20 +162,20 @@ pD =  ggplot(dt_graph,aes_string(y=ylabel,x=xlabel,shape="Ne_estimate"))  + scal
   geom_errorbar(aes(ymin=S_int_025_POCs ,ymax=S_int_975_POCs))+
   geom_point(aes(fill=clade_group),size=4,alpha=0.7) + theme_bw() + theme(
     axis.title.x = element_text(color="black",vjust=0, size=26,family="ubuntu condensed"),
-    axis.title.y = element_text(color="black",vjust=1, size=26, family="ubuntu condensed"),
+    axis.title.y = element_text(color="black",vjust=1, size=28, family="ubuntu condensed"),
     axis.text.y =  element_text(color="black", size=24, family="ubuntu condensed"),
     axis.text.x =  element_text(color="black", size=24, family="ubuntu condensed"),
     title =  element_text(color="black", size=18, family="ubuntu condensed"),
     text =  element_text(color="black", size=31, family="ubuntu condensed"),
-    plot.caption = element_text(hjust = 0.4, face= "italic", size=20, family="ubuntu condensed"),
+    plot.caption = element_text(hjust = 0.4, face= "italic", size=22, family="ubuntu condensed"),
     plot.caption.position =  "plot",
-    legend.text =  element_text(color="black", size=20, family="ubuntu condensed",vjust = 1.5,margin = margin(l = .4,unit="cm",t=.2)),
+    legend.text =  element_text(color="black", size=22, family="ubuntu condensed",vjust = 1.5,margin = margin(l = .4,unit="cm",t=.2)),
     legend.title = element_text(color="black", size=23, family="ubuntu condensed"),
     legend.box.spacing =  unit(1, 'cm'),
     legend.margin =  margin(l = 0,unit="cm",t=1)
   )+ guides(fill = guide_legend(override.aes = list(size=5))) +
   labs(
-    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", p-value ",pvalue,model_non_opti), model_to_use),
+    caption = substitute(paste(model,lambda," :",aic," R"^2,"= ",r2,", ", italic("P"), "-value ",pvalue,model_non_opti), model_to_use),
     title = paste("N = ",nrow(dt_graph)," species",sep="")
   ) + scale_fill_manual("Clades",values=Clade_color) +
   ylab(substitute(paste("S"^hx))) +  
